@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Local scratch areas
+_backup/
+_scrape/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp

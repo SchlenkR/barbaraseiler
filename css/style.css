@@ -197,6 +197,53 @@ em { font-style: italic; }
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
+/* Hero Keypoints – 3 subtle glass tiles between subtitle and CTA */
+.hero-keypoints {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 900px;
+  width: 100%;
+}
+.hero-keypoints li {
+  flex: 1 1 220px;
+  max-width: 260px;
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: var(--radius);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.hero-keypoints .kp-top {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+}
+.hero-keypoints .kp-main {
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+}
+.hero-keypoints .kp-bot {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.04em;
+}
+
 .scroll-cue {
   position: absolute;
   bottom: 40px;
@@ -334,20 +381,22 @@ em { font-style: italic; }
    SECTION 1: EINLADUNG
    ============================================================ */
 .section-intro {
-  padding: 120px 0 100px;
+  padding: 140px 0 120px;
 }
 .section-intro h2 {
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
-  font-weight: 200;
-  margin-bottom: 20px;
-  line-height: 1.25;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.005em;
+  margin: 0 auto;
+  max-width: 760px;
 }
-.section-intro .lead {
-  font-size: 1.25rem;
-  color: var(--color-text);
-  margin-bottom: 32px;
+.section-intro p {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+  margin: 0;
 }
-.section-intro p { font-size: 1.05rem; }
 
 .pull-quote {
   margin: 56px auto 0;
@@ -474,43 +523,55 @@ em { font-style: italic; }
 }
 
 /* ============================================================
-   SECTION 3: ZIELE (Goal-Grid)
+   SECTION 3: ZIELE (editorial list, not selectable tiles)
    ============================================================ */
-.goal-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.goal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
-.goal {
-  padding: 28px 24px;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius);
-  background: #fff;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+.goal-item {
+  padding: 28px 0;
+  border-top: 1px solid var(--color-line);
 }
-.goal:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  border-color: var(--color-accent);
+.goal-item:first-child { border-top: none; padding-top: 8px; }
+.goal-item h3 {
+  margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
 }
-.goal h3 {
-  margin-bottom: 10px;
-  font-weight: 500;
-}
-.goal p {
+.goal-item p {
   color: var(--color-muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.6;
   margin: 0;
 }
-.goal-open {
-  background: var(--color-bg-alt);
-  border-style: dashed;
-}
-.goal-open h3 { font-style: italic; font-weight: 300; }
+.goal-item-open h3 { font-style: italic; color: var(--color-soft); }
+.goal-item-open p { color: var(--color-muted); }
 
 /* ============================================================
-   SECTION 4: ARBEIT (Process + Callout)
+   SECTION 4: ARBEIT (Prose intro + Process + Callout)
    ============================================================ */
+.intro-prose {
+  max-width: 720px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.intro-prose p {
+  color: var(--color-text);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.intro-prose p:last-child { margin-bottom: 0; }
+.intro-prose .emphasis {
+  font-style: italic;
+  font-size: 1.15rem;
+  margin-top: 18px;
+  color: var(--color-accent);
+}
+
 .process {
   list-style: none;
   padding: 0;
@@ -617,16 +678,18 @@ em { font-style: italic; }
    ============================================================ */
 .pricing {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-bottom: 32px;
 }
 .price {
-  padding: 36px 24px;
+  padding: 32px 20px;
   background: #fff;
   border: 1px solid var(--color-line);
   border-radius: var(--radius);
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 .price-featured {
   background: var(--color-accent);
@@ -635,31 +698,39 @@ em { font-style: italic; }
   transform: scale(1.03);
 }
 .price-label {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-soft);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .price-featured .price-label { color: rgba(255,255,255,0.7); }
 .price-amount {
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-weight: 200;
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
 }
 .price-amount .currency {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 300;
-  margin-left: 4px;
+  margin-left: 3px;
   vertical-align: top;
   display: inline-block;
   margin-top: 8px;
 }
-.price-note {
+.price-duration {
   font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
+  margin-bottom: 14px;
+}
+.price-featured .price-duration { color: rgba(255,255,255,0.75); }
+.price-note {
+  font-size: 0.88rem;
   color: var(--color-muted);
   line-height: 1.4;
+  margin-top: auto;
 }
 .price-featured .price-note { color: rgba(255,255,255,0.8); }
 
@@ -670,8 +741,21 @@ em { font-style: italic; }
 }
 
 /* ============================================================
-   SECTION 7: FÜR WEN (Persona Grid)
+   SECTION 7: FÜR WEN (Lead text + persona grid)
    ============================================================ */
+.who-lead {
+  max-width: 780px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+.who-lead p {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+.who-lead p:last-child { margin-bottom: 0; }
+
 .persona-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -871,11 +955,15 @@ em { font-style: italic; }
   .section-lead { font-size: 1rem; margin-bottom: 40px; }
 
   .pillars { grid-template-columns: 1fr; gap: 16px; }
-  .goal-grid { grid-template-columns: 1fr; }
   .location-grid { grid-template-columns: 1fr; }
   .pricing { grid-template-columns: 1fr; gap: 16px; }
   .price-featured { transform: none; }
   .persona-grid { grid-template-columns: 1fr; }
+
+  .hero-keypoints { gap: 10px; margin-bottom: 28px; }
+  .hero-keypoints li { flex: 1 1 140px; padding: 12px 14px; }
+  .hero-keypoints .kp-main { font-size: 1.05rem; }
+  .hero-keypoints .kp-bot { font-size: 0.75rem; }
 
   .process li { padding: 20px 20px 20px 70px; }
   .process li::before { left: 18px; top: 20px; width: 34px; height: 34px; }

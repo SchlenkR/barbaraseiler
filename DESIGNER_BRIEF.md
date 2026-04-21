@@ -315,6 +315,23 @@ Zentrale Liste aller Design-Varianten mit ihrem Konzept. Bei jeder neuen Variant
 | `v10-dialog-wave/` | v10-dialog | **Effects-Show:** Voice-Memos mit echter WebAudio-Synthese pro Zeile, atmende Fraunces-Typografie (variable wght-Achse auf 6s-Sinus), Lenis+GSAP. Jede Memo eigener Pitch (174–294 Hz). |
 | `v5-resonance/` | v5-three | **Effects-Show:** ganze Seite ist eine atmende WebGL-Szene (fullscreen Quad + Fragment-Shader), 5 Akte (Atem/Ton/Raum/Klang/Begegnung), Scroll steuert Shader-Uniforms, Content via `mix-blend-mode: difference` drüber, optionaler Audio-Drohnen-Modus mit AnalyserNode → Shader. |
 
+### Phase 5 (v26–v35) — Ehe aus Wow + Conversion
+
+Jeder Entwurf ist eigenständige Main-Version. Phase-4-Wow-Technik wird mit Phase-2/3-Conversion-Disziplin verheiratet. Alle `Claude · wow+convert`. Siehe §13 für Konzeptkerne.
+
+| Ordner | Content-Source | Idee |
+|---|---|---|
+| `v26-gespraech/` | v6 (Pathway) + v10 (Dialog) | **Scripted-LLM-Feel Chat.** 5-Stufen-FSM, Typewriter 22 ms/char, Intent-Matching gegen kuratierte Knowledge-Base, 5 Pfad-Auswertungen mit personalisierter Narrative + WhatsApp-Deeplink pro Pfad. Popover API für Term-Klärungen. |
+| `v27-timeline-physics/` | v13 (Erster Monat) | **Matter.js Jahresleiste.** 12 Monats-Token fallen physikalisch in Zeit-Slots, settlen zur Jahresachse, Meilenstein-Noten auf Hover. Commitment spielerisch gemacht. |
+| `v28-mirror/` | v3 (Barbara-Stimme) + v14 | **Camera-Opt-in Mirror.** getUserMedia → Canvas-Grayscale + Pitch-FFT-Bars, rein client-side, explizites Consent-Gate. Graceful fallback auf pulsierende SVG-Kreise. |
+| `v29-ambient/` | v5 (Du-Perspektive) | **Web-Audio-Ambient + VF-Breath.** Hall-Drone-Bed nach Consent, Variable-Font-Achsen gekoppelt an RMS-Amplitude. Scroll-Ende = Stille = CTA-Moment. |
+| `v30-feedback/` | v11 (Passungscheck) + v6 | **Dual-Slider + Canvas-Particles.** „Singen im Alltag" / „Bühnen-Nervosität" steuern Partikelfeld + routen zu 4 Pathways mit Live-Quadranten-Logik. Hidden Form-Field für Barbara. |
+| `v31-oper-chooser/` | v5-y2k + v9 | **Opera-Buzzfeed-Quiz.** 5 Fragen, 4 bipolare Achsen, 7 Charaktere (Mimì, Carmen, Papageno, …). Canvas-2D Share-Card 1200×630 zum Download. Per-Character Accent + CTA-Wording. |
+| `v32-rooms/` | v14 (First Lesson) | **Isometric SVG + View Transitions API.** Klickzonen auf Klavier/Stuhl/Spiegel öffnen Panels via `document.startViewTransition()`, Fallback auf `<dialog>`. Raum-Familiarität = niedrigere Booking-Angst. |
+| `v33-kalender-ghost/` | v7 + v9 | **Rolling Social Proof.** Wochenraster 6-8 Wochen, anonymisierte Meilensteine (Initial-basiert, poetisch), Ghost-Fade auf ältere Wochen, Auto-Rolling-Cursor. Ehrlicher Disclaimer „Beispiele, keine echten Namen". |
+| `v34-brief-an-dich/` | v10-letter + v5 | **Personalisierter Brief.** Formular → typewriter-animierter Brief auf Briefpapier, Signatur in Fraunces-Italic groß, Print-to-PDF. Take-away-Asset, Kühlschrank-Effekt. |
+| `v35-zine/` | v3 + v8 | **Contrarian Zero-JS Zine.** Reclam-Style Editorial, 6 ausformulierte „Notizen", Marginalien via `<aside>`, CSS `animation-timeline: view()` für Scroll-Reveals. Substanz statt Effekte. |
+
 ### Phase 4 (v16–v25) — Attraction-Layer (Exploration)
 
 Jeder Entwurf ist eigenständige Main-Version (kein Parent). Content aus einer Phase-1–3-Source gezogen. Primärziel bleibt Probestunden-Konversion; der Wow-Effekt dient Discovery/Share-Worthiness, nicht sich selbst. Alle `Claude · crazy`.
@@ -438,11 +455,11 @@ Jeder Entwurf ist eigenständige Main-Version (v16–v25). Content wird aus eine
 
 ### Parallelisierungs-Strategie
 
-- **Batch 5A (Chat/Interaktion):** v26-gespraech, v30-feedback, v31-oper-chooser → 3 Agents
-- **Batch 5B (Audio/Physics):** v27-timeline-physics, v28-mirror, v29-crescendo → 3 Agents
-- **Batch 5C (Content-heavy):** v32-rooms, v33-kalender-ghost, v34-brief-an-dich, v35-zum-lesen → 4 Agents
+- **Batch 5A (Chat/Interaktion):** v26-gespraech, v30-feedback, v31-oper-chooser → 3 Agents ✅
+- **Batch 5B (Audio/Physics):** v27-timeline-physics, v28-mirror, v29-ambient → 3 Agents
+- **Batch 5C (Content-heavy):** v32-rooms, v33-kalender-ghost, v34-brief-an-dich, v35-zine → 4 Agents
 
-Commit pro Batch, nicht warten auf Runde-Ende.
+Commit pro Batch, nicht warten auf Runde-Ende. Agents arbeiten in isolierten Worktrees, Parent-Agent merged und buildet zentral.
 
 ### Phase 5 vs. Phase 4 — Differenzierung
 

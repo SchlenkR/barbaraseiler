@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Räume · Barbara Sophia Sailer · Gesangsunterricht Frankfurt</title>
+  <meta name="description" content="Ein isometrischer Blick in den Unterrichtsraum von Barbara Sophia Sailer. Klick auf Klavier, Stuhl oder Spiegel — und du weißt, wie es hier klingt. Gesangsunterricht in Frankfurt-Niederrad.">
+  <meta name="theme-color" content="#f6efe2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="index.html">
+      <span class="wordmark-mark" aria-hidden="true">B·S</span>
+      <span class="wordmark-text">Barbara Sophia Sailer</span>
+    </a>
+    <nav class="topnav" aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO: Isometrisches Studio -->
+  <section class="hero" aria-labelledby="heroHead">
+    <div class="hero-copy">
+      <p class="overline">Nº 32 · Mikrosite</p>
+      <h1 id="heroHead" class="display"><em>Räume</em></h1>
+      <p class="lede">Ein Studio in Frankfurt-Niederrad. Zwölf Quadratmeter, ein Flügel, ein Fenster nach Süden. Klick dich durch — jedes Ding hier erzählt einen Satz über den Unterricht.</p>
+      <p class="hint" id="stageHint">Tipp: Tab durch die Objekte, <kbd>Enter</kbd> öffnet, <kbd>Esc</kbd> schließt.</p>
+    </div>
+
+    <div class="stage-wrap">
+      <svg class="stage" viewBox="0 0 900 640" role="img" aria-labelledby="stageTitle stageDesc" preserveAspectRatio="xMidYMid meet">
+        <title id="stageTitle">Isometrischer Grundriss: Barbaras Unterrichtsraum</title>
+        <desc id="stageDesc">Von oben in 30-Grad-Perspektive. Klavier links, Stuhl am Fenster, Spiegel an der Wand, Notenständer vorn, Kaffeebecher auf der Fensterbank.</desc>
+
+        <defs>
+          <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#efe3cc"/>
+            <stop offset="1" stop-color="#e4d5b9"/>
+          </linearGradient>
+          <linearGradient id="wallLeftGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#d9cfbb"/>
+            <stop offset="1" stop-color="#cbbfa5"/>
+          </linearGradient>
+          <linearGradient id="wallRightGrad" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0" stop-color="#d2c7b0"/>
+            <stop offset="1" stop-color="#c5b89d"/>
+          </linearGradient>
+          <linearGradient id="windowLight" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff4d0"/>
+            <stop offset="1" stop-color="#ffe59a" stop-opacity="0.8"/>
+          </linearGradient>
+          <pattern id="rugDots" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="skewX(-30)">
+            <circle cx="6" cy="6" r="1.4" fill="#a9876a" opacity="0.55"/>
+          </pattern>
+        </defs>
+
+        <!-- Bodenfläche (Raute) -->
+        <polygon class="floor" points="450,120 830,320 450,520 70,320" fill="url(#floorGrad)"/>
+
+        <!-- Teppich -->
+        <polygon class="rug" points="450,230 720,370 450,510 180,370" fill="url(#rugDots)" opacity="0.85"/>
+        <polygon class="rug-outline" points="450,230 720,370 450,510 180,370" fill="none" stroke="#b5936d" stroke-width="2" stroke-dasharray="2 4" opacity="0.7"/>
+
+        <!-- Linke Wand -->
+        <polygon class="wall wall-left" points="70,320 450,120 450,-30 70,170" fill="url(#wallLeftGrad)"/>
+        <!-- Rechte Wand -->
+        <polygon class="wall wall-right" points="450,120 830,320 830,170 450,-30" fill="url(#wallRightGrad)"/>
+
+        <!-- Fenster rechts (auf rechter Wand), mit warmem Licht -->
+        <g class="window-box" aria-hidden="true">
+          <!-- Rahmen -->
+          <polygon points="560,165 770,270 770,130 560,25" fill="#f8efda" stroke="#8a7454" stroke-width="2"/>
+          <!-- Innenscheibe -->
+          <polygon points="575,163 755,253 755,142 575,52" fill="url(#windowLight)"/>
+          <!-- Kreuz -->
+          <line x1="665" y1="107" x2="665" y2="208" stroke="#8a7454" stroke-width="1.6"/>
+          <line x1="575" y1="105" x2="755" y2="195" stroke="#8a7454" stroke-width="1.6"/>
+          <!-- Lichtstrahl auf Boden -->
+          <polygon class="sunbeam" points="560,165 770,270 590,360 420,275" fill="#ffe9a9" opacity="0.35"/>
+        </g>
+
+        <!-- Spiegel (linke Wand, hoch) — KLICKZONE -->
+        <g class="hotspot" data-target="spiegel" tabindex="0" role="button"
+           aria-label="Spiegel: Ehrliches Feedback" aria-describedby="stageHint"
+           style="view-transition-name: obj-spiegel">
+          <polygon class="obj-shadow" points="170,195 305,125 305,75 170,145" fill="#8a7454" opacity="0.15"/>
+          <!-- Mirror frame -->
+          <polygon points="165,198 300,128 300,60 165,128" fill="#b19278"/>
+          <!-- Mirror glass -->
+          <polygon points="178,191 287,135 287,72 178,128" fill="#e7f1f4"/>
+          <!-- Reflection hint -->
+          <polygon points="178,191 287,135 287,125 178,181" fill="#c8d7dd" opacity="0.8"/>
+          <line x1="200" y1="170" x2="260" y2="140" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+          <!-- Label -->
+          <g class="obj-tag">
+            <rect x="178" y="80" width="96" height="22" rx="4" fill="#1a1814" opacity="0.82"/>
+            <text x="226" y="95" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#f6efe2">Spiegel</text>
+          </g>
+        </g>
+
+        <!-- Klavier (Flügel) links — KLICKZONE -->
+        <g class="hotspot" data-target="klavier" tabindex="0" role="button"
+           aria-label="Klavier: Musikalische Substanz" aria-describedby="stageHint"
+           style="view-transition-name: obj-klavier">
+          <!-- Schatten -->
+          <ellipse cx="270" cy="420" rx="170" ry="28" fill="#1a1814" opacity="0.18"/>
+          <!-- Korpus oben -->
+          <polygon points="140,340 360,230 430,270 320,400" fill="#8da3b8"/>
+          <!-- Korpus Seite -->
+          <polygon points="140,340 320,400 320,425 140,365" fill="#6c849a"/>
+          <!-- Tastatur -->
+          <polygon points="260,275 380,215 420,235 300,295" fill="#f4ece0"/>
+          <polygon points="260,275 300,295 300,308 260,288" fill="#d8cdb9"/>
+          <!-- Schwarze Tasten -->
+          <g class="black-keys">
+            <polygon points="275,275 285,270 290,274 280,279" fill="#1a1814"/>
+            <polygon points="295,265 305,260 310,264 300,269" fill="#1a1814"/>
+            <polygon points="320,253 330,248 335,252 325,257" fill="#1a1814"/>
+            <polygon points="340,243 350,238 355,242 345,247" fill="#1a1814"/>
+            <polygon points="360,233 370,228 375,232 365,237" fill="#1a1814"/>
+          </g>
+          <!-- Klavierdeckel aufgestellt -->
+          <polygon points="140,340 240,290 360,230 330,215 220,270 120,320" fill="#a5bcd1" opacity="0.95"/>
+          <!-- Stütze des Deckels -->
+          <line x1="230" y1="285" x2="250" y2="270" stroke="#4d5c6d" stroke-width="2"/>
+          <!-- Beine -->
+          <line x1="170" y1="355" x2="170" y2="400" stroke="#3b2d1e" stroke-width="4" stroke-linecap="round"/>
+          <line x1="320" y1="400" x2="320" y2="440" stroke="#3b2d1e" stroke-width="4" stroke-linecap="round"/>
+          <!-- Notenpult -->
+          <polygon points="290,240 360,205 365,213 295,248" fill="#c4d4e3"/>
+          <!-- Label -->
+          <g class="obj-tag">
+            <rect x="230" y="188" width="98" height="22" rx="4" fill="#1a1814" opacity="0.82"/>
+            <text x="279" y="203" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#f6efe2">Klavier</text>
+          </g>
+        </g>
+
+        <!-- Stuhl (beim Fenster) — KLICKZONE -->
+        <g class="hotspot" data-target="stuhl" tabindex="0" role="button"
+           aria-label="Stuhl: Was wir zuerst machen" aria-describedby="stageHint"
+           style="view-transition-name: obj-stuhl">
+          <!-- Schatten -->
+          <ellipse cx="620" cy="420" rx="55" ry="14" fill="#1a1814" opacity="0.18"/>
+          <!-- Sitzfläche (Raute) -->
+          <polygon points="565,390 645,355 675,375 595,410" fill="#f3e6cc"/>
+          <polygon points="565,390 595,410 595,420 565,400" fill="#cdbc9d"/>
+          <polygon points="595,410 675,375 675,385 595,420" fill="#e2d3b5"/>
+          <!-- Rückenlehne -->
+          <polygon points="640,355 665,345 670,315 645,325" fill="#d9c8a8"/>
+          <polygon points="665,345 675,350 680,320 670,315" fill="#b19f80"/>
+          <!-- Beine -->
+          <line x1="575" y1="395" x2="575" y2="430" stroke="#6a5a40" stroke-width="3" stroke-linecap="round"/>
+          <line x1="655" y1="365" x2="655" y2="395" stroke="#6a5a40" stroke-width="3" stroke-linecap="round"/>
+          <line x1="605" y1="415" x2="605" y2="445" stroke="#6a5a40" stroke-width="3" stroke-linecap="round"/>
+          <line x1="670" y1="380" x2="670" y2="410" stroke="#6a5a40" stroke-width="3" stroke-linecap="round"/>
+          <!-- Label -->
+          <g class="obj-tag">
+            <rect x="590" y="298" width="86" height="22" rx="4" fill="#1a1814" opacity="0.82"/>
+            <text x="633" y="313" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#f6efe2">Stuhl</text>
+          </g>
+        </g>
+
+        <!-- Notenständer vorn — KLICKZONE -->
+        <g class="hotspot" data-target="noten" tabindex="0" role="button"
+           aria-label="Notenständer: Dein Repertoire" aria-describedby="stageHint"
+           style="view-transition-name: obj-noten">
+          <!-- Fuß -->
+          <ellipse cx="470" cy="475" rx="28" ry="8" fill="#1a1814" opacity="0.2"/>
+          <!-- Stange -->
+          <line x1="470" y1="475" x2="460" y2="400" stroke="#3b2d1e" stroke-width="3"/>
+          <!-- Pult-Platte (schräg) -->
+          <polygon points="430,405 510,385 520,395 440,415" fill="#e6d3a9"/>
+          <polygon points="430,405 440,415 440,418 430,408" fill="#b89a68"/>
+          <!-- Noten -->
+          <rect x="448" y="393" width="46" height="18" fill="#fbf4e2" transform="rotate(-14 448 393)"/>
+          <line x1="451" y1="397" x2="490" y2="388" stroke="#3b2d1e" stroke-width="0.6" transform="rotate(-14 448 393)"/>
+          <line x1="451" y1="401" x2="490" y2="392" stroke="#3b2d1e" stroke-width="0.6" transform="rotate(-14 448 393)"/>
+          <line x1="451" y1="405" x2="490" y2="396" stroke="#3b2d1e" stroke-width="0.6" transform="rotate(-14 448 393)"/>
+          <!-- Label -->
+          <g class="obj-tag">
+            <rect x="420" y="355" width="110" height="22" rx="4" fill="#1a1814" opacity="0.82"/>
+            <text x="475" y="370" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#f6efe2">Notenständer</text>
+          </g>
+        </g>
+
+        <!-- Kaffeebecher auf Fensterbank — KLICKZONE -->
+        <g class="hotspot" data-target="becher" tabindex="0" role="button"
+           aria-label="Kaffeebecher: So fühlt sich ein Jahr an" aria-describedby="stageHint"
+           style="view-transition-name: obj-becher">
+          <!-- Fensterbank -->
+          <polygon points="555,268 770,378 770,392 555,282" fill="#c9b896" opacity="0.9"/>
+          <!-- Becher-Schatten -->
+          <ellipse cx="685" cy="330" rx="18" ry="5" fill="#1a1814" opacity="0.22"/>
+          <!-- Becher-Korpus -->
+          <ellipse cx="680" cy="320" rx="14" ry="5" fill="#d35a3a"/>
+          <path d="M 666 320 Q 666 342 680 342 Q 694 342 694 320" fill="#c14a2a"/>
+          <ellipse cx="680" cy="320" rx="14" ry="5" fill="#e76f4c"/>
+          <!-- Henkel -->
+          <path d="M 694 324 Q 706 328 702 338 Q 698 335 694 334" fill="none" stroke="#c14a2a" stroke-width="2.2"/>
+          <!-- Dampf -->
+          <path class="steam" d="M 676 310 Q 670 300 678 292 Q 686 284 680 274" fill="none" stroke="#8a7454" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+          <!-- Label -->
+          <g class="obj-tag">
+            <rect x="640" y="278" width="82" height="22" rx="4" fill="#1a1814" opacity="0.82"/>
+            <text x="681" y="293" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#f6efe2">Becher</text>
+          </g>
+        </g>
+
+        <!-- Pflanze (Terrakotta) im Eck vorn -->
+        <g class="plant" aria-hidden="true">
+          <ellipse cx="770" cy="470" rx="28" ry="8" fill="#1a1814" opacity="0.18"/>
+          <polygon points="752,470 790,470 795,448 747,448" fill="#c56a3f"/>
+          <polygon points="747,448 795,448 795,452 747,452" fill="#a0532e"/>
+          <path d="M 760 446 Q 750 410 762 395 Q 770 420 768 446 Z" fill="#6b8558"/>
+          <path d="M 770 446 Q 785 410 790 398 Q 790 425 782 446 Z" fill="#7a9665"/>
+          <path d="M 765 446 Q 760 420 770 405 Q 780 420 775 446 Z" fill="#5e7a4c"/>
+        </g>
+
+        <!-- Lampe über Klavier (dezent) -->
+        <g class="lamp" aria-hidden="true">
+          <line x1="280" y1="0" x2="280" y2="110" stroke="#3b2d1e" stroke-width="1.5"/>
+          <polygon points="260,110 300,110 295,135 265,135" fill="#e8dcc2"/>
+          <polygon points="265,135 295,135 293,138 267,138" fill="#b5a384"/>
+        </g>
+
+        <!-- Raumlinien-Akzente (handgezeichnet-feel) -->
+        <g class="ink-lines" aria-hidden="true" opacity="0.25">
+          <line x1="70" y1="170" x2="450" y2="-30" stroke="#3b2d1e" stroke-width="0.8"/>
+          <line x1="830" y1="170" x2="450" y2="-30" stroke="#3b2d1e" stroke-width="0.8"/>
+          <line x1="70" y1="320" x2="830" y2="320" stroke="#3b2d1e" stroke-width="0.8" stroke-dasharray="2 6"/>
+        </g>
+
+      </svg>
+
+      <p class="stage-caption" aria-hidden="true">
+        <span>Klavier</span><span>·</span><span>Stuhl</span><span>·</span><span>Spiegel</span><span>·</span><span>Notenständer</span><span>·</span><span>Becher</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Mobile Alternative: Objekt-Stack (<720px, statt Isometrie) -->
+  <section class="stack" aria-label="Objekte des Raums" hidden>
+    <h2 class="stack-head"><em>Der Raum</em>, der Reihe nach</h2>
+    <div class="stack-grid">
+      <button class="stack-card" data-target="klavier" type="button">
+        <span class="stack-kicker">Klavier</span>
+        <span class="stack-title">Musikalische Substanz</span>
+        <span class="stack-sub">Klassisch, Musical, Jazz, Liturgie</span>
+      </button>
+      <button class="stack-card" data-target="stuhl" type="button">
+        <span class="stack-kicker">Stuhl am Fenster</span>
+        <span class="stack-title">Was wir zuerst machen</span>
+        <span class="stack-sub">Probestunde, 45 min, keine Leistungsschau</span>
+      </button>
+      <button class="stack-card" data-target="spiegel" type="button">
+        <span class="stack-kicker">Spiegel</span>
+        <span class="stack-title">Ehrliches Feedback</span>
+        <span class="stack-sub">Warm, aber nicht nett-aus-Höflichkeit</span>
+      </button>
+      <button class="stack-card" data-target="noten" type="button">
+        <span class="stack-kicker">Notenständer</span>
+        <span class="stack-title">Dein Repertoire</span>
+        <span class="stack-sub">Klassisch, Musical, Pop, Sprech, Kirche</span>
+      </button>
+      <button class="stack-card" data-target="becher" type="button">
+        <span class="stack-kicker">Kaffeebecher</span>
+        <span class="stack-title">So fühlt sich ein Jahr an</span>
+        <span class="stack-sub">Meilensteine, Rhythmus</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- BELOW THE FOLD -->
+  <section class="block block-come" aria-labelledby="comeHead">
+    <div class="block-inner">
+      <p class="overline">Komm in diesen Raum</p>
+      <h2 id="comeHead" class="h2">Frankfurt-Niederrad. <em>Fünf Minuten</em> von der Tram.</h2>
+      <div class="come-grid">
+        <dl class="addr">
+          <dt>Adresse</dt>
+          <dd>Musterstraße 1<br>60311 Frankfurt am Main</dd>
+          <dt>Anfahrt</dt>
+          <dd>Tram 12, 15, 21 · ab Innenstadt 12 min</dd>
+          <dt>Räumlichkeit</dt>
+          <dd>Erdgeschoss · barrierearm · ruhige Straße</dd>
+        </dl>
+        <div class="anchor">
+          <p class="anchor-head"><em>Probestunde</em> 40 €</p>
+          <ul class="anchor-list">
+            <li><span>45 min Einzel</span><span>50 €</span></li>
+            <li><span>60 min Einzel</span><span>60 €</span></li>
+            <li><span>90 min Einzel</span><span>85 €</span></li>
+            <li><span>10er-Karte</span><span>11 für 10</span></li>
+          </ul>
+          <p class="anchor-note">Keine Mitgliedschaft. Keine Bindung. Bar oder Überweisung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block block-contact" id="kontakt" aria-labelledby="contactHead">
+    <div class="block-inner contact-inner">
+      <div class="contact-copy">
+        <p class="overline">Probestunde buchen</p>
+        <h2 id="contactHead" class="h2">Schreib. Ich antworte <em>persönlich</em>.</h2>
+        <p>Der schnellste Weg ist WhatsApp — du kannst in einem Satz sagen, worum es dir geht. Wer lieber tippt: Formular rechts. Wer lieber hört: Nummer zeigen und anrufen.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="https://wa.me/495551234567" target="_blank" rel="noopener">WhatsApp schreiben</a>
+          <button type="button" class="btn btn-ghost" id="revealPhone" aria-expanded="false" aria-controls="phoneBox">Telefonnummer zeigen</button>
+        </div>
+        <div class="phone-box" id="phoneBox" hidden>
+          <p><strong>+49 (0)555 123 456 7</strong><br><span>Mo–Fr 10–18 Uhr</span></p>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate
+            action="https://formsubmit.co/barbara@example.de" method="POST">
+        <input type="hidden" name="_subject" value="Probestunde – Variante Räume (Nº 32)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label>
+          <span>Vorname</span>
+          <input type="text" name="vorname" required minlength="2" autocomplete="given-name">
+        </label>
+        <label>
+          <span>E-Mail</span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>
+          <span>Worum geht's dir? (optional)</span>
+          <textarea name="nachricht" rows="3" placeholder="Ein Satz reicht."></textarea>
+        </label>
+        <div class="form-consent">
+          <label class="cbx">
+            <input type="checkbox" name="consent" required>
+            <span>Ich bin mit der <a href="datenschutz.html">Datenverarbeitung</a> einverstanden.</span>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-send">Anfrage senden</button>
+        <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- PANELS -->
+<dialog class="panel" id="panel-klavier" aria-labelledby="panel-klavier-head">
+  <div class="panel-inner" style="view-transition-name: panel-klavier">
+    <header class="panel-head">
+      <p class="overline">Klavier</p>
+      <h2 id="panel-klavier-head" class="h2">Musikalische <em>Substanz</em></h2>
+      <button class="panel-close" type="button" aria-label="Schließen">×</button>
+    </header>
+    <div class="panel-body">
+      <p>Barbara arbeitet nicht in einem Genre — sie arbeitet <em>an deiner Stimme</em>. Was auf dem Klavier liegt, richtet sich nach dir.</p>
+      <ul class="panel-list">
+        <li><strong>Klassisch</strong> — Lied, Oper, Oratorium. Hauptstudium, mit Technik-Fokus.</li>
+        <li><strong>Musical</strong> — Belt, Mixed, Legit. Auch Audition-Vorbereitung.</li>
+        <li><strong>Jazz &amp; Chanson</strong> — Phrasierung, Mikro-Technik, eigenes Material.</li>
+        <li><strong>Liturgie &amp; Sprechstimme</strong> — für Pfarrer*innen, Lehrer*innen, Coaches.</li>
+      </ul>
+      <p class="panel-aside">Credentials: Staatsexamen Musik (Gesang + Klavier), Opernschule HfM Würzburg, Meisterkurse Fassbaender/Deutsch/Ludwig, BDG-Mitglied, ISA-Zertifikat.</p>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="panel" id="panel-stuhl" aria-labelledby="panel-stuhl-head">
+  <div class="panel-inner" style="view-transition-name: panel-stuhl">
+    <header class="panel-head">
+      <p class="overline">Stuhl am Fenster</p>
+      <h2 id="panel-stuhl-head" class="h2">Was wir <em>zuerst</em> machen</h2>
+      <button class="panel-close" type="button" aria-label="Schließen">×</button>
+    </header>
+    <div class="panel-body">
+      <p>Die Probestunde ist <em>keine Leistungsschau</em>. Du musst nichts vorbereiten. Du musst dich auch nicht einsingen.</p>
+      <ol class="panel-steps">
+        <li><span>1</span><div><strong>Kurz reden.</strong> Was bringt dich her? Was hast du gehört, als du das letzte Mal gesungen hast?</div></li>
+        <li><span>2</span><div><strong>Ein paar Töne, sitzend.</strong> Am Stuhl, am Fenster. Leise. Nichts Spektakuläres.</div></li>
+        <li><span>3</span><div><strong>Wir stehen auf.</strong> Atem, Körper, Resonanz. Ich höre, was du gar nicht weißt, dass du machst.</div></li>
+        <li><span>4</span><div><strong>Dein Lied.</strong> Falls du eins hast. Falls nicht, leihe ich dir eins.</div></li>
+        <li><span>5</span><div><strong>Ehrliches Gespräch.</strong> Was ich höre. Was wir machen könnten. Ob wir zueinander passen.</div></li>
+      </ol>
+      <p class="panel-aside">45 Minuten. 40 €. Ohne Druck, ohne Verpflichtung auf mehr.</p>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="panel" id="panel-spiegel" aria-labelledby="panel-spiegel-head">
+  <div class="panel-inner" style="view-transition-name: panel-spiegel">
+    <header class="panel-head">
+      <p class="overline">Spiegel</p>
+      <h2 id="panel-spiegel-head" class="h2">Ehrliches <em>Feedback</em></h2>
+      <button class="panel-close" type="button" aria-label="Schließen">×</button>
+    </header>
+    <div class="panel-body">
+      <p>Ein Spiegel lügt nicht. Gute Lehrer*innen auch nicht. Aber es gibt einen Unterschied zwischen <em>nett</em> und <em>warm</em>.</p>
+      <div class="panel-quote">
+        <blockquote>„Ich sage dir nicht, dass alles toll war, wenn es das nicht war. Ich sage dir auch nicht, dass etwas schlecht war, wenn es nur ungewohnt ist. Ich sage dir, was ich höre — und was wir damit anfangen können."</blockquote>
+        <cite>— Barbara</cite>
+      </div>
+      <ul class="panel-list">
+        <li><strong>Warm</strong> — weil du nur unter guten Bedingungen wächst.</li>
+        <li><strong>Präzise</strong> — weil vage Nettigkeit niemandem hilft.</li>
+        <li><strong>Dialogisch</strong> — ich höre auch dir zu, was du an dir hörst.</li>
+      </ul>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="panel" id="panel-noten" aria-labelledby="panel-noten-head">
+  <div class="panel-inner" style="view-transition-name: panel-noten">
+    <header class="panel-head">
+      <p class="overline">Notenständer</p>
+      <h2 id="panel-noten-head" class="h2">Dein <em>Repertoire</em></h2>
+      <button class="panel-close" type="button" aria-label="Schließen">×</button>
+    </header>
+    <div class="panel-body">
+      <p>Was auf dem Notenständer landet, bringst in der Regel du mit. Ich helfe beim Aussuchen — und ich sage es, wenn ein Stück noch nicht zu dir passt.</p>
+      <div class="rep-grid">
+        <div class="rep-card">
+          <h3>Klassisch</h3>
+          <p>Lied, Oper, Oratorium. Von Schubert bis Strauss, von Mozart bis Britten.</p>
+        </div>
+        <div class="rep-card">
+          <h3>Musical</h3>
+          <p>Sondheim, Schwartz, LaChiusa. Auch Belt-Technik für Audition.</p>
+        </div>
+        <div class="rep-card">
+          <h3>Pop &amp; Jazz</h3>
+          <p>Standards, Singer-Songwriter, eigenes Material.</p>
+        </div>
+        <div class="rep-card">
+          <h3>Sprechstimme</h3>
+          <p>Vortrag, Predigt, Moderation. Atem, Resonanz, Ausdauer.</p>
+        </div>
+        <div class="rep-card">
+          <h3>Kirche</h3>
+          <p>Liturgie, Kantillation, Kantorei. Ich kenne die Tradition, auch die kritischen Seiten.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="panel" id="panel-becher" aria-labelledby="panel-becher-head">
+  <div class="panel-inner" style="view-transition-name: panel-becher">
+    <header class="panel-head">
+      <p class="overline">Kaffeebecher</p>
+      <h2 id="panel-becher-head" class="h2">So fühlt sich ein <em>Jahr</em> an</h2>
+      <button class="panel-close" type="button" aria-label="Schließen">×</button>
+    </header>
+    <div class="panel-body">
+      <p>Wöchentlich ist der Normalfall. Zwei Wochen geht auch. Jede Woche ein Kaffee vor der Stunde — oder eine Kanne Wasser, falls dich Koffein die Höhe kostet.</p>
+      <ol class="panel-steps">
+        <li><span>W 1–4</span><div><strong>Boden bauen.</strong> Atem, Haltung, erste Vokale. Du merkst Veränderungen — andere noch nicht.</div></li>
+        <li><span>W 5–12</span><div><strong>Range öffnen.</strong> Übergänge zwischen Registern, mehr Stütze, mehr Ruhe.</div></li>
+        <li><span>W 13–26</span><div><strong>Lieder.</strong> Erstes eigenes Repertoire-Stück sitzt. Du erkennst deine Stimme auf Aufnahmen wieder.</div></li>
+        <li><span>W 27–52</span><div><strong>Deine Stimme.</strong> Du weißt, wie du dich einsingst. Du weißt, was du auf einer Bühne tun würdest.</div></li>
+      </ol>
+      <p class="panel-aside">Das ist ein Richtwert, kein Programm. Jede Stimme ist anders. Jede Woche auch.</p>
+    </div>
+  </div>
+</dialog>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>Barbara Sophia Sailer · Musterstraße 1 · 60311 Frankfurt a.M.</p>
+    <nav aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbara Sophia Sailer · Ambient — Gesangsunterricht Frankfurt</title>
+  <meta name="description" content="Gesangsunterricht bei Barbara Sailer in Frankfurt. Probestunde 40 € / 45 min. Ein Raumklang, solange du liest — und am Ende: Stille.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..700;1,9..144,100..700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Consent banner: sits at top. Audio only starts via user gesture. -->
+<aside id="consent" class="consent" role="region" aria-label="Raumklang anbieten">
+  <div class="consent-inner">
+    <p class="consent-lede">Möchtest du&rsquo;s hören? Ein leiser Raumklang, solange du liest.</p>
+    <div class="consent-actions">
+      <button type="button" id="sound-on" class="btn btn-ink">Ton an</button>
+      <button type="button" id="sound-off" class="btn btn-ghost">Stumm bleiben</button>
+    </div>
+    <p class="consent-note">Alles wird im Browser synthetisiert. Keine Audiodatei, kein Tracker, kein Mikrofon.</p>
+  </div>
+</aside>
+
+<!-- Persistent mute button, sticky top right -->
+<button type="button" id="mute-toggle" class="mute-toggle" aria-pressed="false" aria-label="Ton an oder aus" hidden>
+  <span class="mute-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path class="speaker" d="M4 9v6h4l5 4V5L8 9H4z"></path>
+      <path class="wave-1" d="M16 8.5c1 1 1.5 2.2 1.5 3.5s-.5 2.5-1.5 3.5"></path>
+      <path class="wave-2" d="M19 6c2 1.8 3 3.8 3 6s-1 4.2-3 6"></path>
+    </svg>
+  </span>
+  <span class="mute-label" id="mute-label">Ton: aus</span>
+</button>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="act hero" data-act="1">
+    <p class="eyebrow">Ambient · Gesangsunterricht Frankfurt</p>
+    <h1 class="display breathe" data-text="Die Stimme, die sich öffnet.">Die Stimme,<br><em>die sich &ouml;ffnet.</em></h1>
+    <p class="lede">Gesangsunterricht bei Barbara Sailer &middot; Frankfurt-Niederrad. Vom ersten Ton bis zum dramatischen Fach. Vom gesunden Atem bis zum Kirchenchor.</p>
+    <p class="hint">Scroll. Der Klang atmet mit, dann wird er still.</p>
+  </section>
+
+  <!-- Act 2 · Methode -->
+  <section class="act" data-act="2">
+    <p class="act-eyebrow">Methode</p>
+    <h2 class="display breathe">So klingt ein Raum,<br>in dem Stimme<br><em>wachsen darf.</em></h2>
+    <div class="prose">
+      <p>Kein Konzept, kein System. Eine Praxis, die auf dich hört. Was dein Körper heute kann, ist der Anfang &mdash; nicht das Ergebnis eines Tests.</p>
+      <p>Wir arbeiten am Atem, bevor wir am Ton arbeiten. Wir arbeiten am Ton, bevor wir am Stück arbeiten. Stück für Stück &mdash; ohne Eile, ohne Druck.</p>
+    </div>
+  </section>
+
+  <!-- Act 3 · 3 Prinzipien -->
+  <section class="act" data-act="3">
+    <p class="act-eyebrow">Was ich höre</p>
+    <h2 class="display breathe">Atem. Ton. <em>Mut.</em></h2>
+    <ol class="principles">
+      <li>
+        <span class="principle-num">01</span>
+        <h3>Atem</h3>
+        <p>Nicht &bdquo;tief einatmen&ldquo; &mdash; sondern loslassen, was sich festhält. Der Atem kommt, wenn ihm Raum gelassen wird.</p>
+      </li>
+      <li>
+        <span class="principle-num">02</span>
+        <h3>Ton</h3>
+        <p>Ein gesunder Ton braucht keine Kraft, er braucht Richtung. Wir finden sie gemeinsam &mdash; nicht mit Druck, sondern mit Geduld.</p>
+      </li>
+      <li>
+        <span class="principle-num">03</span>
+        <h3>Mut</h3>
+        <p>Singen ist sich zeigen. Deswegen ist dieser Raum privat, nicht einsehbar, ohne Publikum und ohne Bewertung.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Act 4 · Zielgruppen -->
+  <section class="act" data-act="4">
+    <p class="act-eyebrow">Passend wenn</p>
+    <h2 class="display breathe">Wer kommt<br><em>zu mir?</em></h2>
+    <ul class="groups">
+      <li>
+        <h3>Anf&auml;nger*innen</h3>
+        <p>Du hast noch nie wirklich gesungen. Jetzt willst du&rsquo;s ausprobieren. Was du mitbringst, ist genug.</p>
+      </li>
+      <li>
+        <h3>Aufnahme&shy;pr&uuml;fung</h3>
+        <p>Hochschule, Musical, Konservatorium. Zielorientierte Vorbereitung &mdash; Repertoire, Nervenf&uuml;hrung, Pr&uuml;fungssituation.</p>
+      </li>
+      <li>
+        <h3>Wieder&shy;einstieg</h3>
+        <p>Fr&uuml;her Chor, Band, Unterricht &mdash; dann kam das Leben dazwischen. Stimmen werden nur leiser. Das holen wir zur&uuml;ck.</p>
+      </li>
+      <li>
+        <h3>Berufsrede</h3>
+        <p>Lehrkr&auml;fte, Geistliche, Coaches. Wer t&auml;glich spricht, braucht eine Stimme, die mith&auml;lt &mdash; und Atem, der nicht in den Schultern h&auml;ngenbleibt.</p>
+      </li>
+      <li>
+        <h3>Chor &amp; Ensemble</h3>
+        <p>Stimmbildung f&uuml;r Ch&ouml;re, Workshops, Einzelarbeit f&uuml;r ambitionierte Chors&auml;nger*innen.</p>
+      </li>
+      <li>
+        <h3>Therapeutisch</h3>
+        <p>Wenn die Stimme hakt, wissen wir, wo wir ansetzen. ISA-Zertifikat, Atemcoach, Hamburger Stimmsymposium.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Finale · Silence -->
+  <section class="act finale" data-act="5" id="probestunde">
+    <p class="act-eyebrow silence">&mdash; Stille &mdash;</p>
+    <h2 class="display final">Probestunde.<br><em>Vierzig Euro. F&uuml;nfundvierzig Minuten.</em></h2>
+    <p class="final-lede">Wir lernen uns kennen. Du singst, so viel oder so wenig, wie du magst. Am Ende wissen wir beide, ob es passt.</p>
+
+    <div class="cta-grid">
+      <a class="cta cta-whatsapp"
+         href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde."
+         target="_blank" rel="noopener">
+        <span class="cta-label">WhatsApp</span>
+        <span class="cta-sub">Der schnellste Weg</span>
+      </a>
+
+      <button type="button" class="cta cta-phone" id="phone-reveal" aria-expanded="false">
+        <span class="cta-label">Telefon</span>
+        <span class="cta-sub" id="phone-sub">Nummer zeigen</span>
+      </button>
+
+      <a class="cta cta-form" href="#kontakt">
+        <span class="cta-label">Formular</span>
+        <span class="cta-sub">F&uuml;r in Ruhe schreiben</span>
+      </a>
+    </div>
+
+    <div class="prices">
+      <div class="price"><span class="price-amount">40 &euro;</span><span class="price-meta">Probestunde, 45 min, einmalig</span></div>
+      <div class="price"><span class="price-amount">50 &euro;</span><span class="price-meta">Einzelstunde, 45 min</span></div>
+      <div class="price"><span class="price-amount">60 &euro;</span><span class="price-meta">Einzelstunde, 60 min</span></div>
+      <div class="price"><span class="price-amount">11 f&uuml;r 10</span><span class="price-meta">10er-Karte, ohne Ablauf</span></div>
+    </div>
+
+    <form id="kontakt" class="contact-form" action="https://formsubmit.co/barbarasailer@web.de" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Neue Anfrage über v29-ambient">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <h3 class="form-heading">In Ruhe schreiben</h3>
+
+      <div class="form-row">
+        <label>Vorname
+          <input type="text" name="vorname" required>
+        </label>
+        <label>Name
+          <input type="text" name="name" required>
+        </label>
+      </div>
+      <label>E-Mail
+        <input type="email" name="email" required>
+      </label>
+      <label>Worum geht es dir?
+        <textarea name="nachricht" rows="4" required placeholder="Ein, zwei S&auml;tze gen&uuml;gen."></textarea>
+      </label>
+
+      <p class="form-error" id="form-error" role="alert" hidden>Bitte f&uuml;ll die markierten Felder aus.</p>
+
+      <button type="submit" class="btn btn-ink btn-lg">Nachricht senden</button>
+    </form>
+
+    <div class="place">
+      <p><strong>Unterrichtsraum</strong> &middot; Musterstra&szlig;e 1, 60311 Frankfurt am Main &middot; Tram 12, 15, 21</p>
+    </div>
+
+    <footer class="site-footer">
+      <p class="footer-name">Barbara Sophia Sailer</p>
+      <p class="footer-meta">Gesangsunterricht &middot; Stimmbildung &middot; Frankfurt</p>
+      <nav aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </footer>
+  </section>
+
+</main>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+/* ===========================================================================
+   v35 — Zine
+   Reclam-Style Zero-JS Editorial.
+   Baseline: 27px rhythm. Fraunces throughout. Contrarian calm.
+   =========================================================================== */
+
+:root {
+  --paper: #f7f1e3;
+  --ink: #1a1613;
+  --ink-soft: #3b332c;
+  --ink-faint: #7a6e62;
+  --rule: rgba(26, 22, 19, 0.16);
+  --reclam: #f8d85e;
+  --reclam-deep: #e8c034;
+  --accent: #8c2f1f;
+
+  /* Baseline grid: 27px */
+  --base: 27px;
+  --base-2: 54px;
+  --base-3: 81px;
+  --base-4: 108px;
+
+  --body: 18px;
+  --body-lh: 1.5;              /* 18 * 1.5 = 27px */
+  --measure: 33em;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Fraunces", "Iowan Old Style", Georgia, serif;
+  font-size: var(--body);
+  line-height: var(--body-lh);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(to bottom, transparent 0, transparent calc(var(--base) - 1px), rgba(0,0,0,0.025) calc(var(--base) - 1px), rgba(0,0,0,0.025) var(--base)) 0 0 / 100% var(--base);
+  /* Subtle baseline for authors of the CSS. Hidden in production. */
+  background: var(--paper);
+}
+
+/* ==== Typography primitives (all multiples of 27px) ==================== */
+
+h1, h2, h3, h4 {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  margin: 0;
+  font-feature-settings: "ss01", "onum";
+}
+
+p, li { margin: 0; }
+p + p { text-indent: 1.4em; }           /* Book-style paragraph break */
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(26, 22, 19, 0.35);
+}
+a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+
+em, i { font-style: italic; }
+strong { font-weight: 500; }
+
+blockquote {
+  margin: 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* ==== Skip link (a11y) ================================================== */
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+.skip:focus {
+  left: 16px; top: 16px;
+  background: var(--ink); color: var(--paper);
+  padding: 6px 10px; z-index: 9;
+  text-decoration: none;
+}
+
+/* ==== Page chrome ======================================================= */
+
+.sheet {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--base-2) 32px var(--base-3);
+}
+
+.running {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: calc(var(--base) - 14px);
+  margin-bottom: var(--base-2);
+  line-height: var(--base);
+}
+.running .brand { color: var(--ink); font-weight: 500; }
+.running nav a { margin-left: 18px; text-decoration: none; color: var(--ink-faint); }
+.running nav a:hover { color: var(--accent); }
+
+/* ==== Cover ============================================================= */
+
+.cover {
+  position: relative;
+  background: var(--reclam);
+  color: var(--ink);
+  padding: var(--base-3) 48px var(--base-2);
+  margin-bottom: var(--base-3);
+  border: 1px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.cover .imprint {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: var(--base);
+  margin-bottom: var(--base-2);
+}
+.cover .imprint span + span::before { content: " · "; margin: 0 6px; }
+
+.cover h1 {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(72px, 14vw, 168px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--base);
+  font-variation-settings: "SOFT" 100;
+}
+
+.cover .subtitle {
+  font-family: "Fraunces", serif;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: var(--base-2);
+  max-width: 22em;
+  margin: 0 0 var(--base-2);
+  font-weight: 400;
+}
+
+.cover .author {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  line-height: var(--base);
+  margin: 0;
+  border-top: 1px solid var(--ink);
+  padding-top: var(--base);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.cover .author em { font-weight: 500; font-style: italic; }
+.cover .author .no {
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+}
+
+/* ==== Preface =========================================================== */
+
+.preface {
+  max-width: var(--measure);
+  margin: 0 auto var(--base-3);
+  padding: 0 8px;
+  font-size: 21px;
+  line-height: calc(var(--base) * 1.333);   /* 36px on 21px */
+  text-align: left;
+  color: var(--ink-soft);
+}
+.preface p { font-style: italic; }
+.preface .lead { color: var(--ink); font-style: normal; font-size: 24px; line-height: var(--base-2); margin-bottom: var(--base); }
+.preface .signature {
+  margin-top: var(--base-2);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-style: normal;
+}
+
+/* ==== Notes section ===================================================== */
+
+.notes {
+  counter-reset: note;
+}
+
+.note {
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, 240px);
+  column-gap: 48px;
+  row-gap: var(--base);
+  max-width: 960px;
+  margin: 0 auto var(--base-3);
+  padding-top: var(--base-2);
+  border-top: 1px solid var(--rule);
+  counter-increment: note;
+}
+
+.note:first-of-type { border-top: 2px solid var(--ink); }
+
+.note header {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 24px;
+  align-items: baseline;
+  margin-bottom: var(--base);
+}
+
+.note .num {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--reclam-deep);
+  letter-spacing: -0.02em;
+  min-width: 1.5em;
+}
+.note .num::before {
+  content: counter(note, decimal-leading-zero);
+}
+
+.note h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.15;
+  max-width: 18em;
+  letter-spacing: -0.01em;
+}
+.note h2 em { color: var(--accent); }
+
+.note .body {
+  font-size: var(--body);
+  line-height: var(--body-lh);
+  text-align: justify;
+  hyphens: auto;
+  max-width: 32em;
+}
+.note .body p + p { margin-top: 0; }
+
+.note aside.marginalia {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: calc(var(--base) * 0.777);    /* 21 on 14 */
+  color: var(--ink-faint);
+  border-left: 2px solid var(--reclam);
+  padding: 6px 0 6px 16px;
+  align-self: start;
+  position: relative;
+}
+.note aside.marginalia .pilcrow {
+  color: var(--reclam-deep);
+  font-style: normal;
+  font-weight: 500;
+  margin-right: 6px;
+}
+.note aside.marginalia + aside.marginalia { margin-top: var(--base); }
+
+/* Two marginalia stacked in the sidebar */
+.note .rail { display: flex; flex-direction: column; gap: var(--base); }
+
+/* Pull-quote inside body */
+.note blockquote.pull {
+  margin: var(--base) 0;
+  padding: 0 1em;
+  border-left: 3px solid var(--reclam);
+  font-size: 22px;
+  line-height: calc(var(--base) * 1.111);   /* 30 on 22 */
+  font-style: italic;
+  color: var(--ink);
+  max-width: 22em;
+}
+
+/* ==== Colophon / CTA ==================================================== */
+
+.colophon {
+  max-width: 760px;
+  margin: var(--base-4) auto 0;
+  padding: var(--base-3) 32px var(--base-3);
+  text-align: center;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  background:
+    linear-gradient(to bottom, transparent 0, transparent 40%, rgba(248, 216, 94, 0.3) 40%, rgba(248, 216, 94, 0.3) 60%, transparent 60%) center no-repeat;
+}
+
+.colophon .fleuron {
+  font-family: "Fraunces", serif;
+  font-size: 32px;
+  line-height: var(--base);
+  color: var(--accent);
+  margin-bottom: var(--base);
+}
+.colophon h2 {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: var(--base-2);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--base);
+}
+.colophon p {
+  max-width: 30em;
+  margin: 0 auto var(--base);
+  font-size: 19px;
+  line-height: calc(var(--base) * 1.037);
+  color: var(--ink-soft);
+}
+.colophon p em { color: var(--ink); }
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: var(--base-2);
+  margin-bottom: var(--base);
+}
+.cta {
+  display: inline-block;
+  font-family: "Fraunces", serif;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  padding: 14px 26px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.4;
+  transition: transform 0.2s ease;
+}
+.cta:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+.cta.primary { background: var(--reclam); }
+.cta.primary:hover { background: var(--ink); color: var(--reclam); }
+
+.kontaktblock {
+  font-size: 15px;
+  line-height: var(--base);
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  margin-top: var(--base);
+}
+.kontaktblock address {
+  font-style: normal;
+  display: block;
+}
+
+/* ==== Footer ============================================================ */
+
+footer.foot {
+  max-width: 1120px;
+  margin: var(--base-3) auto 0;
+  padding: var(--base) 32px var(--base-2);
+  border-top: 1px solid var(--rule);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  line-height: var(--base);
+}
+footer.foot nav a { color: var(--ink-faint); text-decoration: none; margin-left: 18px; }
+footer.foot nav a:hover { color: var(--accent); }
+footer.foot .nachsatz { font-style: italic; text-transform: none; letter-spacing: 0.02em; color: var(--ink-faint); }
+
+/* ==== Scroll-linked animations (Zero-JS) ================================ */
+
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: reveal-fade linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+
+  .cover h1 {
+    animation: cover-settle linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 60%;
+  }
+
+  @keyframes reveal-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes cover-settle {
+    from { letter-spacing: 0.05em; }
+    to   { letter-spacing: -0.02em; }
+  }
+
+  /* Marginalia drift subtly in */
+  .note aside.marginalia {
+    animation: marg-drift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+  }
+  @keyframes marg-drift {
+    from { opacity: 0; transform: translateX(6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Progress rule at top (scroll-timeline) */
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 100%;
+    transform-origin: 0 50%;
+    background: var(--reclam-deep);
+    z-index: 20;
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root block);
+    transform: scaleX(0);
+  }
+  @keyframes progress-grow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .progress { display: none; }
+  /* Static fallback — everything visible from the start. */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .cover h1, .note aside.marginalia { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .progress { display: none; }
+}
+
+/* ==== Legal pages (impressum / datenschutz) ============================= */
+
+.legal {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--base-2) 24px var(--base-3);
+}
+.legal h1 {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(40px, 5vw, 56px);
+  line-height: var(--base-2);
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--base-2);
+}
+.legal h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: var(--base);
+  margin: var(--base-2) 0 var(--base);
+}
+.legal p, .legal li {
+  font-size: 16px;
+  line-height: var(--base);
+  color: var(--ink-soft);
+  margin-bottom: var(--base);
+}
+.legal ul { padding-left: 1.2em; }
+.legal a { color: var(--accent); }
+
+/* ==== Responsive ======================================================== */
+
+@media (max-width: 880px) {
+  .note {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+  .note .rail {
+    gap: calc(var(--base) * 0.5);
+  }
+  .note aside.marginalia {
+    /* Inline quotes on mobile */
+    border-left: 3px solid var(--reclam);
+    padding: 8px 0 8px 16px;
+    font-size: 15px;
+  }
+  .cover { padding: var(--base-2) 28px var(--base); box-shadow: 4px 4px 0 var(--ink); }
+}
+
+@media (max-width: 560px) {
+  .sheet { padding: var(--base) 18px var(--base-2); }
+  .running { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .running nav a { margin-left: 0; margin-right: 14px; }
+  .cover { padding: var(--base-2) 20px var(--base); }
+  .cover .imprint span + span::before { content: ""; display: block; margin: 0; }
+  .cover .imprint span { display: block; }
+  .cover h1 { font-size: 20vw; }
+  .note header { grid-template-columns: 1fr; }
+  .note .num { font-size: 54px; }
+  .preface { font-size: 19px; line-height: 1.5; }
+  .colophon { padding: var(--base-2) 18px; }
+  .cta { padding: 12px 20px; font-size: 16px; }
+}
+
+/* ==== Print stylesheet — make it a real Reclam booklet =================== */
+
+@media print {
+  @page {
+    size: A5;
+    margin: 18mm 16mm 20mm 16mm;
+  }
+  :root {
+    --paper: #ffffff;
+  }
+  html, body {
+    background: #fff !important;
+    color: #000;
+    font-size: 10pt;
+    line-height: 1.42;
+  }
+  .running, footer.foot nav, .progress { display: none !important; }
+  .skip { display: none; }
+  .sheet { max-width: none; margin: 0; padding: 0; }
+  .cover {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    box-shadow: none;
+    padding: 24mm 14mm 18mm;
+    margin-bottom: 10mm;
+    page-break-after: always;
+  }
+  .cover h1 {
+    font-size: 64pt;
+    font-style: italic;
+  }
+  .cover .subtitle { font-size: 14pt; line-height: 1.3; }
+  .cover .author { font-size: 9pt; border-top: 1px solid #000; }
+
+  .preface {
+    font-size: 11pt;
+    line-height: 1.45;
+    max-width: none;
+    padding: 0;
+    margin: 0 0 12mm;
+    color: #000;
+  }
+  .preface .lead { font-size: 12pt; }
+
+  .note {
+    grid-template-columns: 1fr 60mm;
+    column-gap: 8mm;
+    max-width: none;
+    margin: 0 0 10mm;
+    padding-top: 6mm;
+    page-break-inside: avoid;
+  }
+  .note h2 { font-size: 16pt; line-height: 1.2; }
+  .note .num { font-size: 28pt; color: #000; }
+  .note .body { font-size: 10pt; line-height: 1.45; color: #000; max-width: none; }
+  .note aside.marginalia { font-size: 8.5pt; line-height: 1.35; color: #333; border-left: 1pt solid #000; }
+  .note blockquote.pull { font-size: 11pt; border-left: 1pt solid #000; }
+
+  .colophon {
+    page-break-before: always;
+    border-top: 1pt solid #000;
+    border-bottom: none;
+    padding: 16mm 0 0;
+    background: none;
+  }
+  .colophon h2 { font-size: 22pt; }
+  .colophon p { color: #000; font-size: 11pt; }
+  .cta {
+    border: 1pt solid #000;
+    background: #fff !important;
+    color: #000 !important;
+    padding: 2mm 4mm;
+    font-size: 9pt;
+  }
+  .cta-row { gap: 4mm; }
+  .kontaktblock { font-size: 9pt; }
+  footer.foot {
+    border-top: 1pt solid #000;
+    font-size: 8pt;
+    margin-top: 10mm;
+    padding: 4mm 0 0;
+    color: #000;
+  }
+  a { color: #000; text-decoration: underline; }
+}

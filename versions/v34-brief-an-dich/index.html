@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brief an dich &mdash; Barbara Sophia Sailer</title>
+  <meta name="description" content="Gesangsunterricht in Frankfurt. Beantworte vier kurze Fragen &mdash; und Barbara schreibt dir einen Brief, nur f&uuml;r dich.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500;1,9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="topnav" aria-label="Hauptnavigation">
+  <a class="brandmark" href="#top">Barbara Sophia Sailer</a>
+  <div class="topnav-right">
+    <a href="#andererweg">Der andere Weg</a>
+    <a href="#preise">Preise</a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- FORM SCENE -->
+  <section class="scene scene-form" id="form-scene" aria-labelledby="form-title">
+    <div class="form-wrap">
+      <p class="eyebrow">Ein Brief, in f&uuml;nfzehn Sekunden geschrieben.</p>
+      <h1 id="form-title" class="form-title">Beantworte vier Fragen &mdash; <em>Barbara schreibt dir.</em></h1>
+      <p class="form-kicker">Keine Email-Liste. Kein Newsletter. Der Brief bleibt bei dir. Du kannst ihn speichern oder drucken.</p>
+
+      <form class="letter-form" id="letter-form" novalidate>
+        <!-- Frage 1: Name -->
+        <div class="field" data-field="name">
+          <label for="f-name" class="field-label">1 &middot; Dein Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="given-name" placeholder="So spricht dich Barbara im Brief an" required>
+          <p class="field-error" id="err-name" role="alert" aria-live="polite"></p>
+        </div>
+
+        <!-- Frage 2: Thema -->
+        <fieldset class="field" data-field="thema">
+          <legend class="field-label">2 &middot; Was bewegt dich gerade stimmlich?</legend>
+          <div class="radio-grid">
+            <label class="radio">
+              <input type="radio" name="thema" value="hoehe" required>
+              <span class="radio-bullet" aria-hidden="true"></span>
+              <span class="radio-text"><strong>Die H&ouml;he fehlt.</strong><br><em>Oben wird es eng, gepresst, oder ich komme nicht an.</em></span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="thema" value="atem">
+              <span class="radio-bullet" aria-hidden="true"></span>
+              <span class="radio-text"><strong>Der Atem reicht nicht.</strong><br><em>Mitten im Satz geht mir die Luft aus.</em></span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="thema" value="anfang">
+              <span class="radio-bullet" aria-hidden="true"></span>
+              <span class="radio-text"><strong>Ich will wieder anfangen.</strong><br><em>Es ist lange her &mdash; und ich wei&szlig; nicht, wo.</em></span>
+            </label>
+          </div>
+          <details class="freetext-toggle">
+            <summary>Oder schreib es in eigenen Worten</summary>
+            <textarea id="f-thema-frei" name="themaFrei" rows="3" maxlength="280" placeholder="Was ist es wirklich? (Max. 280 Zeichen.)"></textarea>
+          </details>
+          <p class="field-error" id="err-thema" role="alert" aria-live="polite"></p>
+        </fieldset>
+
+        <!-- Frage 3: Kontext -->
+        <fieldset class="field" data-field="kontext">
+          <legend class="field-label">3 &middot; Wof&uuml;r singst du?</legend>
+          <div class="radio-grid">
+            <label class="radio">
+              <input type="radio" name="kontext" value="privat" required>
+              <span class="radio-bullet" aria-hidden="true"></span>
+              <span class="radio-text"><strong>Nur f&uuml;r mich.</strong></span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="kontext" value="buehne">
+              <span class="radio-bullet" aria-hidden="true"></span>
+              <span class="radio-text"><strong>Ich trete auf.</strong></span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="kontext" value="beruf">
+              <span class="radio-bullet" aria-hidden="true"></span>
+              <span class="radio-text"><strong>Beruflich &mdash; reden und singen.</strong></span>
+            </label>
+          </div>
+          <p class="field-error" id="err-kontext" role="alert" aria-live="polite"></p>
+        </fieldset>
+
+        <!-- Frage 4: Email -->
+        <div class="field" data-field="email">
+          <label for="f-email" class="field-label">4 &middot; Deine Email <span class="optional">&mdash; optional</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="Nur falls du dir den Brief auch zuschicken willst.">
+          <p class="field-error" id="err-email" role="alert" aria-live="polite"></p>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">
+          <span class="submit-btn-text">Barbara schreibt dir jetzt</span>
+          <span class="submit-btn-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+        <p class="form-privacy-note">Deine Antworten bleiben in deinem Browser. Es wird nichts gesendet &mdash; au&szlig;er du klickst am Ende auf WhatsApp oder den Kontakt-Button.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- LETTER SCENE -->
+  <section class="scene scene-letter" id="letter-scene" aria-labelledby="letter-title" hidden>
+    <article class="paper" id="paper">
+      <header class="paper-head">
+        <div class="paper-sender">
+          <p class="sender-name">Barbara Sophia Sailer</p>
+          <p class="sender-sub">Mezzosopranistin &middot; Stimmbildnerin</p>
+          <p class="sender-sub">Musterstra&szlig;e 1 &middot; 60311 Frankfurt am Main</p>
+        </div>
+        <p class="paper-place">Frankfurt, den <span id="paper-date"></span></p>
+      </header>
+
+      <h2 id="letter-title" class="paper-greeting" aria-hidden="true">Liebe/r <span id="paper-name">&hellip;</span>,</h2>
+
+      <div class="paper-body" id="paper-body" aria-live="polite" aria-atomic="false">
+        <!-- Typewriter writes here -->
+      </div>
+
+      <p class="paper-sign-line">Herzlich,</p>
+      <p class="paper-sign" id="paper-sign">Barbara</p>
+
+      <p class="paper-ps" id="paper-ps" hidden>PS: Du kannst den Brief speichern oder drucken &mdash; er bleibt nur bei dir.</p>
+    </article>
+
+    <div class="paper-actions" id="paper-actions" hidden>
+      <button type="button" class="action action-secondary" id="print-btn">
+        <span aria-hidden="true">&#128190;</span> Als PDF speichern
+      </button>
+      <a class="action action-primary" id="wa-link" href="#" target="_blank" rel="noopener">
+        <span aria-hidden="true">&#128172;</span> Ja, Probestunde buchen
+      </a>
+      <button type="button" class="action action-ghost" id="back-btn">&larr; Noch einmal neu</button>
+    </div>
+  </section>
+
+  <!-- DER ANDERE WEG -->
+  <section class="section section-otherway" id="andererweg">
+    <div class="wrap">
+      <p class="eyebrow eyebrow-dark">Der andere Weg</p>
+      <h2 class="section-title">Wenn dir der Brief nicht liegt &mdash; <em>schreib einfach direkt.</em></h2>
+
+      <div class="otherway-grid">
+        <form class="classic-form" action="https://formsubmit.co/barbarasailer@web.de" method="POST">
+          <input type="hidden" name="_subject" value="Neue Anfrage &uuml;ber die Website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <label class="classic-field">
+            <span class="classic-label">Dein Name</span>
+            <input type="text" name="name" required>
+          </label>
+          <label class="classic-field">
+            <span class="classic-label">E-Mail</span>
+            <input type="email" name="email" required>
+          </label>
+          <label class="classic-field">
+            <span class="classic-label">Deine Nachricht</span>
+            <textarea name="nachricht" rows="5" required placeholder="Was willst du Barbara schreiben?"></textarea>
+          </label>
+          <button type="submit" class="classic-submit">Nachricht absenden</button>
+        </form>
+
+        <aside class="phone-card">
+          <p class="phone-kicker">Lieber anrufen?</p>
+          <p class="phone-body">Manche Dinge sagen sich leichter, als sie sich schreiben.</p>
+          <button type="button" class="phone-btn" id="phone-btn" aria-expanded="false">Telefonnummer zeigen</button>
+          <p class="phone-number" id="phone-number" hidden>
+            <a href="tel:+495551234567">+49 (0)555 &mdash; 123 456 7</a>
+          </p>
+          <p class="phone-hint">Mo&ndash;Fr, meist zwischen 10 und 18 Uhr.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREISE -->
+  <section class="section section-prices" id="preise">
+    <div class="wrap">
+      <p class="eyebrow eyebrow-dark">Preise</p>
+      <h2 class="section-title">Klar, kurz, ohne Mitgliedschaft.</h2>
+
+      <div class="price-grid">
+        <div class="price-card price-card-highlight">
+          <p class="price-kicker">Zum Kennenlernen</p>
+          <h3 class="price-name">Probestunde</h3>
+          <p class="price-val"><span class="price-big">40&nbsp;&euro;</span><span class="price-small">/ 45&nbsp;min</span></p>
+          <p class="price-note">Einmal. Ohne Folge-Verpflichtung.</p>
+        </div>
+        <div class="price-card">
+          <h3 class="price-name">Einzelstunde 45</h3>
+          <p class="price-val"><span class="price-big">50&nbsp;&euro;</span><span class="price-small">/ 45&nbsp;min</span></p>
+          <p class="price-note">Der gew&ouml;hnliche Takt.</p>
+        </div>
+        <div class="price-card">
+          <h3 class="price-name">Einzelstunde 60</h3>
+          <p class="price-val"><span class="price-big">60&nbsp;&euro;</span><span class="price-small">/ 60&nbsp;min</span></p>
+          <p class="price-note">Wenn wir Zeit brauchen.</p>
+        </div>
+        <div class="price-card">
+          <h3 class="price-name">10er-Karte</h3>
+          <p class="price-val"><span class="price-big">11</span><span class="price-small">f&uuml;r&nbsp;10</span></p>
+          <p class="price-note">Ohne Ablaufdatum.</p>
+        </div>
+      </div>
+      <p class="price-traffic">Tram 12, 15, 21 aus der Innenstadt &middot; Musterstra&szlig;e 1, 60311 Frankfurt am Main</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>&copy; Barbara Sophia Sailer &middot; Gesangsunterricht Frankfurt</p>
+      <nav aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+</main>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

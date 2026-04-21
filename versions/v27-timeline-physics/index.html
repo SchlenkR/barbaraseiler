@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbara Sophia Sailer — Ein Jahr. Zwölf Monate. Eine Stimme, die bleibt.</title>
+  <meta name="description" content="Gesangsunterricht in Frankfurt. Dein erstes Jahr mit Barbara — als Zeitleiste aus zwölf Meilensteinen. Probestunde 40 €, 45 Minuten.">
+  <meta name="theme-color" content="#e8dcc4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body id="top">
+
+<a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
+<header class="topbar">
+  <a href="#top" class="mark">
+    <span class="mark-name">Barbara Sailer</span>
+    <span class="mark-sub">Gesang · Frankfurt</span>
+  </a>
+  <nav class="topnav" aria-label="Hauptnavigation">
+    <a href="#jahr">Ein Jahr</a>
+    <a href="#methode">Methode</a>
+    <a href="#probestunde">Probestunde</a>
+  </nav>
+  <a href="#probestunde" class="topcta">40&nbsp;€ · 45&nbsp;min</a>
+</header>
+
+<main id="main-content">
+
+  <!-- HERO: Physics Timeline -->
+  <section class="hero" id="jahr" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="kicker">Dein erstes Jahr — als Zeitleiste</p>
+      <h1 id="hero-title" class="claim">
+        <span class="line">Zwölf Monate.</span>
+        <span class="line em">Zwölf Meilensteine.</span>
+        <span class="line">Eine Stimme, die bleibt.</span>
+      </h1>
+      <p class="lede">Die Token fallen ins Bild und ordnen sich zu deinem ersten Jahr. Tipp sie an — dann erzählen sie, was passiert.</p>
+    </div>
+
+    <div class="stage-wrap">
+      <div class="stage-head">
+        <span class="stage-hint" id="stage-hint" aria-live="polite">Die Monate landen gerade…</span>
+        <button type="button" class="btn-reshake" id="reshake-btn" aria-label="Monate neu werfen">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/>
+            <path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/>
+          </svg>
+          <span>neu werfen</span>
+        </button>
+      </div>
+
+      <div class="stage" role="region" aria-label="Zeitleiste: zwölf Monate als fallende Token">
+        <canvas id="timeline-canvas" aria-hidden="true"></canvas>
+        <div class="stage-note" id="stage-note" aria-live="polite" aria-atomic="true">
+          <span class="note-tag">Tipp ein Token an</span>
+          <span class="note-text">— und lies, was in dem Monat passiert.</span>
+        </div>
+      </div>
+
+      <!-- SR + no-JS fallback: die zwölf Meilensteine als Liste -->
+      <ol class="sr-timeline" id="sr-timeline" aria-label="Zwölf Monate, zwölf Meilensteine">
+        <li><strong>M1</strong> Atem findest du wieder.</li>
+        <li><strong>M2</strong> Dein Ton trägt vom ersten Mal.</li>
+        <li><strong>M3</strong> Erster Auftritt im Raum, nur wir.</li>
+        <li><strong>M4</strong> Höhe, die nicht mehr zumacht.</li>
+        <li><strong>M5</strong> Das erste Lied, das dir gehört.</li>
+        <li><strong>M6</strong> Halbjahr — wir hören uns zurück.</li>
+        <li><strong>M7</strong> Stimme im Alltag, nicht nur in Übung.</li>
+        <li><strong>M8</strong> Wort und Ton rücken zusammen.</li>
+        <li><strong>M9</strong> Du führst, nicht mehr die Angst.</li>
+        <li><strong>M10</strong> Ein Publikum, das du willst.</li>
+        <li><strong>M11</strong> Die Stimme, die andere an dir erkennen.</li>
+        <li><strong>M12</strong> Ein Jahr — und es fängt erst an.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- METHODE -->
+  <section class="methode" id="methode" aria-labelledby="methode-title">
+    <div class="sec-inner">
+      <p class="eyebrow">So fühlt sich ein Jahr an</p>
+      <h2 id="methode-title" class="sec-title">Kein Crash-Kurs. Ein Weg.</h2>
+      <p class="sec-lede">Wir arbeiten in deinem Tempo, meist wöchentlich oder alle zwei Wochen. Kein Vertrag, keine Mindestlaufzeit — du kommst, solange es trägt. Die Stunden bauen aufeinander auf: Atem zuerst, dann Ton, dann Text, dann Auftritt.</p>
+
+      <ul class="preise" role="list">
+        <li><span class="val">40&nbsp;€</span><span class="lab">Probestunde · 45&nbsp;min</span></li>
+        <li><span class="val">35&nbsp;€</span><span class="lab">Kurzstunde · 30&nbsp;min</span></li>
+        <li><span class="val">50&nbsp;€</span><span class="lab">Einzelstunde · 45&nbsp;min</span></li>
+        <li><span class="val">60&nbsp;€</span><span class="lab">Lange Stunde · 60&nbsp;min</span></li>
+      </ul>
+      <p class="preise-foot">10er-Karten und Paare auf Anfrage. Keine Aufnahmegebühr.</p>
+    </div>
+  </section>
+
+  <!-- WAS PASSIERT IN DER PROBESTUNDE -->
+  <section class="probe-steps" aria-labelledby="steps-title">
+    <div class="sec-inner">
+      <p class="eyebrow">Was passiert in der Probestunde</p>
+      <h2 id="steps-title" class="sec-title">Drei ruhige Schritte.</h2>
+      <ol class="steps" role="list">
+        <li class="step">
+          <span class="step-num" aria-hidden="true">01</span>
+          <h3>Ankommen, zuhören.</h3>
+          <p>Du erzählst kurz, was dich herbringt. Ich höre deine Sprechstimme — das ist schon die erste Auskunft.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">02</span>
+          <h3>Atem und ein paar Töne.</h3>
+          <p>Wir bauen Atem vom Boden her und probieren Töne dort, wo sie heute leicht gehen. Kein Skalen-Stress.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">03</span>
+          <h3>Eine Zeile, die dir gehört.</h3>
+          <p>Am Ende nimmst du einen Ton mit, den du vorher nicht hattest — und weißt, ob wir weitermachen.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PROBESTUNDE CTA -->
+  <section class="probestunde" id="probestunde" aria-labelledby="probe-title">
+    <div class="sec-inner">
+      <p class="eyebrow">Probestunde</p>
+      <h2 id="probe-title" class="probe-title">40&nbsp;€ <em>· 45 Minuten ·</em> ohne Haken.</h2>
+      <p class="probe-sub">Schreib mir kurz, was dich herbringt. Ich antworte meistens am selben Tag.</p>
+
+      <div class="alt-contact">
+        <a class="btn-whatsapp" href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde." target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+          </svg>
+          <span>WhatsApp schreiben</span>
+        </a>
+        <button type="button" class="btn-phone" id="phoneRevealBtn" aria-live="polite">Telefonnummer anzeigen</button>
+      </div>
+
+      <form class="probe-form" id="probe-form" novalidate>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-row">
+          <label><span>Vorname</span><input type="text" name="vorname" required autocomplete="given-name"></label>
+          <label><span>Name</span><input type="text" name="name" required autocomplete="family-name"></label>
+        </div>
+        <label><span>E-Mail</span><input type="email" name="email" required autocomplete="email"></label>
+        <label><span>Nachricht</span><textarea name="nachricht" rows="4" required placeholder="Was bringt dich her? Ein, zwei Sätze reichen."></textarea></label>
+        <button type="submit" class="btn-primary">Probestunde anfragen</button>
+        <p class="form-note" id="form-note" role="status"></p>
+      </form>
+
+      <p class="probe-foot">
+        Oder direkt per Mail: <a href="mailto:barbara@example.de">barbara@example.de</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; Barbara Sophia Sailer · Mezzosopranistin · Frankfurt am Main</p>
+      <nav aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+      <p class="colophon">v27 · Jahresleiste — Matter.js · 12 Monate, 12 Token</p>
+    </div>
+  </footer>
+
+</main>
+
+<!-- Sticky CTA (mobile) -->
+<a class="sticky-cta" href="#probestunde">Probestunde buchen</a>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

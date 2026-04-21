@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalender | Barbara Sophia Sailer – Gesangsunterricht Frankfurt</title>
+  <meta name="description" content="Rolling Social Proof: acht Wochen Stimme, anonymisiert. Kleine Momente aus dem Unterricht bei Barbara Sailer – ehrlicher Beleg ohne Testimonial-Kitsch. Probestunde 40 € / 45 min.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-name">Barbara Sailer</span>
+      <span class="brand-sub">Gesangsunterricht · Frankfurt</span>
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#kalender">Kalender</a>
+      <a href="#platz">Platz</a>
+      <a href="#woche">Woche</a>
+      <a href="#probestunde" class="nav-cta">Probestunde</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="masthead">
+      <span class="masthead-label">Redaktionsplan</span>
+      <span class="masthead-dot" aria-hidden="true">·</span>
+      <span class="masthead-issue">Acht Wochen Stimme</span>
+      <span class="masthead-dot" aria-hidden="true">·</span>
+      <span class="masthead-issue">Frankfurt / Niederrad</span>
+    </div>
+
+    <p class="eyebrow">Rolling Social Proof</p>
+    <h1>Ein Kalender statt Testimonials.</h1>
+    <p class="lede">Keine Fünf-Sterne-Köpfe, keine Grossbuchstaben. Stattdessen: der reale Rhythmus der letzten acht Wochen – kleine Momente aus dem Unterricht, anonymisiert, in dem Slot, in dem sie wirklich passiert sind. Scrollt mit der Zeit.</p>
+
+    <p class="honest">Beispiel-Einträge. Echte Momente, keine echten Namen.</p>
+  </section>
+
+  <section class="section calendar-section" id="kalender" aria-labelledby="kalender-title">
+    <div class="section-head">
+      <p class="eyebrow">Kalenderblick</p>
+      <h2 id="kalender-title">Acht Wochen, leise mitlaufend.</h2>
+      <p>Die aktuelle Woche steht vorn, ältere Wochen verblassen ganz leicht. Kommende Woche hat schon Platzhalter — da ist tatsächlich noch Raum für dich.</p>
+    </div>
+
+    <div class="cal-legend" aria-hidden="false">
+      <span class="cal-legend-item"><span class="dot dot-break"></span>Durchbruch</span>
+      <span class="cal-legend-item"><span class="dot dot-routine"></span>Routine</span>
+      <span class="cal-legend-item"><span class="dot dot-first"></span>Erste Probestunde</span>
+      <span class="cal-legend-item"><span class="dot dot-feedback"></span>Rückmeldung</span>
+      <span class="cal-legend-item"><span class="dot dot-free"></span>Freier Slot</span>
+    </div>
+
+    <div class="calendar" id="calendar" aria-live="polite" aria-atomic="false">
+      <!-- Weeks werden via js/main.js gerendert -->
+    </div>
+
+    <p class="cal-foot">Der Cursor <span class="cursor-mark">▸ heute</span> wandert langsam weiter. Der Kalender läuft ruhig mit — ungefähr wie der Alltag.</p>
+  </section>
+
+  <section class="section free" id="platz">
+    <div class="section-head">
+      <p class="eyebrow">Verfügbarkeit</p>
+      <h2>Da ist noch Platz.</h2>
+      <p>Aktuell sind zwei Slots in dieser Woche und vier in der kommenden frei. Keine künstliche Knappheit — einfach der Stand, wie der Kalender ihn zeigt.</p>
+    </div>
+
+    <ul class="free-list">
+      <li><span class="free-day">Dienstag</span><span class="free-time">18:30 · 45 min</span><span class="free-note">Probestunde möglich</span></li>
+      <li><span class="free-day">Donnerstag</span><span class="free-time">11:00 · 60 min</span><span class="free-note">Regelplatz, evtl. dauerhaft</span></li>
+      <li><span class="free-day">Freitag</span><span class="free-time">17:15 · 45 min</span><span class="free-note">Probestunde möglich</span></li>
+      <li><span class="free-day">nächste Woche</span><span class="free-time">mehrere</span><span class="free-note">Mo/Mi/Fr offen</span></li>
+    </ul>
+  </section>
+
+  <section class="section probe" id="probestunde">
+    <div class="section-head">
+      <p class="eyebrow">Probestunde</p>
+      <h2>45 Minuten. 40 €. Ein Raum, keine Show.</h2>
+      <p>Du kommst, wir hören deine Stimme, wir reden kurz. Danach weisst du mehr – ob wir zusammenpassen, wie deine Stimme gerade steht, was für dich sinnvoll ist.</p>
+    </div>
+
+    <div class="probe-grid">
+      <div class="probe-actions">
+        <a class="btn btn-primary" href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20h%C3%A4tte%20gern%20eine%20Probestunde." target="_blank" rel="noopener">WhatsApp schreiben</a>
+        <button class="btn btn-ghost" type="button" id="phoneRevealBtn" aria-expanded="false">Telefonnummer anzeigen</button>
+        <span class="phone-slot" id="phoneSlot" aria-live="polite">Probestunde 40 € · 45 Minuten</span>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <p class="form-intro">Oder kurz per Formular. Eine Zeile reicht.</p>
+
+        <div class="form-row">
+          <label>Vorname
+            <input type="text" name="vorname" required autocomplete="given-name">
+          </label>
+          <label>Name
+            <input type="text" name="name" required autocomplete="family-name">
+          </label>
+        </div>
+        <label>E-Mail
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>Dein Einstieg
+          <select name="einstieg">
+            <option value="offen">Noch offen</option>
+            <option value="probe">Probestunde</option>
+            <option value="regel">Regelplatz gesucht</option>
+            <option value="block">Blockweise, z. B. vor Auftritt</option>
+          </select>
+        </label>
+        <label>Nachricht
+          <textarea name="nachricht" rows="4" placeholder="Wo stehst du gerade?"></textarea>
+        </label>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="honey" aria-hidden="true">
+
+        <button type="submit" class="btn btn-primary">Nachricht senden</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section week" id="woche">
+    <div class="section-head">
+      <p class="eyebrow">Wie eine Woche bei mir aussieht</p>
+      <h2>Drei Rhythmen, drei Preise. Kein Paket-Zwang.</h2>
+    </div>
+
+    <ul class="week-grid">
+      <li class="week-card">
+        <p class="week-length">45 Minuten</p>
+        <p class="week-price">60 €</p>
+        <p class="week-desc">Für klare Wochen: Atem, ein Lied, kleine Bewegung. Der häufigste Einstieg.</p>
+      </li>
+      <li class="week-card week-card-accent">
+        <p class="week-length">60 Minuten</p>
+        <p class="week-price">80 €</p>
+        <p class="week-desc">Für Prüfungsvorbereitung, Wiedereinstieg, intensivere Arbeit an Technik und Repertoire.</p>
+      </li>
+      <li class="week-card">
+        <p class="week-length">90 Minuten</p>
+        <p class="week-price">120 €</p>
+        <p class="week-desc">Für Auftritts- und Aufnahme-Vorbereitung, komplexe Partien, ruhige Tiefen­arbeit.</p>
+      </li>
+    </ul>
+
+    <p class="week-foot">Abrechnung monatlich, Absagen bis 24 h vorher. Probestunde zählt nicht zum Monatspaket.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">Barbara Sophia Sailer</p>
+      <p>Musterstraße 1 · 60311 Frankfurt am Main</p>
+    </div>
+    <div>
+      <p class="footer-label">Direkt</p>
+      <p><a href="mailto:barbara@example.de">barbara@example.de</a><br><a href="tel:+495551234567">+49 (0)555 123 456 7</a></p>
+    </div>
+    <div>
+      <p class="footer-label">Rechtliches</p>
+      <p><a href="./impressum.html">Impressum</a><br><a href="./datenschutz.html">Datenschutz</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

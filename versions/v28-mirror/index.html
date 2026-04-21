@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spiegel | Barbara Sophia Sailer · Stimmunterricht Frankfurt</title>
+  <meta name="description" content="Barbara ist der Spiegel — aber nichts geht raus. Optionale lokale Kamera- und Mikrofon-Ansicht im Browser, nichts wird übertragen. Probestunde 40 € / 45 min.">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-name">Barbara Sailer</span>
+        <span class="brand-sub">Stimme &middot; Frankfurt</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#methode">Methode</a>
+      <a href="#prinzipien">Prinzipien</a>
+      <a href="#probestunde">Probestunde</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Spiegel</p>
+      <h1 id="hero-title">Darf ich dich<br>kurz sehen?</h1>
+      <p class="hero-lede">Barbara ist der Spiegel &mdash; sie zeigt dir, was du tust. Diese Seite kann das auch. Nur wenn du magst. Dein Bild und dein Ton bleiben bei dir.</p>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="stage-frame" id="stageFrame">
+        <!-- Default: ruhige SVG-Visualisierung (konzentrische Kreise) -->
+        <svg class="rings" id="rings" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="currentColor" stroke-width="0.6">
+            <circle cx="200" cy="200" r="40" class="ring ring-1"/>
+            <circle cx="200" cy="200" r="80" class="ring ring-2"/>
+            <circle cx="200" cy="200" r="120" class="ring ring-3"/>
+            <circle cx="200" cy="200" r="160" class="ring ring-4"/>
+            <circle cx="200" cy="200" r="190" class="ring ring-5"/>
+          </g>
+        </svg>
+
+        <!-- Canvas (verborgen bis Kamera an) -->
+        <canvas id="mirrorCanvas" class="mirror-canvas" width="960" height="540" aria-label="Dein Live-Bild" hidden></canvas>
+
+        <!-- Pitch-Bars (verborgen bis Kamera/Mikro an) -->
+        <canvas id="barsCanvas" class="bars-canvas" width="320" height="540" aria-label="Deine Stimme als Frequenzbalken" hidden></canvas>
+
+        <!-- Stop-Button -->
+        <button type="button" class="stop-btn" id="stopBtn" aria-label="Kamera und Mikrofon stoppen" hidden>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <!-- Privacy-Hinweis im Bild -->
+        <p class="stage-privacy" id="stagePrivacy" hidden>
+          Das Bild und der Ton bleiben bei dir. Nichts wird gesendet, nichts gespeichert.
+        </p>
+
+        <!-- Status-Live-Region -->
+        <p class="stage-status" id="stageStatus" aria-live="polite" role="status"></p>
+      </div>
+
+      <!-- Consent-Dialog -->
+      <dialog class="consent" id="consent" aria-labelledby="consentTitle" aria-describedby="consentBody">
+        <div class="consent-inner">
+          <h2 id="consentTitle" class="consent-title">Darf ich dich kurz sehen?</h2>
+          <p id="consentBody" class="consent-body">
+            Diese Seite kann &mdash; nur wenn du willst &mdash; deine Kamera und dein Mikrofon lokal in deinem Browser anzeigen. Als Spiegel. Nichts wird gesendet, nichts aufgezeichnet, nichts gespeichert. Du kannst jederzeit mit einem Klick stoppen.
+          </p>
+          <div class="consent-actions">
+            <button type="button" class="btn btn-primary" id="consentYes">Ja, Kamera an</button>
+            <button type="button" class="btn btn-ghost" id="consentNo">Lieber nicht &mdash; nur lesen</button>
+          </div>
+          <p class="consent-foot">
+            Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Mehr im <a href="./datenschutz.html">Datenschutz</a>.
+          </p>
+        </div>
+      </dialog>
+    </div>
+  </section>
+
+  <section class="section" id="methode" aria-labelledby="methode-title">
+    <div class="section-head">
+      <p class="eyebrow">Methode</p>
+      <h2 id="methode-title">Barbara ist der Spiegel &mdash; aber hier, bei dir im Raum.</h2>
+      <p class="section-lede">
+        Stimmarbeit bei Barbara ist kein Drill und keine Show. Es ist Präsenz: Sie hört genau hin, benennt ehrlich, was da ist, und l&auml;sst dir den Ton. Kein Nachmachen, keine Kontrolle. Du bekommst dein eigenes Ohr zur&uuml;ck &mdash; das, was du auf der B&uuml;hne, im Chor oder im Meeting brauchst.
+      </p>
+    </div>
+  </section>
+
+  <section class="section principles" id="prinzipien" aria-labelledby="prinzipien-title">
+    <div class="section-head">
+      <p class="eyebrow">Was hei&szlig;t &bdquo;Spiegel&ldquo;?</p>
+      <h2 id="prinzipien-title">Drei S&auml;tze, die hier gelten.</h2>
+    </div>
+    <ol class="principles-list">
+      <li>
+        <span class="principle-num">01</span>
+        <p>Ein Spiegel beurteilt nicht &mdash; er zeigt. Du h&ouml;rst, was du tust, und entscheidest selbst, was als n&auml;chstes kommt.</p>
+      </li>
+      <li>
+        <span class="principle-num">02</span>
+        <p>Ein Spiegel lenkt nicht ab. Wir arbeiten mit dem, was da ist: deinem Atem, deinem Ton, deinem Raum.</p>
+      </li>
+      <li>
+        <span class="principle-num">03</span>
+        <p>Ein Spiegel beh&auml;lt nichts. Was du hier siehst und h&ouml;rst, bleibt bei dir &mdash; buchst&auml;blich und im &uuml;bertragenen Sinn.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section probe" id="probestunde" aria-labelledby="probe-title">
+    <div class="probe-inner">
+      <div class="probe-copy">
+        <p class="eyebrow">Probestunde</p>
+        <h2 id="probe-title">45 Minuten. 40 &euro;. Ein Anlass gen&uuml;gt.</h2>
+        <p>Du brauchst keine Noten, keine sichere Stimme, kein Repertoire. Nur den Anlass, der dich gerade beschäftigt &mdash; heiser nach Chorproben, eng in der Höhe, nach langer Pause unsicher, abends im Beruf durch.</p>
+        <p>In der ersten Stunde hören wir erst. Dann einigen wir uns auf ein, zwei Dinge, die hörbar etwas verändern. Am Ende weißt du, ob es mit Barbara passt.</p>
+        <ul class="probe-facts">
+          <li><span>Probestunde</span><strong>40 &euro; &middot; 45 min</strong></li>
+          <li><span>Einzelstunde</span><strong>50 &euro; / 45 min &middot; 60 &euro; / 60 min</strong></li>
+          <li><span>10er-Karte</span><strong>11 Stunden f&uuml;r 10, ohne Ablauf</strong></li>
+        </ul>
+
+        <div class="probe-direct">
+          <a class="btn btn-primary" href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20m%C3%B6chte%20eine%20Probestunde%20anfragen." target="_blank" rel="noopener">WhatsApp direkt schreiben</a>
+          <button type="button" class="btn btn-ghost" id="revealPhone" aria-expanded="false" aria-controls="phoneReveal">Telefonnummer anzeigen</button>
+          <span class="phone-reveal" id="phoneReveal" hidden><a href="tel:+495551234567">+49 (0)555 &ndash; 123 456 7</a></span>
+        </div>
+      </div>
+
+      <form class="probe-form" id="probeForm" novalidate>
+        <p class="form-head">Oder schreib mir eine kurze Nachricht:</p>
+        <label>
+          Dein Name
+          <input type="text" name="name" id="f-name" required autocomplete="name" minlength="2">
+          <span class="err" id="err-name" aria-live="polite"></span>
+        </label>
+        <label>
+          E-Mail
+          <input type="email" name="email" id="f-email" required autocomplete="email">
+          <span class="err" id="err-email" aria-live="polite"></span>
+        </label>
+        <label>
+          Was macht deine Stimme gerade?
+          <textarea name="nachricht" id="f-msg" rows="4" required minlength="4" placeholder="Zum Beispiel: &bdquo;In der H&ouml;he mache ich dicht.&ldquo; oder &bdquo;Ich bin abends durch.&ldquo;"></textarea>
+          <span class="err" id="err-msg" aria-live="polite"></span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Probestunde anfragen</button>
+        <p class="form-alt">
+          Lieber direkt? <a href="mailto:barbara@example.de">barbara@example.de</a>
+        </p>
+        <p class="form-ok" id="formOk" hidden>Danke &mdash; ich melde mich innerhalb von zwei Werktagen.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">Barbara Sophia Sailer</p>
+      <p>Musterstra&szlig;e 1 &middot; 60311 Frankfurt am Main</p>
+    </div>
+    <div>
+      <p class="footer-label">Erreichbar</p>
+      <p>
+        <a href="mailto:barbara@example.de">barbara@example.de</a><br>
+        <a href="tel:+495551234567">+49 (0)555 &ndash; 123 456 7</a>
+      </p>
+    </div>
+    <div>
+      <p class="footer-label">Rechtliches</p>
+      <p>
+        <a href="./impressum.html">Impressum</a><br>
+        <a href="./datenschutz.html">Datenschutz</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

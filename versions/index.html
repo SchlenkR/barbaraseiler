@@ -135,14 +135,75 @@
     }
     .lane.featured .lane-num { font-size: 4rem; }
 
-    .cards {
+    .lane-body {
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      gap: 32px;
+      min-width: 0;
+      align-items: start;
+    }
+    .lane.featured .lane-body { grid-template-columns: minmax(320px, 400px) minmax(0, 1fr); }
+
+    .tree, .sub-tree {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 4px;
+      position: relative;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-direction: column;
+    }
+    .tree > li, .sub-tree > li {
+      position: relative;
+      padding: 6px 0 6px 32px;
       min-width: 0;
     }
-    .cards > .card { flex: 1 1 180px; }
-    .cards > .card:first-child { flex: 2 1 340px; }
+    .tree > li:first-child { padding-top: 0; }
+    .tree > li:last-child { padding-bottom: 0; }
+    /* Vertical spine */
+    .tree > li::before,
+    .sub-tree > li::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 0;
+      bottom: 0;
+      border-left: 1px dashed var(--accent);
+      opacity: 0.55;
+    }
+    .tree > li:first-child::before { top: 0; }
+    .tree > li:last-child::before {
+      bottom: auto;
+      height: 34px;
+    }
+    .sub-tree > li:last-child::before {
+      bottom: auto;
+      height: 30px;
+    }
+    /* Horizontal stub to the card */
+    .tree > li::after,
+    .sub-tree > li::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 34px;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.55;
+    }
+    .sub-tree > li::after { top: 30px; }
+    .sub-tree {
+      margin-top: 10px;
+      padding-left: 4px;
+    }
+    /* Cards inside the tree are slightly denser */
+    .tree .card, .sub-tree .card {
+      min-height: auto;
+      padding: 14px 18px;
+      gap: 10px;
+    }
+    .tree .card-title, .sub-tree .card-title { font-size: 1.05rem; }
+    .tree .card.variant::after, .sub-tree .card.variant::after { display: none; }
 
     .card {
       position: relative;
@@ -277,8 +338,9 @@
 
     @media (max-width: 1000px) {
       .lane { grid-template-columns: 50px 1fr; padding: 18px; }
-      .cards > .card,
-      .cards > .card:first-child { flex: 1 1 100%; }
+      .lane.featured { padding: 22px; grid-template-columns: 60px 1fr; }
+      .lane-body,
+      .lane.featured .lane-body { grid-template-columns: 1fr; gap: 20px; }
       .card.variant::after { display: none; }
       .lane-num { font-size: 2.5rem; }
       .lane.featured .lane-num { font-size: 3rem; }
@@ -305,8 +367,8 @@
 
     <div class="lane featured" style="--accent: var(--v10);">
       <div class="lane-num">10</div>
-      <div class="cards">
-        <a class="card" href="./v10/">
+      <div class="lane-body">
+        <a class="card" href="./v10/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v10 · Phase 2</span>
             <span class="arrow">→</span>
@@ -316,25 +378,27 @@
           <span class="card-meta">Parent: — · Stil: Literary Dialog</span>
           <span class="card-by">Claude</span>
         </a>
-        <a class="card variant" href="./v10-dialog/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v10-dialog/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v10-dialog</span><span class="arrow">→</span></div>
           <h3 class="card-title">Chat Bubbles</h3>
           <span class="card-meta">← v10 · Messenger Warm</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v10-letter/">
+        </a></li>
+          <li><a class="card variant" href="./v10-letter/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v10-letter</span><span class="arrow">→</span></div>
           <h3 class="card-title">Briefwechsel</h3>
           <span class="card-meta">← v10 · Letter Form</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v9);">
       <div class="lane-num">09</div>
-      <div class="cards">
-        <a class="card" href="./v9/">
+      <div class="lane-body">
+        <a class="card" href="./v9/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v9 · Phase 2</span>
             <span class="arrow">→</span>
@@ -344,25 +408,27 @@
           <span class="card-meta">Parent: — · Stil: Display Cream</span>
           <span class="card-by">Claude</span>
         </a>
-        <a class="card variant" href="./v9-outcomes/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v9-outcomes/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v9-outcomes</span><span class="arrow">→</span></div>
           <h3 class="card-title">Bento Outcomes</h3>
           <span class="card-meta">← v9 · 6-Tile Grid</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v9-audio/">
+        </a></li>
+          <li><a class="card variant" href="./v9-audio/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v9-audio</span><span class="arrow">→</span></div>
           <h3 class="card-title">Voice Memo</h3>
           <span class="card-meta">← v9 · Podcast UI</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v8);">
       <div class="lane-num">08</div>
-      <div class="cards">
-        <a class="card" href="./v8/">
+      <div class="lane-body">
+        <a class="card" href="./v8/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v8 · Phase 2</span>
             <span class="arrow">→</span>
@@ -372,25 +438,27 @@
           <span class="card-meta">Parent: — · Stil: Editorial Sepia</span>
           <span class="card-by">Claude</span>
         </a>
-        <a class="card variant" href="./v8-faq/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v8-faq/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v8-faq</span><span class="arrow">→</span></div>
           <h3 class="card-title">Zen Accordion</h3>
           <span class="card-meta">← v8 · FAQ / details</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v8-journey/">
+        </a></li>
+          <li><a class="card variant" href="./v8-journey/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v8-journey</span><span class="arrow">→</span></div>
           <h3 class="card-title">6 Stationen</h3>
           <span class="card-meta">← v8 · Progress Dots</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v7);">
       <div class="lane-num">07</div>
-      <div class="cards">
-        <a class="card" href="./v7/">
+      <div class="lane-body">
+        <a class="card" href="./v7/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v7 · Phase 2</span>
             <span class="arrow">→</span>
@@ -400,25 +468,27 @@
           <span class="card-meta">Parent: — · Stil: SaaS Warm</span>
           <span class="card-by">Claude</span>
         </a>
-        <a class="card variant" href="./v7-offer/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v7-offer/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v7-offer</span><span class="arrow">→</span></div>
           <h3 class="card-title">Stripe Dark</h3>
           <span class="card-meta">← v7 · Product Dark</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v7-split/">
+        </a></li>
+          <li><a class="card variant" href="./v7-split/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v7-split</span><span class="arrow">→</span></div>
           <h3 class="card-title">Sticky Split</h3>
           <span class="card-meta">← v7 · 50/50 Form</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v6);">
       <div class="lane-num">06</div>
-      <div class="cards">
-        <a class="card" href="./v6/">
+      <div class="lane-body">
+        <a class="card" href="./v6/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v6 · Phase 2</span>
             <span class="arrow">→</span>
@@ -428,25 +498,27 @@
           <span class="card-meta">Parent: — · Stil: Editorial Cream</span>
           <span class="card-by">Claude</span>
         </a>
-        <a class="card variant" href="./v6-pathways/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v6-pathways/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v6-pathways</span><span class="arrow">→</span></div>
           <h3 class="card-title">Shop-by-need</h3>
           <span class="card-meta">← v6 · Apple-Style Chooser</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v6-chat/">
+        </a></li>
+          <li><a class="card variant" href="./v6-chat/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v6-chat</span><span class="arrow">→</span></div>
           <h3 class="card-title">Messenger</h3>
           <span class="card-meta">← v6 · Conversation</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v5);">
       <div class="lane-num">05</div>
-      <div class="cards">
-        <a class="card" href="./v5/">
+      <div class="lane-body">
+        <a class="card" href="./v5/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v5</span>
             <span class="arrow">→</span>
@@ -456,37 +528,39 @@
           <span class="card-meta">Parent: — · Stil: Editorial Warm</span>
           <span class="card-by">GPT-5.4</span>
         </a>
-        <a class="card variant" href="./v5-y2k/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v5-y2k/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v5-y2k</span><span class="arrow">→</span></div>
           <h3 class="card-title">Y2K Chrome</h3>
           <span class="card-meta">← v5 · Aero / Holo</span>
           <span class="card-by">GPT-5.4</span>
-        </a>
-        <a class="card variant" href="./v5-didone/">
+        </a></li>
+          <li><a class="card variant" href="./v5-didone/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v5-didone</span><span class="arrow">→</span></div>
           <h3 class="card-title">Didone Salon</h3>
           <span class="card-meta">← v5 · Luxury Editorial</span>
           <span class="card-by">GPT-5.4</span>
-        </a>
-        <a class="card variant" href="./v5-lenis/">
+        </a></li>
+          <li><a class="card variant" href="./v5-lenis/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v5-lenis</span><span class="arrow">→</span></div>
           <h3 class="card-title">Stage Scroll</h3>
           <span class="card-meta">← v5 · Lenis + GSAP</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v5-three/">
+        </a></li>
+          <li><a class="card variant" href="./v5-three/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v5-three</span><span class="arrow">→</span></div>
           <h3 class="card-title">Voice Ribbons</h3>
           <span class="card-meta">← v5 · Three.js / WebGL</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v4);">
       <div class="lane-num">04</div>
-      <div class="cards">
-        <a class="card" href="./v4/">
+      <div class="lane-body">
+        <a class="card" href="./v4/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v4</span>
             <span class="arrow">→</span>
@@ -496,31 +570,33 @@
           <span class="card-meta">Parent: — · Stil: Editorial</span>
           <span class="card-by">GPT-5.4</span>
         </a>
-        <a class="card variant" href="./v4-glass/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v4-glass/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v4-glass</span><span class="arrow">→</span></div>
           <h3 class="card-title">Aurora Glass</h3>
           <span class="card-meta">← v4 · visionOS-Style</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v4-linear/">
+        </a></li>
+          <li><a class="card variant" href="./v4-linear/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v4-linear</span><span class="arrow">→</span></div>
           <h3 class="card-title">Product Dark</h3>
           <span class="card-meta">← v4 · Linear.app</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v4-terminal/">
+        </a></li>
+          <li><a class="card variant" href="./v4-terminal/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v4-terminal</span><span class="arrow">→</span></div>
           <h3 class="card-title">Phosphor</h3>
           <span class="card-meta">← v4 · CRT / BBS</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v3);">
       <div class="lane-num">03</div>
-      <div class="cards">
-        <a class="card" href="./v3/">
+      <div class="lane-body">
+        <a class="card" href="./v3/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v3</span>
             <span class="arrow">→</span>
@@ -530,37 +606,39 @@
           <span class="card-meta">Parent: — · Stil: Editorial</span>
           <span class="card-by">GPT-5.4</span>
         </a>
-        <a class="card variant" href="./v3-kinetic/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v3-kinetic/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v3-kinetic</span><span class="arrow">→</span></div>
           <h3 class="card-title">Kinetic Typo</h3>
           <span class="card-meta">← v3 · GSAP</span>
           <span class="card-by">GPT-5.4</span>
-        </a>
-        <a class="card variant" href="./v3-collage/">
+        </a></li>
+          <li><a class="card variant" href="./v3-collage/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v3-collage</span><span class="arrow">→</span></div>
           <h3 class="card-title">Scrapbook</h3>
           <span class="card-meta">← v3 · Paper / Polaroids</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v3-neobrutal/">
+        </a></li>
+          <li><a class="card variant" href="./v3-neobrutal/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v3-neobrutal</span><span class="arrow">→</span></div>
           <h3 class="card-title">Neo-Brutal</h3>
           <span class="card-meta">← v3 · Flat / Hard Shadow</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v3-riso/">
+        </a></li>
+          <li><a class="card variant" href="./v3-riso/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v3-riso</span><span class="arrow">→</span></div>
           <h3 class="card-title">Risograph</h3>
           <span class="card-meta">← v3 · Duotone Print</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v2);">
       <div class="lane-num">02</div>
-      <div class="cards">
-        <a class="card" href="./v2/">
+      <div class="lane-body">
+        <a class="card" href="./v2/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v2</span>
             <span class="arrow">→</span>
@@ -570,31 +648,33 @@
           <span class="card-meta">Parent: — · Stil: Editorial</span>
           <span class="card-by">GPT-5.4</span>
         </a>
-        <a class="card variant" href="./v2-bento/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v2-bento/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v2-bento</span><span class="arrow">→</span></div>
           <h3 class="card-title">Bento</h3>
           <span class="card-meta">← v2 · Apple-Style Grid</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v2-mag/">
+        </a></li>
+          <li><a class="card variant" href="./v2-mag/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v2-mag</span><span class="arrow">→</span></div>
           <h3 class="card-title">Magazin Nº 04</h3>
           <span class="card-meta">← v2 · Editorial / Drop Caps</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v2-wiki/">
+        </a></li>
+          <li><a class="card variant" href="./v2-wiki/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v2-wiki</span><span class="arrow">→</span></div>
           <h3 class="card-title">Enzyklopädie</h3>
           <span class="card-meta">← v2 · Wiki-Dense</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v1);">
       <div class="lane-num">01</div>
-      <div class="cards">
-        <a class="card" href="./v1/">
+      <div class="lane-body">
+        <a class="card" href="./v1/" target="_blank" rel="noopener">
           <div class="card-top">
             <span class="card-tag">v1 · Root</span>
             <span class="arrow">→</span>
@@ -604,30 +684,32 @@
           <span class="card-meta">Parent: — · Stil: Editorial Light</span>
           <span class="card-by">GPT-5.4</span>
         </a>
-        <a class="card variant" href="./v1-brutal/">
+        <ul class="tree">
+          <li><a class="card variant" href="./v1-brutal/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v1-brutal</span><span class="arrow">→</span></div>
           <h3 class="card-title">Swiss Brutal</h3>
           <span class="card-meta">← v1 · Acid / Mono</span>
           <span class="card-by">GPT-5.4</span>
-        </a>
-        <a class="card variant" href="./v1-noir/">
+        </a></li>
+          <li><a class="card variant" href="./v1-noir/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v1-noir</span><span class="arrow">→</span></div>
           <h3 class="card-title">Cinematic Noir</h3>
           <span class="card-meta">← v1 · B/W / Didone</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v1-clay/">
+        </a></li>
+          <li><a class="card variant" href="./v1-clay/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v1-clay</span><span class="arrow">→</span></div>
           <h3 class="card-title">Clay</h3>
           <span class="card-meta">← v1 · Claymorphism</span>
           <span class="card-by">Claude</span>
-        </a>
-        <a class="card variant" href="./v1-swiss/">
+        </a></li>
+          <li><a class="card variant" href="./v1-swiss/" target="_blank" rel="noopener">
           <div class="card-top"><span class="card-tag">v1-swiss</span><span class="arrow">→</span></div>
           <h3 class="card-title">Swiss Intl.</h3>
           <span class="card-meta">← v1 · Classic Grid</span>
           <span class="card-by">Claude</span>
-        </a>
+        </a></li>
+        </ul>
       </div>
     </div>
 

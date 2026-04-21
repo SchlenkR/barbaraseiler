@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triff den Ton &middot; Barbara Sophia Sailer &mdash; Gesangsunterricht Frankfurt</title>
+  <meta name="description" content="Ein 60-Sekunden-Mini-Game. Fünf Töne. Kein Druck. Finde heraus, was dein Ohr schon kann &mdash; und buche eine Probestunde bei Barbara Sailer in Frankfurt.">
+  <meta name="theme-color" content="#ff3d6b">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#content">Zum Inhalt springen</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-name">Barbara Sailer</span>
+        <span class="brand-sub">Stimme &middot; Frankfurt</span>
+      </span>
+    </a>
+    <a class="nav-cta" href="#probestunde">Probestunde</a>
+  </div>
+</header>
+
+<main id="content">
+
+  <!-- ====== HERO / PITCH ====== -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <p class="hero-eyebrow">Ein Spiel. Keine Pr&uuml;fung.</p>
+    <h1 class="hero-title" id="hero-title">
+      Triff<br><em>den Ton.</em>
+    </h1>
+    <p class="hero-lede">
+      Kannst du einen Ton treffen? Eine Minute. F&uuml;nf T&ouml;ne.
+      <span class="hero-kein-druck">Kein Druck.</span>
+    </p>
+    <div class="hero-actions">
+      <button type="button" class="btn-primary" id="hero-start">
+        <span class="btn-label">Spiel starten</span>
+        <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+      </button>
+      <p class="hero-note">Du brauchst nur dein Mikrofon.<br><span class="hero-note-small">Alles passiert lokal in deinem Browser.</span></p>
+    </div>
+  </section>
+
+  <!-- ====== CONSENT PANEL ====== -->
+  <section class="consent" id="consent" aria-labelledby="consent-title" hidden>
+    <div class="consent-inner">
+      <p class="panel-eyebrow">Bevor es losgeht</p>
+      <h2 id="consent-title" class="panel-title">Dein Mikrofon<br><em>bleibt bei dir.</em></h2>
+      <ul class="consent-points">
+        <li><strong>Lokal.</strong> Der Ton wird nur in deinem Browser analysiert.</li>
+        <li><strong>Nicht gespeichert.</strong> Kein Upload, keine Aufnahme, kein Server.</li>
+        <li><strong>Abbrechbar.</strong> Jederzeit &mdash; Escape oder Schlie&szlig;en.</li>
+      </ul>
+      <div class="consent-actions">
+        <button type="button" class="btn-primary" id="consent-go">
+          <span class="btn-label">Los geht&rsquo;s</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+        <button type="button" class="btn-ghost" id="consent-skip">
+          Kein Mic &mdash; Tastaturmodus
+        </button>
+      </div>
+      <p class="consent-foot">
+        Ohne Mikrofon kannst du das Spiel mit den Pfeiltasten <kbd>&uarr;</kbd> <kbd>&darr;</kbd> demonstrieren.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====== COUNTDOWN ====== -->
+  <section class="countdown" id="countdown" aria-hidden="true" hidden>
+    <p class="countdown-num" id="countdown-num">3</p>
+    <p class="countdown-hint">Sing den Ton. Nicht den Text.</p>
+  </section>
+
+  <!-- ====== GAME ====== -->
+  <section class="game" id="game" aria-label="Pitch-Match-Spielfeld" hidden>
+    <div class="game-hud">
+      <div class="hud-timer" aria-live="off">
+        <span class="hud-label">Zeit</span>
+        <span class="hud-value" id="hud-timer">60.0</span>
+        <span class="hud-unit">s</span>
+      </div>
+      <div class="hud-score" aria-live="polite">
+        <span class="hud-label">Score</span>
+        <span class="hud-value" id="hud-score">0</span>
+      </div>
+      <div class="hud-streak" aria-live="off">
+        <span class="hud-label">Streak</span>
+        <span class="hud-value" id="hud-streak">0.0</span>
+        <span class="hud-unit">s</span>
+      </div>
+      <div class="hud-tone" aria-live="polite">
+        <span class="hud-label">Ton</span>
+        <span class="hud-value" id="hud-tone">&mdash;</span>
+        <span class="hud-unit" id="hud-tone-idx">1 / 5</span>
+      </div>
+    </div>
+
+    <div class="game-stage">
+      <canvas id="field" width="900" height="520" aria-describedby="field-desc"></canvas>
+      <p id="field-desc" class="visually-hidden">Eine vertikale Tonh&ouml;henskala. Ein gro&szlig;er Kreis markiert den Zielton, ein kleinerer Kreis deine eigene Stimme.</p>
+
+      <div class="game-status" id="game-status" aria-live="polite">Sing &bdquo;Ah&ldquo; &mdash; halte den Ton, bis die Kreise sich decken.</div>
+    </div>
+
+    <div class="game-foot">
+      <button type="button" class="btn-ghost btn-ghost-small" id="game-cancel">Abbrechen</button>
+      <p class="game-foot-hint">Instruktion: Sing den Ton. Nicht den Text.</p>
+    </div>
+  </section>
+
+  <!-- ====== RESULT ====== -->
+  <section class="result" id="result" aria-labelledby="result-title" hidden>
+    <div class="result-inner">
+      <p class="panel-eyebrow">Vorbei.</p>
+      <h2 id="result-title" class="result-score-line">
+        Du hast <em><span id="result-score">0</span></em><br>
+        <span class="result-outof">von 3000 Punkten.</span>
+      </h2>
+
+      <p class="result-verdict" id="result-verdict">&mdash;</p>
+
+      <ul class="result-analysis" id="result-analysis" aria-label="Detail-Auswertung">
+        <li><span class="ra-k">Bester Ton</span><span class="ra-v" id="ra-best">&mdash;</span></li>
+        <li><span class="ra-k">Schwierigster Ton</span><span class="ra-v" id="ra-hardest">&mdash;</span></li>
+        <li><span class="ra-k">L&auml;ngste Streak</span><span class="ra-v" id="ra-streak">&mdash;</span></li>
+      </ul>
+
+      <div class="result-cta">
+        <p class="result-push" id="result-push">
+          Willst du wissen, wo genau dein Potenzial liegt?
+        </p>
+        <a class="btn-primary btn-primary-lg" href="#probestunde">
+          <span class="btn-label">Probestunde mit Barbara</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="result-secondary">
+        <button type="button" class="btn-ghost" id="result-again">Nochmal spielen</button>
+        <button type="button" class="btn-ghost" id="result-share">Score als Bild speichern</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== UNDER THE FOLD ====== -->
+  <section class="prose prose-first">
+    <p class="prose-kicker">F&uuml;r alle, die das Spiel &uuml;bersprungen haben:</p>
+    <p>
+      Dieses Spiel ist nicht der Unterricht. Aber es zeigt dir, was dein Ohr schon kann.
+      Unterricht ist das, was folgt, wenn wir daraus eine Stimme machen.
+    </p>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- ====== BARBARA BIO ====== -->
+  <section class="bio">
+    <p class="section-eyebrow">Die Lehrerin</p>
+    <h2 class="bio-title">Barbara Sophia Sailer</h2>
+    <p class="bio-lede">
+      Studierte Opern- und Konzerts&auml;ngerin mit mehr als 15 Jahren
+      Unterrichtserfahrung. Klassik, Musical, Pop, Chanson &mdash;
+      und vor allem Menschen, die lange nicht gesungen haben und wieder anfangen.
+    </p>
+    <ul class="bio-points">
+      <li><em>Methode:</em> Atem zuerst, Technik folgt, Interpretation geh&ouml;rt dir.</li>
+      <li><em>Haltung:</em> Deine Stimme ist keine Baustelle &mdash; sie hat schon Charakter.</li>
+      <li><em>Ort:</em> Heller Unterrichtsraum in Frankfurt-Niederrad, zwei Gehminuten vom S-Bahnhof.</li>
+    </ul>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- ====== TARIFE ====== -->
+  <section class="prices-section" id="tarife">
+    <p class="section-eyebrow">Tarife</p>
+    <ul class="prices">
+      <li>
+        <span class="price-amount">40&nbsp;&euro;</span>
+        <span class="price-meta">Probestunde &middot; 45&nbsp;min &middot; einmalig</span>
+      </li>
+      <li>
+        <span class="price-amount">50&nbsp;&euro;</span>
+        <span class="price-meta">Einzelstunde &middot; 45&nbsp;min</span>
+      </li>
+      <li>
+        <span class="price-amount">60&nbsp;&euro;</span>
+        <span class="price-meta">Einzelstunde &middot; 60&nbsp;min</span>
+      </li>
+      <li>
+        <span class="price-amount">11&nbsp;f&uuml;r&nbsp;10</span>
+        <span class="price-meta">10er-Karte &middot; ohne Ablauf</span>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- ====== PROBESTUNDE / KONTAKT ====== -->
+  <section class="form-section" id="probestunde">
+    <p class="section-eyebrow">Probestunde buchen</p>
+    <h2 class="form-title">Schreib mir<br><em>ein paar Zeilen.</em></h2>
+    <p class="form-lede">
+      Ein, zwei S&auml;tze gen&uuml;gen. Ich antworte innerhalb von 48&nbsp;Stunden &mdash;
+      meistens schneller.
+    </p>
+
+    <form id="contact-form" class="contact-form" action="https://formsubmit.co/barbarasailer@web.de" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Neue Anfrage &uuml;ber v44-ton-treffen">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="herkunft" value="v44-ton-treffen">
+      <input type="hidden" name="score" id="hidden-score" value="">
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form-row">
+        <label>Vorname
+          <input type="text" name="vorname" required autocomplete="given-name">
+        </label>
+        <label>Name
+          <input type="text" name="name" required autocomplete="family-name">
+        </label>
+      </div>
+      <label>E-Mail
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+      <label>Worum geht es dir?
+        <textarea name="nachricht" rows="4" required placeholder="Ein, zwei S&auml;tze gen&uuml;gen."></textarea>
+      </label>
+
+      <p class="form-error" id="form-error" role="alert" hidden>Bitte f&uuml;ll die markierten Felder aus.</p>
+
+      <button type="submit" class="btn-primary btn-primary-lg">
+        <span class="btn-label">Nachricht senden</span>
+        <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+      </button>
+    </form>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-name">Barbara Sophia Sailer</p>
+      <p class="footer-meta">Gesangsunterricht &middot; Stimmbildung &middot; Frankfurt am Main</p>
+      <p class="footer-place">Unterrichtsraum &middot; Musterstra&szlig;e&nbsp;1, 60311 Frankfurt am Main</p>
+      <nav aria-label="Rechtliches">
+        <a href="./impressum.html">Impressum</a>
+        <a href="./datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+</main>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

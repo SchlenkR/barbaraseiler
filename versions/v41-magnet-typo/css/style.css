@@ -1,0 +1,729 @@
+/* v41-magnet-typo · Zug der Stimme
+   Cursor-Gravity Typography. Brutalistic black + signal violet.
+   Dependencies: Fraunces (display, italic) + Inter (body). */
+
+:root {
+  --ink: #0a0a0a;
+  --paper: #f4f1ea;
+  --accent: #5e4cff;
+  --accent-soft: #beb3ff;
+  --muted: #6a6a6a;
+  --line: #1a1a1a;
+  --cursor-size: 18px;
+  --cursor-size-hover: 64px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.55;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Hide native cursor only when custom cursor is active */
+body.cursor-active {
+  cursor: none;
+}
+body.cursor-active a,
+body.cursor-active button,
+body.cursor-active input,
+body.cursor-active textarea,
+body.cursor-active select,
+body.cursor-active [data-magnet] {
+  cursor: none;
+}
+
+/* ==========================================================================
+   Custom Cursor
+   ========================================================================== */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate3d(-50%, -50%, 0);
+  transition: width 220ms cubic-bezier(.2,.8,.2,1),
+              height 220ms cubic-bezier(.2,.8,.2,1),
+              background 220ms ease;
+  display: none;
+}
+body.cursor-active .cursor { display: block; }
+
+.cursor.is-hover {
+  width: var(--cursor-size-hover);
+  height: var(--cursor-size-hover);
+  background: var(--accent-soft);
+}
+
+.cursor__label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 160ms ease;
+  text-align: center;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+.cursor.is-hover .cursor__label { opacity: 1; }
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.shell { width: 100%; }
+
+section {
+  padding: 14vh 6vw;
+  position: relative;
+}
+
+/* ==========================================================================
+   Header / nav dot
+   ========================================================================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 6vw;
+  mix-blend-mode: difference;
+  color: #fff;
+  pointer-events: none;
+}
+.header > * { pointer-events: auto; }
+.header a { color: inherit; text-decoration: none; letter-spacing: 0.02em; }
+.header__brand { font-family: "Fraunces", serif; font-style: italic; font-size: 18px; }
+.header__cta {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: 1px solid #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   Hero — RESONANZ
+   ========================================================================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 14vh;
+  padding-bottom: 8vh;
+  gap: 3vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__kicker {
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.hero__headline {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(120px, 22vw, 280px);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+  max-width: 100%;
+  transform: translateZ(0);
+}
+.hero__headline .ltr {
+  display: inline-block;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: color 300ms ease;
+}
+.hero__headline .ltr:nth-child(odd) { color: var(--ink); }
+.hero__headline .ltr:nth-child(even) { color: var(--ink); }
+
+.hero__subline {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-align: center;
+  max-width: 540px;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.hero__scroll::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 28px;
+  background: var(--ink);
+  margin: 8px auto 0;
+  opacity: 0.5;
+  animation: scrollPulse 2.4s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.25; }
+  50% { transform: scaleY(1); opacity: 0.8; }
+}
+
+/* ==========================================================================
+   Section: Prose (Stimme ist Zug)
+   ========================================================================== */
+
+.prose {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18vh 6vw;
+}
+.prose__kicker {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+.prose__body {
+  font-family: "Fraunces", serif;
+  font-weight: 300;
+  font-size: clamp(28px, 3.2vw, 46px);
+  line-height: 1.24;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.prose__body .w {
+  display: inline-block;
+  will-change: transform, font-variation-settings;
+  transform: translate3d(0, 0, 0);
+  font-variation-settings: "wght" 400, "opsz" 72;
+}
+.prose__body .w.em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Divider SVG (bends)
+   ========================================================================== */
+
+.divider {
+  padding: 0 6vw;
+  margin: 8vh 0;
+}
+.divider svg {
+  width: 100%;
+  height: 60px;
+  overflow: visible;
+}
+.divider path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.2;
+  will-change: d;
+}
+
+/* ==========================================================================
+   Section: Testimonials (repulsion)
+   ========================================================================== */
+
+.testify {
+  padding: 16vh 6vw;
+}
+.testify__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6vh;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.testify__title {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(44px, 7vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.testify__note {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.testify__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2vh 2vw;
+  min-height: 70vh;
+}
+
+.quote {
+  grid-column: span 4;
+  background: transparent;
+  border: 1px solid var(--ink);
+  padding: 22px 24px;
+  font-family: "Fraunces", serif;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--ink);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  cursor: pointer;
+  position: relative;
+  background: var(--paper);
+  text-align: left;
+  font-style: italic;
+  transition: background 300ms ease, color 300ms ease, border-color 300ms ease;
+}
+.quote:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.quote__author {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 14px;
+}
+.quote:hover .quote__author { color: var(--accent-soft); }
+
+.quote:nth-child(1) { grid-column: 1 / span 4; }
+.quote:nth-child(2) { grid-column: 6 / span 4; }
+.quote:nth-child(3) { grid-column: 2 / span 3; }
+.quote:nth-child(4) { grid-column: 8 / span 5; }
+.quote:nth-child(5) { grid-column: 3 / span 5; }
+.quote:nth-child(6) { grid-column: 9 / span 3; }
+.quote:nth-child(7) { grid-column: 1 / span 4; }
+.quote:nth-child(8) { grid-column: 7 / span 4; }
+
+/* Dialog styles */
+.quote-dialog {
+  border: none;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0;
+  max-width: 640px;
+  width: 92vw;
+  border-radius: 0;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+}
+.quote-dialog::backdrop {
+  background: rgba(10,10,10,0.78);
+  backdrop-filter: blur(2px);
+}
+.quote-dialog__inner {
+  padding: 48px 48px 36px;
+  position: relative;
+}
+.quote-dialog__body {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: clamp(22px, 2.5vw, 32px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.quote-dialog__author {
+  margin-top: 24px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quote-dialog__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Section: Tarife (tilt cards)
+   ========================================================================== */
+
+.tarife {
+  padding: 16vh 6vw;
+}
+.tarife__title {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(44px, 7vw, 96px);
+  line-height: 1;
+  margin-bottom: 6vh;
+  letter-spacing: -0.03em;
+}
+.tarife__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vw;
+  perspective: 1200px;
+}
+.tarif {
+  border: 1px solid var(--ink);
+  padding: 36px 28px 32px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  will-change: transform;
+  transform-style: preserve-3d;
+  transition: background 300ms ease, color 300ms ease, border-color 300ms ease;
+  min-height: 340px;
+  position: relative;
+  overflow: hidden;
+}
+.tarif::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+                              rgba(94, 76, 255, 0.12) 0%,
+                              transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+.tarif:hover::before { opacity: 1; }
+.tarif__kicker {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.tarif__name {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(32px, 3vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.tarif__price {
+  font-family: "Fraunces", serif;
+  font-size: clamp(40px, 4vw, 60px);
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-top: 8px;
+}
+.tarif__price small {
+  font-size: 13px;
+  color: var(--muted);
+  display: block;
+  font-weight: 400;
+  margin-top: 4px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tarif__desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-top: auto;
+}
+.tarif__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--ink);
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-top: 14px;
+}
+.tarif__cta:hover { background: var(--ink); color: var(--paper); }
+
+/* ==========================================================================
+   Section: Kontakt (magnetic submit)
+   ========================================================================== */
+
+.contact {
+  padding: 18vh 6vw 10vh;
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.contact__title {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(60px, 12vw, 180px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin-bottom: 6vh;
+  color: var(--paper);
+}
+.contact__title em {
+  color: var(--accent-soft);
+  font-style: italic;
+}
+.contact__note {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  margin-bottom: 4vh;
+  opacity: 0.85;
+}
+
+.form {
+  max-width: 780px;
+  display: grid;
+  gap: 22px;
+}
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.form label {
+  display: grid;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+.form input,
+.form select,
+.form textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(244, 241, 234, 0.3);
+  color: var(--paper);
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  padding: 10px 0;
+  width: 100%;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 220ms ease;
+}
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border-bottom-color: var(--accent-soft);
+}
+.form select option { color: var(--ink); }
+.form textarea { resize: vertical; min-height: 120px; font-family: inherit; }
+
+.submit-wrap {
+  position: relative;
+  margin-top: 30px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.submit {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--accent);
+  color: var(--ink);
+  border: none;
+  padding: 20px 34px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 999px;
+  cursor: pointer;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: background 220ms ease, color 220ms ease;
+}
+.submit:hover { background: var(--accent-soft); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  padding: 40px 6vw;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.footer a {
+  color: var(--paper);
+  text-decoration: none;
+  opacity: 0.65;
+  transition: opacity 200ms ease;
+}
+.footer a:hover { opacity: 1; }
+.footer__brand {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* ==========================================================================
+   Mobile / Touch
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .testify__grid { grid-template-columns: 1fr; min-height: auto; }
+  .quote { grid-column: 1 / -1 !important; }
+  .tarife__grid { grid-template-columns: 1fr; }
+  .form__row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  section { padding: 10vh 5vw; }
+  .hero__headline { font-size: clamp(80px, 24vw, 140px); }
+  .prose__body { font-size: clamp(22px, 5vw, 30px); }
+  .contact__title { font-size: clamp(48px, 14vw, 88px); }
+  .header__cta { padding: 8px 12px; font-size: 10px; }
+}
+
+/* Disable magnet visually on touch (JS also disables) */
+@media (hover: none) {
+  body.cursor-active { cursor: auto; }
+  body.cursor-active .cursor { display: none; }
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  .hero__scroll::after { animation: none; }
+  .hero__headline .ltr { transform: none !important; }
+  .prose__body .w { transform: none !important; }
+  .quote { transform: none !important; }
+  .tarif { transform: none !important; }
+  .submit { transform: none !important; }
+}
+
+/* ==========================================================================
+   Legal pages
+   ========================================================================== */
+
+body.legal {
+  background: var(--paper);
+  color: var(--ink);
+}
+.page-legal {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 12vh 6vw 10vh;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.page-legal .back-link {
+  display: inline-block;
+  margin-bottom: 40px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+}
+.page-legal h1 {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(48px, 8vw, 96px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+.page-legal h2 {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  margin: 40px 0 12px;
+  color: var(--accent);
+}
+.page-legal p { margin-bottom: 12px; }
+.page-legal a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}

@@ -39,7 +39,11 @@
     "v36": { "color": "#9ab8a0" },
     "v37": { "color": "#e8c58b" },
     "v38": { "color": "#e36a9e" },
-    "v39": { "color": "#1a1a1a" }
+    "v39": { "color": "#1a1a1a" },
+    "v40": { "color": "#00d4a6" },
+    "v41": { "color": "#5e4cff" },
+    "v43": { "color": "#8b5cf6" },
+    "v44": { "color": "#ff3d6b" }
   },
   "versions": {
     "v1":         { "num": 1, "title": "Initial",           "desc": "Erster Static-Rebuild der Bestandsseite.",                                                                    "style": "Editorial Light",      "phaseTag": "Root",    "by": "GPT-5.4" },
@@ -140,6 +144,10 @@
     "v36-atemraum":{"num": 80, "title": "Atemraum",          "desc": "60-Sekunden-Atemübung als Content-Gate. Wer mitatmet, liest weiter. Wer nicht will, scrollt direkt weiter. Ruhigste Form der Qualifizierung.",      "style": "Breath-Gate",          "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
     "v37-jetzt-in-niederrad":{"num": 81, "title": "Jetzt in Niederrad", "desc": "Hyperlokaler Content-Layer: Live-Uhrzeit, S-Bahn-Laufweg, ‚heute noch 2 Slots frei‘. Local-SEO trifft Dringlichkeits-Ästhetik.",      "style": "Hyperlocal",           "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
     "v38-portraet-marquee":{"num": 82, "title": "Porträt-Marquee",   "desc": "Endlos scrollender Testimonial-Marquee mit Porträts und einzeiligen Zitaten. Hover pausiert, Klick öffnet Vollzitat + CTA.",                 "style": "Infinite Marquee",    "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
-    "v39-zwei-farben":{"num": 83, "title": "Zwei Farben",        "desc": "Brutalistisch-minimal: nur Schwarz und ein Signal-Pink. Typografie macht alles. Mutigster Konvertierungsdruck durch radikale Reduktion.",                 "style": "Brutalist",            "phaseTag": "Phase 5", "by": "Claude · wow+convert" }
+    "v39-zwei-farben":{"num": 83, "title": "Zwei Farben",        "desc": "Brutalistisch-minimal: nur Schwarz und ein Signal-Pink. Typografie macht alles. Mutigster Konvertierungsdruck durch radikale Reduktion.",                 "style": "Brutalist",            "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v40-stimme-zeigen":{"num": 84, "title": "Stimme zeigen",     "desc": "Mikrofon-Opt-in → Autokorrelations-Pitch-Detection → generative Canvas-Visualisierung als Share-Card. Aktiviert die Stimme bevor sie bucht.",             "style": "Pitch-Responsive",     "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v41-magnet-typo":{"num": 85, "title": "Zug der Stimme",      "desc": "Cursor-Gravity-Typografie (Mastromarino-Physik). Hero-Wort dehnt sich zur Maus, Testimonials schweben in Magnetfeldern. Stimme als physische Resonanz.", "style": "Magnetic Cursor",      "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v43-stimm-orakel":{"num": 86, "title": "Stimm-Orakel",       "desc": "Tarot-Flow: 22 Karten (Atem, Blockade, Bühne, Kind, Brücke), Fan-Physik + Flip, 3 Karten → personalisiertes Probestunden-Angebot. Ritualisiert-haptisch.", "style": "Tarot Draw",          "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v44-ton-treffen":{"num": 87, "title": "Triff den Ton",       "desc": "60s Tone-Matching-Game: 5 Zieltöne, Canvas-Pitch-Line, Streak-System, Share-Score führt in Buchungsslot. Aktives Spiel als Conversion-Trigger.",          "style": "Pitch Game",           "phaseTag": "Phase 5", "by": "Claude · wow+convert" }
   }
 }

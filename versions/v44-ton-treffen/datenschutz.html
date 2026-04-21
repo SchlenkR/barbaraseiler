@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutz | Barbara Sophia Sailer &middot; Triff den Ton</title>
+  <meta name="description" content="Datenschutzerkl&auml;rung f&uuml;r das Mikrofon-Mini-Game &bdquo;Triff den Ton&ldquo; von Barbara Sophia Sailer.">
+  <meta name="theme-color" content="#ff3d6b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="legal-body">
+
+  <header class="simple-nav">
+    <div class="simple-nav-inner">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name">Barbara Sailer</span>
+          <span class="brand-sub">Stimme &middot; Frankfurt</span>
+        </span>
+      </a>
+      <a class="btn btn-primary" href="./index.html#probestunde">Probestunde</a>
+    </div>
+  </header>
+
+  <main class="legal">
+    <a class="legal-back" href="./index.html">&larr; Zur&uuml;ck zur Startseite</a>
+    <h1>Datenschutzerkl&auml;rung</h1>
+
+    <h2>Verantwortliche</h2>
+    <p>Barbara Sophia Sailer, Musterstra&szlig;e 1, 60311 Frankfurt am Main. E-Mail: barbara@example.de</p>
+
+    <h2>Allgemeines</h2>
+    <p>Diese Seite ist bewusst schlank gehalten. Es werden keine Tracker, keine Analytics-Dienste und keine Cookies zur Reichweitenmessung eingesetzt. Schriftarten werden von Google Fonts geladen; dabei wird deine IP-Adresse an Google &uuml;bertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer ansprechenden Darstellung).</p>
+
+    <h2>Das Mini-Game &bdquo;Triff den Ton&ldquo;</h2>
+    <p>
+      Auf der Startseite dieser Website kannst du an einem optionalen, freiwilligen 60-Sekunden-Mini-Game teilnehmen. Das Spiel zeigt dir einen Zielton, und du versuchst, diesen Ton mit deiner Stimme zu treffen. Dazu muss das Spiel &mdash; wenn du es w&uuml;nschst &mdash; kurz auf dein Mikrofon zugreifen d&uuml;rfen.
+    </p>
+
+    <h2>Opt-in f&uuml;r das Mikrofon</h2>
+    <p>
+      Der Mikrofon-Zugriff erfolgt <strong>ausschlie&szlig;lich dann</strong>, wenn du &mdash; und nur dann &mdash; auf den Button <em>&bdquo;Los geht&rsquo;s&ldquo;</em> klickst. Erst nach dieser ausdr&uuml;cklichen Handlung fragt dein Browser dich zus&auml;tzlich um Erlaubnis f&uuml;r das Mikrofon. Ohne diese doppelte Einwilligung wird das Mikrofon nicht aktiviert.
+    </p>
+    <p>
+      Du kannst das Spiel alternativ im <em>Tastatur-Modus</em> ausprobieren &mdash; dann wird kein Mikrofon verwendet, sondern die Tonh&ouml;he &uuml;ber die Pfeiltasten simuliert.
+    </p>
+
+    <h2>Was technisch passiert</h2>
+    <p>
+      Der Browser-API-Aufruf <code>navigator.mediaDevices.getUserMedia</code> stellt einen lokalen Audio-Stream her. Dieser Stream wird &uuml;ber die Web-Audio-API an einen <code>AnalyserNode</code> angeschlossen. W&auml;hrend des Spiels liest der Browser in etwa zehnmal pro Sekunde ein Fenster von 2048 Audio-Samples aus und sch&auml;tzt &mdash; lokal, mit einer Autokorrelations-Funktion &mdash; die Grundfrequenz (Pitch). Aus dieser Sch&auml;tzung werden Punkte berechnet.
+    </p>
+    <p>
+      <strong>Weder der Audio-Stream noch die berechneten Zwischenwerte noch dein Score verlassen dein Ger&auml;t.</strong> Das Spiel sendet nichts an einen Server, es zeichnet nichts auf (keine <code>MediaRecorder</code>-API, kein <code>fetch</code>, kein <code>WebSocket</code>), es speichert nichts dauerhaft im Browser (kein <code>localStorage</code>, kein <code>IndexedDB</code>). Wenn du die Seite schlie&szlig;t oder das Spiel abbrichst, sind alle Daten sofort weg.
+    </p>
+
+    <h2>Ende des Mikrofon-Zugriffs</h2>
+    <p>
+      Der Mikrofon-Stream wird in folgenden F&auml;llen automatisch beendet:
+    </p>
+    <ul>
+      <li>Nach 60 Sekunden Spielzeit (Ende des Spiels)</li>
+      <li>Klick auf den Button <em>Abbrechen</em></li>
+      <li>Dr&uuml;cken der Escape-Taste</li>
+      <li>Wechsel des Tabs oder Verlassen der Seite</li>
+      <li>Schlie&szlig;en des Browser-Fensters</li>
+    </ul>
+    <p>
+      Intern werden dabei alle aktiven <code>MediaStreamTrack</code>-Objekte gestoppt, der <code>AudioContext</code> geschlossen und der <code>MediaStreamSource</code> getrennt.
+    </p>
+
+    <h2>Score-&Uuml;bertragung nur auf deinen Wunsch</h2>
+    <p>
+      Am Ende des Spiels siehst du deinen Score und eine kleine Auswertung. Dein Score wird ausschlie&szlig;lich dann &uuml;bertragen, wenn du das Kontaktformular abschickst &mdash; in einem zus&auml;tzlichen, deutlich gekennzeichneten Feld. Wenn du das Formular nicht abschickst, wird auch der Score nicht &uuml;bertragen.
+    </p>
+    <p>
+      Die <em>Score-als-Bild-speichern</em>-Funktion erzeugt ein Bild lokal in deinem Browser (Canvas-Export als PNG) und l&ouml;st einen Download aus. Es findet keine Server-Interaktion statt.
+    </p>
+
+    <h2>Rechtsgrundlage</h2>
+    <p>
+      F&uuml;r die Mikrofon-Nutzung: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Die Einwilligung ist freiwillig und kann jederzeit durch Klick auf <em>Abbrechen</em>, Dr&uuml;cken der Escape-Taste, das Neuladen der Seite oder durch Entzug der Browser-Berechtigung widerrufen werden. Ohne Einwilligung ist die Seite voll nutzbar; statt des Mikrofon-Modus kannst du den Tastatur-Modus verwenden oder das Spiel &uuml;berspringen und direkt zu Bio, Tarifen und Kontakt scrollen.
+    </p>
+
+    <h2>Kontaktformular</h2>
+    <p>
+      Das Kontaktformular auf der Startseite validiert Eingaben lokal in deinem Browser. Beim Absenden werden Name, E-Mail und Nachricht &uuml;ber den Formular-Dienstleister <a href="https://formsubmit.co/" rel="noopener" target="_blank">FormSubmit</a> an die E-Mail-Adresse von Barbara Sailer weitergeleitet (Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO, Anbahnung eines Vertragsverh&auml;ltnisses). Dabei wird auch dein zuletzt erreichter Score &uuml;bertragen, wenn du das Spiel gespielt hast. Die Daten werden nur so lange gespeichert, wie es zur Bearbeitung deiner Anfrage erforderlich ist.
+    </p>
+
+    <h2>Server-Logfiles</h2>
+    <p>Der Hoster dieser Website verarbeitet zur technischen Auslieferung Zugriffsdaten (IP-Adresse, Zeitpunkt, abgerufene Ressource, User-Agent). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Diese Daten werden nicht mit deiner Person zusammengef&uuml;hrt.</p>
+
+    <h2>Deine Rechte</h2>
+    <p>Du hast das Recht auf Auskunft, Berichtigung, L&ouml;schung, Einschr&auml;nkung der Verarbeitung, Daten&uuml;bertragbarkeit, Widerspruch gegen die Verarbeitung sowie auf Beschwerde bei einer Aufsichtsbeh&ouml;rde. Kontakt siehe oben.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">Barbara Sophia Sailer</p>
+        <p>Musterstra&szlig;e 1 &middot; 60311 Frankfurt am Main</p>
+      </div>
+      <div>
+        <p class="footer-label">Erreichbar</p>
+        <p>
+          <a href="mailto:barbara@example.de">barbara@example.de</a><br>
+          <a href="tel:+495551234567">+49 (0)555 &ndash; 123 456 7</a>
+        </p>
+      </div>
+      <div>
+        <p class="footer-label">Rechtliches</p>
+        <p>
+          <a href="./impressum.html">Impressum</a><br>
+          <a href="./datenschutz.html">Datenschutz</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

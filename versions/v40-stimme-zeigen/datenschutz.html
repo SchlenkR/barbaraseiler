@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutz | Barbara Sophia Sailer</title>
+  <meta name="description" content="Datenschutzerklärung der Stimme-zeigen-Seite von Barbara Sophia Sailer — mit ausführlichen Hinweisen zur optionalen, rein lokalen Mikrofon-Nutzung.">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="legal-body">
+
+<header class="simple-nav">
+  <div class="simple-nav-inner">
+    <a class="brand" href="./index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-name">Barbara Sailer</span>
+        <span class="brand-sub">Stimme &middot; Frankfurt</span>
+      </span>
+    </a>
+    <a class="btn btn-primary" href="./index.html#kontakt">Probestunde</a>
+  </div>
+</header>
+
+<main class="legal">
+  <a class="legal-back" href="./index.html">&larr; Zurück zur Startseite</a>
+  <h1>Datenschutzerklärung</h1>
+
+  <h2>Verantwortliche</h2>
+  <p>Barbara Sophia Sailer, Musterstraße 1, 60528 Frankfurt am Main. E-Mail: barbarasailer@web.de</p>
+
+  <h2>Allgemeines</h2>
+  <p>Diese Seite ist bewusst schlank gehalten. Es werden keine Tracker, keine Analytics-Dienste und keine Cookies zur Reichweitenmessung eingesetzt. Schriftarten werden von Google Fonts geladen; dabei wird deine IP-Adresse an Google übertragen (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse an einer ansprechenden Darstellung).</p>
+
+  <h2>Optionale, rein lokale Mikrofonnutzung auf der Startseite</h2>
+  <p>
+    Die Startseite bietet einen freiwilligen Modus <em>„Stimme zeigen"</em>. Wenn du &mdash; und nur dann &mdash; auf den Button <em>„Mikrofon einschalten"</em> und anschließend auf <em>„Ja, Mikrofon erlauben"</em> klickst, fragt dich dein Browser über das Standard-Browser-Dialogfenster um Erlaubnis. Erst nach dieser ausdrücklichen Einwilligung wird der lokale Mikrofon-Zugriff über die Browser-Schnittstelle <code>navigator.mediaDevices.getUserMedia</code> aktiviert.
+  </p>
+
+  <h3>Was passiert technisch?</h3>
+  <p>
+    Das Mikrofon-Signal wird ausschließlich in deinem Browser verarbeitet. Konkret:
+  </p>
+  <ul>
+    <li>Der Audio-Stream wird an einen <code>AudioContext</code> übergeben (Web Audio API).</li>
+    <li>Ein <code>AnalyserNode</code> liest den Audio-Stream im Zeitbereich aus (<code>getFloatTimeDomainData</code>, FFT-Größe 2048).</li>
+    <li>Aus diesen Zeitbereichsdaten berechnet der Browser per Autokorrelation die aktuelle Grundfrequenz (Tonhöhe).</li>
+    <li>Die Tonhöhe und die Lautstärke pro Frame werden in einem JavaScript-Array im RAM deines Browsers gesammelt, um nach fünf Sekunden eine Kurve und eine Mini-Analyse anzuzeigen.</li>
+    <li>Alle Audio-Knoten, der Media-Stream und das Sample-Array werden spätestens beim Verlassen der Seite, beim Klick auf <em>„Abbrechen"</em>, beim Neustart oder beim Schließen des Tabs automatisch freigegeben und verworfen.</li>
+  </ul>
+
+  <p>
+    <strong>Der Ton-Stream bleibt ausschließlich auf deinem Gerät.</strong> Es wird
+  </p>
+  <ul>
+    <li>nichts an einen Server übertragen,</li>
+    <li>nichts aufgezeichnet,</li>
+    <li>nichts in <code>localStorage</code>, <code>sessionStorage</code>, <code>IndexedDB</code> oder Cookies gespeichert,</li>
+    <li>nichts an Dritte weitergegeben,</li>
+    <li>nichts zu Profilbildungs- oder Werbezwecken ausgewertet.</li>
+  </ul>
+
+  <p>
+    Die Seite rendert aus den berechneten Tonhöhen- und Lautstärkewerten eine generative Kurve in einem <code>&lt;canvas&gt;</code>-Element. Diese Kurve verbleibt im Browser, bis du die Seite neu lädst oder schließt. Du kannst die Kurve optional über den Button <em>„Als Bild speichern"</em> lokal als PNG-Datei auf dein Gerät herunterladen &mdash; dieser Vorgang nutzt ausschließlich die Browser-Funktion <code>canvas.toDataURL()</code>, kein Server ist beteiligt.
+  </p>
+
+  <h3>Rechtsgrundlage und Widerruf</h3>
+  <p>
+    Rechtsgrundlage für den Mikrofon-Zugriff ist <strong>Art. 6 Abs. 1 lit. a DSGVO</strong> (Einwilligung). Die Einwilligung ist freiwillig. Ohne Einwilligung ist die Seite voll nutzbar; anstelle der Live-Kurve wird eine rein grafische Beispielkurve angezeigt.
+  </p>
+  <p>
+    Du kannst deine Einwilligung jederzeit widerrufen, indem du
+  </p>
+  <ul>
+    <li>auf <em>„Abbrechen"</em> klickst,</li>
+    <li>die Seite neu lädst oder schließt,</li>
+    <li>den Mikrofon-Zugriff für diese Seite in den Einstellungen deines Browsers entziehst.</li>
+  </ul>
+  <p>
+    Der Widerruf beendet jede weitere Verarbeitung sofort und wirkt sich auch auf bereits begonnene Aufnahme-Vorgänge aus: der Media-Stream wird in derselben Sekunde geschlossen und die gesammelten In-Memory-Daten verworfen.
+  </p>
+
+  <h3>Kinder und besonders schützenswerte Gruppen</h3>
+  <p>
+    Die Stimme ist ein sensibles Medium. Wenn du minderjährig bist oder aus anderen Gründen unsicher bist, ob du das Mikrofon einschalten magst, klick einfach auf <em>„Ich lese erstmal weiter"</em>. Der übrige Inhalt der Seite funktioniert ohne Mikrofon vollständig.
+  </p>
+
+  <h2>Kontaktformular</h2>
+  <p>
+    Das Kontaktformular auf der Startseite übermittelt deine Angaben (Name, E-Mail, Nachricht) nach Absenden an den Dienstleister <a href="https://formsubmit.co" target="_blank" rel="noopener">FormSubmit</a>, der sie per E-Mail an Barbara Sophia Sailer weiterleitet. Es findet keine dauerhafte Speicherung bei FormSubmit statt, die über den Versandvorgang hinausgeht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertragsverhältnisses).
+  </p>
+
+  <h2>Server-Logfiles</h2>
+  <p>
+    Der Hoster dieser Website verarbeitet zur technischen Auslieferung Zugriffsdaten (IP-Adresse, Zeitpunkt, abgerufene Ressource, User-Agent). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Diese Daten werden nicht mit deiner Person zusammengeführt.
+  </p>
+
+  <h2>Deine Rechte</h2>
+  <p>
+    Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit, Widerspruch gegen die Verarbeitung sowie auf Beschwerde bei einer Aufsichtsbehörde. Kontakt siehe oben.
+  </p>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">Barbara Sophia Sailer</p>
+      <p>Musterstraße 1 &middot; 60528 Frankfurt am Main</p>
+    </div>
+    <div>
+      <p class="footer-label">Rechtliches</p>
+      <p>
+        <a href="./impressum.html">Impressum</a><br>
+        <a href="./datenschutz.html">Datenschutz</a>
+      </p>
+    </div>
+    <div>
+      <p class="footer-label">Stimme zeigen</p>
+      <p>Variante 40 &middot; pitch-responsive &middot; alles client-side.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

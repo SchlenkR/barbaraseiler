@@ -53,6 +53,10 @@
       --v37: #e8c58b;
       --v38: #e36a9e;
       --v39: #1a1a1a;
+      --v40: #00d4a6;
+      --v41: #5e4cff;
+      --v43: #8b5cf6;
+      --v44: #ff3d6b;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -80,13 +84,7 @@
     header { margin-bottom: 40px; }
     header .brand { color: var(--fg); display: flex; gap: 14px; align-items: baseline; }
     header .brand span { color: var(--muted); }
-    header .clock::before {
-      content: "●";
-      color: var(--v1);
-      margin-right: 8px;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    header .deploy { color: var(--muted); }
 
     .title-row {
       max-width: 1400px;
@@ -354,13 +352,48 @@
       min-height: 120px;
     }
 
-    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
-    footer .hint code {
-      color: var(--fg);
-      background: #111113;
-      padding: 2px 6px;
-      border-radius: 2px;
+    .view-toggle {
+      max-width: 1400px;
+      margin: 0 auto 24px;
+      padding: 0 4px;
+      display: flex;
+      gap: 4px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
+    .view-toggle button {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 8px 16px;
+      border-radius: 2px;
+      cursor: pointer;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .view-toggle button:hover { color: var(--fg); border-color: var(--muted); }
+    .view-toggle button.active {
+      background: var(--fg);
+      color: #0a0a0a;
+      border-color: var(--fg);
+    }
+
+    .flat-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    body.view-flat .lanes { display: none; }
+    body.view-flat .flat-grid { display: grid; }
+    .flat-card { min-height: 140px; }
+
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
 
     @media (max-width: 1000px) {
       .lane { grid-template-columns: 50px 1fr; padding: 18px; }
@@ -381,15 +414,83 @@
       <strong>BARBARA&nbsp;SAILER</strong>
       <span>/ VERSIONS INDEX</span>
     </div>
-    <div class="clock" id="clock">LIVE</div>
+    <div class="deploy">Letzter Deploy · 21.04.2026 · 21:11</div>
   </header>
 
   <div class="title-row">
     <h1>Versionen <em>&amp; Branches</em>.</h1>
-    <p>Fünfzehn self-contained Hauptstände. Design-Varianten daneben, mit Parent-Pfeil. Phase 2 (v6–v10) fokussiert Schüler-Ansprache; Phase 3 (v11–v15) senkt Einstiegshürden vor der Probestunde; Phase 4 (v16–v25) ist der Exploration-Layer — State-of-the-Art Web-Tech als Attraction; Phase 5 (v26–v35) verheiratet Wow mit Conversion — jeder Entwurf fordert Interaktion, die in Booking mündet. Jeder Ordner ist eigenständig — kein shared code.</p>
+  </div>
+
+  <div class="view-toggle" role="tablist" aria-label="Ansicht wechseln">
+    <button type="button" data-view="lanes" class="active" role="tab" aria-selected="true">Lanes</button>
+    <button type="button" data-view="flat" role="tab" aria-selected="false">Flach · #87 → #01</button>
   </div>
 
   <div class="lanes">
+
+    <div class="lane" style="--accent: var(--v44);">
+      <div class="lane-num">44</div>
+      <div class="lane-body">
+        <a class="card" href="./v44-ton-treffen/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#87 · v44-ton-treffen · Phase 5</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Triff den Ton</h3>
+          <p class="card-desc">60s Tone-Matching-Game: 5 Zieltöne, Canvas-Pitch-Line, Streak-System, Share-Score führt in Buchungsslot. Aktives Spiel als Conversion-Trigger.</p>
+          <span class="card-meta">Parent: — · Stil: Pitch Game · 2026-04-21</span>
+          <span class="card-by">Claude · wow+convert</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v43);">
+      <div class="lane-num">43</div>
+      <div class="lane-body">
+        <a class="card" href="./v43-stimm-orakel/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#86 · v43-stimm-orakel · Phase 5</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Stimm-Orakel</h3>
+          <p class="card-desc">Tarot-Flow: 22 Karten (Atem, Blockade, Bühne, Kind, Brücke), Fan-Physik + Flip, 3 Karten → personalisiertes Probestunden-Angebot. Ritualisiert-haptisch.</p>
+          <span class="card-meta">Parent: — · Stil: Tarot Draw · 2026-04-21</span>
+          <span class="card-by">Claude · wow+convert</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v41);">
+      <div class="lane-num">41</div>
+      <div class="lane-body">
+        <a class="card" href="./v41-magnet-typo/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#85 · v41-magnet-typo · Phase 5</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Zug der Stimme</h3>
+          <p class="card-desc">Cursor-Gravity-Typografie (Mastromarino-Physik). Hero-Wort dehnt sich zur Maus, Testimonials schweben in Magnetfeldern. Stimme als physische Resonanz.</p>
+          <span class="card-meta">Parent: — · Stil: Magnetic Cursor · 2026-04-21</span>
+          <span class="card-by">Claude · wow+convert</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v40);">
+      <div class="lane-num">40</div>
+      <div class="lane-body">
+        <a class="card" href="./v40-stimme-zeigen/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#84 · v40-stimme-zeigen · Phase 5</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Stimme zeigen</h3>
+          <p class="card-desc">Mikrofon-Opt-in → Autokorrelations-Pitch-Detection → generative Canvas-Visualisierung als Share-Card. Aktiviert die Stimme bevor sie bucht.</p>
+          <span class="card-meta">Parent: — · Stil: Pitch-Responsive · 2026-04-21</span>
+          <span class="card-by">Claude · wow+convert</span>
+        </a>
+      </div>
+    </div>
 
     <div class="lane" style="--accent: var(--v39);">
       <div class="lane-num">39</div>
@@ -1323,20 +1424,905 @@
 
   </div>
 
+  <div class="flat-grid">
+      <a class="card flat-card" style="--accent: var(--v44);" href="./v44-ton-treffen/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#87 · v44-ton-treffen · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Triff den Ton</h3>
+        <p class="card-desc">60s Tone-Matching-Game: 5 Zieltöne, Canvas-Pitch-Line, Streak-System, Share-Score führt in Buchungsslot. Aktives Spiel als Conversion-Trigger.</p>
+        <span class="card-meta">Root · Pitch Game · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v43);" href="./v43-stimm-orakel/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#86 · v43-stimm-orakel · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Stimm-Orakel</h3>
+        <p class="card-desc">Tarot-Flow: 22 Karten (Atem, Blockade, Bühne, Kind, Brücke), Fan-Physik + Flip, 3 Karten → personalisiertes Probestunden-Angebot. Ritualisiert-haptisch.</p>
+        <span class="card-meta">Root · Tarot Draw · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v41);" href="./v41-magnet-typo/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#85 · v41-magnet-typo · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Zug der Stimme</h3>
+        <p class="card-desc">Cursor-Gravity-Typografie (Mastromarino-Physik). Hero-Wort dehnt sich zur Maus, Testimonials schweben in Magnetfeldern. Stimme als physische Resonanz.</p>
+        <span class="card-meta">Root · Magnetic Cursor · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v40);" href="./v40-stimme-zeigen/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#84 · v40-stimme-zeigen · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Stimme zeigen</h3>
+        <p class="card-desc">Mikrofon-Opt-in → Autokorrelations-Pitch-Detection → generative Canvas-Visualisierung als Share-Card. Aktiviert die Stimme bevor sie bucht.</p>
+        <span class="card-meta">Root · Pitch-Responsive · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v39);" href="./v39-zwei-farben/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#83 · v39-zwei-farben · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Zwei Farben</h3>
+        <p class="card-desc">Brutalistisch-minimal: nur Schwarz und ein Signal-Pink. Typografie macht alles. Mutigster Konvertierungsdruck durch radikale Reduktion.</p>
+        <span class="card-meta">Root · Brutalist · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v38);" href="./v38-portraet-marquee/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#82 · v38-portraet-marquee · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Porträt-Marquee</h3>
+        <p class="card-desc">Endlos scrollender Testimonial-Marquee mit Porträts und einzeiligen Zitaten. Hover pausiert, Klick öffnet Vollzitat + CTA.</p>
+        <span class="card-meta">Root · Infinite Marquee · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v37);" href="./v37-jetzt-in-niederrad/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#81 · v37-jetzt-in-niederrad · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Jetzt in Niederrad</h3>
+        <p class="card-desc">Hyperlokaler Content-Layer: Live-Uhrzeit, S-Bahn-Laufweg, ‚heute noch 2 Slots frei‘. Local-SEO trifft Dringlichkeits-Ästhetik.</p>
+        <span class="card-meta">Root · Hyperlocal · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v36);" href="./v36-atemraum/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#80 · v36-atemraum · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Atemraum</h3>
+        <p class="card-desc">60-Sekunden-Atemübung als Content-Gate. Wer mitatmet, liest weiter. Wer nicht will, scrollt direkt weiter. Ruhigste Form der Qualifizierung.</p>
+        <span class="card-meta">Root · Breath-Gate · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v35);" href="./v35-zine/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#79 · v35-zine · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Zine</h3>
+        <p class="card-desc">Contrarian-Reset: Reclam-Style Zero-JS-Editorial. Marginalien, Baseline-Grid, CSS `animation-timeline: view()`. Substanz statt Effekte.</p>
+        <span class="card-meta">Root · Editorial Zero-JS · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v34);" href="./v34-brief-an-dich/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#78 · v34-brief-an-dich · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Brief an dich</h3>
+        <p class="card-desc">Formular → personalisierter Brief von Barbara, typewriter-animiert, mit deinem Namen. Print-to-PDF.</p>
+        <span class="card-meta">Root · Personalized Letter · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v33);" href="./v33-kalender-ghost/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#77 · v33-kalender-ghost · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Kalender</h3>
+        <p class="card-desc">Rolling Social Proof: anonymisierte Schüler-Meilensteine im Wochenraster. Zeigt Leben, ohne Testimonial-Kitsch.</p>
+        <span class="card-meta">Root · Rolling Proof · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v32);" href="./v32-rooms/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#76 · v32-rooms · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Räume</h3>
+        <p class="card-desc">Isometrisches SVG-Studio. Klickzonen auf Klavier/Stuhl/Spiegel öffnen Content — mit View Transitions API.</p>
+        <span class="card-meta">Root · Isometric + VT-API · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v29);" href="./v29-ambient/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#75 · v29-ambient · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Ambient</h3>
+        <p class="card-desc">Hall-Reverb-Audio-Bed nach Consent, Variable-Font atmet mit der Amplitude. Stille am Ende = CTA-Moment.</p>
+        <span class="card-meta">Root · Web Audio + VF · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v28);" href="./v28-mirror/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#74 · v28-mirror · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Spiegel</h3>
+        <p class="card-desc">Explizites Kamera-Opt-in, client-side Grayscale-Filter + Pitch-Bars. Barbara ist der Spiegel — nichts geht raus.</p>
+        <span class="card-meta">Root · Camera + Canvas · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v27);" href="./v27-timeline-physics/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#73 · v27-timeline-physics · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Jahresleiste</h3>
+        <p class="card-desc">Zwölf Monats-Token fallen in eine Matter.js-Zeitleiste und settlen zu deinem ersten Jahr mit Barbara — mit Meilenstein-Noten.</p>
+        <span class="card-meta">Root · Physics Timeline · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v31);" href="./v31-oper-chooser/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#72 · v31-oper-chooser · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Oper</h3>
+        <p class="card-desc">Buzzfeed-Style-Quiz: 5 Fragen, 7 Opern-Charaktere. Generierte Share-Karte per Canvas.</p>
+        <span class="card-meta">Root · Quiz + Canvas Share · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v30);" href="./v30-feedback/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#71 · v30-feedback · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Feedback</h3>
+        <p class="card-desc">Zwei Slider (Alltag/Bühne) steuern ein Canvas-Partikelfeld, das zur Pathway-Empfehlung morpht.</p>
+        <span class="card-meta">Root · Slider + Particles · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v26);" href="./v26-gespraech/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#70 · v26-gespraech · Phase 5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Gespräch</h3>
+        <p class="card-desc">Scripted-LLM-Advisor: 5 Fragen, Intent-Matching, Typewriter, Popover-Klärungen. Endet mit personalisiertem Probestunden-Link.</p>
+        <span class="card-meta">Root · Conversational UI · 2026-04-21</span>
+        <span class="card-by">Claude · wow+convert</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v25);" href="./v25-opera-scenes/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#69 · v25-opera-scenes · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Opera Scenes</h3>
+        <p class="card-desc">Vier Akte — Empfang, Studio, Bühne, Verabredung. Chromatic-Aberration-Vorhang zwischen den Szenen.</p>
+        <span class="card-meta">Root · Shared-Canvas Transitions · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v24);" href="./v24-tagesmotiv/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#68 · v24-tagesmotiv · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Tagesmotiv</h3>
+        <p class="card-desc">Pro Stunde ein neues, deterministisches Notenbild. Seed aus Zeitzone × Stunde × Wochentag. Unikat für eine Stunde.</p>
+        <span class="card-meta">Root · Generative Canvas · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v23);" href="./v23-patina/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#67 · v23-patina · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Patina</h3>
+        <p class="card-desc">Je länger du bleibst, desto wärmer das Bild. Nach 5 Minuten ist das Gold tief. Zeit = Wert, als Shader.</p>
+        <span class="card-meta">Root · Idle Shader · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v22);" href="./v22-split-recital/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#66 · v22-split-recital · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Split-Recital</h3>
+        <p class="card-desc">Oben Barbara singt, unten Barbara unterrichtet. Zwei CSS-Filme scrollen desynchron, treffen sich mittendrin.</p>
+        <span class="card-meta">Root · Split-Screen Scroll · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v21);" href="./v21-stimmfach/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#65 · v21-stimmfach · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Stimmfach-Pile</h3>
+        <p class="card-desc">Neun weiche Fach-Pillen in einer Matter.js-Sandbox. Wirf sie herum, pinne eine an — geht direkt zur Probestunde.</p>
+        <span class="card-meta">Root · Matter.js Physics · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v20);" href="./v20-spectrogram/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#64 · v20-spectrogram · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Spektrogramm</h3>
+        <p class="card-desc">Live-Mikrofon, FFT, Aurora-Ribbons. Du singst ‚Ah' — siehst deine Obertöne. Pitch-Detection on-device.</p>
+        <span class="card-meta">Root · Web Audio + Canvas · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v19);" href="./v19-methode-horizontal/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#63 · v19-methode-horizontal · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Methode Horizontal</h3>
+        <p class="card-desc">Vertikale Editorial-Seite, nur die ‚Methode' wird horizontal gepinnt — fünf animierte SVG-Spreads.</p>
+        <span class="card-meta">Root · Horizontal Scrollytelling · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v18);" href="./v18-chapbook/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#62 · v18-chapbook · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Stimmbiografie</h3>
+        <p class="card-desc">Zehn-Seiten 3D-Chapbook, Scroll = Page-Turn mit Papier-Physik. Privates Lesen statt Scroll-Feed.</p>
+        <span class="card-meta">Root · 3D Page-Flip · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v17);" href="./v17-breath-shader/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#61 · v17-breath-shader · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Atem-Shader</h3>
+        <p class="card-desc">Ganzseitiger Fragment-Shader, 12 BPM Atem, Szene morpht Morgen → Mittag → Abend beim Scroll.</p>
+        <span class="card-meta">Root · Three.js / GLSL · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v16);" href="./v16-libretto/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#60 · v16-libretto · Phase 4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Libretto</h3>
+        <p class="card-desc">Giant-Type als Bühne. Sechs Akte, Fraunces auf allen Achsen, ein Porträt ausgeschnitten im ‚Ö'. Null JavaScript.</p>
+        <span class="card-meta">Root · Typography IS Design · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v5);" href="./v5-resonance/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#59 · v5-resonance</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Resonance Chamber</h3>
+        
+        <span class="card-meta">← v5-three · Shader-Szene + Audio · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v14);" href="./v14-portal/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#58 · v14-portal</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Portal</h3>
+        
+        <span class="card-meta">← v14 · Horizontal Chapter-Book + Sound · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v10);" href="./v10-dialog-wave/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#57 · v10-dialog-wave</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Breathing Memos</h3>
+        
+        <span class="card-meta">← v10-dialog · Audio + Breath-Typo · 2026-04-21</span>
+        <span class="card-by">Claude · crazy</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v15);" href="./v15-plain/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#56 · v15-plain</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Klartext</h3>
+        
+        <span class="card-meta">← v15 · Dekor-los · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v15);" href="./v15-grid/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#55 · v15-grid</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Info-Raster</h3>
+        
+        <span class="card-meta">← v15 · Unnarrativ · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v15);" href="./v15/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#54 · v15 · Phase 3</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Schnell-Entscheidung</h3>
+        <p class="card-desc">Sechs Ja/Nein-Karten — für Menschen, die nicht noch mehr lesen wollen. Entscheiden oder weitergehen.</p>
+        <span class="card-meta">Root · Decision Grid · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v14);" href="./v14-room/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#53 · v14-room</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Der Raum</h3>
+        
+        <span class="card-meta">← v14 · Geschützter Raum · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v14);" href="./v14-rhythm/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#52 · v14-rhythm</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Kein Event</h3>
+        
+        <span class="card-meta">← v14 · Takt statt Event · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v14);" href="./v14/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#51 · v14 · Phase 3</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Erste Stunde</h3>
+        <p class="card-desc">Tür, Raum, Einsingen, Danach. Eine ehrliche sensorische Vor-Tour für alle, die vor der ersten Stunde nervös sind.</p>
+        <span class="card-meta">Root · Sensory Walkthrough · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v13);" href="./v13-weekbook/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#50 · v13-weekbook</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Wochenbuch</h3>
+        
+        <span class="card-meta">← v13 · Tagebuch-Ton · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v13);" href="./v13-steps/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#49 · v13-steps</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">5 Schritte</h3>
+        
+        <span class="card-meta">← v13 · Lineare Folge · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v13);" href="./v13/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#48 · v13 · Phase 3</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Erster Monat</h3>
+        <p class="card-desc">Ein realistischer Vier-Wochen-Ablauf — was passiert, was du übst, was sich verändert. Keine Versprechen, nur eine Linie.</p>
+        <span class="card-meta">Root · Timeline · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v12);" href="./v12-signals/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#47 · v12-signals</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Ein Signal</h3>
+        
+        <span class="card-meta">← v12 · Minimal-Pick · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v12);" href="./v12-notes/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#46 · v12-notes</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Leise Notizen</h3>
+        
+        <span class="card-meta">← v12 · Softer Ton · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v12);" href="./v12/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#45 · v12 · Phase 3</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Stimm-Signale</h3>
+        <p class="card-desc">Sechs Alltags-Symptome statt Methodenprosa. Du erkennst dich in einem wieder — und weißt: das ist der richtige Startpunkt.</p>
+        <span class="card-meta">Root · Symptom-First · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v11);" href="./v11-match/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#44 · v11-match</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Du ↔ Barbara</h3>
+        
+        <span class="card-meta">← v11 · Match-Vergleich · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v11);" href="./v11-checklist/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#43 · v11-checklist</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Checkliste</h3>
+        
+        <span class="card-meta">← v11 · Haken setzen · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v11);" href="./v11/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#42 · v11 · Phase 3</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Passungscheck</h3>
+        <p class="card-desc">Kannst du mit Barbara arbeiten? Sechs Ja/Nein-Fragen zur ehrlichen Selbstprüfung — vor der Probestunde.</p>
+        <span class="card-meta">Root · Self-Audit · 2026-04-21</span>
+        <span class="card-by">GPT</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v8);" href="./v8-journey-map/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#41 · v8-journey-map</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Topo-Karte</h3>
+        
+        <span class="card-meta">← v8-journey · SVG-Route · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v6);" href="./v6-pathways-dark/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#40 · v6-pathways-dark</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Petrol / Cognac</h3>
+        
+        <span class="card-meta">← v6-pathways · Dark-Flip · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v10);" href="./v10-dialog-voice/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#39 · v10-dialog-voice</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Voice Memos</h3>
+        
+        <span class="card-meta">← v10-dialog · Waveform + Play · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v9);" href="./v9-outcomes/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#38 · v9-outcomes</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Bento Outcomes</h3>
+        
+        <span class="card-meta">← v9 · 6-Tile Grid · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v9);" href="./v9-audio/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#37 · v9-audio</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Voice Memo</h3>
+        
+        <span class="card-meta">← v9 · Podcast UI · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v9);" href="./v9/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#36 · v9 · Phase 2</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Outcomes First</h3>
+        <p class="card-desc">Was du nach einem Jahr wirklich kannst. Display-Typografie, konkrete Ergebnisse statt Methodenprosa.</p>
+        <span class="card-meta">Root · Display Cream · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v8);" href="./v8-journey/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#35 · v8-journey</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">6 Stationen</h3>
+        
+        <span class="card-meta">← v8 · Progress Dots · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v8);" href="./v8-faq/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#34 · v8-faq</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Zen Accordion</h3>
+        
+        <span class="card-meta">← v8 · FAQ / details · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v8);" href="./v8/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#33 · v8 · Phase 2</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Weg zum Abitur</h3>
+        <p class="card-desc">Literarisch, ruhig, vertrauensvoll. Schritt für Schritt zum Ziel — Sepia-Editorial ohne Druck.</p>
+        <span class="card-meta">Root · Editorial Sepia · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v7);" href="./v7-split/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#32 · v7-split</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Sticky Split</h3>
+        
+        <span class="card-meta">← v7 · 50/50 Form · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v7);" href="./v7-offer/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#31 · v7-offer</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Stripe Dark</h3>
+        
+        <span class="card-meta">← v7 · Product Dark · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v7);" href="./v7/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#30 · v7 · Phase 2</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Probestunden-Angebot</h3>
+        <p class="card-desc">40€-Coin-Badge, SaaS-Konversionsmechanik, warme Palette. Klares Commitment oben, Vertrauen unten.</p>
+        <span class="card-meta">Root · SaaS Warm · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v6);" href="./v6-pathways/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#29 · v6-pathways</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Shop-by-need</h3>
+        
+        <span class="card-meta">← v6 · Apple-Style Chooser · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v6);" href="./v6-chat/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#28 · v6-chat</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Messenger</h3>
+        
+        <span class="card-meta">← v6 · Conversation · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v6);" href="./v6/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#27 · v6 · Phase 2</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Pathway Chooser</h3>
+        <p class="card-desc">Fünf Schüler-Typen wählen ihren Lernpfad direkt auf der Startseite. Cream/Cognac-Editorial.</p>
+        <span class="card-meta">Root · Editorial Cream · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v10);" href="./v10-letter/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#26 · v10-letter</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Briefwechsel</h3>
+        
+        <span class="card-meta">← v10 · Letter Form · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v10);" href="./v10-dialog/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#25 · v10-dialog</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Chat Bubbles</h3>
+        
+        <span class="card-meta">← v10 · Messenger Warm · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v10);" href="./v10/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#24 · v10 · Phase 2</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Dialog</h3>
+        <p class="card-desc">Du und Barbara im Zwiegespräch — zweistimmige Typografie, Inter für dich, Fraunces-Italic für sie.</p>
+        <span class="card-meta">Root · Literary Dialog · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v5);" href="./v5-three/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#23 · v5-three</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Voice Ribbons</h3>
+        
+        <span class="card-meta">← v5 · Three.js / WebGL · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v5);" href="./v5-lenis/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#22 · v5-lenis</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Stage Scroll</h3>
+        
+        <span class="card-meta">← v5 · Lenis + GSAP · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v5);" href="./v5-didone/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#21 · v5-didone</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Didone Salon</h3>
+        
+        <span class="card-meta">← v5 · Luxury Editorial · 2026-04-21</span>
+        <span class="card-by">GPT-5.4</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v4);" href="./v4-terminal/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#20 · v4-terminal</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Phosphor</h3>
+        
+        <span class="card-meta">← v4 · CRT / BBS · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v4);" href="./v4-linear/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#19 · v4-linear</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Product Dark</h3>
+        
+        <span class="card-meta">← v4 · Linear.app · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v4);" href="./v4-glass/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#18 · v4-glass</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Aurora Glass</h3>
+        
+        <span class="card-meta">← v4 · visionOS-Style · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v3);" href="./v3-riso/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#17 · v3-riso</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Risograph</h3>
+        
+        <span class="card-meta">← v3 · Duotone Print · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v3);" href="./v3-neobrutal/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#16 · v3-neobrutal</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Neo-Brutal</h3>
+        
+        <span class="card-meta">← v3 · Flat / Hard Shadow · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v3);" href="./v3-collage/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#15 · v3-collage</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Scrapbook</h3>
+        
+        <span class="card-meta">← v3 · Paper / Polaroids · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v2);" href="./v2-wiki/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#14 · v2-wiki</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Enzyklopädie</h3>
+        
+        <span class="card-meta">← v2 · Wiki-Dense · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v2);" href="./v2-mag/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#13 · v2-mag</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Magazin Nº 04</h3>
+        
+        <span class="card-meta">← v2 · Editorial / Drop Caps · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v2);" href="./v2-bento/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#12 · v2-bento</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Bento</h3>
+        
+        <span class="card-meta">← v2 · Apple-Style Grid · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v1);" href="./v1-swiss/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#11 · v1-swiss</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Swiss Intl.</h3>
+        
+        <span class="card-meta">← v1 · Classic Grid · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v1);" href="./v1-noir/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#10 · v1-noir</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Cinematic Noir</h3>
+        
+        <span class="card-meta">← v1 · B/W / Didone · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v1);" href="./v1-clay/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#09 · v1-clay</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Clay</h3>
+        
+        <span class="card-meta">← v1 · Claymorphism · 2026-04-21</span>
+        <span class="card-by">Claude</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v5);" href="./v5-y2k/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#08 · v5-y2k</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Y2K Chrome</h3>
+        
+        <span class="card-meta">← v5 · Aero / Holo · 2026-04-21</span>
+        <span class="card-by">GPT-5.4</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v5);" href="./v5/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#07 · v5</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Du-Perspektive</h3>
+        <p class="card-desc">Hero, Leitsatz und Über-mich-Struktur konsequent auf den Leser ausgerichtet. Aktueller Hauptstand.</p>
+        <span class="card-meta">Root · Editorial Warm · 2026-04-21</span>
+        <span class="card-by">GPT-5.4</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v4);" href="./v4/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#06 · v4</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">UX-Hierarchie</h3>
+        <p class="card-desc">Layer-Cake-Pattern, typografische Hierarchie, Progressive Disclosure.</p>
+        <span class="card-meta">Root · Editorial · 2026-04-21</span>
+        <span class="card-by">GPT-5.4</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v3);" href="./v3-kinetic/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#05 · v3-kinetic</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Kinetic Typo</h3>
+        
+        <span class="card-meta">← v3 · GSAP · 2026-04-21</span>
+        <span class="card-by">GPT-5.4</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v3);" href="./v3/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#04 · v3</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Barbara-Stimme</h3>
+        <p class="card-desc">Copy im Originalton Barbaras neu geschrieben.</p>
+        <span class="card-meta">Root · Editorial · 2026-04-21</span>
+        <span class="card-by">GPT-5.4</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v2);" href="./v2/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#03 · v2</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">9 Sektionen</h3>
+        <p class="card-desc">Neue Informationsarchitektur: Content in neun zweckspezifische Sektionen.</p>
+        <span class="card-meta">Root · Editorial · 2026-04-21</span>
+        <span class="card-by">GPT-5.4</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v1);" href="./v1-brutal/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#02 · v1-brutal</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Swiss Brutal</h3>
+        
+        <span class="card-meta">← v1 · Acid / Mono · 2026-04-21</span>
+        <span class="card-by">GPT-5.4</span>
+      </a>
+      <a class="card flat-card" style="--accent: var(--v1);" href="./v1/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">#01 · v1 · Root</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">Initial</h3>
+        <p class="card-desc">Erster Static-Rebuild der Bestandsseite.</p>
+        <span class="card-meta">Root · Editorial Light · 2026-04-21</span>
+        <span class="card-by">GPT-5.4</span>
+      </a>
+  </div>
+
   <footer>
-    <span class="hint">Neue Variante: <code>cp -r versions/vN versions/vN-label</code> · Routing ergibt sich automatisch via Vite</span>
-    <span id="stamp"></span>
+    <span>87 Versionen · 43 Lanes</span>
+    <span>Deploy · 21.04.2026 · 21:11</span>
   </footer>
 
   <script>
-    const stamp = document.getElementById('stamp');
-    const tick = () => {
-      const now = new Date();
-      const t = now.toTimeString().slice(0, 8);
-      stamp.textContent = `${now.toISOString().slice(0,10)} · ${t}`;
-    };
-    tick();
-    setInterval(tick, 1000);
+    (function() {
+      const KEY = 'bs-overview-view';
+      const buttons = document.querySelectorAll('.view-toggle button');
+      const body = document.body;
+      const apply = (v) => {
+        body.classList.toggle('view-flat', v === 'flat');
+        buttons.forEach((b) => {
+          const active = b.dataset.view === v;
+          b.classList.toggle('active', active);
+          b.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+      };
+      const saved = localStorage.getItem(KEY);
+      if (saved === 'flat' || saved === 'lanes') apply(saved);
+      buttons.forEach((b) => b.addEventListener('click', () => {
+        const v = b.dataset.view;
+        apply(v);
+        localStorage.setItem(KEY, v);
+      }));
+    })();
   </script>
 </body>
 </html>

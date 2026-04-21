@@ -49,10 +49,23 @@ const pad2 = (n) => String(n).padStart(2, '0');
 const laneKey = (folder) => folder.match(/^(v\d+)/)?.[1] ?? folder;
 const laneNum = (lk) => parseInt(lk.slice(1), 10);
 
+function buildStamp() {
+  const now = new Date();
+  const fmt = new Intl.DateTimeFormat('de-DE', {
+    timeZone: 'Europe/Berlin',
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+    hour12: false
+  });
+  const parts = Object.fromEntries(fmt.formatToParts(now).map(p => [p.type, p.value]));
+  return `${parts.day}.${parts.month}.${parts.year} · ${parts.hour}:${parts.minute}`;
+}
+
 function build() {
   const manifest = loadManifest();
   const folders = scanFolders();
   const today = new Date().toISOString();
+  const deployStamp = buildStamp();
 
   const numberOf = {};
   const dateOf = {};
@@ -180,6 +193,31 @@ ${body}
 
   const lanesHtml = laneEntries.map(([lk, m]) => renderLane(lk, m)).filter(Boolean).join('\n\n');
 
+  const renderFlatCard = (name) => {
+    const meta = manifest.versions[name];
+    const lk = laneKey(name);
+    const phase = meta.phaseTag ? ` · ${meta.phaseTag}` : '';
+    const tag = `${numberOf[name]} · ${name}${phase}`;
+    const parentLine = meta.parent ? `← ${esc(meta.parent)}` : 'Root';
+    const descHtml = meta.desc ? `<p class="card-desc">${esc(meta.desc)}</p>` : '';
+    return `      <a class="card flat-card" style="--accent: var(--${lk});" href="./${name}/" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">${esc(tag)}</span>
+          <span class="arrow">→</span>
+        </div>
+        <h3 class="card-title">${esc(meta.title)}</h3>
+        ${descHtml}
+        <span class="card-meta">${parentLine} · ${esc(meta.style)} · ${dateOf[name]}</span>
+        <span class="card-by">${esc(meta.by)}</span>
+      </a>`;
+  };
+
+  const flatOrder = folders
+    .filter((f) => manifest.versions[f] && typeof manifest.versions[f].num === 'number')
+    .sort((a, b) => manifest.versions[b].num - manifest.versions[a].num);
+
+  const flatHtml = flatOrder.map(renderFlatCard).join('\n');
+
   const laneVars = Object.entries(manifest.lanes)
     .sort(([a], [b]) => laneNum(a) - laneNum(b))
     .map(([lk, m]) => `      --${lk}: ${m.color};`)
@@ -229,13 +267,7 @@ ${laneVars}
     header { margin-bottom: 40px; }
     header .brand { color: var(--fg); display: flex; gap: 14px; align-items: baseline; }
     header .brand span { color: var(--muted); }
-    header .clock::before {
-      content: "●";
-      color: var(--v1);
-      margin-right: 8px;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    header .deploy { color: var(--muted); }
 
     .title-row {
       max-width: 1400px;
@@ -503,13 +535,48 @@ ${laneVars}
       min-height: 120px;
     }
 
-    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
-    footer .hint code {
-      color: var(--fg);
-      background: #111113;
-      padding: 2px 6px;
-      border-radius: 2px;
+    .view-toggle {
+      max-width: 1400px;
+      margin: 0 auto 24px;
+      padding: 0 4px;
+      display: flex;
+      gap: 4px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
+    .view-toggle button {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 8px 16px;
+      border-radius: 2px;
+      cursor: pointer;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .view-toggle button:hover { color: var(--fg); border-color: var(--muted); }
+    .view-toggle button.active {
+      background: var(--fg);
+      color: #0a0a0a;
+      border-color: var(--fg);
+    }
+
+    .flat-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    body.view-flat .lanes { display: none; }
+    body.view-flat .flat-grid { display: grid; }
+    .flat-card { min-height: 140px; }
+
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
 
     @media (max-width: 1000px) {
       .lane { grid-template-columns: 50px 1fr; padding: 18px; }
@@ -530,12 +597,16 @@ ${laneVars}
       <strong>BARBARA&nbsp;SAILER</strong>
       <span>/ VERSIONS INDEX</span>
     </div>
-    <div class="clock" id="clock">LIVE</div>
+    <div class="deploy">Letzter Deploy · ${deployStamp}</div>
   </header>
 
   <div class="title-row">
     <h1>Versionen <em>&amp; Branches</em>.</h1>
-    <p>${esc(manifest.intro)}</p>
+  </div>
+
+  <div class="view-toggle" role="tablist" aria-label="Ansicht wechseln">
+    <button type="button" data-view="lanes" class="active" role="tab" aria-selected="true">Lanes</button>
+    <button type="button" data-view="flat" role="tab" aria-selected="false">Flach · #${pad2(Math.max(...flatOrder.map((n) => manifest.versions[n].num)))} → #01</button>
   </div>
 
   <div class="lanes">
@@ -544,20 +615,36 @@ ${lanesHtml}
 
   </div>
 
+  <div class="flat-grid">
+${flatHtml}
+  </div>
+
   <footer>
-    <span class="hint">Neue Variante: <code>cp -r versions/vN versions/vN-label</code> · Routing ergibt sich automatisch via Vite</span>
-    <span id="stamp"></span>
+    <span>${folders.length} Versionen · ${laneEntries.length} Lanes</span>
+    <span>Deploy · ${deployStamp}</span>
   </footer>
 
   <script>
-    const stamp = document.getElementById('stamp');
-    const tick = () => {
-      const now = new Date();
-      const t = now.toTimeString().slice(0, 8);
-      stamp.textContent = \`\${now.toISOString().slice(0,10)} · \${t}\`;
-    };
-    tick();
-    setInterval(tick, 1000);
+    (function() {
+      const KEY = 'bs-overview-view';
+      const buttons = document.querySelectorAll('.view-toggle button');
+      const body = document.body;
+      const apply = (v) => {
+        body.classList.toggle('view-flat', v === 'flat');
+        buttons.forEach((b) => {
+          const active = b.dataset.view === v;
+          b.classList.toggle('active', active);
+          b.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+      };
+      const saved = localStorage.getItem(KEY);
+      if (saved === 'flat' || saved === 'lanes') apply(saved);
+      buttons.forEach((b) => b.addEventListener('click', () => {
+        const v = b.dataset.view;
+        apply(v);
+        localStorage.setItem(KEY, v);
+      }));
+    })();
   </script>
 </body>
 </html>

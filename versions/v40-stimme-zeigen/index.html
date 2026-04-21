@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stimme zeigen | Barbara Sophia Sailer · Stimmunterricht Frankfurt</title>
+  <meta name="description" content="Sing fünf Sekunden. Sieh deine Stimme als Kurve. Lokal im Browser, nichts wird hochgeladen. Probestunde bei Barbara Sophia Sailer, Frankfurt — 40 € / 45 min.">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-name">Barbara Sailer</span>
+        <span class="brand-sub">Stimme &middot; Frankfurt</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#wie">Wie das geht</a>
+      <a href="#barbara">Barbara</a>
+      <a href="#tarife">Tarife</a>
+      <a href="#kontakt" class="nav-cta">Probestunde</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <p class="eyebrow">Stimme zeigen &middot; 5 Sekunden</p>
+      <h1 id="hero-title">
+        Sing ein <span class="ital">Ahh</span>.<br>
+        Nicht laut. Nur kurz.<br>
+        Ich zeig dir, was deine Stimme gerade kann.
+      </h1>
+
+      <div class="stage" id="stage" aria-live="polite">
+        <!-- Default state: call to action -->
+        <div class="stage-panel stage-cta" id="panelCta">
+          <canvas class="canvas-demo" id="demoCanvas" width="960" height="420" aria-hidden="true"></canvas>
+          <div class="cta-wrap">
+            <button type="button" class="btn btn-primary btn-huge" id="startBtn" aria-describedby="privacy-hint">
+              <span class="btn-dot" aria-hidden="true"></span>
+              Mikrofon einschalten
+            </button>
+            <p id="privacy-hint" class="privacy-hint">
+              Alles bleibt in deinem Browser. Nichts wird hochgeladen.
+            </p>
+          </div>
+        </div>
+
+        <!-- Consent panel (own explainer, not just browser prompt) -->
+        <div class="stage-panel stage-consent" id="panelConsent" hidden>
+          <h2 class="stage-title">Gleich fragt dich dein Browser.</h2>
+          <p class="stage-body">
+            Dein Browser fragt dich in einem kleinen Dialog nach der Mikrofon-Erlaubnis. Du kannst die Seite jederzeit schließen &mdash; dann ist das Mikrofon aus.
+          </p>
+          <p class="stage-body">
+            Ich brauche fünf Sekunden deiner Stimme &mdash; nur lokal. Ich zeichne eine Kurve daraus und sage dir, in welcher Lage du gerade singst. Kein Upload, keine Aufnahme.
+          </p>
+          <div class="stage-actions">
+            <button type="button" class="btn btn-primary" id="consentYes">Ja, Mikrofon erlauben</button>
+            <button type="button" class="btn btn-ghost" id="consentNo">Ich lese erstmal weiter</button>
+          </div>
+        </div>
+
+        <!-- Live recording panel -->
+        <div class="stage-panel stage-live" id="panelLive" hidden>
+          <canvas class="canvas-live" id="liveCanvas" width="960" height="420" aria-label="Live-Visualisierung deiner Stimme als Kurve"></canvas>
+          <div class="live-overlay">
+            <p class="live-counter" id="liveCounter" aria-live="assertive">Sing los &mdash; 5</p>
+            <p class="live-note" id="liveNote" aria-live="polite">&mdash;</p>
+          </div>
+          <button type="button" class="btn btn-ghost btn-stop" id="stopBtn">Abbrechen</button>
+        </div>
+
+        <!-- Result panel -->
+        <div class="stage-panel stage-result" id="panelResult" hidden>
+          <canvas class="canvas-result" id="resultCanvas" width="960" height="420" aria-label="Deine Stimmkurve"></canvas>
+          <div class="result-analysis" id="resultAnalysis" aria-live="polite">
+            <!-- filled by JS -->
+          </div>
+          <div class="result-actions">
+            <a class="btn btn-primary" href="#kontakt" id="ctaAfter">Willst du das nächste Mal eine Oktave mehr? &rarr; Probestunde</a>
+            <button type="button" class="btn btn-ghost" id="retryBtn">Nochmal versuchen</button>
+            <button type="button" class="btn btn-ghost" id="downloadBtn">Als Bild speichern</button>
+          </div>
+        </div>
+
+        <!-- Fallback panel -->
+        <div class="stage-panel stage-fallback" id="panelFallback" hidden>
+          <canvas class="canvas-demo" id="fallbackCanvas" width="960" height="420" aria-hidden="true"></canvas>
+          <div class="fallback-inner">
+            <h2 class="stage-title">Kein Mikrofon &mdash; auch gut.</h2>
+            <p class="stage-body" id="fallbackMsg">
+              Dein Browser hat den Mikrofon-Zugriff nicht freigegeben. Hier siehst du stattdessen eine Beispielkurve. Du kannst das Mikrofon später jederzeit einschalten.
+            </p>
+            <div class="stage-actions">
+              <button type="button" class="btn btn-primary" id="tryAgainBtn">Nochmal versuchen</button>
+              <a class="btn btn-ghost" href="#kontakt">Direkt zur Probestunde</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="hero-foot">
+        Kein Urteil, kein Quiz. Nur dein Klang.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-wie" id="wie" aria-labelledby="wie-title">
+    <div class="section-inner">
+      <p class="eyebrow">Was du gerade gesehen hast</p>
+      <h2 id="wie-title">Diese Seite zeigt dir in 5 Sekunden etwas, was du vielleicht noch nie gesehen hast: deine eigene Stimme als Kurve.</h2>
+      <p class="section-lede">
+        Kein Noten-Lesen, keine Übung, kein Wettbewerb. Nur du singst ein <em>Ahh</em>, und die Seite rechnet aus, welchen Ton du gerade triffst, wie stabil er ist und wie groß der Abstand zwischen tiefstem und höchstem Punkt ist. Alles im Browser, nichts wird hochgeladen.
+      </p>
+      <ul class="feature-list">
+        <li>
+          <span class="feature-num">A</span>
+          <div>
+            <h3>Ton &amp; Lage</h3>
+            <p>Die Frequenz deiner Stimme wird in Echtzeit in den nächsten Notennamen übersetzt &mdash; A3, G4, C&sharp;5 &hellip;</p>
+          </div>
+        </li>
+        <li>
+          <span class="feature-num">B</span>
+          <div>
+            <h3>Stabilität</h3>
+            <p>Wie ruhig liegt der Ton? Gemessen in Cent &mdash; der präzisen Einheit für Tonabstände. ±12 ist sehr sauber, ±50 ist Übungs&shy;material.</p>
+          </div>
+        </li>
+        <li>
+          <span class="feature-num">C</span>
+          <div>
+            <h3>Umfang</h3>
+            <p>Welche Töne streifst du in fünf Sekunden? Eine kleine Terz? Eine Quinte? Eine ganze Oktave? Die Kurve zeigt es.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-barbara" id="barbara" aria-labelledby="barbara-title">
+    <div class="section-inner">
+      <p class="eyebrow">Über Barbara</p>
+      <h2 id="barbara-title">Die Seite zeigt dir die Kurve. Barbara hört, was dazwischen steht.</h2>
+      <p>
+        Barbara Sophia Sailer ist Mezzosopranistin und Stimmbildnerin in Frankfurt-Niederrad. Sie unterrichtet Anfänger*innen, Aufnahmeprüflinge, Wiedereinsteiger*innen, Berufsredner*innen und Profis. Zusätzlich bietet sie therapeutische Stimmarbeit an (ISA-Zertifikat, Atemcoach).
+      </p>
+      <p>
+        Staatsexamen Musik in Augsburg, Opernschule HfM Würzburg, Meisterkurse bei Fassbaender, Deutsch und Ludwig. BDG-Mitglied. Liederabend-Reihe <em>Blutrot</em> in der Würzburger Residenz.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-tarife" id="tarife" aria-labelledby="tarife-title">
+    <div class="section-inner">
+      <p class="eyebrow">Tarife</p>
+      <h2 id="tarife-title">Klare Preise, ohne Abo.</h2>
+      <ul class="tarife-list">
+        <li>
+          <span class="tarif-label">Probestunde</span>
+          <strong class="tarif-price">40 &euro;</strong>
+          <span class="tarif-note">45 Minuten &middot; anrechenbar</span>
+        </li>
+        <li>
+          <span class="tarif-label">Einzelstunde</span>
+          <strong class="tarif-price">50 &euro; / 60 &euro;</strong>
+          <span class="tarif-note">45 min &middot; 60 min</span>
+        </li>
+        <li>
+          <span class="tarif-label">10er-Karte</span>
+          <strong class="tarif-price">11 für 10</strong>
+          <span class="tarif-note">ohne Ablauf</span>
+        </li>
+      </ul>
+      <p class="tarife-verkehr">Tram 12, 15, 21 &mdash; direkt aus der Innenstadt.</p>
+    </div>
+  </section>
+
+  <section class="section section-kontakt" id="kontakt" aria-labelledby="kontakt-title">
+    <div class="section-inner">
+      <p class="eyebrow">Probestunde</p>
+      <h2 id="kontakt-title">Schreib mir in zwei Sätzen, was deine Stimme gerade macht.</h2>
+
+      <div class="contact-grid">
+        <form class="contact-form" action="https://formsubmit.co/barbarasailer@web.de" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Probestunde-Anfrage (via Stimme zeigen)">
+          <input type="hidden" name="_template" value="box">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+          <label>
+            Dein Name
+            <input type="text" name="name" required autocomplete="name" minlength="2">
+          </label>
+          <label>
+            E-Mail
+            <input type="email" name="email" required autocomplete="email">
+          </label>
+          <label>
+            Was macht deine Stimme gerade?
+            <textarea name="nachricht" rows="4" required minlength="4" placeholder="Zum Beispiel: &bdquo;In der H&ouml;he mache ich dicht.&ldquo; oder &bdquo;Nach langen Chorproben bin ich durch.&ldquo;"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary btn-block">Probestunde anfragen</button>
+          <p class="form-alt">
+            Oder per WhatsApp: <a href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20m%C3%B6chte%20eine%20Probestunde%20anfragen." target="_blank" rel="noopener">wa.me/495551234567</a>
+          </p>
+        </form>
+
+        <aside class="contact-side">
+          <h3>Direkt</h3>
+          <p>
+            <button type="button" class="phone-reveal-btn" id="revealPhone" aria-expanded="false" aria-controls="phoneReveal">Telefonnummer zeigen</button>
+            <span class="phone-reveal" id="phoneReveal" hidden><a href="tel:+495551234567">+49 (0)555 &ndash; 123 456 7</a></span>
+          </p>
+          <h3>Adresse</h3>
+          <p>Musterstraße 1<br>60528 Frankfurt am Main<br>Tram 12, 15, 21</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">Barbara Sophia Sailer</p>
+      <p>Musterstraße 1 &middot; 60528 Frankfurt am Main</p>
+    </div>
+    <div>
+      <p class="footer-label">Rechtliches</p>
+      <p>
+        <a href="./impressum.html">Impressum</a><br>
+        <a href="./datenschutz.html">Datenschutz</a>
+      </p>
+    </div>
+    <div>
+      <p class="footer-label">Stimme zeigen</p>
+      <p>Variante 40 &middot; pitch-responsive &middot; alles client-side.</p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

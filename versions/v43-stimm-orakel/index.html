@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stimm-Orakel · Barbara Sophia Sailer</title>
+  <meta name="description" content="Zieh drei Karten. Ich lese sie für dich. Ein Ritual von Barbara Sophia Sailer — Gesangsunterricht in Frankfurt.">
+  <meta name="theme-color" content="#2a1b3d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="#top">
+      <span class="wordmark-mark" aria-hidden="true">B·S</span>
+      <span class="wordmark-text">Barbara Sophia Sailer</span>
+    </a>
+    <nav class="topnav" aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO: INVITATION -->
+  <section class="hero" aria-labelledby="heroHead">
+    <div class="hero-inner">
+      <p class="overline">Nº 43 · Ein Ritual</p>
+      <h1 id="heroHead" class="display">
+        Zieh drei Karten.<br>
+        <em>Ich lese sie für dich.</em>
+      </h1>
+      <p class="lede">Ein Ritual von Barbara Sophia Sailer — Gesangsunterricht in Frankfurt.</p>
+      <p class="sub">Drei Karten, drei Fragen an deine Stimme: Der Atem. Die Brücke. Der Ruf. Du ziehst, ich deute — und am Ende bekommst du eine Probestunde, die genau zu deinem Zug passt.</p>
+      <button type="button" class="btn btn-primary" id="openDeckBtn" aria-controls="ritual">Deck öffnen</button>
+      <p class="hero-foot">Kein Hokuspokus. Nur Bilder, die sich auf deine Stimme beziehen lassen.</p>
+    </div>
+    <div class="hero-deco" aria-hidden="true">
+      <span class="sigil sigil-moon">☾</span>
+      <span class="sigil sigil-star">✦</span>
+      <span class="sigil sigil-eye">◉</span>
+    </div>
+  </section>
+
+  <!-- RITUAL STAGE -->
+  <section class="ritual" id="ritual" aria-labelledby="ritualHead" hidden>
+    <div class="ritual-head">
+      <h2 id="ritualHead" class="ritual-title">Das Deck</h2>
+      <p class="ritual-sub" id="ritualSub">Zieh drei Karten. Tippe, wähle, lass es geschehen.</p>
+      <div class="ritual-slots" aria-hidden="true">
+        <span class="slot" data-slot="0"><span class="slot-num">I</span><span class="slot-label">Der Atem</span></span>
+        <span class="slot" data-slot="1"><span class="slot-num">II</span><span class="slot-label">Die Brücke</span></span>
+        <span class="slot" data-slot="2"><span class="slot-num">III</span><span class="slot-label">Der Ruf</span></span>
+      </div>
+    </div>
+
+    <!-- Fan of 22 cards -->
+    <div class="fan-stage">
+      <div class="fan" id="fan" role="group" aria-label="22 Karten, gefächert. Drei auswählen."></div>
+    </div>
+
+    <!-- Drawn cards in final layout -->
+    <div class="spread" id="spread" aria-live="polite" hidden></div>
+
+    <!-- Reading (interpretation) -->
+    <div class="reading" id="reading" aria-live="polite" hidden>
+      <p class="reading-kicker">Deine Deutung</p>
+      <p class="reading-body" id="readingBody"></p>
+
+      <aside class="offer" id="offer">
+        <p class="offer-kicker">Für dich empfohlen</p>
+        <h3 class="offer-title" id="offerTitle">Erste Probestunde</h3>
+        <p class="offer-body" id="offerBody"></p>
+        <a class="btn btn-primary" href="#kontakt">Jetzt Termin finden</a>
+      </aside>
+
+      <p class="reshuffle"><button type="button" class="btn-ghost" id="reshuffleBtn">Eine andere Frage? → Neu ziehen</button></p>
+    </div>
+  </section>
+
+  <!-- ABOUT — v3 DNA, kürzer -->
+  <section class="about" aria-labelledby="aboutHead">
+    <div class="about-inner">
+      <p class="overline">Hinter den Karten</p>
+      <h2 id="aboutHead">Barbara Sophia Sailer</h2>
+      <p>Ausgebildete Mezzosopranistin, dramatisches Fach. Studium in Augsburg, Opernschule der Hochschule für Musik Würzburg. Ich lebe und arbeite als freischaffende Sängerin, Stimmbildnerin und Chorleiterin in Frankfurt am Main.</p>
+      <p>Mit Schülerinnen und Schülern arbeite ich vom ersten Ton bis zum dramatischen Fach, vom gesunden Atem bis zum Kirchenchor. Klassisch, Lied, Pop, Chanson, Musical — oder einfach: deine eigene Stimme kennenlernen.</p>
+      <ul class="about-facts">
+        <li><span>Ort</span><strong>Frankfurt-Niederrad</strong></li>
+        <li><span>Fach</span><strong>Mezzosopran, dramatisch</strong></li>
+        <li><span>Ausbildung</span><strong>Augsburg · Würzburg</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PRICES — v7 DNA -->
+  <section class="prices" aria-labelledby="pricesHead">
+    <div class="prices-inner">
+      <p class="overline">Tarife</p>
+      <h2 id="pricesHead">Klar. Keine Pakete.</h2>
+      <div class="price-grid">
+        <article class="price-card price-card--first">
+          <p class="price-kicker">Erstes Treffen</p>
+          <p class="price-amount"><span class="price-num">40</span><span class="price-cur">€</span></p>
+          <p class="price-label">Probestunde · 45 min</p>
+          <p class="price-note">Du gehst raus und weißt, ob&rsquo;s passt.</p>
+        </article>
+        <article class="price-card">
+          <p class="price-kicker">Einzelstunde</p>
+          <p class="price-amount"><span class="price-num">50</span><span class="price-cur">€</span></p>
+          <p class="price-label">45 min</p>
+        </article>
+        <article class="price-card">
+          <p class="price-kicker">Einzelstunde</p>
+          <p class="price-amount"><span class="price-num">60</span><span class="price-cur">€</span></p>
+          <p class="price-label">60 min</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="kontakt" aria-labelledby="contactHead">
+    <div class="contact-inner">
+      <p class="overline">Kontakt</p>
+      <h2 id="contactHead">Schreib mir, was dich ruft.</h2>
+      <p class="contact-lede">Dein Kartenzug wird automatisch mitgeschickt — wenn du magst.</p>
+      <form class="contact-form" action="https://formsubmit.co/barbarasailer@web.de" method="POST">
+        <input type="hidden" name="_subject" value="Probestunden-Anfrage · Stimm-Orakel (v43)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="kartenzug" id="hiddenDraw" value="">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label>Vorname<input type="text" name="vorname" required></label>
+        <label>E-Mail<input type="email" name="email" required></label>
+        <label>Nachricht<textarea name="nachricht" rows="4" placeholder="Was möchtest du fragen? Einfach „Probestunde“ reicht auch."></textarea></label>
+        <button type="submit" class="btn btn-primary btn-send">Nachricht senden</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>Barbara Sophia Sailer · Musterstraße 1 · 60528 Frankfurt a.M.</p>
+    <nav aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

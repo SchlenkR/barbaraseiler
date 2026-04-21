@@ -1,0 +1,585 @@
+/* v43-stimm-orakel · Tarot-Draw-Flow / Ritual
+ * Dark velvet violet with gold accents. Fraunces italic for card titles.
+ */
+
+/* --- Tokens ----------------------------------------------------------- */
+:root {
+  --bg:        #2a1b3d;
+  --bg-deep:   #1a0f2a;
+  --bg-soft:   #3a2a55;
+  --accent:    #8b5cf6;      /* lane lila */
+  --accent-2:  #b49cff;
+  --gold:      #d4a24c;
+  --gold-soft: #e8c27a;
+  --text:      #f5efe5;
+  --text-mute: #c6bcd4;
+  --rule:      rgba(245,239,229,0.14);
+  --rule-gold: rgba(212,162,76,0.45);
+
+  --card-w: clamp(110px, 16vw, 180px);
+  --card-h: calc(var(--card-w) * 1.67);   /* 3:5 */
+  --radius: 12px;
+
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+/* --- Reset ------------------------------------------------------------ */
+*,*::before,*::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  background:
+    radial-gradient(60% 50% at 15% 10%, rgba(139,92,246,0.28), transparent 60%),
+    radial-gradient(70% 50% at 85% 90%, rgba(212,162,76,0.14), transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
+a { color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s var(--ease); }
+a:hover { border-bottom-color: var(--gold-soft); }
+
+/* --- Typography ------------------------------------------------------- */
+.display {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 .4em;
+}
+.display em { font-style: italic; color: var(--gold-soft); }
+h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  margin: 0 0 .6em;
+  letter-spacing: -0.005em;
+}
+h3 {
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin: 0 0 .4em;
+}
+.overline {
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 .8em;
+  font-weight: 500;
+}
+.lede { font-size: 1.15rem; color: var(--text); margin: 0 0 .6em; }
+.sub  { color: var(--text-mute); max-width: 60ch; margin: 0 0 1.8em; }
+
+/* --- Topbar / Footer -------------------------------------------------- */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  background: linear-gradient(180deg, rgba(26,15,42,0.92), rgba(26,15,42,0.7));
+  border-bottom: 1px solid var(--rule);
+}
+.topbar-inner, .footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: .9rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+}
+.wordmark { display: flex; align-items: center; gap: .6rem; border: 0; }
+.wordmark-mark {
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border: 1px solid var(--gold); color: var(--gold);
+  border-radius: 50%;
+  font-family: "Fraunces", serif; font-size: .82rem;
+  letter-spacing: .04em;
+}
+.wordmark-text { font-family: "Fraunces", serif; font-size: 1.02rem; color: var(--text); }
+.topnav { display: flex; gap: 1.2rem; font-size: .88rem; }
+.topnav a { color: var(--text-mute); border: 0; }
+.topnav a:hover { color: var(--gold-soft); }
+
+.site-footer { border-top: 1px solid var(--rule); margin-top: 4rem; }
+.footer-inner { padding: 1.5rem; color: var(--text-mute); font-size: .88rem; flex-wrap: wrap; }
+.footer-inner nav { display: flex; gap: 1.2rem; }
+
+/* --- Buttons ---------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: .85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 500; font-size: 1rem;
+  border: 1px solid transparent;
+  transition: transform .2s var(--ease), box-shadow .25s var(--ease), background .2s var(--ease);
+  letter-spacing: .01em;
+}
+.btn-primary {
+  background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+  color: #2a1b3d;
+  box-shadow: 0 6px 22px -8px rgba(212,162,76,0.55);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 28px -8px rgba(212,162,76,0.7); }
+.btn-ghost {
+  background: transparent;
+  color: var(--text-mute);
+  border: 1px solid var(--rule);
+  padding: .6rem 1.2rem; border-radius: 999px;
+  font-size: .9rem;
+}
+.btn-ghost:hover { color: var(--gold-soft); border-color: var(--rule-gold); }
+.btn-send { margin-top: .5rem; }
+
+/* --- Hero ------------------------------------------------------------- */
+.hero {
+  position: relative;
+  max-width: 1200px; margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+  overflow: hidden;
+}
+.hero-inner { position: relative; max-width: 680px; z-index: 2; }
+.hero .hero-foot { color: var(--text-mute); font-size: .88rem; margin-top: 1.2em; }
+.hero-deco {
+  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  font-family: "Fraunces", serif;
+  color: var(--gold);
+  opacity: .35;
+}
+.sigil {
+  position: absolute; font-size: 4rem; line-height: 1;
+  filter: blur(.5px);
+}
+.sigil-moon { top: 12%; right: 8%; transform: rotate(-10deg); }
+.sigil-star { bottom: 18%; right: 22%; font-size: 2.4rem; }
+.sigil-eye  { top: 45%;  right: 4%;  font-size: 2rem; opacity: .5; }
+
+/* --- Ritual ----------------------------------------------------------- */
+.ritual {
+  max-width: 1200px; margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+  position: relative;
+}
+.ritual-head { text-align: center; margin-bottom: 2rem; }
+.ritual-title {
+  font-family: "Fraunces", serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin: 0 0 .4em;
+  color: var(--gold-soft); font-style: italic;
+}
+.ritual-sub { color: var(--text-mute); margin: 0 0 1.6em; }
+
+.ritual-slots {
+  display: flex; justify-content: center; gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.slot {
+  display: inline-flex; flex-direction: column; align-items: center;
+  padding: .4rem .9rem;
+  border: 1px dashed var(--rule-gold);
+  border-radius: 10px;
+  min-width: 110px;
+  opacity: .6;
+  transition: opacity .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+}
+.slot.is-filled {
+  opacity: 1;
+  border-style: solid;
+  border-color: var(--gold);
+  background: rgba(212,162,76,0.08);
+}
+.slot-num {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: .95rem;
+}
+.slot-label {
+  font-size: .76rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+/* --- Fan ------------------------------------------------------------- */
+.fan-stage {
+  position: relative;
+  height: calc(var(--card-h) + 120px);
+  margin: 1rem auto 0;
+  perspective: 1400px;
+  display: flex; justify-content: center; align-items: flex-end;
+}
+.fan {
+  position: relative;
+  width: min(95vw, 1040px);
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.card {
+  position: absolute;
+  left: 50%; bottom: 0;
+  width: var(--card-w);
+  height: var(--card-h);
+  margin-left: calc(var(--card-w) * -0.5);
+  transform-origin: 50% 110%;
+  transform-style: preserve-3d;
+  transition:
+    transform .7s var(--ease),
+    filter .4s var(--ease),
+    opacity .5s var(--ease);
+  will-change: transform;
+  border-radius: var(--radius);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.card:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 14px; }
+.card:hover:not(.is-drawn) {
+  filter: drop-shadow(0 0 14px rgba(212,162,76,0.55));
+}
+.card:hover:not(.is-drawn) .card-face-back { transform: translateY(-14px); }
+
+.card-face {
+  position: absolute; inset: 0;
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  transition: transform .6s var(--ease);
+}
+.card-face-back {
+  background:
+    radial-gradient(120% 120% at 50% -10%, rgba(212,162,76,0.18), transparent 55%),
+    linear-gradient(140deg, #3a2564, #1a0f2a 60%, #2a1b3d);
+  border: 1px solid var(--rule-gold);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+.card-face-back svg { width: 100%; height: 100%; }
+.card-face-front {
+  background: linear-gradient(170deg, #f5efe5 0%, #ece2d0 100%);
+  color: #2a1b3d;
+  transform: rotateY(180deg);
+  padding: 14px 12px 12px;
+  display: flex; flex-direction: column;
+  border: 1px solid var(--gold);
+  box-shadow: inset 0 0 0 6px rgba(255,255,255,0.35);
+}
+.card-front-frame {
+  flex: 1;
+  border: 1px solid rgba(42,27,61,0.3);
+  border-radius: 6px;
+  padding: 8px;
+  display: flex; flex-direction: column;
+}
+.card-front-roman {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: .72rem;
+  color: #6b4b8f;
+  letter-spacing: .18em;
+  text-align: center;
+  margin: 0 0 6px;
+}
+.card-front-art {
+  flex: 1;
+  display: grid; place-items: center;
+  color: #4a2f72;
+}
+.card-front-art svg { width: 78%; height: 78%; }
+.card-front-title {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: clamp(.88rem, 1.05vw, 1.05rem);
+  color: #2a1b3d;
+  text-align: center;
+  margin: 6px 0 0;
+  line-height: 1.1;
+}
+
+/* flipped state */
+.card.is-flipped { transform: var(--fan-transform,none) rotateY(180deg); }
+
+/* drawn state removes from fan; actual position handled via JS transform */
+.card.is-drawn { pointer-events: none; }
+
+/* --- Spread (drawn layout) -------------------------------------------- */
+.spread {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 1.8rem;
+  max-width: 920px;
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+}
+.spread-card {
+  position: relative;
+  aspect-ratio: 3 / 5;
+  border-radius: var(--radius);
+  background: linear-gradient(170deg, #f5efe5 0%, #ece2d0 100%);
+  color: #2a1b3d;
+  border: 1px solid var(--gold);
+  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.6), inset 0 0 0 6px rgba(255,255,255,0.35);
+  padding: 16px 14px 14px;
+  display: flex; flex-direction: column;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: spread-in .6s var(--ease) forwards;
+}
+.spread-card:nth-child(1) { animation-delay: .05s; }
+.spread-card:nth-child(2) { animation-delay: .25s; }
+.spread-card:nth-child(3) { animation-delay: .45s; }
+@keyframes spread-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+.spread-card-slot {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+.spread-card-frame {
+  flex: 1;
+  border: 1px solid rgba(42,27,61,0.25);
+  border-radius: 6px;
+  padding: 12px 10px;
+  display: flex; flex-direction: column;
+}
+.spread-card-art {
+  flex: 1; display: grid; place-items: center;
+  color: #4a2f72;
+}
+.spread-card-art svg { width: 72%; height: 72%; }
+.spread-card-title {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: .4em 0 .2em;
+  color: #2a1b3d;
+}
+.spread-card-meaning {
+  font-size: .82rem; color: #4a2f72;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* --- Reading ---------------------------------------------------------- */
+.reading {
+  max-width: 760px; margin: 3rem auto 0;
+  padding: 0 1rem;
+  text-align: center;
+}
+.reading-kicker {
+  font-family: "Fraunces", serif; font-style: italic;
+  color: var(--gold); letter-spacing: .16em; text-transform: uppercase;
+  font-size: .8rem; margin: 0 0 .8em;
+}
+.reading-body {
+  font-family: "Fraunces", serif;
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0 auto 2rem;
+  max-width: 58ch;
+}
+.reading-body strong {
+  color: var(--gold-soft);
+  font-weight: 500;
+  font-style: italic;
+}
+
+.offer {
+  text-align: left;
+  max-width: 520px; margin: 0 auto;
+  padding: 1.6rem 1.6rem 1.4rem;
+  background: linear-gradient(160deg, rgba(139,92,246,0.18), rgba(212,162,76,0.08));
+  border: 1px solid var(--rule-gold);
+  border-radius: 14px;
+  box-shadow: 0 20px 50px -28px rgba(0,0,0,0.6);
+}
+.offer-kicker {
+  font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 .6em;
+}
+.offer-title {
+  font-family: "Fraunces", serif; font-size: 1.4rem; margin: 0 0 .4em;
+  color: var(--text);
+}
+.offer-body { color: var(--text-mute); margin: 0 0 1.2em; }
+.offer .btn { margin-top: .4em; }
+
+.reshuffle { margin-top: 2rem; text-align: center; }
+
+/* --- About ------------------------------------------------------------ */
+.about {
+  max-width: 920px; margin: 4rem auto 0;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.about-inner p { max-width: 62ch; color: var(--text-mute); }
+.about-facts {
+  list-style: none; padding: 0; margin: 2rem 0 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+}
+.about-facts li {
+  border-top: 1px solid var(--rule-gold);
+  padding-top: .6rem;
+}
+.about-facts li span {
+  display: block; font-size: .72rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: .3em;
+}
+.about-facts li strong {
+  font-family: "Fraunces", serif; font-weight: 400; font-size: 1.05rem;
+  color: var(--text);
+}
+
+/* --- Prices ----------------------------------------------------------- */
+.prices { max-width: 920px; margin: 0 auto; padding: 3rem 1.5rem; }
+.price-grid {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 1.2em;
+}
+.price-card {
+  padding: 1.4rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: rgba(245,239,229,0.03);
+  text-align: center;
+  transition: border-color .2s var(--ease), transform .2s var(--ease);
+}
+.price-card:hover { border-color: var(--rule-gold); transform: translateY(-2px); }
+.price-card--first { border-color: var(--gold); background: rgba(212,162,76,0.06); }
+.price-kicker {
+  font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 .8em;
+}
+.price-amount {
+  font-family: "Fraunces", serif; font-weight: 400;
+  font-size: 2.6rem; line-height: 1; margin: 0;
+  color: var(--text);
+}
+.price-cur { font-size: 1.4rem; margin-left: .15em; color: var(--gold-soft); }
+.price-label { color: var(--text-mute); margin: .4em 0 0; font-size: .95rem; }
+.price-note { color: var(--text-mute); font-size: .82rem; margin: .6em 0 0; font-style: italic; }
+
+/* --- Contact ---------------------------------------------------------- */
+.contact { max-width: 700px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+.contact-lede { color: var(--text-mute); margin: 0 0 1.6em; }
+.contact-form { display: grid; gap: 1rem; }
+.contact-form label {
+  display: grid; gap: .35rem;
+  font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold);
+}
+.contact-form input,
+.contact-form textarea {
+  font: inherit;
+  font-size: 1rem; letter-spacing: 0; text-transform: none;
+  color: var(--text);
+  background: rgba(245,239,229,0.04);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: .8rem .9rem;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 0;
+  border-color: var(--gold);
+  background: rgba(212,162,76,0.06);
+}
+
+/* --- Legal pages ------------------------------------------------------ */
+body.legal {
+  background:
+    radial-gradient(60% 50% at 15% 10%, rgba(139,92,246,0.14), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+}
+.page-legal {
+  max-width: 780px; margin: 0 auto; padding: 3rem 1.5rem 5rem;
+}
+.page-legal h1 {
+  font-family: "Fraunces", serif; font-weight: 400;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  margin: 0 0 1em;
+  color: var(--gold-soft);
+}
+.page-legal h2 {
+  font-size: 1.1rem; margin-top: 1.8em; color: var(--text);
+  font-family: "Fraunces", serif;
+}
+.page-legal p { color: var(--text-mute); }
+.back-link {
+  display: inline-block; margin-bottom: 2em;
+  color: var(--text-mute); font-size: .88rem;
+  border: 0;
+}
+.back-link:hover { color: var(--gold-soft); }
+
+/* --- Responsive ------------------------------------------------------- */
+@media (max-width: 780px) {
+  .about-facts, .price-grid { grid-template-columns: 1fr; }
+  .spread { grid-template-columns: 1fr; gap: 1.2rem; }
+  .fan-stage { height: calc(var(--card-h) + 80px); }
+  :root { --card-w: clamp(120px, 44vw, 200px); }
+  .ritual-slots { gap: .6rem; }
+  .slot { min-width: 90px; padding: .3rem .5rem; }
+  .sigil-moon { right: 4%; font-size: 3rem; }
+  .sigil-star { right: 14%; }
+}
+
+/* Mobile fan becomes a horizontal "carousel" - cards laid flat */
+@media (max-width: 640px) {
+  .fan-stage {
+    height: auto;
+    min-height: calc(var(--card-h) + 40px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0 2rem;
+  }
+  .fan {
+    display: flex;
+    width: max-content;
+    height: auto;
+    gap: .6rem;
+    padding: 0 1rem;
+  }
+  .card {
+    position: relative;
+    left: auto; bottom: auto;
+    margin: 0;
+    scroll-snap-align: center;
+    transform: none !important;
+  }
+  .card.is-flipped { transform: rotateY(180deg) !important; }
+}
+
+/* --- Reduced motion --------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .card.is-flipped .card-face-back { opacity: 0; }
+  .card.is-flipped .card-face-front { transform: none; opacity: 1; }
+  .card-face-front { transform: none; opacity: 0; transition: opacity .2s; }
+  .card-face-back  { transition: opacity .2s; }
+}

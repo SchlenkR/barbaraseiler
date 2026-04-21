@@ -206,3 +206,65 @@ Daraus folgt **absolut bindend**:
 | `v10/` | „Das Gespräch" | Dialog-IA. Die Seite liest sich als Gespräch Schüler ↔ Barbara. Keine klassischen Sektionen, durchgängige Konversation. |
 
 Pro Hauptversion zwei Design-Subvarianten, IA bleibt identisch, nur die Design-Sprache/das Interaktionsmodell ändert sich — der Agent-Brief beschreibt pro Ordner die spezifische Richtung.
+
+---
+
+## 11 — Design-Ideen-Log (lebendig)
+
+Zentrale Liste aller Design-Varianten mit ihrem Konzept. Bei jeder neuen Variante pflegen. Sub-Varianten nennen explizit den **Twist gegenüber ihrem Parent**, damit der Unterschied nachvollziehbar bleibt.
+
+### Phase 1 (v1–v5) — Barbara-fokussiert
+
+| Ordner | Parent | Idee |
+|---|---|---|
+| `v1/` | — | Initial Static-Rebuild der Bestandsseite, Editorial Light |
+| `v1-brutal/` | v1 | Swiss Brutal, Acid-Akzente, Mono-Typo, harte Raster |
+| `v1-noir/` | v1 | Cinematic B/W, Didone-Display, filmisch |
+| `v1-clay/` | v1 | Claymorphism, weiche Schatten, runde Formen |
+| `v1-swiss/` | v1 | Classic Swiss International, strenger Grid, rote Akzente |
+| `v2/` | — | 9-Sektionen-IA, inhaltsneutral |
+| `v2-bento/` | v2 | Apple-Style Bento-Grid |
+| `v2-mag/` | v2 | Magazin Nº 04, Drop Caps, Editorial Deluxe |
+| `v2-wiki/` | v2 | Enzyklopädisch-dichte Wiki-Ansicht |
+| `v3/` | — | Barbara-Stimme, Copy im Originalton |
+| `v3-kinetic/` | v3 | Kinetic Typography via GSAP |
+| `v3-collage/` | v3 | Scrapbook / Polaroids / Paper-Textur |
+| `v3-neobrutal/` | v3 | Neo-Brutalismus, flat, harte Schatten |
+| `v3-riso/` | v3 | Risograph Duotone Print |
+| `v4/` | — | UX-Hierarchie, Progressive Disclosure |
+| `v4-glass/` | v4 | visionOS-Aurora-Glass |
+| `v4-linear/` | v4 | Linear.app Product Dark |
+| `v4-terminal/` | v4 | CRT/BBS Phosphor-Terminal |
+| `v5/` | — | Du-Perspektive konsequent, Editorial Warm |
+| `v5-y2k/` | v5 | Y2K Chrome / Aero / Holo |
+| `v5-didone/` | v5 | Didone Salon, Luxury Editorial |
+| `v5-lenis/` | v5 | Stage-Scroll via Lenis+GSAP |
+| `v5-three/` | v5 | Voice-Ribbons via Three.js/WebGL |
+
+### Phase 2 (v6–v10) — Schüler-fokussiert
+
+| Ordner | Parent | Idee |
+|---|---|---|
+| `v6/` | — | Pathway Chooser: 5 Schüler-Typen wählen Lernpfad, Cream/Cognac |
+| `v6-pathways/` | v6 | Apple-Shop-by-Need Chooser, Ivory/Jade hell |
+| `v6-chat/` | v6 | Messenger-Conversation als IA |
+| `v7/` | — | Probestunden-Angebot, 40€-Coin-Badge, SaaS Warm |
+| `v7-offer/` | v7 | Stripe/Linear-Dark SaaS |
+| `v7-split/` | v7 | 50/50 Split mit Sticky Form rechts, Aubergine |
+| `v8/` | — | Weg zum Abitur, Editorial Sepia, Schritt-für-Schritt |
+| `v8-faq/` | v8 | Zen-Accordion via `<details>` |
+| `v8-journey/` | v8 | 6 nummerierte Stationen mit Progress-Dots |
+| `v9/` | — | Outcomes First, Display-Typo |
+| `v9-outcomes/` | v9 | Bento-Grid 6 Tiles, Pastels |
+| `v9-audio/` | v9 | Voice-Memo / Podcast-UI, Dark+Orange |
+| `v10/` | — | Dialog, Du=Inter vs Barbara=Fraunces-Italic |
+| `v10-dialog/` | v10 | Chat-Bubbles Messenger, warm (nicht iMessage-blau) |
+| `v10-letter/` | v10 | Briefwechsel-Form, Cormorant+Fraunces+Caveat |
+
+### Sub-Sub-Varianten (Tiefe 2)
+
+| Ordner | Parent | Twist gegenüber Parent |
+|---|---|---|
+| `v6-pathways-dark/` | v6-pathways | Gleicher Chooser, aber Dark-Mode-Flip: Deep-Teal Hintergrund, warmer Cognac-Akzent statt Jade. Höhere Kontrast-Spannung für Abend-Besuche. |
+| `v8-journey-map/` | v8-journey | Stationen werden zur kartografischen Route: handgezeichneter Pfad zwischen Stationen statt Progress-Dots, SVG-Topo-Linien. |
+| `v10-dialog-voice/` | v10-dialog | Chat-Bubbles werden Voice-Memos: Waveform-Visuals, Play-Buttons, Zeitstempel — als wären Du & Barbara in WhatsApp-Sprachnachrichten. |

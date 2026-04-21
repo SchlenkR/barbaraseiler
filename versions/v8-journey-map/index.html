@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zweifel &amp; Antworten – Barbara Sophia Sailer · Gesangsunterricht Frankfurt</title>
+  <meta name="description" content="Sechs Zweifel, die zwischen dir und der ersten Gesangsstunde stehen. Sechs Antworten. Eine kartografische Reise – am Ende weißt du, ob du kommst.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <span class="nav-brand-name">Barbara Sophia Sailer</span>
+      <span class="nav-brand-sub">Gesangsunterricht · Frankfurt</span>
+    </a>
+    <a href="#ziel" class="nav-cta">Probestunde</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-paper" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-kicker">Reiseführer · Ausgabe VI</p>
+      <h1 class="hero-title">
+        <span>Kartografie</span>
+        <span>deiner</span>
+        <em>Zweifel.</em>
+      </h1>
+      <p class="hero-lede">Sechs Stationen, ein Weg. Folge der Route — am Ende hast du eine Antwort.</p>
+      <a href="#s1" class="hero-start">
+        <span>Abmarsch</span>
+        <svg viewBox="0 0 24 40" width="20" height="34" aria-hidden="true">
+          <line x1="12" y1="2" x2="12" y2="32" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <polyline points="6,26 12,34 18,26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p class="hero-meta">Barbara Sophia Sailer · Mezzosopranistin &amp; Stimmbildnerin · Frankfurt-Niederrad</p>
+    </div>
+    <div class="hero-sidemark" aria-hidden="true">
+      <span>N 50°05′</span>
+      <span>E 008°37′</span>
+      <span>— Start —</span>
+    </div>
+  </section>
+
+  <!-- MAP — the core visual twist. A hand-drawn topographic route. -->
+  <section class="map-section" aria-label="Die Karte der Reise">
+    <div class="map-frame">
+      <p class="map-caption">
+        <span class="map-caption-label">Tafel I</span>
+        <span class="map-caption-title">Die Route durch sechs Stationen</span>
+        <span class="map-caption-sub">handgezeichnet · Maßstab 1 : Zweifel</span>
+      </p>
+
+      <svg class="map-svg" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-labelledby="mapTitle mapDesc">
+        <title id="mapTitle">Kartografische Route durch sechs Zweifel</title>
+        <desc id="mapDesc">Handgezeichnete Karte mit sechs nummerierten Stationen, verbunden durch einen geschwungenen Pfad im Stil alter Reiseführer.</desc>
+
+        <defs>
+          <!-- Topographische Höhenlinien als Pattern -->
+          <pattern id="contour" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M 0 40 Q 20 20 40 40 T 80 40" fill="none" stroke="#8a6a45" stroke-width="0.4" opacity="0.25"/>
+            <path d="M 0 60 Q 20 40 40 60 T 80 60" fill="none" stroke="#8a6a45" stroke-width="0.4" opacity="0.18"/>
+            <path d="M 0 20 Q 20 0 40 20 T 80 20" fill="none" stroke="#8a6a45" stroke-width="0.4" opacity="0.18"/>
+          </pattern>
+
+          <!-- Leichte Gitter-Mercator-Linien -->
+          <pattern id="grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#7a5a3a" stroke-width="0.25" opacity="0.18"/>
+          </pattern>
+
+          <!-- Compass rose marker -->
+          <symbol id="compass" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="24" fill="none" stroke="#5a3a22" stroke-width="0.8" opacity="0.7"/>
+            <circle cx="30" cy="30" r="18" fill="none" stroke="#5a3a22" stroke-width="0.4" opacity="0.5"/>
+            <polygon points="30,6 33,30 30,27 27,30" fill="#7a1a1a" opacity="0.85"/>
+            <polygon points="30,54 33,30 30,33 27,30" fill="#5a3a22" opacity="0.7"/>
+            <polygon points="6,30 30,27 27,30 30,33" fill="#5a3a22" opacity="0.55"/>
+            <polygon points="54,30 30,33 33,30 30,27" fill="#5a3a22" opacity="0.55"/>
+            <text x="30" y="4" text-anchor="middle" font-family="Fraunces, serif" font-size="5" font-style="italic" fill="#5a3a22">N</text>
+          </symbol>
+        </defs>
+
+        <!-- Background grid + contours -->
+        <rect x="0" y="0" width="800" height="520" fill="url(#grid)"/>
+        <rect x="0" y="0" width="800" height="520" fill="url(#contour)"/>
+
+        <!-- Fake coastline / continent blob for atmosphere -->
+        <path d="M -20 380 Q 80 340 160 360 T 320 340 Q 420 330 500 360 T 680 350 Q 760 340 820 370 L 820 540 L -20 540 Z"
+              fill="#d9c39a" opacity="0.35" stroke="#8a6a45" stroke-width="0.6" stroke-dasharray="2 3"/>
+        <path d="M 50 140 Q 120 100 200 130 T 360 110 Q 420 120 460 100"
+              fill="none" stroke="#8a6a45" stroke-width="0.5" stroke-dasharray="1 4" opacity="0.45"/>
+
+        <!-- Compass rose -->
+        <use href="#compass" x="700" y="30" width="60" height="60"/>
+
+        <!-- Scale bar -->
+        <g transform="translate(60, 470)" opacity="0.7">
+          <line x1="0" y1="0" x2="100" y2="0" stroke="#5a3a22" stroke-width="1"/>
+          <line x1="0" y1="-4" x2="0" y2="4" stroke="#5a3a22" stroke-width="1"/>
+          <line x1="50" y1="-3" x2="50" y2="3" stroke="#5a3a22" stroke-width="1"/>
+          <line x1="100" y1="-4" x2="100" y2="4" stroke="#5a3a22" stroke-width="1"/>
+          <text x="50" y="16" text-anchor="middle" font-family="Fraunces, serif" font-size="9" font-style="italic" fill="#5a3a22">6 Stationen</text>
+        </g>
+
+        <!-- THE ROUTE — a curvy path between 6 stations.
+             Split into 5 segments (between stations) so each can
+             stroke-animate when the corresponding station enters view. -->
+        <g class="route">
+          <path class="route-seg" data-seg="1" id="seg1"
+                d="M 110 120 C 170 80, 230 180, 300 160"
+                fill="none" stroke="#7a1a1a" stroke-width="2"
+                stroke-linecap="round" stroke-dasharray="6 6"/>
+          <path class="route-seg" data-seg="2" id="seg2"
+                d="M 300 160 C 360 150, 380 260, 470 250"
+                fill="none" stroke="#7a1a1a" stroke-width="2"
+                stroke-linecap="round" stroke-dasharray="6 6"/>
+          <path class="route-seg" data-seg="3" id="seg3"
+                d="M 470 250 C 540 240, 560 170, 630 180"
+                fill="none" stroke="#7a1a1a" stroke-width="2"
+                stroke-linecap="round" stroke-dasharray="6 6"/>
+          <path class="route-seg" data-seg="4" id="seg4"
+                d="M 630 180 C 700 200, 680 300, 590 330"
+                fill="none" stroke="#7a1a1a" stroke-width="2"
+                stroke-linecap="round" stroke-dasharray="6 6"/>
+          <path class="route-seg" data-seg="5" id="seg5"
+                d="M 590 330 C 500 360, 400 320, 330 380"
+                fill="none" stroke="#7a1a1a" stroke-width="2"
+                stroke-linecap="round" stroke-dasharray="6 6"/>
+        </g>
+
+        <!-- STATIONS — diamond markers + number + short label -->
+        <g class="stations-layer">
+          <a href="#s1" class="map-station" data-idx="1" aria-label="Zu Station 1: Ich kann gar nicht singen">
+            <g transform="translate(110, 120)">
+              <polygon class="marker" points="0,-12 12,0 0,12 -12,0" fill="#faf1dc" stroke="#7a1a1a" stroke-width="1.8"/>
+              <circle class="marker-dot" cx="0" cy="0" r="3.2" fill="#7a1a1a"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-weight="500" fill="#3a2418">I</text>
+              <text x="18" y="6" font-family="Cormorant Garamond, serif" font-size="13" font-style="italic" fill="#3a2418">„Kann nicht singen"</text>
+            </g>
+          </a>
+          <a href="#s2" class="map-station" data-idx="2" aria-label="Zu Station 2: Ich bin zu alt">
+            <g transform="translate(300, 160)">
+              <polygon class="marker" points="0,-12 12,0 0,12 -12,0" fill="#faf1dc" stroke="#7a1a1a" stroke-width="1.8"/>
+              <circle class="marker-dot" cx="0" cy="0" r="3.2" fill="#7a1a1a"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-weight="500" fill="#3a2418">II</text>
+              <text x="18" y="6" font-family="Cormorant Garamond, serif" font-size="13" font-style="italic" fill="#3a2418">„Zu alt"</text>
+            </g>
+          </a>
+          <a href="#s3" class="map-station" data-idx="3" aria-label="Zu Station 3: Ich habe keine Zeit">
+            <g transform="translate(470, 250)">
+              <polygon class="marker" points="0,-12 12,0 0,12 -12,0" fill="#faf1dc" stroke="#7a1a1a" stroke-width="1.8"/>
+              <circle class="marker-dot" cx="0" cy="0" r="3.2" fill="#7a1a1a"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-weight="500" fill="#3a2418">III</text>
+              <text x="18" y="6" font-family="Cormorant Garamond, serif" font-size="13" font-style="italic" fill="#3a2418">„Keine Zeit"</text>
+            </g>
+          </a>
+          <a href="#s4" class="map-station" data-idx="4" aria-label="Zu Station 4: Zu teuer">
+            <g transform="translate(630, 180)">
+              <polygon class="marker" points="0,-12 12,0 0,12 -12,0" fill="#faf1dc" stroke="#7a1a1a" stroke-width="1.8"/>
+              <circle class="marker-dot" cx="0" cy="0" r="3.2" fill="#7a1a1a"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-weight="500" fill="#3a2418">IV</text>
+              <text x="18" y="6" font-family="Cormorant Garamond, serif" font-size="13" font-style="italic" fill="#3a2418">„Zu teuer"</text>
+            </g>
+          </a>
+          <a href="#s5" class="map-station" data-idx="5" aria-label="Zu Station 5: Was, wenn ich mich blamiere">
+            <g transform="translate(590, 330)">
+              <polygon class="marker" points="0,-12 12,0 0,12 -12,0" fill="#faf1dc" stroke="#7a1a1a" stroke-width="1.8"/>
+              <circle class="marker-dot" cx="0" cy="0" r="3.2" fill="#7a1a1a"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-weight="500" fill="#3a2418">V</text>
+              <text x="18" y="6" font-family="Cormorant Garamond, serif" font-size="13" font-style="italic" fill="#3a2418">„Blamage"</text>
+            </g>
+          </a>
+          <a href="#s6" class="map-station" data-idx="6" aria-label="Zu Station 6: Ich weiß nicht, ob das was für mich ist">
+            <g transform="translate(330, 380)">
+              <polygon class="marker" points="0,-12 12,0 0,12 -12,0" fill="#faf1dc" stroke="#7a1a1a" stroke-width="1.8"/>
+              <circle class="marker-dot" cx="0" cy="0" r="3.2" fill="#7a1a1a"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-weight="500" fill="#3a2418">VI</text>
+              <text x="18" y="6" font-family="Cormorant Garamond, serif" font-size="13" font-style="italic" fill="#3a2418">„Unsicher"</text>
+            </g>
+          </a>
+        </g>
+
+        <!-- Endpoint — Probestunde -->
+        <g transform="translate(150, 430)">
+          <circle r="8" fill="#7a1a1a"/>
+          <circle r="14" fill="none" stroke="#7a1a1a" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.8"/>
+          <text x="20" y="4" font-family="Fraunces, serif" font-size="14" font-style="italic" fill="#3a2418">× Probestunde</text>
+        </g>
+      </svg>
+
+      <p class="map-legend">
+        <span>— — —</span>
+        <span>gestrichelt: geplante Route</span>
+        <span>◆</span>
+        <span>Station mit Einwand</span>
+        <span>×</span>
+        <span>Ziel: die Probestunde</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- MINI-NAV: compass-style route list replacing the fixed dots.
+       Sits sticky on the side, but as route coordinates — not abstract dots. -->
+  <nav class="route-mini" aria-label="Stationen der Route">
+    <p class="route-mini-heading">Route</p>
+    <ol id="routeMini">
+      <li><a href="#s1" data-idx="1"><span class="rm-num">I</span><span class="rm-label">Kann nicht</span></a></li>
+      <li><a href="#s2" data-idx="2"><span class="rm-num">II</span><span class="rm-label">Zu alt</span></a></li>
+      <li><a href="#s3" data-idx="3"><span class="rm-num">III</span><span class="rm-label">Keine Zeit</span></a></li>
+      <li><a href="#s4" data-idx="4"><span class="rm-num">IV</span><span class="rm-label">Zu teuer</span></a></li>
+      <li><a href="#s5" data-idx="5"><span class="rm-num">V</span><span class="rm-label">Blamage</span></a></li>
+      <li><a href="#s6" data-idx="6"><span class="rm-num">VI</span><span class="rm-label">Unsicher</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- STATION 01 -->
+  <section class="station" id="s1" data-station="1">
+    <div class="station-inner">
+      <div class="station-head">
+        <span class="station-num">I</span>
+        <span class="station-of">Station 1 von 6</span>
+      </div>
+      <blockquote class="station-worry">
+        <span class="qmark">„</span>Ich kann gar nicht singen.<span class="qmark">"</span>
+      </blockquote>
+      <div class="station-answer">
+        <p>Das glauben fast alle, die zum ersten Mal hier stehen. Und fast alle irren sich.</p>
+        <p>Singen ist kein Gen. Es ist ein <strong>Handwerk</strong> – Atem, Haltung, Hören, Zutrauen. Alles lernbar. Was du mitbringst, reicht, um anzufangen. Es gibt kein Mindest-Talent, das du erst nachweisen müsstest.</p>
+        <p>In der Probestunde singst du, so viel oder so wenig, wie du magst. Ich höre zu – und du wirst überrascht sein, wie viel Stimme schon da ist.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION 02 -->
+  <section class="station" id="s2" data-station="2">
+    <div class="station-inner">
+      <div class="station-head">
+        <span class="station-num">II</span>
+        <span class="station-of">Station 2 von 6</span>
+      </div>
+      <blockquote class="station-worry">
+        <span class="qmark">„</span>Ich bin zu alt.<span class="qmark">"</span>
+      </blockquote>
+      <div class="station-answer">
+        <p>Stimmen verschwinden nicht. Sie werden leiser, wenn man sie lange nicht benutzt hat. Das holen wir zurück.</p>
+        <p>Ich habe Schülerinnen und Schüler <strong>jenseits der 70</strong>, die gerade erst anfangen. Manche wollten das immer schon – und haben endlich Zeit. Andere brauchen die Stimme für den Chor, für den Enkel, für sich selbst.</p>
+        <p>Der Körper vergisst nichts. Und das, was du heute bist, ist genau das richtige Alter, um anzufangen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION 03 -->
+  <section class="station" id="s3" data-station="3">
+    <div class="station-inner">
+      <div class="station-head">
+        <span class="station-num">III</span>
+        <span class="station-of">Station 3 von 6</span>
+      </div>
+      <blockquote class="station-worry">
+        <span class="qmark">„</span>Ich habe keine Zeit.<span class="qmark">"</span>
+      </blockquote>
+      <div class="station-answer">
+        <p>45 Minuten. Keine Mindestlaufzeit, kein Vertrag.</p>
+        <p>Manche kommen <strong>wöchentlich</strong>, andere <strong>alle zwei Wochen</strong>, wieder andere <strong>blockweise vor einem Auftritt oder einer Prüfung</strong>. Du entscheidest – und änderst, wenn sich dein Leben ändert.</p>
+        <p>Die 10er-Karte läuft nie ab. Wenn zwischen zwei Stunden drei Monate liegen, ist das auch in Ordnung. Die Stimme wartet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION 04 -->
+  <section class="station" id="s4" data-station="4">
+    <div class="station-inner">
+      <div class="station-head">
+        <span class="station-num">IV</span>
+        <span class="station-of">Station 4 von 6</span>
+      </div>
+      <blockquote class="station-worry">
+        <span class="qmark">„</span>Zu teuer.<span class="qmark">"</span>
+      </blockquote>
+      <div class="station-answer">
+        <p>Die Probestunde kostet <strong>40 €</strong>, 45 Minuten. Danach entscheidest du.</p>
+        <p>Einzelstunden: 50 € / 45 min oder 60 € / 60 min. 10er-Karte: elf Stunden zum Preis von zehn, ohne Ablaufdatum. Kein Abo, keine Mitgliedschaft.</p>
+        <p>Es ist nicht billig. Aber für den Gegenwert – Staatsexamen, Opernschule, Meisterkurse bei Fassbaender, Ludwig, Deutsch, BDG, ISA-Zertifikat – ist es <strong>angemessen</strong>. Und du bezahlst nur, was du tatsächlich nimmst.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION 05 -->
+  <section class="station" id="s5" data-station="5">
+    <div class="station-inner">
+      <div class="station-head">
+        <span class="station-num">V</span>
+        <span class="station-of">Station 5 von 6</span>
+      </div>
+      <blockquote class="station-worry">
+        <span class="qmark">„</span>Was, wenn ich mich blamiere?<span class="qmark">"</span>
+      </blockquote>
+      <div class="station-answer">
+        <p>Vor wem?</p>
+        <p>In der Probestunde sind wir zu zweit. Kein Publikum. Keine Gruppe. Keine Bewertung. Der Raum gehört für 45 Minuten <strong>nur dir</strong>.</p>
+        <p>Ich habe in fünfzehn Jahren Unterricht alles gehört – zittrige erste Töne, brüchige Höhen, Lachanfälle, Tränen. Nichts davon blamiert dich. Es gehört dazu. Und meistens singt es sich leichter, als man denkt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION 06 -->
+  <section class="station" id="s6" data-station="6">
+    <div class="station-inner">
+      <div class="station-head">
+        <span class="station-num">VI</span>
+        <span class="station-of">Station 6 von 6</span>
+      </div>
+      <blockquote class="station-worry">
+        <span class="qmark">„</span>Ich weiß nicht, ob das was für mich ist.<span class="qmark">"</span>
+      </blockquote>
+      <div class="station-answer">
+        <p>Das ist oft der ehrlichste Startpunkt.</p>
+        <p>Viele kommen ohne klares Ziel – und finden es in den ersten Stunden. Klassik oder Pop. Liedrepertoire oder Atemarbeit. Wiedereinstieg oder Neuanfang. Das muss <strong>nicht vorher feststehen</strong>.</p>
+        <p>Die Probestunde ist genau dafür da: Wir hören beide hin und merken, was sich richtig anfühlt. Danach entscheidest du. Auch gegen weitere Stunden ist eine vollkommen gute Antwort.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZIEL / ABSCHLUSS -->
+  <section class="ziel" id="ziel">
+    <div class="ziel-inner">
+      <p class="ziel-kicker">Ende der Route · Ziel erreicht</p>
+      <h2 class="ziel-title">Also — kommst du <em>zur Probestunde?</em></h2>
+      <p class="ziel-lede">45 Minuten · 40 € · kein Vertrag, keine Mindestlaufzeit.</p>
+
+      <div class="ziel-cta-row">
+        <a class="btn-whatsapp"
+           href="https://wa.me/491793713706?text=Hallo%20Barbara%2C%20ich%20komme%20zur%20Probestunde."
+           target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+          </svg>
+          <span>Direkt per WhatsApp</span>
+        </a>
+        <button type="button" class="btn-phone" id="phoneRevealBtn" aria-expanded="false">
+          <span id="phoneLabel">Telefonnummer anzeigen</span>
+        </button>
+      </div>
+
+      <form class="form"
+            action="https://formsubmit.co/barbarasailer@web.de"
+            method="POST">
+        <input type="hidden" name="_subject" value="Probestunden-Anfrage (v8-journey-map)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form-grid">
+          <label>Vorname
+            <input type="text" name="vorname" required>
+          </label>
+          <label>Name
+            <input type="text" name="name" required>
+          </label>
+        </div>
+        <label>E-Mail
+          <input type="email" name="email" required>
+        </label>
+        <label>Nachricht
+          <textarea name="nachricht" rows="4" placeholder="Was bringt dich her?"></textarea>
+        </label>
+        <button type="submit" class="btn-send">Nachricht senden</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- KURZ ZU BARBARA -->
+  <section class="about">
+    <div class="about-inner">
+      <h2 class="about-title">Kurz zu Barbara</h2>
+      <p>Mezzosopranistin, Stimmbildnerin, BDG-Mitglied. Staatsexamen Musik (Gesang und Klavier) und Germanistik in Augsburg, Opernschule der HfM Würzburg, Meisterkurse bei Fassbaender, Deutsch, Ludwig.</p>
+      <p>Stimmtherapeutische Weiterbildung (ISA-Zertifikat), Atemcoach, Hamburger Stimmsymposium 2022–2024. Eigene Liederabendreihe „Blutrot" in der Würzburger Residenz.</p>
+      <p>Unterrichtet in Frankfurt-Niederrad – Anfängerinnen, Aufnahmeprüflinge, Profis, Wiedereinsteiger, Berufsredner.</p>
+
+      <div class="about-place">
+        <p class="about-place-title">Schwarzwaldstraße 15 · 60528 Frankfurt a.M.</p>
+        <p class="about-place-sub">Anfahrt: Tram 12, 15, 21 aus der Innenstadt.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <p>Barbara Sophia Sailer · Schwarzwaldstraße 15 · 60528 Frankfurt a.M.</p>
+      <nav aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+</main>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

@@ -11,8 +11,8 @@
     :root {
       --bg: #0b0b0c;
       --fg: #f5f3ee;
-      --muted: #78756c;
-      --line: #1a1a1c;
+      --muted: #a8a497;
+      --line: #28282b;
       --v1: #b8ff5e;
       --v2: #ff7a3c;
       --v3: #ff5db6;
@@ -221,7 +221,7 @@
       font-size: 1.6rem;
     }
     .card-desc {
-      color: var(--muted);
+      color: #d4d0c3;
       font-size: 12.5px;
       line-height: 1.5;
     }
@@ -234,15 +234,15 @@
     }
     .card-by {
       font-family: "JetBrains Mono", monospace;
-      font-size: 8.5px;
+      font-size: 9px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.55;
+      color: #c9c5b8;
       margin-top: 2px;
     }
-    .card-by::before { content: "by "; opacity: 0.6; }
-    .card:hover .card-by { color: #0a0a0a; opacity: 0.7; }
+    .card-by::before { content: "by "; color: var(--muted); }
+    .card:hover .card-by { color: #0a0a0a; }
+    .card:hover .card-by::before { color: #0a0a0a; opacity: 0.7; }
 
     .placeholder {
       border: 1px dashed var(--line);

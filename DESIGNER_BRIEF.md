@@ -1,0 +1,160 @@
+# Design Brief — Barbara Sailer Website
+
+Du bist Designer*in mit einem Faible für neue Web-Tech (Smooth-Scroll, View Transitions, Three.js, scroll-linked animations, variable fonts, CSS `@container`, `color-mix()` etc.). Deine Aufgabe: **radikal unterschiedliche Entwürfe** für eine existierende Content-Basis. Konservativ bis abgefahren. **Nicht nur Visuals — auch strukturell iterieren** (IA, Section-Reihenfolge, Navigations-Paradigma, Single- vs. Multipage, Dichte vs. Weite).
+
+---
+
+## 1. Kundin
+
+**Barbara Sophia Sailer** — Mezzosopranistin und Stimmbildnerin in Frankfurt-Niederrad. Gesangsunterricht für Anfänger, Aufnahmeprüflinge, Profis, Wiedereinsteiger, Berufsredner*innen (Lehrerinnen, Geistliche, Coaches). Bietet auch therapeutische Stimmarbeit (ISA-Zertifikat, Atemcoach).
+
+**Kernfakten (dürfen nicht variieren):**
+- Adresse: Schwarzwaldstr. 15, 60528 Frankfurt
+- Telefon: +49 (0)179 – 371 370 6
+- E-Mail via Form: `https://formsubmit.co/barbarasailer@web.de`
+- WhatsApp: `https://wa.me/491793713706`
+- Probestunde: 40 € / 45 min · Einzel: 50 € / 45 min oder 60 € / 60 min · 10er-Karte: 11 für 10, ohne Ablauf
+- Verkehr: Tram 12, 15, 21 aus der Innenstadt
+- Credentials: Staatsexamen Musik (Gesang + Klavier) und Germanistik in Augsburg · Opernschule HfM Würzburg · Meisterkurse (Fassbaender, Deutsch, Ludwig) · BDG-Mitglied · ISA-Zertifikat · Hamburger Stimmsymposium 2022–24 · Liederabend-Reihe „Blutrot" (Würzburger Residenz)
+
+**Pflicht-Pages pro Variante:**
+- `index.html` (Hauptseite)
+- `impressum.html`
+- `datenschutz.html`
+
+---
+
+## 2. Tech-Setup (WICHTIG)
+
+**Repo**: `/Users/ronald/repos/github/barbaraseiler`
+**Dev-Server**: `npm run dev` → Vite auf Port 8080 (läuft vermutlich schon).
+**Multi-Page Auto-Discovery**: Vite scannt `versions/` nach Ordnern matching `/^v\d+/` und macht sie unter `http://localhost:8080/<folder>/` erreichbar. **Du musst die Vite-Config NICHT anfassen.**
+
+**Self-contained Regel:** Jeder `versions/v<N>-<label>/` Ordner muss komplett eigenständig sein. **Kein shared code.** Jeder Ordner enthält:
+```
+versions/v<N>-<label>/
+├── index.html
+├── impressum.html
+├── datenschutz.html
+├── css/style.css
+├── js/main.js       (optional, nur wenn nötig)
+└── assets/          (optional)
+```
+
+**Dependencies**: ausschließlich via **CDN** (unpkg, jsdelivr, Google Fonts). **Kein npm install**. Beispiele:
+- GSAP + ScrollTrigger: `https://unpkg.com/gsap@3/dist/gsap.min.js`
+- Lenis (smooth scroll): `https://unpkg.com/@studio-freight/lenis@1/dist/lenis.min.js`
+- Three.js: `https://unpkg.com/three@0.160/build/three.module.js` (ESM)
+- Splitting.js, Matter.js, p5.js, Tone.js, Anime.js — alle als UMD via unpkg
+
+**Vite HMR funktioniert** — Edits reloaden live.
+
+---
+
+## 3. Naming-Konvention
+
+`v<N>-<label>` wobei `<N>` = Parent-Version (1–5), `<label>` = kurzer Design-Descriptor (kebab-case, max 12 Zeichen).
+
+Beispiele: `v2-bento`, `v4-terminal`, `v5-didone`.
+
+**Parent = welche der 5 Ursprungsversionen ist der Content-Ausgangspunkt**, NICHT zwingend die Design-Basis — du darfst den Content aus v5 nehmen und trotzdem mit Parent v2 taggen, wenn deine Struktur v2-näher ist. Im Zweifel: Parent = Version, die deinem Strukturgedanken am nächsten kommt.
+
+**Bereits vergeben — NICHT dupliziere diese Dialekte:**
+- `v1-brutal` → Swiss Brutalism, Acid Green + Hot Pink, IBM Plex Mono
+- `v3-kinetic` → Kinetic Typography, GSAP ScrollTrigger, Fraunces variable, Cream/Terracotta
+- `v5-y2k` → Y2K / Aero / Chrome-Gradient, Instrument Serif + VT323, Sparkle canvas trail, Glassmorphism
+
+---
+
+## 4. Content-Basis (Parents)
+
+Lies die bestehenden `versions/v1/`, `v2/`, `v3/`, `v4/`, `v5/` index.html für Content und Struktur-Logik. Kurzfassung:
+
+- **v1** — Initial Static-Rebuild. Editorial Light. Einfacher Seitenaufbau. Content-roh.
+- **v2** — 9 Sektionen. Neue Informationsarchitektur mit klar getrennten Zweckbereichen.
+- **v3** — Barbara-Stimme. Copy im Originalton neu formuliert. Persönlicher, wärmer.
+- **v4** — UX-Hierarchie. Layer-Cake-Pattern, progressive disclosure, typografische Hierarchie.
+- **v5** — Du-Perspektive. Aktueller Hauptstand. Reader-zentriert, „Du willst singen lernen."
+
+---
+
+## 5. Deine Aufgabe — 15 Varianten
+
+**Pro Parent (v1–v5) drei neue Design-Varianten.** 5 × 3 = 15 total.
+
+Spektrum explizit: **konservativ bis extrem abgefahren.** Pro Parent sollen alle drei Würfe klar voneinander unterscheidbar sein — nicht drei Spielarten derselben Idee.
+
+### Dimensionen, die du variieren sollst
+
+- **Visueller Stil**: Swiss Grid / Magazine / Brutalism / Clay / Glass / Terminal / Risograph / Collage / Luxury-Editorial / Tech-Demo / Memphis / Bauhaus / Y2K-Evolution / Monospace-Doc / …
+- **Typografie**: Didone / Humanist Sans / Grotesk / Monospace / Display-Serif / handwritten / variable-font-axes
+- **Farbsystem**: duotone, pastell, high-contrast b/w, acidic neon, earth tones, holographic, single-color monochrome
+- **Layout-Paradigma**: single-page scroll, multi-page, sidebar-nav, full-bleed immersive, card-grid, magazine-multi-column, bento, split-screen
+- **Informationsarchitektur**: dichte IA (viel, klein) vs. radikal reduziert (wenig, groß). Reihenfolge umstellen. Sections zusammenlegen/aufteilen. Nav anders strukturieren.
+- **Interaktion**: scroll-linked animation, hover states, page transitions, cursor-follow effects (aber **kein custom-rendered Cursor-Pointer** — siehe Constraint), parallax, morphing shapes, sound (nur wenn wirklich passend)
+- **Tech-Showcase**: Three.js 3D-Hero, Lenis Smooth-Scroll, View Transitions API, CSS Scroll-Driven Animations, Canvas effects, SVG-Morphing
+
+### Beispielrichtungen (Inspiration, nicht zwingend)
+
+```
+v1-noir      Cinematic B/W, Bodoni XXL, letterboxing, slow fades
+v1-clay      Claymorphism, soft 3D, pastel rounded
+v1-swiss     Strenges 12-col Grid, Helvetica Now, Tabellen
+
+v2-wiki      Notion/Wiki-dicht, Sidebar-Nav, Inter+Source Serif
+v2-bento     Apple-Bento, Pastell-Blöcke, Icon-Cards
+v2-mag       Magazine, Drop Caps, Multi-Column, Serif-heavy
+
+v3-collage   Paper-Texturen, handschriftliche Marginalien, Polaroids
+v3-neobrutal Flache Knallfarben, dicke Borders, Archivo Black
+v3-riso      Risograph-Print, Grain, Halftone, Duotone
+
+v4-terminal  CRT/BBS, Scanlines, ASCII, Mono everything
+v4-glass     iOS-26 Glass-Panels (modern, nicht Y2K), Depth-Layers
+v4-linear    Linear.app-dark, subtile Gradients, sharp edges
+
+v5-lenis     Smooth-Scroll (Lenis), scroll-linked Reveals, image-heavy
+v5-didone    Luxury Editorial (Hermès-esque), Didone XXL, viel Weißraum
+v5-three     Three.js Hero, isometrische 3D-Tiefe
+```
+
+Du darfst davon abweichen. Das sind Vorschläge, keine Vorgaben.
+
+---
+
+## 6. Harte Constraints
+
+- **Kein custom-rendered Maus-Cursor.** Native Pointer only. (Mouse-Trails / Sparkles / Follow-Effects sind OK — aber der Pointer selbst bleibt normal.)
+- **Funktionierende Navigation**: Alle Links (`#anchor`, `impressum.html`, `datenschutz.html`) müssen auflösen.
+- **WhatsApp + Form** müssen funktionieren (URL/endpoint s.o.).
+- **Telefonnummer** darf als "reveal on click" verschleiert bleiben (Spam-Schutz-Pattern).
+- **Accessibility**: Semantisches HTML, alt-Texte, kontrastreiche Farben, `prefers-reduced-motion` respektieren für schwere Animationen.
+- **Deutsch als Content-Sprache.** Code-Kommentare Englisch.
+- **Mobile**: Min. funktional bei 375px Viewport. Muss nicht perfekt designed sein, aber nicht kaputt.
+
+---
+
+## 7. Workflow
+
+1. **Lies** `versions/v<Parent>/index.html` für Content + Struktur der Ausgangsversion.
+2. **Entscheide** Design-Dialekt und IA-Twist für deinen Wurf.
+3. **Baue** den neuen Ordner `versions/v<N>-<label>/` komplett aus — index + impressum + datenschutz + css (+ js).
+4. **Trage die Variante ein** in `versions/index.html`: neue `<a class="card variant">` in die passende Lane. Schema siehe bestehende Einträge für `v1-brutal`, `v3-kinetic`, `v5-y2k`. Placeholder-Divs (`<div class="placeholder">+ variant</div>`) ersetzen.
+5. **Teste** über `http://localhost:8080/v<N>-<label>/` dass die Seite lädt und nichts kaputt ist.
+
+---
+
+## 8. Qualitätsmesslatte
+
+- **Nicht lame.** Ronald hat mehrfach gesagt: das erste Editorial-Layout „sieht aus wie Claude Code". Er will **überraschen**.
+- **Handwerk zählt.** Whitespace, Typo-Hierarchie, Farb-Konsistenz, Micro-Interactions — alles soll intentional wirken. Keine Default-Bootstrap-Optik.
+- **Jede Variante soll Haltung haben.** Kein weichgespültes „könnte alles sein". Lieber polarisierend als beliebig.
+- **Tech soll die Idee tragen**, nicht andersrum. Three.js nur, wenn 3D das Konzept verstärkt — nicht als Gimmick.
+
+---
+
+## 9. Antwort-Format (falls als Agent beauftragt)
+
+- Für jeden gebauten Ordner: Pfad + 1–2 Sätze Konzept + genutzte Tech.
+- Liste aller Dateien, die du in `versions/index.html` verändert hast.
+- Am Ende: Liste noch offener Placeholders, falls du nicht alle 15 schaffst.

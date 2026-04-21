@@ -130,11 +130,13 @@
     .lane.featured .lane-num { font-size: 4rem; }
 
     .cards {
-      display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr) minmax(0, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
       min-width: 0;
     }
+    .cards > .card { flex: 1 1 180px; }
+    .cards > .card:first-child { flex: 2 1 340px; }
 
     .card {
       position: relative;
@@ -257,7 +259,8 @@
 
     @media (max-width: 1000px) {
       .lane { grid-template-columns: 50px 1fr; padding: 18px; }
-      .cards { grid-template-columns: 1fr; }
+      .cards > .card,
+      .cards > .card:first-child { flex: 1 1 100%; }
       .card.variant::after { display: none; }
       .lane-num { font-size: 2.5rem; }
       .lane.featured .lane-num { font-size: 3rem; }
@@ -285,7 +288,7 @@
     <div class="lane featured" style="--accent: var(--v5);">
       <div class="lane-num">05</div>
       <div class="cards">
-        <a class="card" href="/v5/">
+        <a class="card" href="./v5/">
           <div class="card-top">
             <span class="card-tag">v5 · Current</span>
             <span class="arrow">→</span>
@@ -294,22 +297,33 @@
           <p class="card-desc">Hero, Leitsatz und Über-mich-Struktur konsequent auf den Leser ausgerichtet. Aktueller Hauptstand.</p>
           <span class="card-meta">Parent: — · Stil: Editorial Warm</span>
         </a>
-        <a class="card variant" href="/v5-y2k/">
-          <div class="card-top">
-            <span class="card-tag">v5-y2k</span>
-            <span class="arrow">→</span>
-          </div>
+        <a class="card variant" href="./v5-y2k/">
+          <div class="card-top"><span class="card-tag">v5-y2k</span><span class="arrow">→</span></div>
           <h3 class="card-title">Y2K Chrome</h3>
           <span class="card-meta">← v5 · Aero / Holo</span>
         </a>
-        <div class="placeholder">+ variant</div>
+        <a class="card variant" href="./v5-didone/">
+          <div class="card-top"><span class="card-tag">v5-didone</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Didone Salon</h3>
+          <span class="card-meta">← v5 · Luxury Editorial</span>
+        </a>
+        <a class="card variant" href="./v5-lenis/">
+          <div class="card-top"><span class="card-tag">v5-lenis</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Stage Scroll</h3>
+          <span class="card-meta">← v5 · Lenis + GSAP</span>
+        </a>
+        <a class="card variant" href="./v5-three/">
+          <div class="card-top"><span class="card-tag">v5-three</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Voice Ribbons</h3>
+          <span class="card-meta">← v5 · Three.js / WebGL</span>
+        </a>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v4);">
       <div class="lane-num">04</div>
       <div class="cards">
-        <a class="card" href="/v4/">
+        <a class="card" href="./v4/">
           <div class="card-top">
             <span class="card-tag">v4</span>
             <span class="arrow">→</span>
@@ -318,15 +332,28 @@
           <p class="card-desc">Layer-Cake-Pattern, typografische Hierarchie, Progressive Disclosure.</p>
           <span class="card-meta">Parent: — · Stil: Editorial</span>
         </a>
-        <div class="placeholder">+ variant</div>
-        <div class="placeholder">+ variant</div>
+        <a class="card variant" href="./v4-glass/">
+          <div class="card-top"><span class="card-tag">v4-glass</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Aurora Glass</h3>
+          <span class="card-meta">← v4 · visionOS-Style</span>
+        </a>
+        <a class="card variant" href="./v4-linear/">
+          <div class="card-top"><span class="card-tag">v4-linear</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Product Dark</h3>
+          <span class="card-meta">← v4 · Linear.app</span>
+        </a>
+        <a class="card variant" href="./v4-terminal/">
+          <div class="card-top"><span class="card-tag">v4-terminal</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Phosphor</h3>
+          <span class="card-meta">← v4 · CRT / BBS</span>
+        </a>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v3);">
       <div class="lane-num">03</div>
       <div class="cards">
-        <a class="card" href="/v3/">
+        <a class="card" href="./v3/">
           <div class="card-top">
             <span class="card-tag">v3</span>
             <span class="arrow">→</span>
@@ -335,22 +362,33 @@
           <p class="card-desc">Copy im Originalton Barbaras neu geschrieben.</p>
           <span class="card-meta">Parent: — · Stil: Editorial</span>
         </a>
-        <a class="card variant" href="/v3-kinetic/">
-          <div class="card-top">
-            <span class="card-tag">v3-kinetic</span>
-            <span class="arrow">→</span>
-          </div>
+        <a class="card variant" href="./v3-kinetic/">
+          <div class="card-top"><span class="card-tag">v3-kinetic</span><span class="arrow">→</span></div>
           <h3 class="card-title">Kinetic Typo</h3>
           <span class="card-meta">← v3 · GSAP</span>
         </a>
-        <div class="placeholder">+ variant</div>
+        <a class="card variant" href="./v3-collage/">
+          <div class="card-top"><span class="card-tag">v3-collage</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Scrapbook</h3>
+          <span class="card-meta">← v3 · Paper / Polaroids</span>
+        </a>
+        <a class="card variant" href="./v3-neobrutal/">
+          <div class="card-top"><span class="card-tag">v3-neobrutal</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Neo-Brutal</h3>
+          <span class="card-meta">← v3 · Flat / Hard Shadow</span>
+        </a>
+        <a class="card variant" href="./v3-riso/">
+          <div class="card-top"><span class="card-tag">v3-riso</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Risograph</h3>
+          <span class="card-meta">← v3 · Duotone Print</span>
+        </a>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v2);">
       <div class="lane-num">02</div>
       <div class="cards">
-        <a class="card" href="/v2/">
+        <a class="card" href="./v2/">
           <div class="card-top">
             <span class="card-tag">v2</span>
             <span class="arrow">→</span>
@@ -359,15 +397,28 @@
           <p class="card-desc">Neue Informationsarchitektur: Content in neun zweckspezifische Sektionen.</p>
           <span class="card-meta">Parent: — · Stil: Editorial</span>
         </a>
-        <div class="placeholder">+ variant</div>
-        <div class="placeholder">+ variant</div>
+        <a class="card variant" href="./v2-bento/">
+          <div class="card-top"><span class="card-tag">v2-bento</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Bento</h3>
+          <span class="card-meta">← v2 · Apple-Style Grid</span>
+        </a>
+        <a class="card variant" href="./v2-mag/">
+          <div class="card-top"><span class="card-tag">v2-mag</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Magazin Nº 04</h3>
+          <span class="card-meta">← v2 · Editorial / Drop Caps</span>
+        </a>
+        <a class="card variant" href="./v2-wiki/">
+          <div class="card-top"><span class="card-tag">v2-wiki</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Enzyklopädie</h3>
+          <span class="card-meta">← v2 · Wiki-Dense</span>
+        </a>
       </div>
     </div>
 
     <div class="lane" style="--accent: var(--v1);">
       <div class="lane-num">01</div>
       <div class="cards">
-        <a class="card" href="/v1/">
+        <a class="card" href="./v1/">
           <div class="card-top">
             <span class="card-tag">v1 · Root</span>
             <span class="arrow">→</span>
@@ -376,15 +427,26 @@
           <p class="card-desc">Erster Static-Rebuild der Bestandsseite.</p>
           <span class="card-meta">Parent: — · Stil: Editorial Light</span>
         </a>
-        <a class="card variant" href="/v1-brutal/">
-          <div class="card-top">
-            <span class="card-tag">v1-brutal</span>
-            <span class="arrow">→</span>
-          </div>
+        <a class="card variant" href="./v1-brutal/">
+          <div class="card-top"><span class="card-tag">v1-brutal</span><span class="arrow">→</span></div>
           <h3 class="card-title">Swiss Brutal</h3>
           <span class="card-meta">← v1 · Acid / Mono</span>
         </a>
-        <div class="placeholder">+ variant</div>
+        <a class="card variant" href="./v1-noir/">
+          <div class="card-top"><span class="card-tag">v1-noir</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Cinematic Noir</h3>
+          <span class="card-meta">← v1 · B/W / Didone</span>
+        </a>
+        <a class="card variant" href="./v1-clay/">
+          <div class="card-top"><span class="card-tag">v1-clay</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Clay</h3>
+          <span class="card-meta">← v1 · Claymorphism</span>
+        </a>
+        <a class="card variant" href="./v1-swiss/">
+          <div class="card-top"><span class="card-tag">v1-swiss</span><span class="arrow">→</span></div>
+          <h3 class="card-title">Swiss Intl.</h3>
+          <span class="card-meta">← v1 · Classic Grid</span>
+        </a>
       </div>
     </div>
 

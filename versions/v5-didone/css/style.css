@@ -1,0 +1,1212 @@
+/* ============================================================
+   Barbara Sophia Sailer — v5-didone
+   Luxury Editorial Didone.
+   Cream ground, warm charcoal ink, single aubergine accent.
+   Typography is the hero. No ornament. Patient white space.
+   ============================================================ */
+
+:root {
+  /* Palette — cream + warm charcoal + single quiet aubergine */
+  --ink:        #1c1814;      /* warm charcoal (not pure black) */
+  --ink-muted:  #5a4e43;      /* smoke */
+  --ink-soft:   #8a7e70;      /* taupe */
+  --cream:      #f7f2ea;      /* main ground */
+  --cream-deep: #efe7d9;      /* secondary ground */
+  --rule:       #d9cfbc;      /* hairline */
+  --rule-soft:  #e6ddcb;
+  --accent:     #5a1f2a;      /* quiet aubergine / oxblood */
+  --accent-ink: #3a1219;
+  --whats:      #1a1a1a;      /* everything is ink-on-cream; whatsapp wears ink too */
+
+  /* Type */
+  --font-didone: 'Playfair Display', 'Bodoni 72', 'Didot', 'Times New Roman', serif;
+  --font-serif:  'Cormorant Garamond', 'Garamond', 'Georgia', serif;
+  --font-mono:   'JetBrains Mono', 'SFMono-Regular', ui-monospace, Menlo, monospace;
+
+  /* Measure */
+  --measure:    68ch;
+  --gutter:     clamp(24px, 5vw, 72px);
+  --frame-max:  1360px;
+  --chapter-y:  clamp(120px, 14vw, 220px);
+
+  /* Motion */
+  --ease-slow:  cubic-bezier(0.19, 1, 0.22, 1);
+  --reveal-ms:  1100ms;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+  background: var(--cream);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(16px, 1.05vw, 18px);
+  line-height: 1.65;
+  font-weight: 400;
+  font-feature-settings: "liga" 1, "kern" 1, "onum" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain via layered noise — optional, restrained */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(90,31,42,0.015) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(28,24,20,0.02) 0, transparent 50%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 250ms var(--ease-slow), opacity 250ms var(--ease-slow);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+::selection { background: var(--accent); color: var(--cream); }
+
+/* ============================================================
+   TYPOGRAPHY PRIMITIVES
+   ============================================================ */
+
+/* Tiny mono/small-caps metadata labels */
+.micro {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  line-height: 1;
+}
+
+/* Didone display — the hero voice */
+.ou-display,
+.serif-xxl,
+.serif-xl {
+  font-family: var(--font-didone);
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -0.015em;
+  font-feature-settings: "liga" 1, "onum" 1;
+}
+
+.ou-display em,
+.serif-xxl em,
+.serif-xl em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+/* Body prose — cormorant, generous leading */
+.prose p,
+.lede {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.22vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0 0 1.1em;
+  font-weight: 400;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose em,
+.lede em {
+  font-style: italic;
+  color: var(--accent-ink);
+}
+
+.lede {
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  line-height: 1.55;
+  color: var(--ink-muted);
+  max-width: 32em;
+  margin: 0.4em 0 2.6em;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Understated link — hairline underline that thins on hover */
+.linklink {
+  position: relative;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--ink);
+  transition: color 300ms var(--ease-slow), border-color 300ms var(--ease-slow), letter-spacing 400ms var(--ease-slow);
+  letter-spacing: 0.005em;
+}
+.linklink:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.uline {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+
+/* ============================================================
+   REVEAL ANIMATION — slow, intentional, respects reduced-motion
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--reveal-ms) var(--ease-slow) var(--d, 0s),
+    transform var(--reveal-ms) var(--ease-slow) var(--d, 0s);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   MASTHEAD — ultra-thin fixed bar that fades in on scroll
+   ============================================================ */
+.masthead {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 18px var(--gutter);
+  background: rgba(247, 242, 234, 0.88);
+  backdrop-filter: blur(14px) saturate(1.05);
+  -webkit-backdrop-filter: blur(14px) saturate(1.05);
+  border-bottom: 1px solid var(--rule);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms var(--ease-slow);
+}
+.masthead.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mh-inner {
+  max-width: var(--frame-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+.mh-wordmark {
+  font-family: var(--font-didone);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.mh-wordmark:hover { color: var(--accent); }
+
+.mh-nav {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(16px, 2.4vw, 34px);
+}
+.mh-nav a {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  position: relative;
+}
+.mh-nav a:hover { color: var(--ink); }
+.mh-nav .mh-cta {
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 1px;
+  transition: color 300ms var(--ease-slow), border-color 300ms var(--ease-slow);
+}
+.mh-nav .mh-cta:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ============================================================
+   OUVERTURE — typographic hero. No image. Just breath + Didone.
+   ============================================================ */
+.ouverture {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(80px, 10vh, 140px) var(--gutter) clamp(60px, 8vh, 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--cream);
+  z-index: 1;
+}
+
+.ou-frame {
+  position: relative;
+  width: 100%;
+  max-width: var(--frame-max);
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(40px, 8vh, 100px);
+}
+
+.ou-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ou-meta-top { padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.ou-meta-bottom { padding-top: 18px; border-top: 1px solid var(--rule); flex-direction: column; align-items: flex-start; gap: 22px; }
+
+/* The headline — Didone XXL, stacked, mixed weight */
+.ou-display {
+  font-weight: 900;
+  font-size: clamp(3.4rem, 15vw, 13rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  margin: clamp(20px, 4vh, 60px) 0;
+}
+.ou-display .line {
+  display: block;
+  will-change: opacity, transform;
+}
+.ou-display .line-1 { text-align: left; }
+.ou-display .line-2 {
+  text-align: center;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.78em;
+  letter-spacing: -0.02em;
+  color: var(--ink-muted);
+  margin: 0.04em 0;
+}
+.ou-display .line-2 em {
+  color: var(--accent);
+  font-weight: 400;
+}
+.ou-display .line-3 {
+  text-align: right;
+  font-weight: 900;
+}
+
+.ou-lede {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+  max-width: 38em;
+  font-weight: 400;
+}
+
+.ou-cta-row {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.ou-cta-row .dot { color: var(--ink-soft); }
+
+.ou-cue {
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink-muted);
+}
+.cue-rule {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--ink-muted);
+  transition: width 500ms var(--ease-slow);
+}
+.cue-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.ou-cue:hover .cue-rule { width: 72px; }
+
+/* ============================================================
+   CHAPTER — the unit of rhythm
+   ============================================================ */
+.chapter {
+  position: relative;
+  padding: var(--chapter-y) var(--gutter);
+  max-width: var(--frame-max);
+  margin: 0 auto;
+}
+
+.chap-head {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 18px;
+  margin-bottom: clamp(48px, 7vw, 96px);
+  border-bottom: 1px solid var(--rule);
+}
+.chap-no {
+  font-family: var(--font-didone);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+.chap-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-left: auto;
+}
+
+/* Section-level Didone headlines */
+.serif-xl {
+  font-family: var(--font-didone);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 6vw, 5.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.6em;
+  max-width: 14ch;
+}
+.serif-xxl {
+  font-family: var(--font-didone);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 9vw, 8rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  margin: 0 0 0.4em;
+}
+
+/* ============================================================
+   PORTRAIT CHAPTER
+   ============================================================ */
+.portrait-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.portrait-plate {
+  margin: 0;
+  position: sticky;
+  top: 120px;
+}
+.portrait-plate img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(0.9) contrast(0.96);
+}
+.plate-caption {
+  margin-top: 14px;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+}
+
+.portrait-copy { min-width: 0; }
+.portrait-copy .serif-xl { margin-bottom: 1.2em; }
+
+.prose {
+  max-width: var(--measure);
+}
+
+/* Credentials details block */
+.colophon-details {
+  margin-top: 48px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.colophon-details summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: color 300ms var(--ease-slow);
+}
+.colophon-details summary::-webkit-details-marker { display: none; }
+.colophon-details summary:hover { color: var(--accent); }
+.colophon-details .plus {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--ink-muted);
+  font-weight: 300;
+  transition: transform 400ms var(--ease-slow);
+}
+.colophon-details[open] .plus { transform: rotate(45deg); }
+
+.credentials {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 28px;
+}
+.credentials li {
+  padding: 10px 0;
+  border-top: 1px dashed var(--rule-soft);
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+.credentials li:first-child { border-top: none; }
+
+/* ============================================================
+   PULL QUOTE — a breath between chapters
+   ============================================================ */
+.pull-quote {
+  padding: clamp(100px, 14vw, 200px) var(--gutter);
+  text-align: center;
+  max-width: var(--frame-max);
+  margin: 0 auto;
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.serif-quote {
+  font-family: var(--font-didone);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4.2vw, 3.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 auto;
+  max-width: 22ch;
+}
+.serif-quote em {
+  font-style: italic;
+  color: var(--accent);
+}
+.quote-tail {
+  display: inline-block;
+  font-style: italic;
+  font-size: 0.7em;
+  color: var(--ink-muted);
+  letter-spacing: 0;
+  margin-top: 0.3em;
+}
+
+/* ============================================================
+   METHOD CHAPTER
+   ============================================================ */
+.method-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.method-copy .serif-xl { margin-bottom: 1em; }
+
+.method-aside {
+  margin-top: 12px;
+  padding: 32px 32px 36px;
+  background: var(--cream-deep);
+  border-top: 1px solid var(--accent);
+}
+.method-aside .micro {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--accent);
+}
+.method-aside p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin: 0;
+  color: var(--ink);
+}
+
+.inline-cta {
+  margin-top: clamp(56px, 8vw, 96px);
+  text-align: center;
+}
+
+/* ============================================================
+   REPERTOIRE LIST — editorial table of contents
+   ============================================================ */
+.rep-list {
+  margin: clamp(48px, 7vw, 80px) 0 0;
+  padding: 0;
+}
+.rep-row {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(24px, 4vw, 56px);
+  padding: clamp(28px, 3.5vw, 44px) 0;
+  border-top: 1px solid var(--rule);
+  align-items: baseline;
+  transition: background 450ms var(--ease-slow);
+}
+.rep-row:last-child { border-bottom: 1px solid var(--rule); }
+.rep-row:hover {
+  background: linear-gradient(to right, transparent, rgba(239, 231, 217, 0.5), transparent);
+}
+.rep-row dt {
+  font-family: var(--font-didone);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.3vw, 2rem);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.rep-no {
+  font-family: var(--font-didone);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.6em;
+  color: var(--accent);
+}
+.rep-row dd {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   OBJECTIONS
+   ============================================================ */
+.objections {
+  display: grid;
+  gap: clamp(48px, 7vw, 96px);
+  margin-top: clamp(60px, 8vw, 100px);
+  max-width: 62ch;
+}
+.obj {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+.obj-claim {
+  font-family: var(--font-didone);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--accent);
+  margin: 0;
+}
+.obj-reply {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.2vw, 1.18rem);
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0;
+  max-width: 48ch;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule-soft);
+}
+
+/* ============================================================
+   ATELIER
+   ============================================================ */
+.atelier-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.atelier-copy .serif-xl { margin-bottom: 1em; }
+
+.micro-block {
+  margin-top: 2.5em !important;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.98rem !important;
+  line-height: 1.85 !important;
+  color: var(--ink-muted) !important;
+}
+.micro-block .micro {
+  display: inline-block;
+  width: 90px;
+  margin-right: 6px;
+  color: var(--accent);
+}
+
+.atelier-plate {
+  margin: 0;
+  position: sticky;
+  top: 120px;
+}
+.atelier-plate img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(0.9) contrast(0.96);
+}
+
+/* ============================================================
+   HONORAR — editorial price leaders
+   ============================================================ */
+.chapter-honorar { max-width: 1080px; }
+
+.price-table {
+  margin: clamp(40px, 6vw, 72px) 0 0;
+}
+.price-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 18px;
+  padding: clamp(22px, 2.5vw, 32px) 0;
+  border-top: 1px solid var(--rule);
+}
+.price-row:last-child { border-bottom: 1px solid var(--rule); }
+.p-label {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  color: var(--ink);
+  font-style: italic;
+  font-weight: 400;
+}
+.p-leader {
+  display: block;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--rule) 0%, var(--rule) 50%, transparent 50%);
+  background-size: 6px 1px;
+  background-repeat: repeat-x;
+  background-position: 0 center;
+  transform: translateY(-4px);
+  opacity: 0.7;
+}
+.p-amount {
+  font-family: var(--font-didone);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.p-amount em {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 0.7em;
+}
+
+.honorar-note {
+  margin-top: 2.4em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--ink-muted);
+  max-width: 50ch;
+}
+.honorar-note em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-list { margin-top: clamp(40px, 6vw, 72px); max-width: 72ch; }
+.faq {
+  border-top: 1px solid var(--rule);
+}
+.faq:last-child { border-bottom: 1px solid var(--rule); }
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: clamp(22px, 2.6vw, 32px) 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-didone);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--ink);
+  transition: color 300ms var(--ease-slow);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--accent); }
+.faq .plus {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--ink-muted);
+  font-weight: 300;
+  transition: transform 400ms var(--ease-slow);
+  flex-shrink: 0;
+}
+.faq[open] .plus { transform: rotate(45deg); color: var(--accent); }
+.faq p {
+  padding: 0 0 clamp(22px, 2.6vw, 32px);
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  max-width: 56ch;
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.chapter-contact {
+  max-width: 780px;
+}
+.chapter-contact .serif-xxl {
+  text-align: center;
+  margin-bottom: 0.6em;
+}
+.chapter-contact .lede {
+  text-align: center;
+  margin: 0 auto 3em;
+}
+
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 26px 32px;
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--ink);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  letter-spacing: 0.005em;
+  transition: background 400ms var(--ease-slow), color 400ms var(--ease-slow), border-color 400ms var(--ease-slow);
+}
+.btn-whatsapp .btn-arrow {
+  font-family: var(--font-didone);
+  font-style: normal;
+  font-size: 1.3em;
+  transition: transform 450ms var(--ease-slow);
+}
+.btn-whatsapp:hover {
+  background: var(--accent);
+  color: var(--cream);
+  border-color: var(--accent);
+}
+.btn-whatsapp:hover .btn-arrow { transform: translateX(8px); }
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 48px 0;
+}
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  border-top: 1px solid var(--rule);
+}
+.divider span {
+  position: relative;
+  background: var(--cream);
+  padding: 0 20px;
+  font-family: var(--font-didone);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 26px;
+}
+.contact-form label .micro {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink-muted);
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 10px 0 12px;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--ink);
+  border-radius: 0;
+  transition: border-color 300ms var(--ease-slow);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.contact-form select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-muted) 50%),
+                    linear-gradient(135deg, var(--ink-muted) 50%, transparent 50%);
+  background-position: calc(100% - 14px) 50%, calc(100% - 8px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 28px;
+}
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+.contact-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.btn-send {
+  margin-top: 28px;
+  width: 100%;
+  padding: 22px 28px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  transition: background 400ms var(--ease-slow), color 400ms var(--ease-slow), border-color 400ms var(--ease-slow);
+}
+.btn-send .btn-arrow {
+  font-style: normal;
+  transition: transform 450ms var(--ease-slow);
+}
+.btn-send:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn-send:hover .btn-arrow { transform: translateX(8px); }
+
+.phone-reveal {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+}
+.phone-reveal .micro {
+  display: block;
+  margin-bottom: 12px;
+}
+.btn-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 2px 0 4px;
+  transition: color 300ms var(--ease-slow), border-color 300ms var(--ease-slow), letter-spacing 450ms var(--ease-slow);
+  letter-spacing: 0.005em;
+}
+.btn-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  letter-spacing: 0.04em;
+}
+.phone-number {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-didone);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+/* ============================================================
+   COLOPHON (footer)
+   ============================================================ */
+.colophon {
+  margin-top: clamp(80px, 10vw, 140px);
+  border-top: 1px solid var(--rule);
+  padding: clamp(60px, 7vw, 90px) var(--gutter) clamp(40px, 5vw, 60px);
+  background: var(--cream);
+}
+.col-frame {
+  max-width: var(--frame-max);
+  margin: 0 auto;
+}
+.col-row {
+  display: grid;
+  gap: clamp(28px, 4vw, 64px);
+}
+.col-top {
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: clamp(40px, 5vw, 72px);
+  border-bottom: 1px solid var(--rule-soft);
+  margin-bottom: clamp(28px, 3vw, 40px);
+}
+.col-bottom {
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  justify-content: space-between;
+}
+.col-wordmark {
+  font-family: var(--font-didone);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.col-tag {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink-muted);
+  margin: 0;
+  font-size: 1.05rem;
+}
+.col-meta p {
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  margin: 0 0 14px;
+}
+.col-meta .micro {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+.col-nav {
+  display: flex;
+  gap: 28px;
+}
+.col-nav a {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 300ms var(--ease-slow), border-color 300ms var(--ease-slow);
+}
+.col-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.col-set {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin: 0;
+  text-align: right;
+}
+.col-set .micro { color: var(--ink-soft); margin-right: 6px; }
+
+/* ============================================================
+   LEGAL PAGES (impressum + datenschutz)
+   ============================================================ */
+.legal {
+  max-width: 780px;
+  margin: clamp(120px, 14vw, 180px) auto clamp(80px, 10vw, 120px);
+  padding: 0 var(--gutter);
+}
+.legal .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 40px;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 300ms var(--ease-slow), border-color 300ms var(--ease-slow);
+}
+.legal .back:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.legal h1 {
+  font-family: var(--font-didone);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  margin: 0 0 clamp(36px, 4vw, 56px);
+  padding-bottom: clamp(24px, 3vw, 36px);
+  border-bottom: 1px solid var(--rule);
+}
+.legal h2 {
+  font-family: var(--font-didone);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  letter-spacing: -0.01em;
+  margin: 2.4em 0 0.7em;
+  color: var(--ink);
+}
+.legal p, .legal li {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink-muted);
+}
+.legal a {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
+.legal a:hover { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
+.legal strong { color: var(--ink); font-weight: 500; }
+.legal ul { padding-left: 18px; }
+
+/* ============================================================
+   RESPONSIVE — 375px must breathe, not break
+   ============================================================ */
+@media (max-width: 960px) {
+  .portrait-grid,
+  .atelier-grid,
+  .method-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 6vw, 56px);
+  }
+  .portrait-plate,
+  .atelier-plate {
+    position: static;
+    top: auto;
+    order: -1;
+  }
+  .portrait-plate img,
+  .atelier-plate img {
+    aspect-ratio: 3 / 4;
+  }
+  .chap-head { flex-wrap: wrap; }
+
+  .rep-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 28px 0;
+  }
+
+  .mh-nav a:not(.mh-cta) { display: none; }
+  .mh-nav .mh-cta { font-size: 0.92rem; }
+
+  .col-top { grid-template-columns: 1fr; }
+  .col-bottom { grid-template-columns: 1fr; gap: 24px; }
+  .col-set { text-align: left; }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 22px;
+    --chapter-y: 96px;
+  }
+  body { font-size: 16px; }
+
+  .ouverture { padding-top: 80px; padding-bottom: 60px; min-height: calc(100vh - 40px); }
+
+  /* Keep Didone dramatic but safe at 375px */
+  .ou-display {
+    font-size: clamp(3rem, 18vw, 5.6rem);
+    letter-spacing: -0.03em;
+    line-height: 0.94;
+  }
+  .ou-display .line-2 { font-size: 0.82em; }
+
+  .serif-xl {
+    font-size: clamp(2rem, 11vw, 3.4rem);
+    line-height: 1;
+    max-width: none;
+  }
+  .serif-xxl {
+    font-size: clamp(2.4rem, 14vw, 4rem);
+  }
+  .serif-quote {
+    font-size: clamp(1.5rem, 7vw, 2.4rem);
+  }
+
+  .ou-meta-bottom { gap: 16px; }
+
+  .chap-head {
+    padding-bottom: 14px;
+    margin-bottom: 40px;
+  }
+  .chap-label { margin-left: 0; }
+
+  .method-aside { padding: 24px 22px 26px; }
+
+  .rep-row dt { font-size: 1.3rem; }
+
+  .obj-claim { font-size: 1.6rem; }
+
+  .contact-form .form-row { grid-template-columns: 1fr; gap: 0; }
+
+  .btn-whatsapp { padding: 22px 24px; font-size: 1.05rem; }
+  .btn-send { padding: 20px 22px; }
+
+  .price-row {
+    grid-template-columns: 1fr auto;
+    gap: 8px 16px;
+    padding: 22px 0;
+  }
+  .p-leader { display: none; }
+  .p-label { grid-column: 1 / -1; }
+  .p-amount { grid-column: 2 / 3; justify-self: end; font-size: 1.7rem; }
+
+  .ou-cue { right: 0; }
+
+  .micro-block .micro { display: block; width: auto; margin-bottom: 2px; }
+}
+
+@media (max-width: 400px) {
+  .ou-display { font-size: 17vw; }
+}

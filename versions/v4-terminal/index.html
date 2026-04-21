@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAILER.BBS :: Barbara Sophia Sailer — Gesang &amp; Stimmbildung / Frankfurt</title>
+  <meta name="description" content="Gesangsunterricht und Stimmbildung in Frankfurt-Niederrad. Klassischer Gesang, Lied, Pop, Chanson, Musical. Probestunde 40 EUR.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Geist Mono as primary, VT323 for accent/heading flavor -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- CRT scanline + vignette overlay. purely decorative. -->
+<div class="crt" aria-hidden="true">
+  <div class="crt-scan"></div>
+  <div class="crt-vignette"></div>
+  <div class="crt-flicker"></div>
+</div>
+
+<!-- top statusbar, simulates a terminal connection info -->
+<div class="statusbar" role="banner">
+  <span class="sb-left">SAILER.BBS <span class="sb-sep">|</span> NODE 01 <span class="sb-sep">|</span> 14400 baud</span>
+  <span class="sb-mid" id="sbClock">--:--:-- CET</span>
+  <span class="sb-right">user: <span class="sb-user">GAST</span> <span class="sb-sep">|</span> <span class="sb-online">ONLINE</span></span>
+</div>
+
+<!-- Top nav, rendered like an ASCII menu bar -->
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">
+      <span class="brand-prompt">C:\&gt;</span>
+      <span class="brand-name">SAILER.EXE</span>
+    </a>
+    <nav class="menu" aria-label="Hauptnavigation">
+      <a href="#ueber-mich"><span class="key">[U]</span>ber</a>
+      <a href="#ziele"><span class="key">[A]</span>ngebot</a>
+      <a href="#ort"><span class="key">[O]</span>rt</a>
+      <a href="#preise"><span class="key">[P]</span>reise</a>
+      <a href="#faq"><span class="key">[F]</span>AQ</a>
+      <a href="#kontakt" class="menu-cta"><span class="key">[K]</span>ontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="content" class="content">
+
+  <!-- ============================================================
+       BOOT / HERO
+       ============================================================ -->
+  <section class="boot" id="top">
+    <div class="container">
+      <pre class="boot-log" id="bootLog" aria-hidden="true"></pre>
+
+      <div class="hero">
+        <pre class="ascii-logo" aria-hidden="true">
+ ____    _    ____  ____    _    ____      _
+| __ )  / \  |  _ \| __ )  / \  |  _ \    / \
+|  _ \ / _ \ | |_) |  _ \ / _ \ | |_) |  / _ \
+| |_) / ___ \|  _ &lt;| |_) / ___ \|  _ &lt;  / ___ \
+|____/_/   \_\_| \_\____/_/   \_\_| \_\/_/   \_\
+        S   A   I   L   E   R   .   B   B   S
+</pre>
+
+        <h1 class="hero-title">
+          <span class="prompt">&gt;</span> Barbara Sophia Sailer<span class="caret">_</span>
+        </h1>
+        <p class="hero-tag">Mezzosopranistin &middot; Gesangslehrerin &middot; Stimmbildnerin</p>
+        <p class="hero-meta">FRANKFURT-NIEDERRAD &middot; ONLINE NACH ABSPRACHE &middot; PROBESTUNDE 40,00 EUR</p>
+
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn"><span class="key">[P]</span> PROBESTUNDE ANFRAGEN</a>
+          <a href="#ueber-mich" class="btn btn-ghost"><span class="key">[&#x2193;]</span> WEITERLESEN</a>
+        </div>
+
+        <div class="hero-divider" aria-hidden="true">
+          <pre>&#9581;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9475;
+&#9474;  CONN. ESTABLISHED. Press any link to continue.        &#9474;
+&#9495;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9479;</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LEITSATZ
+       ============================================================ -->
+  <section id="einladung" class="section">
+    <div class="container container-narrow">
+      <div class="window">
+        <div class="window-bar">
+          <span class="win-title">README.TXT</span>
+          <span class="win-dots">&#9679; &#9679; &#9679;</span>
+        </div>
+        <div class="window-body">
+          <p class="intro-sentence">Barbara Sophia Sailer hilft Menschen, ihre Stimme zu finden &mdash; vom ersten Ton bis zum dramatischen Fach, vom gesunden Atem bis zum Kirchenchor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       UEBER MICH
+       ============================================================ -->
+  <section id="ueber-mich" class="section">
+    <div class="container container-narrow">
+      <h2 class="section-title"><span class="hash">##</span> wer_bei_mir_singt</h2>
+      <p class="lead">&gt; Anfaengerinnen und Anfaenger, Aufnahmepruefling:innen, Profis &mdash; und Menschen, die ihre Stimme wiederentdecken wollen.</p>
+
+      <h3><span class="hash">###</span> was_ich_mitbringe</h3>
+      <p><strong>Staatsexamen Musik (Gesang und Klavier) und Germanistik</strong> in Augsburg, danach die Opernschule der Hochschule fuer Musik Wuerzburg. Meisterkurse bei Brigitte Fassbaender, Helmut Deutsch, Christa Ludwig und weiteren. Aufgenommen im <strong>Bundesverband Deutscher Gesangspaedagogen (BDG)</strong>, Qualitaetszertifikat des Tonkuenstlerverbandes.</p>
+
+      <h3><span class="hash">###</span> wenn_die_stimme_hakt</h3>
+      <p>Die intensive gesangliche Arbeit hat frueh ein <strong>wissenschaftliches Interesse an Funktion und Fehlfunktion des Stimmapparates</strong> geweckt. Stimmtherapeutische Weiterbildung (ISA-Zertifikat), Atemcoach, Hamburger Stimmsymposium 2022&ndash;2024. In der Stimmbildung arbeite ich auch therapeutisch.</p>
+
+      <h3><span class="hash">###</span> und_ich_singe_selbst</h3>
+      <p>Mit meinem <strong>dramatischen Mezzosopran</strong> bin ich im Opern-, Operetten- und Konzertfach zu hoeren. Meine eigene Liederabendreihe &bdquo;Blutrot&ldquo; habe ich in der Wuerzburger Residenz eroeffnet.</p>
+
+      <div class="video-wrap" aria-label="Video-Platzhalter">
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ"
+            title="Barbara Sophia Sailer — Video (Platzhalter)"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">&gt; FILE: barbara_intro.avi &middot; PLATZHALTER &mdash; hier folgt in Kuerze ein kurzes Video.</p>
+      </div>
+
+      <details class="details-block">
+        <summary><span class="bracket">[+]</span> AUSBILDUNG_UND_ZERTIFIKATE.LOG</summary>
+        <div class="details-body">
+          <ul>
+            <li>Bayerisches Staatsexamen, Universitaet Augsburg (Hauptfach Gesang)</li>
+            <li>Opernschule HfM Wuerzburg &middot; Richard-Wagner-Stipendium</li>
+            <li>Meisterkurse: Brigitte Fassbaender, Helmut Deutsch, Helene Schneiderman, Helen Donath, Gwyneth Jones, Christa Ludwig</li>
+            <li>C-Kirchenmusikerausbildung mit C-Pruefung (Fach Chorleitung)</li>
+            <li>Aufnahme BDG (Bundesverband Deutscher Gesangspaedagogen) 2020</li>
+            <li>Qualitaetszertifikat des Tonkuenstlerverbandes</li>
+            <li>Stimmtherapeutische Weiterbildung (ISA-Zertifikat)</li>
+            <li>Hamburger Stimmsymposium 2022, 2023, 2024 (Medical Voice Center)</li>
+            <li>Weiterbildung Atemcoach 2025</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROBESTUNDE / WIE WIR ARBEITEN
+       ============================================================ -->
+  <section id="arbeit" class="section section-alt">
+    <div class="container container-narrow">
+      <h2 class="section-title"><span class="hash">##</span> eine_probestunde_dann_entscheidest_du</h2>
+      <p class="lead">&gt; 45 Minuten, 40,00 EUR &mdash; keine Verpflichtung danach.</p>
+
+      <h3><span class="hash">###</span> was_dich_erwartet</h3>
+      <p>Ein schoener Unterrichtsraum. Angenehme Akustik. Klavierbegleitung. Und eine qualifizierte und zugewandte Lehrperson. Erwartet man noch mehr, wenn man singen lernen oder einfach besser mit seiner Stimme umgehen will?</p>
+
+      <p>Ja &mdash; zum Beispiel <strong>unerschoepfliche Geduld</strong> bei der Bildung einer Stimme. Kreativitaet, wenn es um passende, oft auch therapeutische Uebungen geht. Moeglichst viel Erfahrung. Und einen immensen Schatz an verfuegbarem Repertoire.</p>
+
+      <p class="pull">&bdquo; Damit kann ich dienen. &ldquo;</p>
+
+      <h3><span class="hash">###</span> wie_es_danach_weitergeht</h3>
+      <p>In der Probestunde lernen wir uns kennen. Du singst, so viel oder so wenig, wie Du magst. Am Ende wissen wir beide, ob es passt. Danach entscheidest Du selbst, wie oft wir uns sehen &mdash; woechentlich, alle zwei Wochen, blockweise vor einem Auftritt. <strong>Kein Vertrag, keine Mindestlaufzeit.</strong></p>
+
+      <h3><span class="hash">###</span> wo_wir_uns_treffen</h3>
+      <p>Die erste Stunde ist gerne <strong>persoenlich im Unterrichtsraum in Niederrad</strong> &mdash; dann weiss ich, wie Deine Stimme wirklich klingt. Danach sind wir flexibel: vor Ort, online oder bei Dir.</p>
+
+      <div class="aside">
+        <span class="aside-tag">NOTE:</span>
+        Der Raum gehoert fuer eine Stunde nur Dir. Keine Mitschueler:innen, kein Publikum, keine Bewertung. Nur ein Klavier, Barbara und Du.
+      </div>
+
+      <div class="inline-cta">
+        <a href="#kontakt"><span class="key">[&#x2192;]</span> PROBESTUNDE ANFRAGEN</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ZIELE
+       ============================================================ -->
+  <section id="ziele" class="section">
+    <div class="container container-narrow">
+      <h2 class="section-title"><span class="hash">##</span> wohin_deine_stimme_will</h2>
+      <p class="lead">&gt; Stimme ist mehr als eine Stilrichtung. Das meiste, was Du lernst, traegt Dich ueberallhin.</p>
+
+      <div class="goal-table">
+        <div class="goal-row">
+          <div class="goal-key">01 &middot; KLASSIK / OPER / LIED</div>
+          <div class="goal-val"><strong>Arien, Partien, Kunstlied.</strong> Schubert, Schumann, Wagner, Mahler, Strauss. Stimmbildung mit Blick auf Stil, Technik und Ausdruck, bis hin zur Vorbereitung auf Auftritte und Pruefungen.</div>
+        </div>
+        <div class="goal-row">
+          <div class="goal-key">02 &middot; POP / CHANSON / MUSICAL</div>
+          <div class="goal-val"><strong>Eigene Songs, Coverversionen, Rollenarbeit.</strong> Belting, Mixing, zeitgemaesse Stimmtechnik ohne klassisches Korsett &mdash; und trotzdem mit gesundem Fundament.</div>
+        </div>
+        <div class="goal-row">
+          <div class="goal-key">03 &middot; SPRECH-/BERUFSSTIMME</div>
+          <div class="goal-val"><strong>Lehrer:innen, Geistliche, Redner:innen, Coaches.</strong> Wer beruflich viel spricht, braucht eine Stimme, die mithaelt &mdash; und Atem, der nicht in den Schultern haengenbleibt.</div>
+        </div>
+        <div class="goal-row">
+          <div class="goal-key">04 &middot; WIEDEREINSTIEG / ERSTES MAL</div>
+          <div class="goal-val"><strong>Frueher gesungen und vermisst &mdash; oder nie probiert.</strong> Chor, Schule, Dusche: Du willst das wiederfinden. Oder Du willst es endlich einmal ausprobieren. Beides ist ein guter Anfang.</div>
+        </div>
+        <div class="goal-row">
+          <div class="goal-key">05 &middot; ATEM / ENTSPANNUNG</div>
+          <div class="goal-val"><strong>Stimmarbeit ist auch Atem- und Koerperarbeit.</strong> Wer sich selbst wieder besser hoeren und spueren moechte, ist hier richtig &mdash; auch ohne konkretes Lied im Kopf.</div>
+        </div>
+        <div class="goal-row">
+          <div class="goal-key">06 &middot; ICH WEISS ES NOCH NICHT</div>
+          <div class="goal-val"><strong>Oft der ehrlichste Startpunkt.</strong> Wir finden in der Probestunde gemeinsam heraus, was Deine Stimme kann und wohin sie will.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HUERDEN
+       ============================================================ -->
+  <section id="fuer-wen" class="section section-alt">
+    <div class="container container-narrow">
+      <h2 class="section-title"><span class="hash">##</span> drei_saetze_die_nicht_stimmen</h2>
+
+      <div class="objection">
+        <h3>&raquo; Ich kann nicht singen.</h3>
+        <p><strong>Singen ist kein Gen, sondern ein Handwerk.</strong> Es gibt kein Mindest-Talent, das Du mitbringen musst. Was Du mitbringst, ist genug, um anzufangen.</p>
+      </div>
+
+      <div class="objection">
+        <h3>&raquo; Ich bin zu alt.</h3>
+        <p><strong>Stimmen kommen nicht abhanden</strong> &mdash; sie werden nur leiser, wenn sie lange nicht benutzt wurden. Das holen wir zurueck. Ich habe Schueler:innen jenseits der 70, die gerade erst anfangen.</p>
+      </div>
+
+      <div class="objection">
+        <h3>&raquo; Ich trau mich nicht.</h3>
+        <p>Dann ist die Probestunde genau der richtige Ort. <strong>Keine Gruppe, kein Publikum, keine Bewertung</strong> &mdash; nur Du, ein Klavier und ich. Meistens singt es sich leichter, als man denkt.</p>
+      </div>
+
+      <div class="inline-cta">
+        <a href="#kontakt"><span class="key">[&#x2192;]</span> PROBESTUNDE ANFRAGEN</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ORT
+       ============================================================ -->
+  <section id="ort" class="section">
+    <div class="container container-narrow">
+      <h2 class="section-title"><span class="hash">##</span> unterrichtsraum_niederrad</h2>
+      <p class="lead">&gt; Privat, nicht einsehbar &mdash; mit Tram 12, 15, 21 direkt aus der Innenstadt.</p>
+
+      <p>Der Regelfall: ein <strong>schoener, geraeumiger Unterrichtsraum in Frankfurt-Niederrad</strong>. Klavier, angenehme Akustik, Platz zum Bewegen. Parkmoeglichkeiten gibt es im Umkreis.</p>
+
+      <p><strong>Online</strong> ist moeglich, wenn Du krank bist, gerade nicht reisen kannst oder ohnehin weiter weg wohnst &mdash; nach einer ersten persoenlichen Stunde. In <strong>Einrichtungen, Unternehmen, Gemeinden</strong> und auf Anfrage auch privat komme ich zu Dir. Fahrtkosten besprechen wir individuell.</p>
+
+      <div class="addr-box">
+        <pre>
+&#9556;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9559;
+&#9553;  ADRESSE.LOC                                 &#9553;
+&#9560;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9566;</pre>
+        <p class="addr-line">Barbara Sophia Sailer<br>
+        Schwarzwaldstrasse 15<br>
+        60528 Frankfurt am Main<br>
+        <span class="muted">Tram 12 / 15 / 21 &middot; Haltestelle Bruchfeldstrasse</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PREISE
+       ============================================================ -->
+  <section id="preise" class="section section-alt">
+    <div class="container container-narrow">
+      <h2 class="section-title"><span class="hash">##</span> preise</h2>
+      <p class="lead">&gt; Transparent, ohne Ablaufdatum, ohne Mindestlaufzeit.</p>
+
+      <div class="price-table" role="table" aria-label="Preisuebersicht">
+        <div class="pr-head" role="row">
+          <div role="columnheader">LEISTUNG</div>
+          <div role="columnheader">DAUER</div>
+          <div role="columnheader">PREIS</div>
+        </div>
+        <div class="pr-row" role="row">
+          <div role="cell">Probestunde</div>
+          <div role="cell">45 min</div>
+          <div role="cell" class="pr-amount">40,00 EUR</div>
+        </div>
+        <div class="pr-row" role="row">
+          <div role="cell">Einzelstunde</div>
+          <div role="cell">45 min</div>
+          <div role="cell" class="pr-amount">50,00 EUR</div>
+        </div>
+        <div class="pr-row" role="row">
+          <div role="cell">Einzelstunde</div>
+          <div role="cell">60 min</div>
+          <div role="cell" class="pr-amount">60,00 EUR</div>
+        </div>
+        <div class="pr-row pr-featured" role="row">
+          <div role="cell">10er-Karte <span class="pr-badge">11 fuer 10</span></div>
+          <div role="cell">&mdash;</div>
+          <div role="cell" class="pr-amount">ohne Ablauf</div>
+        </div>
+      </div>
+
+      <p class="muted-note">&gt; Laengere Einheiten nach Absprache. Unterricht bei Dir vor Ort zuzueglich Fahrtkosten.</p>
+
+      <div class="inline-cta">
+        <a href="#kontakt"><span class="key">[&#x2192;]</span> PROBESTUNDE ANFRAGEN</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+       ============================================================ -->
+  <section id="faq" class="section">
+    <div class="container container-narrow">
+      <h2 class="section-title"><span class="hash">##</span> haeufige_fragen</h2>
+
+      <details class="faq">
+        <summary><span class="bracket">[?]</span> Muss ich regelmaessig kommen?</summary>
+        <p>Nein. Manche kommen woechentlich, andere zweimal im Monat, wieder andere blockweise vor einem Auftritt oder einer Pruefung. Du entscheidest.</p>
+      </details>
+
+      <details class="faq">
+        <summary><span class="bracket">[?]</span> Gibt es eine Mindestlaufzeit oder einen Vertrag?</summary>
+        <p>Nein. Jede Stunde steht fuer sich. Die 10er-Karte ist ein Angebot, kein Muss &mdash; und auch sie ohne Ablaufdatum.</p>
+      </details>
+
+      <details class="faq">
+        <summary><span class="bracket">[?]</span> Was passiert, wenn ich kurzfristig absagen muss?</summary>
+        <p>Absagen bis 24 Stunden vorher sind kostenfrei. Kurzfristigere Absagen berechne ich, es sei denn, wir finden gemeinsam einen Ersatztermin.</p>
+      </details>
+
+      <details class="faq">
+        <summary><span class="bracket">[?]</span> Muss ich Noten mitbringen?</summary>
+        <p>Fuer die Probestunde nicht. Spaeter arbeiten wir gerne mit Stuecken, die Dich interessieren &mdash; bring mit, was Du hast, ich ergaenze, was nuetzlich ist.</p>
+      </details>
+
+      <details class="faq">
+        <summary><span class="bracket">[?]</span> Ich weiss nicht, welche Richtung ich will &mdash; schlimm?</summary>
+        <p>Ueberhaupt nicht. Das ist fuer viele sogar der ehrlichste Startpunkt. In der Probestunde hoeren wir beide hin und merken, was sich richtig anfuehlt.</p>
+      </details>
+
+      <details class="faq">
+        <summary><span class="bracket">[?]</span> Kann ich auch online Unterricht nehmen?</summary>
+        <p>Ja. Die erste Stunde ist gerne persoenlich, damit ich Dich wirklich hoeren kann. Danach sind wir flexibel &mdash; ganz, wie es zu Deinem Alltag passt.</p>
+      </details>
+
+      <details class="faq">
+        <summary><span class="bracket">[?]</span> Kommst Du auch zu mir?</summary>
+        <p>In Einrichtungen, Unternehmen und Gemeinden ja, und auf Anfrage auch privat. Fahrtkosten sprechen wir individuell ab.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       KONTAKT
+       ============================================================ -->
+  <section id="kontakt" class="section section-contact">
+    <div class="container container-narrow">
+      <h2 class="section-title"><span class="hash">##</span> kontakt &middot; probestunde_anfragen</h2>
+      <p class="lead">&gt; Der schnellste Weg: WhatsApp. Wenn Du lieber schreibst oder anrufst, geht beides genauso.</p>
+
+      <a class="btn-whatsapp"
+         href="https://wa.me/491793713706?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde."
+         target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+        <span>[W] &gt;&gt; WHATSAPP DIREKT-ANFRAGE</span>
+      </a>
+
+      <div class="ascii-divider" aria-hidden="true">&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; [ oder ] &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</div>
+
+      <form class="contact-form"
+            action="https://formsubmit.co/barbarasailer@web.de"
+            method="POST">
+        <input type="hidden" name="_subject" value="Neue Anfrage ueber sailer.bbs (v4-terminal)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form-row">
+          <label>&gt; VORNAME
+            <input type="text" name="vorname" required>
+          </label>
+          <label>&gt; NAME
+            <input type="text" name="name" required>
+          </label>
+        </div>
+        <label>&gt; E-MAIL
+          <input type="email" name="email" required>
+        </label>
+        <label>&gt; ANLIEGEN
+          <select name="anliegen">
+            <option value="Probestunde">Ich moechte eine Probestunde buchen</option>
+            <option value="Frage">Ich habe eine Frage</option>
+            <option value="Chor">Chor / Gruppe</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </label>
+        <label>&gt; NACHRICHT
+          <textarea name="nachricht" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn-send">[&#x21B5;] NACHRICHT SENDEN</button>
+      </form>
+
+      <div class="phone-reveal" id="phoneReveal">
+        <p>&gt; Lieber anrufen?</p>
+        <button type="button" class="btn-link" id="phoneRevealBtn">[T] TELEFONNUMMER ANZEIGEN</button>
+        <p id="phoneOut" class="phone-out" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <pre class="foot-ascii" aria-hidden="true">&#9581;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9475;</pre>
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="brand-big">SAILER.BBS</div>
+          <p class="foot-tag">Gesang. Stimmbildung. Atem.</p>
+        </div>
+        <div class="foot-contact">
+          <p>Barbara Sophia Sailer<br>
+          Schwarzwaldstrasse 15<br>
+          60528 Frankfurt a. M.</p>
+        </div>
+        <nav class="foot-nav" aria-label="Rechtliches">
+          <a href="impressum.html">&gt; impressum</a>
+          <a href="datenschutz.html">&gt; datenschutz</a>
+          <a href="#top">&gt; ^ top</a>
+        </nav>
+      </div>
+      <p class="foot-copy">&copy; <span id="yr">2026</span> Barbara Sophia Sailer &middot; NO CARRIER <span class="caret">_</span></p>
+    </div>
+  </footer>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

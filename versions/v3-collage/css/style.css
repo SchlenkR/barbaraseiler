@@ -1,0 +1,1409 @@
+/* ==========================================================================
+   Barbara Sophia Sailer — v3-collage
+   Paper collage / scrapbook aesthetic. Everything slightly tilted,
+   taped, torn, highlighted. Nothing perfectly aligned — on purpose.
+   ========================================================================== */
+
+:root {
+  --paper:        #f3ead5;    /* warm cream paper base */
+  --paper-deep:   #e8dcbe;    /* aged page */
+  --paper-edge:   #d9c89c;    /* torn edge shadow */
+  --ink:          #24211d;    /* fountain-pen dark brown */
+  --ink-soft:     #4a4438;
+  --ink-faded:    #7a6f5c;
+  --red-stamp:    #b6352c;    /* rubber-stamp red */
+  --red-pencil:   #c4533f;
+  --blue-pen:     #2e4a7b;    /* ballpoint blue */
+  --blue-pen-2:   #3b6ea8;
+  --yellow-mark:  #ffe06a;    /* highlighter yellow */
+  --pink-mark:    #f7a6c2;    /* highlighter pink */
+  --green-mark:   #b6e28a;    /* highlighter green */
+  --tape:         rgba(230, 212, 140, 0.55); /* translucent washi */
+  --tape-stripe:  rgba(204, 174, 96, 0.45);
+  --shadow-soft:  0 6px 14px rgba(60, 45, 20, 0.18);
+  --shadow-card:  0 14px 28px rgba(60, 45, 20, 0.22), 0 2px 4px rgba(60, 45, 20, 0.18);
+  --shadow-poly:  0 20px 40px rgba(60, 45, 20, 0.25), 0 4px 10px rgba(60, 45, 20, 0.2);
+
+  --font-hand:    'Caveat', 'Shadows Into Light', cursive;
+  --font-marker:  'Permanent Marker', cursive;
+  --font-type:    'Special Elite', 'Courier New', monospace;
+  --font-body:    'Crimson Pro', 'Georgia', serif;
+  --font-label:   'Homemade Apple', cursive;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Paper grain — SVG noise applied to body, tintable */
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    /* subtle coffee stains */
+    radial-gradient(ellipse 180px 140px at 12% 24%, rgba(168, 120, 60, 0.08), transparent 70%),
+    radial-gradient(ellipse 220px 160px at 88% 62%, rgba(148, 100, 50, 0.06), transparent 70%),
+    radial-gradient(ellipse 140px 110px at 35% 78%, rgba(168, 120, 60, 0.05), transparent 70%),
+    /* paper fiber noise (SVG turbulence) */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: auto, auto, auto, 420px 420px;
+  background-attachment: fixed, fixed, fixed, fixed;
+  overflow-x: hidden;
+}
+
+/* Faint notebook lines overlay, very subtle */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    rgba(80, 70, 45, 0.045) 31px,
+    rgba(80, 70, 45, 0.045) 32px
+  );
+  mix-blend-mode: multiply;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+  color: var(--blue-pen);
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--red-stamp); }
+
+/* =======================================================================
+   LAYOUT CONTAINERS — off-kilter on purpose
+   ======================================================================= */
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 32px 120px;
+}
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+/* =======================================================================
+   HEADLINE STYLES — handwritten + typewriter hybrid
+   ======================================================================= */
+h1, h2, h3, h4 {
+  font-family: var(--font-hand);
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0 0 0.4em;
+  letter-spacing: 0.005em;
+}
+h1 { font-size: clamp(3rem, 8vw, 5.2rem); }
+h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+h3 { font-size: clamp(1.6rem, 3vw, 2rem); }
+h4 { font-size: 1.2rem; font-family: var(--font-type); font-weight: 400; letter-spacing: 0.02em; }
+
+.typewriter {
+  font-family: var(--font-type);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.marginalia {
+  font-family: var(--font-hand);
+  color: var(--blue-pen);
+  font-size: 1.45rem;
+  line-height: 1.15;
+  transform: rotate(-4deg);
+  display: inline-block;
+}
+.marginalia--red { color: var(--red-pencil); }
+.marginalia--ink { color: var(--ink-soft); }
+
+/* highlighter stroke behind a run of text */
+.highlight {
+  background-image: linear-gradient(
+    104deg,
+    rgba(0,0,0,0) 0.5%,
+    var(--yellow-mark) 2%,
+    color-mix(in srgb, var(--yellow-mark) 85%, #e6b933) 90%,
+    rgba(0,0,0,0) 99%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 58%;
+  background-position: 0 65%;
+  padding: 0 2px;
+}
+.highlight--pink {
+  background-image: linear-gradient(104deg, rgba(0,0,0,0) 0.5%, var(--pink-mark) 2%, color-mix(in srgb, var(--pink-mark) 85%, #d97a9a) 90%, rgba(0,0,0,0) 99%);
+}
+.highlight--green {
+  background-image: linear-gradient(104deg, rgba(0,0,0,0) 0.5%, var(--green-mark) 2%, color-mix(in srgb, var(--green-mark) 85%, #8bb762) 90%, rgba(0,0,0,0) 99%);
+}
+
+/* underline scribble */
+.scribble {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'><path d='M2 8 Q 20 2 40 7 T 80 7 T 120 8 T 160 6 T 198 7' stroke='%23b6352c' stroke-width='2.2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 10px;
+  padding-bottom: 8px;
+}
+
+/* =======================================================================
+   TAPE — torn washi strips for "holding things down"
+   ======================================================================= */
+.tape {
+  position: absolute;
+  width: 120px;
+  height: 28px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--tape) 0 12px,
+      var(--tape-stripe) 12px 22px
+    );
+  box-shadow: 0 2px 4px rgba(60, 45, 20, 0.15);
+  clip-path: polygon(
+    0% 15%, 4% 0%, 8% 10%, 14% 3%, 22% 8%, 30% 0%, 40% 12%, 50% 3%, 60% 10%,
+    68% 0%, 78% 8%, 86% 2%, 94% 10%, 100% 4%,
+    100% 85%, 96% 100%, 90% 92%, 82% 100%, 74% 90%, 66% 100%, 56% 92%, 48% 100%,
+    38% 90%, 30% 100%, 22% 92%, 14% 100%, 6% 90%, 0% 96%
+  );
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 3;
+}
+.tape--tl { top: -12px; left: -24px; transform: rotate(-18deg); }
+.tape--tr { top: -12px; right: -24px; transform: rotate(14deg); }
+.tape--bl { bottom: -12px; left: 10%; transform: rotate(8deg); }
+.tape--br { bottom: -12px; right: 10%; transform: rotate(-12deg); }
+.tape--top { top: -14px; left: 50%; transform: translateX(-50%) rotate(-3deg); }
+
+/* =======================================================================
+   STICKERS & STAMPS
+   ======================================================================= */
+.sticker {
+  display: inline-block;
+  font-family: var(--font-marker);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  background: var(--yellow-mark);
+  color: var(--ink);
+  border-radius: 999px;
+  box-shadow: 0 3px 6px rgba(60,45,20,0.18), inset 0 0 0 2px rgba(255,255,255,0.4);
+  transform: rotate(-3deg);
+}
+.sticker--pink { background: var(--pink-mark); }
+.sticker--green { background: var(--green-mark); }
+.sticker--blue { background: #a9c7e9; }
+.sticker--rot-pos { transform: rotate(4deg); }
+
+.stamp {
+  display: inline-block;
+  padding: 10px 18px;
+  font-family: var(--font-marker);
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red-stamp);
+  border: 3px double var(--red-stamp);
+  border-radius: 4px;
+  transform: rotate(-6deg);
+  background: transparent;
+  opacity: 0.85;
+  /* ragged inked look */
+  filter: url(#stamp-rough);
+}
+
+.inkblot {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 40% 40%, var(--ink) 0%, var(--ink) 30%, transparent 72%);
+  border-radius: 50% 40% 55% 45% / 40% 55% 45% 60%;
+  opacity: 0.7;
+  filter: blur(0.4px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* =======================================================================
+   TOP BANNER / MASTHEAD
+   ======================================================================= */
+.masthead {
+  position: relative;
+  padding: 20px 24px 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.masthead-kicker {
+  font-family: var(--font-type);
+  font-size: 0.82rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-bottom: 10px;
+}
+.masthead h1 {
+  display: inline-block;
+  transform: rotate(-1.2deg);
+  margin: 0;
+  position: relative;
+}
+.masthead h1 .and {
+  font-family: var(--font-marker);
+  color: var(--red-pencil);
+  font-size: 0.55em;
+  display: inline-block;
+  transform: rotate(-8deg) translateY(-10px);
+  margin: 0 0.1em;
+}
+.masthead-sub {
+  font-family: var(--font-type);
+  font-size: 0.98rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-top: 14px;
+  text-transform: uppercase;
+}
+.masthead .marginalia-top {
+  position: absolute;
+  top: 2px;
+  right: 10%;
+  transform: rotate(-7deg);
+  color: var(--red-pencil);
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+}
+.masthead .marginalia-bottom {
+  display: block;
+  margin-top: 22px;
+  font-family: var(--font-hand);
+  color: var(--blue-pen);
+  font-size: 1.7rem;
+  transform: rotate(-2deg);
+}
+
+/* =======================================================================
+   TOP NAV — pinned-notes style
+   ======================================================================= */
+.topnav {
+  list-style: none;
+  margin: 0 0 36px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 24px;
+}
+.topnav a {
+  font-family: var(--font-marker);
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 6px 16px;
+  background: #fff8e6;
+  border: 1px solid var(--paper-edge);
+  box-shadow: var(--shadow-soft);
+  display: inline-block;
+  transform: rotate(var(--r, 0deg));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.topnav a:hover {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: 0 10px 18px rgba(60,45,20,0.22);
+}
+.topnav li:nth-child(1) a { --r: -3deg; background: #fff8e6; }
+.topnav li:nth-child(2) a { --r: 2deg;  background: #fdecec; }
+.topnav li:nth-child(3) a { --r: -2deg; background: #e9f2e3; }
+.topnav li:nth-child(4) a { --r: 3deg;  background: #e6ecf5; }
+.topnav li:nth-child(5) a { --r: -1deg; background: var(--yellow-mark); }
+
+/* =======================================================================
+   POLAROIDS
+   ======================================================================= */
+.polaroid {
+  position: relative;
+  display: inline-block;
+  background: #fdfaf0;
+  padding: 14px 14px 56px;
+  box-shadow: var(--shadow-poly);
+  transform: rotate(var(--rot, -3deg));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 260px;
+}
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: 0 30px 50px rgba(60,45,20,0.3);
+  z-index: 20;
+}
+.polaroid-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.15), rgba(0,0,0,0.12)),
+    linear-gradient(var(--grad, 160deg), #c4a57b 0%, #7c5a44 55%, #3e2a1d 100%);
+  background-blend-mode: overlay, normal;
+  position: relative;
+  overflow: hidden;
+}
+.polaroid-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='g'><feTurbulence baseFrequency='0.9' numOctaves='1'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.22 0'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+}
+.polaroid-caption {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  text-align: center;
+  font-family: var(--font-label);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.1;
+}
+.polaroid .tape { width: 90px; height: 20px; }
+
+/* Different photo moods via gradient var */
+.polaroid--stage     { --grad: 180deg; --photo-a: #2b1f3d; --photo-b: #6e3d5a; }
+.polaroid--piano     { --grad: 150deg; --photo-a: #3c2a1d; --photo-b: #8a6d4a; }
+.polaroid--score     { --grad: 120deg; --photo-a: #f3ead5; --photo-b: #8a6d4a; }
+.polaroid--portrait  { --grad: 165deg; --photo-a: #4a3a2e; --photo-b: #c4a57b; }
+
+.polaroid--stage    .polaroid-photo { background: linear-gradient(var(--grad), #2b1f3d 0%, #703f5c 50%, #b96b80 100%); }
+.polaroid--piano    .polaroid-photo { background: linear-gradient(var(--grad), #2a1a12 0%, #5a3d28 50%, #a88060 100%); }
+.polaroid--score    .polaroid-photo { background: linear-gradient(var(--grad), #f4ead0 0%, #d8c68e 40%, #6a5530 100%); }
+.polaroid--portrait .polaroid-photo { background: linear-gradient(var(--grad), #3a2a20 0%, #7c5a44 45%, #c7a57a 100%); }
+
+/* =======================================================================
+   HERO — polaroid scatter + hand-lettered intro
+   ======================================================================= */
+.hero-collage {
+  position: relative;
+  padding: 30px 12px 80px;
+  min-height: 540px;
+}
+.hero-headline {
+  position: relative;
+  z-index: 5;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 12px;
+}
+.hero-headline .kicker {
+  font-family: var(--font-type);
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-bottom: 14px;
+  display: block;
+}
+.hero-headline h2 {
+  font-size: clamp(2rem, 5.2vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0 0 22px;
+  transform: rotate(-0.8deg);
+}
+.hero-headline .lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 auto 28px;
+  max-width: 560px;
+}
+
+.hero-cta-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.hero-scatter {
+  position: relative;
+  margin-top: 50px;
+  min-height: 340px;
+}
+.hero-scatter .polaroid {
+  position: absolute;
+}
+.hero-scatter .polaroid--a { top: 0;   left: 4%;  --rot: -6deg; width: 220px; }
+.hero-scatter .polaroid--b { top: 40px; right: 6%; --rot:  7deg; width: 210px; }
+.hero-scatter .polaroid--c { top: 170px; left: 32%; --rot: -2deg; width: 200px; z-index: 2; }
+.hero-scatter .polaroid--d { top: 220px; right: 28%; --rot:  5deg; width: 190px; }
+
+.hero-scatter .note-stickie {
+  position: absolute;
+  top: 220px;
+  left: 10%;
+  width: 170px;
+  padding: 20px 16px 14px;
+  background: #fff59e;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  line-height: 1.15;
+  color: var(--ink);
+  transform: rotate(-7deg);
+  box-shadow: 6px 8px 16px rgba(60,45,20,0.22);
+  z-index: 4;
+}
+.hero-scatter .ticket-stub {
+  position: absolute;
+  top: 60px;
+  left: 42%;
+  padding: 8px 14px;
+  background: #e9ddc0;
+  font-family: var(--font-type);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  transform: rotate(3deg);
+  border: 1px dashed var(--ink-faded);
+  box-shadow: var(--shadow-soft);
+  z-index: 3;
+}
+
+/* =======================================================================
+   BUTTONS — stamps + stickers
+   ======================================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-marker);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  padding: 14px 26px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  position: relative;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+  transform: rotate(-1.5deg);
+  box-shadow: 4px 5px 0 var(--red-pencil);
+}
+.btn-primary:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow: 6px 7px 0 var(--red-pencil);
+  background: #000;
+  color: var(--paper);
+}
+.btn-ghost {
+  background: var(--yellow-mark);
+  color: var(--ink);
+  transform: rotate(2deg);
+  box-shadow: 4px 5px 0 var(--ink);
+}
+.btn-ghost:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow: 6px 7px 0 var(--ink);
+}
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  width: 100%;
+  justify-content: center;
+  padding: 18px 24px;
+  font-size: 1.2rem;
+  transform: rotate(-1deg);
+  box-shadow: 5px 6px 0 var(--ink);
+}
+.btn-whatsapp:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow: 7px 8px 0 var(--ink);
+  background: #1db954;
+  color: #fff;
+}
+.btn-whatsapp svg { flex-shrink: 0; }
+
+/* =======================================================================
+   SECTIONS — each is a "page" in the scrapbook
+   ======================================================================= */
+.scrap-page {
+  position: relative;
+  margin: 0 auto 80px;
+  max-width: 1040px;
+  padding: 56px 40px 64px;
+  background:
+    radial-gradient(ellipse 200px 140px at 80% 10%, rgba(168,120,60,0.08), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.0));
+  background-color: color-mix(in srgb, var(--paper) 80%, #ffffff 20%);
+  box-shadow: var(--shadow-card);
+  /* Torn edges via clip-path (irregular zigzag) */
+  clip-path: polygon(
+    0% 1%,  2.3% 0.3%, 5.1% 0.8%, 7.8% 0%, 11% 0.9%, 14.5% 0.2%, 18% 1.1%,
+    22% 0.4%, 26% 1%, 30% 0.2%, 34% 0.9%, 38% 0%, 42% 0.8%, 46% 0.1%,
+    50% 1%, 54% 0.3%, 58% 0.9%, 62% 0.1%, 66% 1%, 70% 0.2%, 74% 0.8%,
+    78% 0%, 82% 1%, 86% 0.3%, 90% 0.9%, 94% 0.1%, 97% 0.6%, 100% 1%,
+    100% 99%, 97.5% 99.6%, 95% 98.9%, 92% 99.7%, 88% 99%, 84% 99.8%,
+    80% 98.9%, 76% 99.6%, 72% 98.8%, 68% 99.7%, 64% 98.9%, 60% 99.6%,
+    56% 98.8%, 52% 99.7%, 48% 98.9%, 44% 99.6%, 40% 98.8%, 36% 99.7%,
+    32% 98.9%, 28% 99.6%, 24% 98.8%, 20% 99.7%, 16% 98.9%, 12% 99.6%,
+    8% 98.8%, 4% 99.7%, 0% 99%
+  );
+}
+
+.scrap-page--light { background-color: #fffbec; }
+.scrap-page--warm  { background-color: #f5e6c2; }
+.scrap-page--rose  { background-color: #fbe8e0; }
+
+.scrap-page > .tape { z-index: 5; }
+
+.scrap-page h2.section-title {
+  text-align: left;
+  transform: rotate(-1.5deg);
+  margin: 0 0 22px;
+  max-width: 90%;
+}
+.scrap-page h2.section-title .ampersand,
+.scrap-page h2.section-title em {
+  font-family: var(--font-marker);
+  color: var(--red-pencil);
+  font-style: normal;
+  font-size: 0.75em;
+}
+.section-lead {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 36px;
+  max-width: 640px;
+}
+.section-badge {
+  position: absolute;
+  top: -16px;
+  left: 40px;
+  z-index: 6;
+}
+
+/* =======================================================================
+   ABOUT — pillars + video + polaroid row
+   ======================================================================= */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: start;
+}
+.about-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  box-shadow: var(--shadow-card);
+  transform: rotate(-1deg);
+}
+.about-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.about-video-caption {
+  margin-top: 12px;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  transform: rotate(-1.5deg);
+  display: block;
+}
+
+.about-polaroids {
+  position: relative;
+  min-height: 260px;
+}
+.about-polaroids .polaroid--a { position: absolute; top: 0;   left: 0;  --rot: -5deg; width: 200px; }
+.about-polaroids .polaroid--b { position: absolute; top: 40px; right: 0; --rot:  4deg; width: 190px; z-index: 2; }
+.about-polaroids .polaroid--c { position: absolute; top: 230px; left: 20%; --rot: -2deg; width: 200px; }
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 44px;
+}
+.pillar {
+  position: relative;
+  padding: 24px 22px 26px;
+  background: #fffaec;
+  box-shadow: var(--shadow-soft);
+  transform: rotate(var(--r, -1deg));
+}
+.pillar:nth-child(2) { --r: 1.5deg; background: #fdf1e0; }
+.pillar:nth-child(3) { --r: -2deg; background: #f2ece0; }
+.pillar h3 {
+  font-family: var(--font-marker);
+  font-size: 1.3rem;
+  color: var(--red-stamp);
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+}
+.pillar p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.vita {
+  margin-top: 48px;
+  position: relative;
+  background: #fff8e0;
+  padding: 20px 24px;
+  box-shadow: var(--shadow-soft);
+  transform: rotate(-0.5deg);
+}
+.vita summary {
+  cursor: pointer;
+  font-family: var(--font-marker);
+  font-size: 1.2rem;
+  color: var(--ink);
+  list-style: none;
+  padding-right: 28px;
+  position: relative;
+}
+.vita summary::-webkit-details-marker { display: none; }
+.vita summary::after {
+  content: "+";
+  position: absolute;
+  right: 6px;
+  top: -2px;
+  font-size: 1.6rem;
+  color: var(--red-pencil);
+  font-family: var(--font-marker);
+  transition: transform 0.2s ease;
+}
+.vita[open] summary::after { content: "—"; }
+.vita .vita-body {
+  margin-top: 18px;
+  font-family: var(--font-body);
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+.vita .vita-body h4 {
+  margin-top: 22px;
+  font-family: var(--font-type);
+  color: var(--ink);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.vita .vita-body ul { padding-left: 22px; }
+.vita .vita-body li { margin-bottom: 6px; }
+
+/* =======================================================================
+   GOALS — index cards
+   ======================================================================= */
+.goal-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.goal-card {
+  position: relative;
+  padding: 28px 22px 26px;
+  background: #fff;
+  border-left: 3px solid var(--red-pencil);
+  box-shadow: var(--shadow-soft);
+  min-height: 220px;
+  transform: rotate(var(--r, -1deg));
+  /* ruled-line ghost */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 27px,
+    rgba(46, 74, 123, 0.18) 27px,
+    rgba(46, 74, 123, 0.18) 28px
+  );
+}
+.goal-card::before {
+  /* red margin line */
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(196, 83, 63, 0.35);
+}
+.goal-card:nth-child(1) { --r: -1.2deg; }
+.goal-card:nth-child(2) { --r:  1.4deg; }
+.goal-card:nth-child(3) { --r: -2deg; }
+.goal-card:nth-child(4) { --r:  1deg; }
+.goal-card:nth-child(5) { --r: -1.5deg; }
+.goal-card:nth-child(6) { --r:  1.8deg; background: #fff9e0; }
+
+.goal-card h3 {
+  font-family: var(--font-marker);
+  font-size: 1.2rem;
+  color: var(--ink);
+  margin: 0 0 10px 12px;
+  padding-left: 12px;
+}
+.goal-card p {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0 0 0 12px;
+  padding-left: 12px;
+}
+.goal-card .card-stamp {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: var(--font-marker);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--red-stamp);
+  border: 2px solid var(--red-stamp);
+  padding: 3px 7px;
+  border-radius: 3px;
+  transform: rotate(8deg);
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+/* =======================================================================
+   ARBEIT — process receipt
+   ======================================================================= */
+.intro-prose p {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+.intro-prose .emphasis {
+  font-family: var(--font-hand);
+  font-size: 1.8rem;
+  color: var(--red-pencil);
+  line-height: 1.1;
+  transform: rotate(-1deg);
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.process {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 36px 0;
+  display: grid;
+  gap: 18px;
+}
+.process li {
+  position: relative;
+  padding: 22px 24px 22px 82px;
+  background: #fffbea;
+  box-shadow: var(--shadow-soft);
+  counter-increment: step;
+  transform: rotate(var(--r, -0.8deg));
+}
+.process li:nth-child(2) { --r: 0.8deg; background: #f5ead4; }
+.process li:nth-child(3) { --r: -1.2deg; background: #fff4dc; }
+.process li::before {
+  content: counter(step);
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  width: 46px;
+  height: 46px;
+  background: var(--red-stamp);
+  color: var(--paper);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-marker);
+  font-size: 1.4rem;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  transform: rotate(-5deg);
+}
+.process li strong {
+  display: block;
+  font-family: var(--font-marker);
+  font-size: 1.2rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.process li span {
+  font-family: var(--font-body);
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+.callout {
+  position: relative;
+  margin: 44px auto 0;
+  max-width: 640px;
+  padding: 30px 32px 32px;
+  background: var(--ink);
+  color: var(--paper);
+  transform: rotate(-1deg);
+  box-shadow: 8px 10px 0 var(--red-pencil);
+}
+.callout h3 {
+  font-family: var(--font-marker);
+  color: var(--paper);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.callout p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin: 0;
+  color: color-mix(in srgb, var(--paper) 92%, #ffffff 8%);
+}
+
+/* =======================================================================
+   ORT — location cards
+   ======================================================================= */
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 20px;
+}
+.location {
+  position: relative;
+  padding: 28px 24px 26px;
+  background: #fffaea;
+  box-shadow: var(--shadow-soft);
+  transform: rotate(var(--r, -1deg));
+}
+.location:nth-child(2) { --r: 1.2deg; background: #f5ecd8; }
+.location:nth-child(3) { --r: -1.5deg; background: #fff4db; }
+.location h3 {
+  font-family: var(--font-marker);
+  font-size: 1.3rem;
+  color: var(--red-stamp);
+  margin: 0 0 10px;
+}
+.location .lead {
+  font-family: var(--font-body);
+  color: var(--ink);
+  margin-bottom: 14px;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.location-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-type);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.location-meta li {
+  padding: 6px 0;
+  border-top: 1px dashed var(--paper-edge);
+}
+.location-meta li:first-child { border-top: none; }
+
+.map-placeholder {
+  margin-top: 32px;
+  padding: 40px 24px;
+  background: #ede1bc;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.8rem;
+  color: var(--ink-soft);
+  transform: rotate(-0.5deg);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  background-image:
+    linear-gradient(#ede1bc, #ede1bc),
+    /* faint hand-drawn map lines */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'><g stroke='%23a08653' stroke-width='1.5' fill='none' opacity='0.6'><path d='M10 40 Q100 30 200 60 T400 50'/><path d='M20 110 Q120 90 220 120 T400 100'/><path d='M50 160 Q150 140 250 170 T400 150'/><circle cx='200' cy='100' r='8' fill='%23b6352c' stroke='none'/><path d='M200 100 L260 50' stroke='%23b6352c'/></g></svg>");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+  background-size: 100% 100%, 80% 85%;
+  background-blend-mode: multiply, normal;
+}
+.map-placeholder strong {
+  font-family: var(--font-marker);
+  color: var(--red-stamp);
+  display: block;
+  font-size: 1.3rem;
+  margin-top: 6px;
+}
+
+/* =======================================================================
+   PREISE — price tags
+   ======================================================================= */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+.price-tag {
+  position: relative;
+  padding: 30px 18px 26px;
+  background: #fdf0d0;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transform: rotate(var(--r, -2deg));
+  border: 1px solid var(--paper-edge);
+}
+.price-tag::before {
+  /* hole for string */
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: var(--paper);
+  border: 2px solid var(--ink-faded);
+  border-radius: 50%;
+}
+.price-tag::after {
+  /* string going up */
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg);
+  width: 2px;
+  height: 38px;
+  background: linear-gradient(var(--ink-faded), transparent);
+}
+.price-tag:nth-child(1) { --r: -3deg; background: #fdf0d0; }
+.price-tag:nth-child(2) { --r: 2deg;  background: #fbe5cc; }
+.price-tag:nth-child(3) { --r: -1deg; background: var(--ink); color: var(--paper); transform: rotate(-1deg) scale(1.04); }
+.price-tag:nth-child(4) { --r: 3deg;  background: #f4e9c8; }
+.price-tag-label {
+  font-family: var(--font-type);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faded);
+  margin-top: 22px;
+  margin-bottom: 8px;
+}
+.price-tag:nth-child(3) .price-tag-label { color: color-mix(in srgb, var(--paper) 70%, transparent); }
+.price-tag-amount {
+  font-family: var(--font-hand);
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 0.95;
+  margin-bottom: 4px;
+  color: var(--red-stamp);
+}
+.price-tag:nth-child(3) .price-tag-amount { color: var(--yellow-mark); }
+.price-tag-amount .currency { font-size: 0.4em; vertical-align: super; margin-left: 2px; }
+.price-tag-duration {
+  font-family: var(--font-marker);
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.price-tag:nth-child(3) .price-tag-duration { color: var(--paper); }
+.price-tag-note {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+.price-tag:nth-child(3) .price-tag-note { color: color-mix(in srgb, var(--paper) 80%, transparent); }
+
+.pricing-footer {
+  margin-top: 28px;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+  text-align: center;
+  transform: rotate(-0.5deg);
+}
+
+/* =======================================================================
+   FÜR WEN — torn quotes
+   ======================================================================= */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 28px;
+}
+.persona {
+  position: relative;
+  padding: 32px 28px 30px;
+  background: #fff8e8;
+  box-shadow: var(--shadow-card);
+  transform: rotate(var(--r, -1deg));
+}
+.persona:nth-child(2) { --r: 1.5deg; background: #fbe8e0; }
+.persona:nth-child(3) { --r: -1.5deg; background: #e8ecf5; }
+.persona:nth-child(4) { --r: 1deg; background: #f0e9d4; }
+.persona h3 {
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  color: var(--red-pencil);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  transform: rotate(-1deg);
+}
+.persona p {
+  font-family: var(--font-body);
+  color: var(--ink-soft);
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+/* =======================================================================
+   FAQ — flip-card folder style
+   ======================================================================= */
+.faq-stack { max-width: 700px; margin: 0 auto; }
+.faq {
+  position: relative;
+  padding: 18px 48px 18px 26px;
+  background: #fffaea;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-soft);
+  transform: rotate(var(--r, -0.4deg));
+}
+.faq:nth-child(odd)  { --r: 0.5deg; background: #f5ecd8; }
+.faq:nth-child(even) { --r: -0.6deg; }
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-marker);
+  font-size: 1.1rem;
+  color: var(--ink);
+  position: relative;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: -28px;
+  top: -4px;
+  font-family: var(--font-marker);
+  font-size: 1.6rem;
+  color: var(--red-pencil);
+  transition: transform 0.2s ease;
+}
+.faq[open] summary::after { content: "–"; }
+.faq p {
+  margin: 14px 0 0;
+  font-family: var(--font-body);
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* =======================================================================
+   KONTAKT — telegram / letter
+   ======================================================================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.contact-wa {
+  position: relative;
+  padding: 30px 28px 32px;
+  background: #e5f4d9;
+  box-shadow: var(--shadow-card);
+  transform: rotate(-1deg);
+}
+.contact-wa h3 {
+  font-family: var(--font-marker);
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+.contact-wa p {
+  margin: 0 0 18px;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+}
+
+.contact-form-wrap {
+  position: relative;
+  padding: 32px 28px 36px;
+  background: #fffaea;
+  box-shadow: var(--shadow-card);
+  transform: rotate(0.8deg);
+  /* letter paper lines */
+  background-image:
+    linear-gradient(#fffaea, #fffaea),
+    repeating-linear-gradient(to bottom, transparent 0, transparent 27px, rgba(46,74,123,0.15) 27px, rgba(46,74,123,0.15) 28px);
+  background-size: 100% 100%, 100% 100%;
+  background-position: 0 0, 0 40px;
+  background-blend-mode: multiply, normal;
+}
+.contact-form-wrap h3 {
+  font-family: var(--font-marker);
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 16px;
+  font-family: var(--font-type);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 2px solid var(--ink-faded);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  color: var(--ink);
+}
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-bottom-color: var(--red-stamp);
+}
+.contact-form textarea { resize: vertical; min-height: 110px; }
+.contact-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.contact-form button {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.phone-reveal {
+  margin-top: 26px;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+}
+.phone-reveal .phone-number {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: var(--yellow-mark);
+  font-family: var(--font-type);
+  font-size: 1.15rem;
+  color: var(--ink);
+  transform: rotate(-2deg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* =======================================================================
+   FOOTER — torn bottom, taped business card
+   ======================================================================= */
+.footer-collage {
+  position: relative;
+  margin-top: 40px;
+  padding: 60px 40px 80px;
+  background: #2b241b;
+  color: #f3ead5;
+  clip-path: polygon(
+    0% 3%, 3% 0%, 8% 2%, 14% 0.5%, 20% 2%, 26% 0.3%, 32% 2.5%, 38% 0.7%, 44% 2.2%,
+    50% 0%, 56% 2.4%, 62% 0.6%, 68% 2%, 74% 0.4%, 80% 2.5%, 86% 0.8%, 92% 2%,
+    97% 0.6%, 100% 3%, 100% 100%, 0% 100%
+  );
+}
+.footer-collage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  pointer-events: none;
+  opacity: 0.5;
+}
+.footer-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr auto;
+  gap: 30px;
+  max-width: 1040px;
+  margin: 0 auto;
+  align-items: start;
+}
+.footer-card {
+  position: relative;
+  padding: 22px 24px;
+  background: #f3ead5;
+  color: var(--ink);
+  transform: rotate(-2deg);
+  box-shadow: var(--shadow-card);
+  max-width: 320px;
+}
+.footer-card h4 {
+  font-family: var(--font-hand);
+  font-size: 1.8rem;
+  margin: 0 0 8px;
+  color: var(--red-stamp);
+}
+.footer-card p {
+  margin: 0;
+  font-family: var(--font-type);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.footer-contact {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e8dcbe;
+}
+.footer-contact a { color: var(--yellow-mark); }
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-marker);
+}
+.footer-nav a {
+  color: #f3ead5;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+.footer-nav a:hover { color: var(--yellow-mark); }
+.footer-signoff {
+  margin-top: 40px;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: #c4b892;
+  transform: rotate(-1deg);
+}
+
+/* =======================================================================
+   LEGAL PAGES (impressum / datenschutz)
+   ======================================================================= */
+.legal-page {
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+.legal-page h1 {
+  transform: rotate(-1.5deg);
+  margin-bottom: 30px;
+}
+.legal-page h2 {
+  font-family: var(--font-marker);
+  font-size: 1.6rem;
+  color: var(--red-stamp);
+  margin-top: 30px;
+  margin-bottom: 10px;
+  transform: rotate(-0.5deg);
+  display: inline-block;
+}
+.legal-page p { color: var(--ink-soft); }
+.legal-page a { color: var(--blue-pen); }
+
+/* =======================================================================
+   RESPONSIVE — collage becomes vertical, polaroids stack
+   ======================================================================= */
+@media (max-width: 900px) {
+  .page { padding: 20px 16px 80px; }
+  .scrap-page { padding: 48px 24px 48px; margin-bottom: 48px; }
+  .about-layout { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr; }
+  .goal-cards { grid-template-columns: 1fr; }
+  .location-grid { grid-template-columns: 1fr; }
+  .pricing { grid-template-columns: 1fr 1fr; }
+  .persona-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+
+  .hero-scatter { min-height: auto; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+  .hero-scatter .polaroid,
+  .hero-scatter .note-stickie,
+  .hero-scatter .ticket-stub { position: static; }
+  .hero-scatter .polaroid--a,
+  .hero-scatter .polaroid--b,
+  .hero-scatter .polaroid--c,
+  .hero-scatter .polaroid--d { width: 44%; max-width: 200px; }
+
+  .about-polaroids { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; min-height: auto; }
+  .about-polaroids .polaroid--a,
+  .about-polaroids .polaroid--b,
+  .about-polaroids .polaroid--c { position: static; width: 44%; max-width: 200px; }
+}
+
+@media (max-width: 500px) {
+  body { font-size: 16px; }
+  .page { padding: 14px 10px 60px; }
+  .scrap-page { padding: 40px 16px 40px; margin-bottom: 36px; }
+  .scrap-page h2.section-title { font-size: 2.1rem; }
+  .pricing { grid-template-columns: 1fr; }
+  .topnav { gap: 10px 14px; }
+  .topnav a { font-size: 0.95rem; padding: 5px 12px; }
+  .masthead h1 { font-size: 2.8rem; }
+
+  .hero-scatter .polaroid--a,
+  .hero-scatter .polaroid--b,
+  .hero-scatter .polaroid--c,
+  .hero-scatter .polaroid--d { width: 90%; max-width: 240px; }
+
+  .about-polaroids .polaroid--a,
+  .about-polaroids .polaroid--b,
+  .about-polaroids .polaroid--c { width: 90%; max-width: 240px; }
+
+  .goal-card, .location, .pillar, .persona, .price-tag,
+  .process li, .callout, .contact-wa, .contact-form-wrap,
+  .footer-card { transform: rotate(0deg); }
+
+  .contact-form .form-row { grid-template-columns: 1fr; }
+}
+
+/* =======================================================================
+   REDUCED MOTION
+   ======================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .polaroid:hover { transform: rotate(var(--rot, -3deg)); }
+  .btn:hover { transform: rotate(var(--r, 0deg)); }
+}

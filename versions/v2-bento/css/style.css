@@ -1,0 +1,870 @@
+/* Barbara Sophia Sailer — v2-bento
+   Apple-style bento grid. Pastel tiles, Inter Display headings,
+   Lucide icons, subtle scale-on-hover, generous rounded corners. */
+
+:root {
+  /* Ink */
+  --ink: #18181b;
+  --ink-soft: #3f3f46;
+  --ink-muted: #71717a;
+  --ink-faint: #a1a1aa;
+  --line: rgba(24, 24, 27, 0.08);
+
+  /* Page */
+  --page-bg: #f4f4f2;
+  --white: #ffffff;
+  --dark: #18181b;
+
+  /* Pastel tile palette */
+  --lavender: #e6def6;
+  --lavender-deep: #b7a5e0;
+  --sage: #dce7d6;
+  --sage-deep: #8fb084;
+  --peach: #fadfcb;
+  --peach-deep: #ea9d6a;
+  --butter: #f6edc7;
+  --butter-deep: #d8b441;
+
+  /* Interaction */
+  --whatsapp: #25d366;
+  --whatsapp-dark: #1ea952;
+
+  /* Radii */
+  --r-s: 14px;
+  --r-m: 22px;
+  --r-l: 32px;
+  --r-xl: 44px;
+
+  /* Fonts */
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-accent: 'Instrument Serif', Georgia, serif;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--page-bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font: inherit; cursor: pointer; border: 0; background: transparent; color: inherit; }
+
+/* Lucide icon base sizing */
+[data-lucide] {
+  width: 22px; height: 22px;
+  stroke-width: 1.75;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  padding: 0 16px;
+  pointer-events: none;
+}
+.nav-inner {
+  pointer-events: auto;
+  max-width: 1280px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(160%) blur(20px);
+  -webkit-backdrop-filter: saturate(160%) blur(20px);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 10px 8px 22px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+.brand-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--lavender-deep), var(--peach-deep));
+}
+
+.nav-links {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+.nav-links a {
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: background .2s var(--ease), color .2s var(--ease);
+}
+.nav-links a:hover { background: rgba(24,24,27,0.06); color: var(--ink); }
+
+.nav-cta {
+  background: var(--ink);
+  color: var(--white) !important;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform .2s var(--ease), background .2s var(--ease);
+}
+.nav-cta:hover { transform: translateY(-1px); background: #000; }
+
+@media (max-width: 780px) {
+  .nav-links { display: none; }
+  .nav-inner { padding: 6px 8px 6px 18px; }
+}
+
+/* ============================================================
+   LAYOUT — BENTO
+   ============================================================ */
+main { max-width: 1280px; margin: 0 auto; padding: 32px 16px 80px; }
+
+.bento {
+  display: grid;
+  gap: 16px;
+  margin: 56px 0;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.section-head {
+  grid-column: 1 / -1;
+  padding: 48px 6px 8px;
+}
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+  margin: 0 0 10px;
+  padding: 6px 12px;
+  background: rgba(24,24,27,0.05);
+  border-radius: 999px;
+}
+.kicker [data-lucide] { width: 14px; height: 14px; }
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  margin: 0 0 16px;
+  max-width: 22ch;
+}
+.section-head h2 em,
+.tile h1 em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+}
+.section-lede {
+  font-size: 17px;
+  color: var(--ink-muted);
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* ============================================================
+   TILE BASE
+   ============================================================ */
+.tile {
+  position: relative;
+  border-radius: var(--r-l);
+  padding: 32px;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+.tile:hover { transform: translateY(-2px) scale(1.005); }
+.tile > :last-child { margin-bottom: 0; }
+
+/* anchor tiles (like whatsapp) still feel tactile */
+a.tile { cursor: pointer; }
+a.tile:hover { transform: translateY(-3px) scale(1.008); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+
+/* Tile color variants */
+.tile-lavender { background: var(--lavender); color: var(--ink); }
+.tile-sage     { background: var(--sage);     color: var(--ink); }
+.tile-peach    { background: var(--peach);    color: var(--ink); }
+.tile-butter   { background: var(--butter);   color: var(--ink); }
+.tile-white    { background: var(--white);    color: var(--ink); border: 1px solid var(--line); }
+.tile-dark     { background: var(--dark);     color: #e4e4e7; }
+.tile-dark h2, .tile-dark h3 { color: var(--white); }
+.tile-dark em { color: #d4d4d8; }
+
+.tile h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+.tile h3 em { font-family: var(--font-accent); font-style: italic; font-weight: 400; }
+.tile p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.tile-dark p { color: #a1a1aa; }
+
+/* Eyebrow */
+.tile-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+}
+.tile-eyebrow [data-lucide] { width: 14px; height: 14px; }
+.tile-eyebrow.light { color: rgba(255,255,255,0.7); }
+
+.tile-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 16px 0 8px;
+}
+
+.tile-lede {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+}
+
+.tile-meta {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+
+.tile-caption {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.big-icon {
+  width: 48px !important; height: 48px !important;
+  stroke-width: 1.5;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.tile-pillar [data-lucide] { width: 32px; height: 32px; stroke-width: 1.5; margin-bottom: 10px; }
+.tile-goal [data-lucide],
+.tile-persona [data-lucide] { width: 28px; height: 28px; stroke-width: 1.5; margin-bottom: 10px; }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: transform .2s var(--ease), background .2s var(--ease), box-shadow .2s var(--ease);
+  white-space: nowrap;
+}
+.btn [data-lucide] { width: 16px; height: 16px; }
+.btn:hover { transform: translateY(-1px); }
+
+.btn-dark { background: var(--ink); color: var(--white); }
+.btn-dark:hover { background: #000; box-shadow: 0 10px 24px rgba(0,0,0,0.18); }
+
+.btn-light { background: var(--white); color: var(--ink); }
+.btn-light:hover { background: #fafafa; box-shadow: 0 10px 24px rgba(0,0,0,0.2); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+.btn-outline:hover { background: var(--ink); color: var(--white); }
+
+.btn-link { padding: 12px 4px; color: var(--ink-soft); font-weight: 500; }
+.btn-link:hover { color: var(--ink); }
+.btn-link [data-lucide] { transition: transform .2s var(--ease); }
+.btn-link:hover [data-lucide] { transform: translateX(3px); }
+
+.tile-cta-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+/* ============================================================
+   HERO BENTO
+   ============================================================ */
+.hero-bento {
+  margin-top: 32px;
+  grid-auto-rows: minmax(180px, auto);
+}
+.tile-hero {
+  grid-column: span 8;
+  grid-row: span 2;
+  padding: 48px;
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:
+    radial-gradient(ellipse at top right, rgba(255,255,255,0.4), transparent 50%),
+    var(--lavender);
+}
+.tile-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.2vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin: 24px 0 24px;
+}
+.tile-hero h1 em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: -0.015em;
+}
+.tile-hero .tile-lede {
+  font-size: 17px;
+  max-width: 46ch;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+}
+
+.tile-stat { grid-column: span 4; justify-content: flex-end; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.stat-number span {
+  font-size: 0.4em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink-soft);
+  margin-left: 6px;
+  display: inline-block;
+  vertical-align: text-top;
+  padding-top: 0.35em;
+}
+.stat-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.tile-icon { grid-column: span 4; }
+
+/* ============================================================
+   ABOUT BENTO
+   ============================================================ */
+.about-bento { grid-auto-rows: minmax(200px, auto); }
+
+.tile-video { grid-column: span 7; grid-row: span 2; padding: 14px; background: #0b0b0d; }
+.tile-video .video-wrap {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 16/10;
+  border-radius: var(--r-m);
+  overflow: hidden;
+  background: #000;
+}
+.tile-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.tile-video .tile-caption { color: rgba(255,255,255,0.5); padding: 8px 10px 2px; }
+
+.tile-pillar { grid-column: span 5; min-height: 180px; }
+.tile-pillar h3 { font-size: 1.25rem; }
+
+.tile-vita { grid-column: span 7; }
+.vita-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.vita-list li {
+  padding: 8px 0;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  border-top: 1px solid rgba(24,24,27,0.08);
+}
+.vita-list li:first-child { border-top: 0; }
+
+.tile-quote {
+  grid-column: span 5;
+  justify-content: center;
+}
+.quote-mark { width: 28px !important; height: 28px !important; color: var(--ink-faint); margin-bottom: 8px; }
+.tile-quote blockquote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+.tile-dark.tile-quote blockquote { color: #fafafa; }
+.tile-quote figcaption {
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.tile-dark.tile-quote figcaption { color: #a1a1aa; }
+
+.tag-demo {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  background: rgba(24,24,27,0.06);
+  color: var(--ink-muted);
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tag-demo-dark { background: rgba(255,255,255,0.1); color: #a1a1aa; }
+
+/* ============================================================
+   GOALS BENTO
+   ============================================================ */
+.goals-bento { grid-auto-rows: minmax(200px, auto); }
+.tile-goal { grid-column: span 4; }
+.tile-goal-wide { grid-column: span 8; }
+.tile-goal-open { border-style: dashed; border-color: var(--ink-faint); }
+.goals-bento .tile-quote { grid-column: span 12; padding: 36px 48px; }
+
+/* ============================================================
+   PROCESS BENTO
+   ============================================================ */
+.process-bento { grid-auto-rows: minmax(220px, auto); }
+.tile-step { grid-column: span 4; }
+.step-num {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: rgba(24,24,27,0.22);
+  margin-bottom: 14px;
+}
+.tile-room { grid-column: span 12; padding: 44px; text-align: left; }
+.tile-room [data-lucide] { width: 32px; height: 32px; margin-bottom: 16px; color: #d4d4d8; }
+.tile-room h3 { font-size: 1.7rem; max-width: 22ch; margin-bottom: 10px; }
+.tile-room p { max-width: 70ch; font-size: 16px; }
+
+/* ============================================================
+   LOCATION BENTO
+   ============================================================ */
+.location-bento { grid-auto-rows: minmax(220px, auto); }
+.tile-location { grid-column: span 6; }
+.tile-location-wide { grid-column: span 12; }
+.meta-list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.meta-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.55);
+  border-radius: var(--r-s);
+}
+.meta-list [data-lucide] { width: 16px; height: 16px; color: var(--ink); }
+
+/* ============================================================
+   PRICING BENTO
+   ============================================================ */
+.pricing-bento { grid-auto-rows: minmax(280px, auto); }
+.tile-price { grid-column: span 4; }
+.price-label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 20px;
+}
+.tile-price-featured .price-label { color: rgba(255,255,255,0.6); }
+
+.price-number {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  margin-bottom: 6px;
+}
+.price-number span {
+  font-size: 0.32em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink-soft);
+  margin-left: 6px;
+}
+.tile-price-featured .price-number span { color: #a1a1aa; }
+
+.price-meta { font-size: 14px; color: var(--ink-muted); margin-bottom: 14px; }
+.tile-price-featured .price-meta { color: #a1a1aa; }
+.tile-price p { margin-bottom: 16px; font-size: 14px; }
+.tile-price-featured p { color: #d4d4d8; }
+
+.tile-price-featured { justify-content: space-between; }
+.tile-price-featured .btn { align-self: flex-start; }
+
+.pricing-footnote {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin: 8px 0 0;
+}
+
+/* ============================================================
+   PERSONA BENTO
+   ============================================================ */
+.persona-bento { grid-auto-rows: minmax(200px, auto); }
+.tile-persona { grid-column: span 6; }
+.persona-bento .tile-quote-wide { grid-column: span 12; padding: 36px 48px; text-align: center; }
+.persona-bento .tile-quote-wide blockquote { font-size: 1.8rem; max-width: 28ch; margin: 0 auto 14px; }
+.persona-bento .tile-quote-wide .quote-mark { margin: 0 auto 10px; }
+
+/* ============================================================
+   FAQ BENTO
+   ============================================================ */
+.tile-faq {
+  grid-column: 1 / -1;
+  padding: 16px 36px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+.faq-item:last-child { border-bottom: 0; }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 44px 22px 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  position: relative;
+  transition: color .2s var(--ease);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(24,24,27,0.05)
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2318181b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>') center/14px no-repeat;
+  transform: translateY(-50%);
+  transition: transform .25s var(--ease), background-color .25s var(--ease);
+}
+.faq-item[open] summary::after {
+  transform: translateY(-50%) rotate(180deg);
+  background-color: var(--lavender);
+}
+.faq-item summary:hover { color: var(--ink); }
+.faq-item p {
+  padding: 0 56px 24px 0;
+  color: var(--ink-muted);
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================================
+   CONTACT BENTO
+   ============================================================ */
+.contact-bento { grid-auto-rows: minmax(220px, auto); }
+
+.tile-whatsapp {
+  grid-column: span 7;
+  background: var(--whatsapp);
+  color: var(--white);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.tile-whatsapp:hover { background: var(--whatsapp-dark); }
+.tile-whatsapp svg:first-child { margin-bottom: 16px; }
+.tile-whatsapp h3 { color: var(--white); font-size: 1.7rem; margin: 6px 0 10px; }
+.tile-whatsapp p { color: rgba(255,255,255,0.85); font-size: 15px; }
+.cta-arrow {
+  position: absolute;
+  right: 32px; top: 32px;
+  width: 28px !important; height: 28px !important;
+  color: rgba(255,255,255,0.85);
+  transition: transform .25s var(--ease);
+}
+.tile-whatsapp:hover .cta-arrow { transform: translate(4px, -4px); }
+
+.tile-phone { grid-column: span 5; }
+.tile-phone h3 { margin-bottom: 6px; }
+.tile-phone .btn { margin-top: 14px; align-self: flex-start; }
+.phone-number {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.phone-number a { text-decoration: underline; text-underline-offset: 4px; }
+
+.tile-form { grid-column: span 8; }
+.tile-form h3 { margin-bottom: 18px; font-size: 1.5rem; }
+.contact-form { display: flex; flex-direction: column; gap: 12px; }
+.contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contact-form label { display: flex; flex-direction: column; gap: 4px; }
+.contact-form span {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--page-bg);
+  border: 1px solid transparent;
+  border-radius: var(--r-s);
+  padding: 12px 14px;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--ink);
+  background: var(--white);
+}
+.contact-form textarea { resize: vertical; min-height: 90px; }
+.contact-form button { align-self: flex-start; margin-top: 8px; }
+
+.tile-address { grid-column: span 4; justify-content: flex-end; }
+.tile-address h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  max-width: 1280px;
+  margin: 40px auto 0;
+  padding: 40px 16px 48px;
+  border-top: 1px solid var(--line);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.footer-contact {
+  color: var(--ink-muted);
+  font-size: 14px;
+  margin: 0;
+}
+.footer-nav { display: inline-flex; gap: 20px; }
+.footer-nav a {
+  font-size: 14px;
+  color: var(--ink-muted);
+  transition: color .2s var(--ease);
+}
+.footer-nav a:hover { color: var(--ink); }
+
+/* ============================================================
+   LEGAL PAGES (impressum, datenschutz)
+   ============================================================ */
+.legal {
+  max-width: 780px;
+  margin: 96px auto 120px;
+  padding: 0 20px;
+}
+.legal .back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 14px; color: var(--ink-muted);
+  margin-bottom: 24px;
+}
+.legal .back-link:hover { color: var(--ink); }
+.legal h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin: 0 0 8px;
+}
+.legal h1 em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+.legal h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 40px 0 12px;
+  letter-spacing: -0.015em;
+}
+.legal h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 24px 0 8px;
+}
+.legal p, .legal li {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.legal p { margin: 0 0 12px; }
+.legal a { text-decoration: underline; text-underline-offset: 3px; }
+.legal .legal-tile {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-l);
+  padding: 32px 36px;
+  margin-top: 24px;
+}
+
+/* ============================================================
+   MOBILE — bento reflows to single column
+   ============================================================ */
+@media (max-width: 980px) {
+  .bento { gap: 12px; }
+  .section-head h2 { font-size: clamp(1.75rem, 6vw, 2.6rem); }
+
+  .tile-hero { grid-column: 1 / -1; padding: 36px; min-height: auto; }
+  .tile-stat, .tile-icon, .tile-pillar,
+  .tile-goal, .tile-goal-wide,
+  .tile-step, .tile-room,
+  .tile-location, .tile-location-wide,
+  .tile-price,
+  .tile-persona,
+  .tile-video, .tile-vita, .tile-quote,
+  .tile-whatsapp, .tile-phone, .tile-form, .tile-address {
+    grid-column: 1 / -1;
+  }
+  .tile-video { padding: 10px; }
+  .tile-hero h1 { font-size: clamp(2.25rem, 8vw, 3.2rem); }
+
+  .footer-inner { grid-template-columns: 1fr; text-align: left; }
+}
+
+@media (max-width: 600px) {
+  main { padding: 16px 10px 48px; }
+  .tile { padding: 24px; border-radius: var(--r-m); min-height: 160px; }
+  .tile-hero { padding: 28px; border-radius: var(--r-l); }
+  .tile-form, .tile-faq { padding: 20px; }
+  .tile-faq { padding: 4px 22px; }
+  .stat-number, .price-number { font-size: clamp(3rem, 16vw, 4.5rem); }
+  .contact-form .form-row { grid-template-columns: 1fr; }
+  .nav-inner { padding: 6px 8px 6px 16px; }
+  .nav-cta { padding: 8px 14px; font-size: 13px; }
+  .kicker { font-size: 12px; }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .tile:hover, a.tile:hover, .btn:hover, .nav-cta:hover { transform: none; }
+}

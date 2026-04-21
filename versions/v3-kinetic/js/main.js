@@ -2,27 +2,6 @@
   const { gsap } = window;
   if (gsap && window.ScrollTrigger) gsap.registerPlugin(window.ScrollTrigger);
 
-  // --- Custom cursor ---
-  const cursor = document.getElementById('cursor');
-  if (cursor && matchMedia('(pointer:fine)').matches) {
-    const pos = { x: -100, y: -100 };
-    const target = { x: -100, y: -100 };
-    window.addEventListener('mousemove', (e) => {
-      target.x = e.clientX; target.y = e.clientY;
-    });
-    const tick = () => {
-      pos.x += (target.x - pos.x) * 0.18;
-      pos.y += (target.y - pos.y) * 0.18;
-      cursor.style.transform = `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%)`;
-      requestAnimationFrame(tick);
-    };
-    tick();
-    document.querySelectorAll('a, button, input, textarea').forEach((el) => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
-    });
-  }
-
   if (!gsap) return;
 
   // --- Split lines into spans for stagger ---

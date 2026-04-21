@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbara Sophia Sailer – Gesangslehrerin &amp; Stimmbildnerin in Frankfurt</title>
+  <meta name="description" content="Gesangsunterricht und Stimmbildung in Frankfurt-Niederrad. Von der ersten Probestunde bis zum dramatischen Fach. Scroll-getriebene Bildsprache.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..900,0..100;1,9..144,300..600,0..100&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="has-lenis">
+
+<!-- Progress bar: scroll progress as a thin line at top -->
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+<!-- Top nav: minimal, floats over hero -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav-mark" aria-label="Start">
+    <span class="nav-mark-dot"></span>
+    <span class="nav-mark-name">Barbara&nbsp;Sailer</span>
+  </a>
+  <nav class="nav-links" aria-label="Hauptnavigation">
+    <a href="#prolog">Prolog</a>
+    <a href="#wege">Wege</a>
+    <a href="#ort">Ort</a>
+    <a href="#preise">Preise</a>
+    <a href="#kontakt" class="nav-cta">Probestunde</a>
+  </nav>
+</header>
+
+<!-- ============================================================
+     HERO — full-bleed, layered parallax, gradient "atmosphere"
+     No photographs — painted in CSS/SVG.
+     ============================================================ -->
+<section class="hero" id="top" data-scene="hero">
+  <!-- Layered parallax backdrop -->
+  <div class="hero-bg">
+    <div class="hero-layer hero-layer-1" data-parallax="0.05"></div>
+    <div class="hero-layer hero-layer-2" data-parallax="0.18"></div>
+    <div class="hero-layer hero-layer-3" data-parallax="0.32"></div>
+
+    <!-- Floating ornament: concentric arcs, reminiscent of a sound wave / curtain -->
+    <svg class="hero-arcs" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="arcGlow" cx="50%" cy="60%" r="60%">
+          <stop offset="0%" stop-color="#f8e9cf" stop-opacity="0.35"/>
+          <stop offset="70%" stop-color="#1a120c" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1200" height="800" fill="url(#arcGlow)"/>
+      <g stroke="rgba(246,230,202,0.12)" fill="none" stroke-width="1">
+        <circle cx="600" cy="920" r="260" data-parallax="0.08"/>
+        <circle cx="600" cy="920" r="360" data-parallax="0.12"/>
+        <circle cx="600" cy="920" r="460" data-parallax="0.16"/>
+        <circle cx="600" cy="920" r="560" data-parallax="0.2"/>
+        <circle cx="600" cy="920" r="660" data-parallax="0.24"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <p class="hero-kicker"><span class="line"></span>Frankfurt-Niederrad · Stimmbildung</p>
+    <h1 class="hero-title">
+      <span class="reveal-line"><span>Deine Stimme</span></span>
+      <span class="reveal-line"><span><em>findet zurück</em></span></span>
+      <span class="reveal-line"><span>nach Hause.</span></span>
+    </h1>
+    <p class="hero-lede">Mezzosopranistin Barbara Sophia Sailer unterrichtet Klassik, Lied, Pop, Chanson, Musical &mdash; und die stille, tiefe Arbeit an Atem und Körper.</p>
+    <div class="hero-cta-row">
+      <a href="#kontakt" class="btn-primary">Probestunde · 40&nbsp;€</a>
+      <a href="#prolog" class="btn-ghost">Weiterlesen</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="hero-scroll-line"></span>
+    <span class="hero-scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROLOG — single sentence fades in word by word
+     ============================================================ -->
+<section class="scene prolog" id="prolog" data-scene="prolog">
+  <div class="prolog-eyebrow">Prolog</div>
+  <p class="prolog-line" data-split>
+    Du willst singen lernen &mdash; vom ersten Ton bis zum dramatischen Fach, vom gesunden Atem bis zum Kirchenchor. Ich zeige Dir den Weg.
+  </p>
+</section>
+
+<!-- ============================================================
+     ÜBER — two-column cinematic with pinned image panel
+     ============================================================ -->
+<section class="scene about" id="ueber-mich" data-scene="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-panel" data-parallax-inner>
+        <!-- SVG "portrait window" — abstract -->
+        <svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="paneGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f3e2c0"/>
+              <stop offset="100%" stop-color="#8e5d3a"/>
+            </linearGradient>
+            <linearGradient id="paneGradDark" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#2a1c12" stop-opacity="0.0"/>
+              <stop offset="100%" stop-color="#2a1c12" stop-opacity="0.55"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="560" fill="url(#paneGrad)"/>
+          <rect width="400" height="560" fill="url(#paneGradDark)"/>
+          <g opacity="0.35" stroke="#fff3dc" fill="none" stroke-width="1">
+            <path d="M40 420 Q 200 300 360 420"/>
+            <path d="M20 460 Q 200 320 380 460"/>
+            <path d="M0 500 Q 200 340 400 500"/>
+          </g>
+          <circle cx="200" cy="230" r="72" fill="#fff3dc" opacity="0.08"/>
+          <circle cx="200" cy="230" r="48" fill="#fff3dc" opacity="0.12"/>
+        </svg>
+        <span class="about-panel-caption">Abbildung &middot; Unterrichtsraum Niederrad</span>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <span class="scene-eyebrow">01 &mdash; Portrait</span>
+      <h2 class="scene-title">Wer bei mir singt.</h2>
+      <p class="lede">Anfängerinnen und Anfänger, Aufnahmeprüflinge, Profis &mdash; und Menschen, die ihre Stimme wiederentdecken wollen.</p>
+
+      <div class="stanza">
+        <h3>Was Du bei mir findest</h3>
+        <p>Staatsexamen Musik (Gesang und Klavier) und Germanistik in Augsburg, danach die Opernschule der Hochschule für Musik Würzburg. Meisterkurse bei <em>Brigitte Fassbaender, Helmut Deutsch, Christa Ludwig</em>. Aufgenommen im <strong>Bundesverband Deutscher Gesangspädagogen (BDG)</strong>, Qualitätszertifikat des Tonkünstlerverbandes.</p>
+      </div>
+
+      <div class="stanza">
+        <h3>Wenn Deine Stimme hakt</h3>
+        <p>Früh hat die intensive gesangliche Arbeit ein <em>wissenschaftliches Interesse an Funktion und Fehlfunktion des Stimmapparates</em> geweckt. Stimmtherapeutische Weiterbildung (ISA-Zertifikat), Atemcoach, Hamburger Stimmsymposium 2022&ndash;2024. In der Stimmbildung arbeite ich auch therapeutisch.</p>
+      </div>
+
+      <div class="stanza">
+        <h3>Ich singe auch selbst</h3>
+        <p>Mit meinem <strong>dramatischen Mezzosopran</strong> bin ich im Opern-, Operetten- und Konzertfach zu hören. Meine eigene Liederabendreihe &bdquo;Blutrot&ldquo; habe ich in der Würzburger Residenz eröffnet.</p>
+      </div>
+
+      <details class="ledger">
+        <summary><span>Ausbildung &amp; Zertifikate</span><span class="ledger-arrow">&rarr;</span></summary>
+        <ul>
+          <li>Bayerisches Staatsexamen, Universität Augsburg (Hauptfach Gesang)</li>
+          <li>Opernschule HfM Würzburg · Richard-Wagner-Stipendium</li>
+          <li>Meisterkurse: Fassbaender, Deutsch, Schneiderman, Donath, Jones, Ludwig</li>
+          <li>C-Kirchenmusikerausbildung mit C-Prüfung (Chorleitung)</li>
+          <li>BDG-Aufnahme 2020 · Qualitätszertifikat Tonkünstlerverband</li>
+          <li>Stimmtherapeutische Weiterbildung (ISA-Zertifikat)</li>
+          <li>Hamburger Stimmsymposium 2022, 2023, 2024</li>
+          <li>Weiterbildung Atemcoach 2025</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROBESTUNDE — single column, theatrical pull quote
+     ============================================================ -->
+<section class="scene probe" id="arbeit" data-scene="probe">
+  <div class="probe-inner">
+    <span class="scene-eyebrow">02 &mdash; Probestunde</span>
+    <h2 class="scene-title">Eine Probestunde, danach entscheidest Du.</h2>
+    <p class="lede">45 Minuten, 40&nbsp;€ &mdash; keine Verpflichtung danach.</p>
+
+    <div class="stanza">
+      <h3>Was Dich erwartet</h3>
+      <p>Ein schöner Unterrichtsraum. Angenehme Akustik. Klavierbegleitung. Und eine qualifizierte und zugewandte Lehrperson. Erwartet man noch mehr, wenn man singen lernen oder einfach besser mit seiner Stimme umgehen will?</p>
+      <p>Ja &mdash; zum Beispiel <strong>unerschöpfliche Geduld</strong> bei der Bildung einer Stimme. Kreativität, wenn es um passende, oft auch therapeutische Übungen geht. Möglichst viel Erfahrung. Und einen immensen Schatz an verfügbarem Repertoire.</p>
+    </div>
+
+    <blockquote class="pull-quote">
+      <span data-split>Damit kann ich dienen.</span>
+    </blockquote>
+
+    <div class="stanza">
+      <h3>Wie es danach weitergeht</h3>
+      <p>In der Probestunde lernen wir uns kennen. Du singst, so viel oder so wenig, wie Du magst. Am Ende wissen wir beide, ob es passt. Danach entscheidest Du selbst, wie oft wir uns sehen &mdash; wöchentlich, alle zwei Wochen, blockweise vor einem Auftritt. <strong>Kein Vertrag, keine Mindestlaufzeit.</strong></p>
+    </div>
+
+    <aside class="whisper">
+      Der Raum gehört für eine Stunde nur Dir. Keine Mitschülerinnen und Mitschüler, kein Publikum, keine Bewertung. Nur ein Klavier, Barbara und Du.
+    </aside>
+
+    <div class="inline-cta">
+      <a href="#kontakt">Probestunde anfragen &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WEGE — HORIZONTAL SCROLL gallery of "directions a voice can take"
+     ============================================================ -->
+<section class="scene wege" id="wege" data-scene="wege">
+  <div class="wege-head">
+    <span class="scene-eyebrow">03 &mdash; Wege</span>
+    <h2 class="scene-title">Wohin Deine Stimme will.</h2>
+    <p class="lede">Stimme ist mehr als eine Stilrichtung. Das meiste, was Du lernst, trägt Dich überallhin.</p>
+    <p class="wege-hint" aria-hidden="true"><span>Horizontal scrollen</span> <span class="arrow">&rarr;</span></p>
+  </div>
+
+  <div class="wege-track-wrap" id="wegeTrackWrap">
+    <div class="wege-track" id="wegeTrack">
+
+      <article class="wege-card" style="--card-grad-a:#b6472e;--card-grad-b:#3a170f;">
+        <span class="wege-num">I</span>
+        <h3>Klassik, Oper, Lied</h3>
+        <p><strong>Arien, Partien, Kunstlied.</strong> Schubert, Schumann, Wagner, Mahler, Strauss. Stimmbildung mit Blick auf Stil, Technik und Ausdruck, bis hin zur Vorbereitung auf Auftritte und Prüfungen.</p>
+      </article>
+
+      <article class="wege-card" style="--card-grad-a:#d38a4a;--card-grad-b:#4a2a15;">
+        <span class="wege-num">II</span>
+        <h3>Pop, Chanson, Musical</h3>
+        <p><strong>Eigene Songs, Coverversionen, Rollenarbeit.</strong> Belting, Mixing, zeitgemäße Stimmtechnik ohne klassisches Korsett &mdash; und trotzdem mit gesundem Fundament.</p>
+      </article>
+
+      <article class="wege-card" style="--card-grad-a:#6f8c74;--card-grad-b:#1f2b24;">
+        <span class="wege-num">III</span>
+        <h3>Sprech- und Berufsstimme</h3>
+        <p><strong>Lehrerinnen, Geistliche, Rednerinnen, Coaches.</strong> Wer beruflich viel spricht, braucht eine Stimme, die mithält &mdash; und Atem, der nicht in den Schultern hängenbleibt.</p>
+      </article>
+
+      <article class="wege-card" style="--card-grad-a:#8b6d9c;--card-grad-b:#2a1f3a;">
+        <span class="wege-num">IV</span>
+        <h3>Wiedereinstieg &amp; erstes Mal</h3>
+        <p><strong>Früher gesungen und vermisst &mdash; oder nie probiert.</strong> Chor, Schule, Dusche: Du willst das wiederfinden. Oder Du willst es endlich einmal ausprobieren. Beides ist ein guter Anfang.</p>
+      </article>
+
+      <article class="wege-card" style="--card-grad-a:#4f6f8f;--card-grad-b:#14202e;">
+        <span class="wege-num">V</span>
+        <h3>Atem, Entspannung, Gesundheit</h3>
+        <p><strong>Stimmarbeit ist auch Atem- und Körperarbeit.</strong> Wer sich selbst wieder besser hören und spüren möchte, ist hier richtig &mdash; auch ohne konkretes Lied im Kopf.</p>
+      </article>
+
+      <article class="wege-card" style="--card-grad-a:#a68b64;--card-grad-b:#2f241a;">
+        <span class="wege-num">VI</span>
+        <h3>Ich weiß es noch nicht</h3>
+        <p><strong>Oft der ehrlichste Startpunkt.</strong> Wir finden in der Probestunde gemeinsam heraus, was Deine Stimme kann und wohin sie will.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SÄTZE DIE NICHT STIMMEN — objection antidotes
+     ============================================================ -->
+<section class="scene objections" data-scene="objections">
+  <div class="objections-inner">
+    <span class="scene-eyebrow">04 &mdash; Einwände</span>
+    <h2 class="scene-title">Drei Sätze, die nicht stimmen.</h2>
+
+    <ol class="obj-list">
+      <li class="obj-item">
+        <div class="obj-num">01</div>
+        <div class="obj-body">
+          <h3>&bdquo;Ich kann nicht singen.&ldquo;</h3>
+          <p><strong>Singen ist kein Gen, sondern ein Handwerk.</strong> Es gibt kein Mindest-Talent, das Du mitbringen musst. Was Du mitbringst, ist genug, um anzufangen.</p>
+        </div>
+      </li>
+      <li class="obj-item">
+        <div class="obj-num">02</div>
+        <div class="obj-body">
+          <h3>&bdquo;Ich bin zu alt.&ldquo;</h3>
+          <p><strong>Stimmen kommen nicht abhanden</strong> &mdash; sie werden nur leiser, wenn sie lange nicht benutzt wurden. Das holen wir zurück. Ich habe Schülerinnen und Schüler jenseits der 70, die gerade erst anfangen.</p>
+        </div>
+      </li>
+      <li class="obj-item">
+        <div class="obj-num">03</div>
+        <div class="obj-body">
+          <h3>&bdquo;Ich trau mich nicht.&ldquo;</h3>
+          <p>Dann ist die Probestunde genau der richtige Ort. <strong>Keine Gruppe, kein Publikum, keine Bewertung</strong> &mdash; nur Du, ein Klavier und ich. Meistens singt es sich leichter, als man denkt.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="inline-cta">
+      <a href="#kontakt">Probestunde anfragen &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ORT — layered parallax map-esque panel
+     ============================================================ -->
+<section class="scene ort" id="ort" data-scene="ort">
+  <div class="ort-grid">
+    <div class="ort-text">
+      <span class="scene-eyebrow">05 &mdash; Ort</span>
+      <h2 class="scene-title">Unterrichtsraum in&nbsp;Niederrad, online oder bei&nbsp;Dir.</h2>
+      <p class="lede">Privat, nicht einsehbar &mdash; mit Tram 12, 15, 21 direkt aus der Innenstadt.</p>
+      <p>Der Regelfall: ein <strong>schöner, geräumiger Unterrichtsraum in Frankfurt-Niederrad</strong>. Klavier, angenehme Akustik, Platz zum Bewegen. Parkmöglichkeiten gibt es im Umkreis.</p>
+      <p><strong>Online</strong> ist möglich, wenn Du krank bist, gerade nicht reisen kannst oder ohnehin weiter weg wohnst &mdash; nach einer ersten persönlichen Stunde. In <strong>Einrichtungen, Unternehmen, Gemeinden</strong> oder auf Anfrage auch bei Dir. Fahrtkosten individuell.</p>
+
+      <dl class="ort-meta">
+        <div><dt>Adresse</dt><dd>Schwarzwaldstr. 15 · 60528 Frankfurt</dd></div>
+        <div><dt>Tram</dt><dd>12 · 15 · 21</dd></div>
+        <div><dt>Online</dt><dd>nach Absprache</dd></div>
+      </dl>
+    </div>
+
+    <div class="ort-visual">
+      <div class="ort-panel" data-parallax-inner>
+        <svg viewBox="0 0 500 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="ortGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1d1410"/>
+              <stop offset="100%" stop-color="#3d2a1f"/>
+            </linearGradient>
+            <pattern id="gridPat" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0V40" fill="none" stroke="rgba(246,230,202,0.06)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="500" height="640" fill="url(#ortGrad)"/>
+          <rect width="500" height="640" fill="url(#gridPat)"/>
+          <g stroke="rgba(246,230,202,0.25)" fill="none" stroke-width="1.5">
+            <path d="M40 560 C 140 380, 260 520, 380 340 L 460 280"/>
+            <path d="M60 520 C 160 340, 280 480, 400 300" opacity="0.5"/>
+          </g>
+          <g>
+            <circle cx="380" cy="340" r="7" fill="#f3e2c0"/>
+            <circle cx="380" cy="340" r="18" fill="none" stroke="#f3e2c0" stroke-opacity="0.5"/>
+            <circle cx="380" cy="340" r="32" fill="none" stroke="#f3e2c0" stroke-opacity="0.25"/>
+          </g>
+          <text x="380" y="310" fill="#f3e2c0" font-family="Fraunces, serif" font-style="italic" font-size="16" text-anchor="middle">Niederrad</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PREISE — bold typographic treatment, scroll-linked reveal
+     ============================================================ -->
+<section class="scene preise" id="preise" data-scene="preise">
+  <div class="preise-inner">
+    <span class="scene-eyebrow">06 &mdash; Preise</span>
+    <h2 class="scene-title">Klare Preise, kein Vertrag.</h2>
+
+    <ul class="price-list">
+      <li class="price-row" data-reveal>
+        <span class="price-amount">40&thinsp;&euro;</span>
+        <span class="price-label">Probestunde</span>
+        <span class="price-note">45&nbsp;min &middot; keine Verpflichtung</span>
+      </li>
+      <li class="price-row" data-reveal>
+        <span class="price-amount">50&thinsp;&euro;</span>
+        <span class="price-label">Einzelstunde</span>
+        <span class="price-note">45&nbsp;min</span>
+      </li>
+      <li class="price-row" data-reveal>
+        <span class="price-amount">60&thinsp;&euro;</span>
+        <span class="price-label">Einzelstunde</span>
+        <span class="price-note">60&nbsp;min</span>
+      </li>
+      <li class="price-row price-row-wide" data-reveal>
+        <span class="price-amount">11&nbsp;für&nbsp;10</span>
+        <span class="price-label">10er-Karte</span>
+        <span class="price-note">ohne Ablaufdatum</span>
+      </li>
+    </ul>
+
+    <p class="preise-footnote">Längere Einheiten nach Absprache. Unterricht bei Dir vor Ort zuzüglich Fahrtkosten. <strong>Kein Vertrag, keine Mindestlaufzeit.</strong></p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="scene faq" id="faq" data-scene="faq">
+  <div class="faq-inner">
+    <span class="scene-eyebrow">07 &mdash; Häufige Fragen</span>
+    <h2 class="scene-title">Bevor Du schreibst.</h2>
+
+    <details class="q"><summary>Muss ich regelmäßig kommen?<span class="q-mark">+</span></summary><p>Nein. Manche kommen wöchentlich, andere zweimal im Monat, wieder andere blockweise vor einem Auftritt oder einer Prüfung. Du entscheidest.</p></details>
+    <details class="q"><summary>Gibt es eine Mindestlaufzeit oder einen Vertrag?<span class="q-mark">+</span></summary><p>Nein. Jede Stunde steht für sich. Die 10er-Karte ist ein Angebot, kein Muss &mdash; und auch sie ohne Ablaufdatum.</p></details>
+    <details class="q"><summary>Was passiert, wenn ich kurzfristig absagen muss?<span class="q-mark">+</span></summary><p>Absagen bis 24&nbsp;Stunden vorher sind kostenfrei. Kurzfristigere Absagen berechne ich, es sei denn, wir finden gemeinsam einen Ersatztermin.</p></details>
+    <details class="q"><summary>Muss ich Noten mitbringen?<span class="q-mark">+</span></summary><p>Für die Probestunde nicht. Später arbeiten wir gerne mit Stücken, die Dich interessieren &mdash; bring mit, was Du hast, ich ergänze, was nützlich ist.</p></details>
+    <details class="q"><summary>Ich weiß nicht, welche Richtung ich will &mdash; schlimm?<span class="q-mark">+</span></summary><p>Überhaupt nicht. Das ist für viele sogar der ehrlichste Startpunkt. In der Probestunde hören wir beide hin und merken, was sich richtig anfühlt.</p></details>
+    <details class="q"><summary>Kann ich auch online Unterricht nehmen?<span class="q-mark">+</span></summary><p>Ja. Die erste Stunde ist gerne persönlich, damit ich Dich wirklich hören kann. Danach sind wir flexibel.</p></details>
+    <details class="q"><summary>Kommst Du auch zu mir?<span class="q-mark">+</span></summary><p>In Einrichtungen, Unternehmen und Gemeinden ja, und auf Anfrage auch privat. Fahrtkosten sprechen wir individuell ab.</p></details>
+  </div>
+</section>
+
+<!-- ============================================================
+     KONTAKT
+     ============================================================ -->
+<section class="scene kontakt" id="kontakt" data-scene="kontakt">
+  <div class="kontakt-inner">
+    <span class="scene-eyebrow">08 &mdash; Kontakt</span>
+    <h2 class="scene-title">Probestunde anfragen.</h2>
+    <p class="lede">Der schnellste Weg: WhatsApp. Wenn Du lieber schreibst oder anrufst, geht beides genauso.</p>
+
+    <a class="btn-whatsapp"
+       href="https://wa.me/491793713706?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde."
+       target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+      </svg>
+      <span>Direkt per WhatsApp anfragen</span>
+    </a>
+
+    <div class="divider"><span>oder</span></div>
+
+    <form class="form"
+          action="https://formsubmit.co/barbarasailer@web.de"
+          method="POST">
+      <input type="hidden" name="_subject" value="Neue Anfrage über stimmen-fuer-barbara.de">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="form-row">
+        <label>Vorname<input type="text" name="vorname" required></label>
+        <label>Name<input type="text" name="name" required></label>
+      </div>
+      <label>E-Mail<input type="email" name="email" required></label>
+      <label>Worum geht es Dir?
+        <select name="anliegen">
+          <option value="Probestunde">Ich möchte eine Probestunde buchen</option>
+          <option value="Frage">Ich habe eine Frage</option>
+          <option value="Chor">Chor / Gruppe</option>
+          <option value="Sonstiges">Sonstiges</option>
+        </select>
+      </label>
+      <label>Nachricht<textarea name="nachricht" rows="5" required></textarea></label>
+      <button type="submit" class="btn-send">Nachricht senden</button>
+    </form>
+
+    <div class="phone-reveal" id="phoneReveal">
+      <p>Lieber anrufen?</p>
+      <button type="button" class="btn-link" id="phoneRevealBtn">Telefonnummer anzeigen</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-mark">
+      <span class="foot-mark-name">Barbara Sophia Sailer</span>
+      <span class="foot-mark-role">Mezzosopranistin &middot; Stimmbildnerin</span>
+    </div>
+    <div class="foot-contact">
+      <p>Schwarzwaldstraße 15<br>60528 Frankfurt a.&thinsp;M.</p>
+      <p><a href="https://wa.me/491793713706" target="_blank" rel="noopener">WhatsApp</a> &middot; <a href="mailto:barbarasailer@web.de">E-Mail</a></p>
+    </div>
+    <nav class="foot-nav" aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+    <p class="foot-colophon">Typografie: Fraunces &amp; Inter. Keine Fotografien &mdash; nur Farbe und Bewegung.</p>
+  </div>
+</footer>
+
+<!-- CDN deps -->
+<script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

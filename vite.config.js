@@ -10,8 +10,9 @@ const versionEntries = Object.fromEntries(
     .map((d) => [d.name, resolve(VERSIONS_DIR, d.name, 'index.html')])
 );
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   root: 'versions',
+  base: command === 'build' ? '/barbaraseiler/' : '/',
   server: {
     port: 8080,
     open: '/',
@@ -27,4 +28,4 @@ export default defineConfig({
       }
     }
   }
-});
+}));

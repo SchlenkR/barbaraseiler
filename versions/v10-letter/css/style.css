@@ -1,0 +1,496 @@
+/* ==========================================================================
+   Barbara Sailer — v10-letter
+   A literary letter-exchange. Serif-heavy, cream parchment, warm sepia ink.
+   ========================================================================== */
+
+:root {
+  --cream: #f4ecde;
+  --cream-deep: #ece2cf;
+  --paper-edge: #e4d7bd;
+  --ink-you: #1f2a44;          /* deep blue-black, your voice */
+  --ink-barbara: #4a2e1c;      /* warm brown, Barbara's voice */
+  --ink-neutral: #2b211a;      /* default body ink */
+  --ink-muted: #7a6a58;
+  --rule: #cbb995;
+  --accent: #a8391e;           /* sealing-wax red, very sparing */
+  --serif-body: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --serif-display: "Fraunces", "Playfair Display", Georgia, serif;
+  --hand: "Caveat", "Homemade Apple", cursive;
+  --col: 38rem;                /* ~608px letter column */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink-neutral);
+  font-family: var(--serif-body);
+  font-size: clamp(1.05rem, 0.9rem + 0.5vw, 1.2rem);
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body::before {
+  /* subtle vertical gradient to hint at a page, not a texture overlay */
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(255, 244, 220, 0.55), transparent 55%),
+    radial-gradient(ellipse at 50% 110%, rgba(190, 160, 110, 0.12), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 57, 30, 0.35);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+a:hover, a:focus-visible { border-bottom-color: var(--accent); }
+
+/* ---------- Sticky "Probestunde" stamp ------------------------------------ */
+
+.stamp {
+  position: fixed;
+  top: clamp(1rem, 3vw, 2rem);
+  right: clamp(1rem, 3vw, 2rem);
+  z-index: 50;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent);
+  background: rgba(244, 236, 222, 0.88);
+  backdrop-filter: blur(3px);
+  font-family: var(--serif-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.15;
+  transform: rotate(-7deg);
+  transition: transform 0.3s ease;
+}
+.stamp:hover, .stamp:focus-visible {
+  transform: rotate(-3deg) scale(1.04);
+  border-bottom-color: var(--accent);
+}
+.stamp-line-1 { font-weight: 600; }
+.stamp-line-2 { font-size: 0.62rem; opacity: 0.75; margin-top: 0.15rem; }
+
+@media (max-width: 480px) {
+  .stamp {
+    width: 4.4rem;
+    height: 4.4rem;
+    font-size: 0.6rem;
+  }
+  .stamp-line-2 { font-size: 0.52rem; }
+}
+
+/* ---------- Parchment / letter column ------------------------------------- */
+
+.parchment {
+  position: relative;
+  z-index: 1;
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 5vw, 2.5rem) 5rem;
+}
+
+/* ---------- Masthead ------------------------------------------------------ */
+
+.masthead {
+  text-align: center;
+  margin-bottom: clamp(3.5rem, 8vw, 5.5rem);
+}
+.masthead-eyebrow {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  margin: 0 0 0.75rem;
+}
+.masthead-title {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw + 1rem, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink-neutral);
+  margin: 0 0 1.25rem;
+}
+.masthead-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+.masthead-dek {
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  max-width: 32rem;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+.masthead-rule {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  color: var(--rule);
+  letter-spacing: 0.3em;
+}
+
+/* ---------- Letter -------------------------------------------------------- */
+
+.letter {
+  position: relative;
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.letter.is-visible { opacity: 1; transform: none; }
+
+/* alternating voices — very subtle tonal shift */
+.letter-you       { color: var(--ink-you); }
+.letter-barbara   { color: var(--ink-barbara); }
+
+.letter + .letter {
+  border-top: 1px solid var(--rule);
+}
+.letter + .letter::before {
+  content: "\2766";     /* floral heart */
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream);
+  padding: 0 0.6rem;
+  color: var(--rule);
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+}
+
+/* Barbara's letters are very slightly indented to create conversation feel */
+.letter-barbara {
+  padding-left: clamp(0rem, 2vw, 1.25rem);
+}
+@media (max-width: 560px) {
+  .letter-barbara { padding-left: 0; }
+}
+
+/* Head */
+
+.letter-head {
+  margin-bottom: 2rem;
+  font-family: var(--serif-display);
+}
+.letter-place {
+  font-family: var(--hand);
+  font-size: 1.35rem;
+  color: var(--ink-muted);
+  margin: 0 0 0.15rem;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+.letter-meta {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0;
+}
+.letter-meta-sep { margin: 0 0.35em; opacity: 0.5; }
+
+/* Body */
+
+.letter p {
+  margin: 0 0 1.1em;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.letter-greeting {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  margin-bottom: 1.4rem !important;
+  color: inherit;
+}
+
+.letter-lead {
+  font-family: var(--serif-display);
+  font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);
+  line-height: 1.45;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 1.6rem !important;
+  color: inherit;
+}
+
+.letter em {
+  font-style: italic;
+  color: inherit;
+}
+.letter strong {
+  font-weight: 600;
+  color: inherit;
+}
+
+.letter-address {
+  font-family: var(--serif-display);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* Close + signature */
+
+.letter-close {
+  margin-top: 2rem !important;
+  font-style: italic;
+  line-height: 1.5;
+}
+.letter-sign {
+  display: inline-block;
+  font-family: var(--hand);
+  font-size: 1.8rem;
+  font-style: normal;
+  line-height: 1;
+  margin-top: 0.5rem;
+}
+.letter-sign-you     { color: var(--ink-you); }
+.letter-sign-barbara { color: var(--accent); }
+
+/* ---------- PS / contact -------------------------------------------------- */
+
+.ps {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+.ps .letter-place {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.ps .letter-meta {
+  font-family: var(--serif-display);
+  font-size: 1.9rem;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--ink-neutral);
+  margin-top: 0.35rem;
+}
+
+.wa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-family: var(--serif-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease, color 0.2s ease;
+  margin-top: 0.5rem;
+}
+.wa-link:hover, .wa-link:focus-visible {
+  background: var(--accent);
+  color: var(--cream);
+  border-bottom-color: var(--accent);
+}
+
+.or-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--ink-muted);
+  margin: 2.25rem 0;
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+.or-rule::before, .or-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* Form — styled like letter ruling */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.field-label {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--serif-body);
+  font-size: 1.05rem;
+  color: var(--ink-neutral);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5rem 0.15rem;
+  border-radius: 0;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+.field textarea {
+  min-height: 6rem;
+  line-height: 1.55;
+}
+.field select { appearance: none; padding-right: 1.5rem; }
+
+.send {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  background: var(--ink-neutral);
+  color: var(--cream);
+  border: none;
+  border-radius: 2px;
+  font-family: var(--serif-display);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.send:hover, .send:focus-visible {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.phone-reveal {
+  margin-top: 2rem;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+.phone-reveal p { margin: 0 0 0.35rem; }
+.phone-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(168, 57, 30, 0.35);
+}
+.phone-btn:hover { border-bottom-color: var(--accent); }
+.phone-number {
+  display: inline-block;
+  font-family: var(--serif-display);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 1.15rem;
+  border-bottom: 1px solid rgba(168, 57, 30, 0.35);
+}
+
+/* ---------- Colophon / footer --------------------------------------------- */
+
+.colophon {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  font-style: italic;
+}
+.colophon-line { margin: 0 0 0.6rem; }
+.colophon-addr { font-style: normal; font-family: var(--serif-display); font-size: 0.92rem; letter-spacing: 0.02em; }
+.colophon-nav {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-style: normal;
+}
+.colophon-nav a {
+  color: var(--ink-muted);
+  border-bottom-color: transparent;
+  margin: 0 0.25rem;
+}
+.colophon-nav a:hover, .colophon-nav a:focus-visible {
+  color: var(--accent);
+  border-bottom-color: rgba(168, 57, 30, 0.35);
+}
+
+/* ---------- Reduced motion ------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .letter { opacity: 1 !important; transform: none !important; }
+}
+
+/* ---------- Legal pages (impressum/datenschutz) --------------------------- */
+
+.legal {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 5vw, 2.5rem);
+  position: relative;
+  z-index: 1;
+}
+.legal h1 {
+  font-family: var(--serif-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+  margin: 0 0 2rem;
+}
+.legal h2 {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin: 2.5rem 0 0.8rem;
+}
+.legal p { margin: 0 0 1.1em; }
+.legal .back {
+  display: inline-block;
+  margin-top: 2.5rem;
+  font-family: var(--serif-display);
+  font-style: italic;
+}

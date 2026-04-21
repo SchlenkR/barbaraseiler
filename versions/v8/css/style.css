@@ -1,0 +1,439 @@
+/* v8 — Zweifel & Antworten
+   Design dialect: literary sepia. Warm paper tone, long reading lines,
+   generous whitespace, pure typographic hierarchy. No cards, no borders,
+   no decoration that distracts from the voice. */
+
+:root {
+  --paper: #f6efe3;
+  --paper-deep: #efe5d2;
+  --ink: #23201b;
+  --ink-soft: #4a453c;
+  --ink-mute: #7a7265;
+  --accent: #7a2e1f;   /* dunkles, gebranntes Rot — sparsam eingesetzt */
+  --rule: #d9cdb4;
+  --max: 40rem;         /* ~ 65ch bei unserer Schrift */
+  --wide: 54rem;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1875rem;
+  line-height: 1.62;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--ink); color: var(--paper); }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--ink); color: var(--paper);
+  padding: .5rem .75rem;
+}
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 100; }
+
+/* Nav ------------------------------------------------------------------- */
+
+.nav {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(1.2) blur(10px);
+  -webkit-backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent);
+}
+.nav-inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: .85rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+}
+.brand {
+  text-decoration: none; color: var(--ink);
+  display: flex; flex-direction: column; line-height: 1.1;
+}
+.brand-name {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 400; font-size: 1.05rem;
+  letter-spacing: .01em;
+}
+.brand-sub {
+  font-size: .72rem; color: var(--ink-mute);
+  letter-spacing: .08em; text-transform: uppercase;
+  margin-top: .15rem;
+  font-family: "Fraunces", Georgia, serif;
+}
+.nav-cta {
+  text-decoration: none;
+  background: var(--ink); color: var(--paper);
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: .92rem;
+  letter-spacing: .01em;
+  transition: background .2s ease, transform .2s ease;
+}
+.nav-cta:hover { background: var(--accent); }
+.nav-cta:active { transform: translateY(1px); }
+
+/* Hero ------------------------------------------------------------------ */
+
+.hero { padding: clamp(4rem, 10vw, 8rem) 1.25rem clamp(3rem, 7vw, 5rem); }
+.hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.eyebrow {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: .78rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0 0 2rem;
+}
+.hero h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144;
+  font-weight: 340;
+  font-size: clamp(2rem, 5.6vw, 3.6rem);
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  margin: 0 0 1.5rem;
+  color: var(--ink);
+}
+.lede {
+  font-size: 1.32rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 2.25rem;
+  max-width: 34rem;
+}
+.meta {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0;
+}
+
+/* Doubts ---------------------------------------------------------------- */
+
+.doubt {
+  padding: clamp(3rem, 7vw, 5.5rem) 1.25rem;
+  position: relative;
+}
+.doubt + .doubt {
+  border-top: 1px solid var(--rule);
+}
+.doubt > * {
+  max-width: var(--max);
+  margin-left: auto;
+  margin-right: auto;
+}
+.count {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: .92rem;
+  letter-spacing: .04em;
+  color: var(--ink-mute);
+  margin: 0 auto 2.25rem;
+  display: block;
+}
+.voice {
+  margin: 0 auto 2.25rem;
+  padding: 0;
+  border: none;
+}
+.voice p {
+  font-family: "Fraunces", Georgia, serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144;
+  font-weight: 340;
+  font-style: italic;
+  font-size: clamp(1.6rem, 4.2vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -.005em;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+.answer p {
+  margin: 0 0 1.15rem;
+  color: var(--ink-soft);
+}
+.answer p:last-child { margin-bottom: 0; }
+.bridge {
+  margin-top: 1.6rem !important;
+}
+.bridge a {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding-bottom: .1rem;
+  transition: border-color .2s ease, color .2s ease;
+}
+.bridge a:hover { border-color: var(--accent); color: var(--ink); }
+
+/* Fade-in on scroll (respects prefers-reduced-motion) */
+.doubt, .cta, .about {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+.doubt.in, .cta.in, .about.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .doubt, .cta, .about {
+    opacity: 1; transform: none; transition: none;
+  }
+}
+
+/* CTA ------------------------------------------------------------------- */
+
+.cta {
+  background: var(--paper-deep);
+  padding: clamp(4rem, 9vw, 7rem) 1.25rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.cta-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.cta h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144;
+  font-weight: 340;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.12;
+  margin: 0 0 1.25rem;
+  letter-spacing: -.01em;
+}
+.cta .lede { margin-bottom: 2.25rem; }
+
+.whatsapp {
+  display: inline-flex; align-items: center; gap: .7rem;
+  text-decoration: none;
+  background: #128c4b;
+  color: #fff;
+  padding: .9rem 1.4rem;
+  border-radius: 999px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.02rem;
+  letter-spacing: .01em;
+  transition: background .2s ease, transform .2s ease;
+}
+.whatsapp:hover { background: #0f7a41; }
+.whatsapp:active { transform: translateY(1px); }
+
+.or {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  text-align: center;
+  color: var(--ink-mute);
+  margin: 2.25rem 0;
+  position: relative;
+}
+.or::before, .or::after {
+  content: "";
+  position: absolute; top: 50%;
+  width: 38%;
+  height: 1px;
+  background: var(--rule);
+}
+.or::before { left: 0; }
+.or::after { right: 0; }
+
+.form { display: grid; gap: 1rem; }
+.form .row { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+.form label {
+  display: grid; gap: .35rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: .85rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.form input,
+.form select,
+.form textarea {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.125rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: .65rem .8rem;
+  width: 100%;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: transparent;
+}
+.form textarea { resize: vertical; min-height: 7rem; }
+.send {
+  justify-self: start;
+  background: var(--ink); color: var(--paper);
+  border: none;
+  padding: .85rem 1.6rem;
+  border-radius: 999px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.send:hover { background: var(--accent); }
+.send:active { transform: translateY(1px); }
+
+.phone {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-family: "Fraunces", Georgia, serif;
+  color: var(--ink-mute);
+  font-style: italic;
+}
+.phone p { margin: 0 0 .5rem; }
+.phone-btn {
+  background: none; border: none;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--accent);
+  cursor: pointer;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding: 0 0 .1rem;
+}
+.phone-btn:hover { color: var(--ink); border-color: var(--ink); }
+.phone a {
+  color: var(--ink);
+  font-style: normal;
+  text-decoration: none;
+  font-size: 1.35rem;
+  font-family: "Fraunces", Georgia, serif;
+}
+
+/* About ----------------------------------------------------------------- */
+
+.about {
+  padding: clamp(4rem, 9vw, 6.5rem) 1.25rem;
+}
+.about-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.about h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 340;
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  letter-spacing: -.005em;
+  margin: 0 0 1.25rem;
+}
+.about p {
+  color: var(--ink-soft);
+  margin: 0 0 1.15rem;
+}
+.place {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.addr {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  font-style: italic;
+}
+.travel { color: var(--ink-mute); font-size: 1rem; }
+
+/* Footer ---------------------------------------------------------------- */
+
+.foot {
+  background: var(--ink);
+  color: color-mix(in srgb, var(--paper) 80%, transparent);
+  padding: 2.5rem 1.25rem;
+}
+.foot-inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  align-items: center; justify-content: space-between;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: .88rem;
+  letter-spacing: .02em;
+}
+.foot p { margin: 0; }
+.foot nav { display: flex; gap: 1.25rem; }
+.foot a {
+  color: color-mix(in srgb, var(--paper) 80%, transparent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: .05rem;
+}
+.foot a:hover { border-color: currentColor; }
+
+/* Legal pages ----------------------------------------------------------- */
+
+.legal {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5rem) 1.25rem;
+}
+.legal h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 340;
+  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  margin: 0 0 2rem;
+  letter-spacing: -.01em;
+}
+.legal h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin: 2.5rem 0 .75rem;
+}
+.legal p, .legal li { color: var(--ink-soft); }
+.legal a { color: var(--accent); }
+.legal ul { padding-left: 1.25rem; }
+.legal .back {
+  display: inline-block;
+  margin-top: 2.5rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  padding-bottom: .1rem;
+}
+
+/* Mobile ---------------------------------------------------------------- */
+
+@media (max-width: 520px) {
+  body { font-size: 1.1rem; }
+  .brand-sub { display: none; }
+  .form .row { grid-template-columns: 1fr; }
+  .or::before, .or::after { width: 30%; }
+  .foot-inner { flex-direction: column; align-items: flex-start; }
+}

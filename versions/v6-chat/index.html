@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbara Sophia Sailer — Gesangsunterricht Frankfurt</title>
+  <meta name="description" content="Gesangsunterricht in Frankfurt-Niederrad. Barbara Sailer begleitet Anfänger, Aufnahmeprüflinge, Wiedereinsteiger, Berufsredner und Chöre. Probestunde 40 €.">
+  <meta name="theme-color" content="#f6efe6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#chat">Zum Inhalt</a>
+
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">
+      <span class="avatar avatar-sm" aria-hidden="true">B</span>
+      <span class="brand-text">
+        <strong>Barbara Sailer</strong>
+        <small>Gesangsunterricht · Frankfurt-Niederrad</small>
+      </span>
+    </a>
+    <nav aria-label="Hauptnavigation" class="topnav">
+      <a href="#barbara">Über Barbara</a>
+      <a href="#preise">Preise</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- CHAT HERO -->
+  <section class="chat-shell" id="chat" aria-label="Was bringt dich her">
+    <div class="chat-window" role="region" aria-live="polite" aria-label="Gespräch mit Barbara">
+
+      <div class="chat-header">
+        <span class="avatar" aria-hidden="true">B</span>
+        <div class="chat-header-meta">
+          <strong>Barbara Sailer</strong>
+          <small><span class="dot-online" aria-hidden="true"></span> antwortet persönlich</small>
+        </div>
+        <span class="chat-timestamp" aria-hidden="true">heute</span>
+      </div>
+
+      <div class="chat-thread" id="thread">
+
+        <!-- Initial Barbara messages -->
+        <div class="bubble bubble-b" data-seed="1">
+          <span class="avatar avatar-xs" aria-hidden="true">B</span>
+          <div class="bubble-body">
+            <p>Hallo. Schön, dass du hier bist.</p>
+            <time class="timestamp">09:14</time>
+          </div>
+        </div>
+
+        <div class="bubble bubble-b" data-seed="2">
+          <span class="avatar avatar-xs" aria-hidden="true">B</span>
+          <div class="bubble-body">
+            <p>Was bringt dich her?</p>
+            <time class="timestamp">09:14</time>
+          </div>
+        </div>
+
+        <!-- Quick reply chips -->
+        <div class="quick-replies" role="group" aria-label="Schnellantwort">
+          <button type="button" class="chip" data-path="anfaenger">Ich will anfangen</button>
+          <button type="button" class="chip" data-path="pruefung">Ich habe eine Aufnahmeprüfung</button>
+          <button type="button" class="chip" data-path="wiedereinstieg">Ich will wieder singen</button>
+          <button type="button" class="chip" data-path="beruf">Sprechstimme für den Beruf</button>
+          <button type="button" class="chip" data-path="chor">Chor</button>
+        </div>
+
+        <!-- Pathway content injected here -->
+        <div class="chat-injection" id="injection"></div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pathway templates (hidden, read by JS) -->
+  <template id="tpl-anfaenger">
+    <p class="user-said">Ich will anfangen.</p>
+    <div class="path-bubbles" data-label="anfaenger">
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Bei dir:</strong> Du hast noch nie richtig Unterricht gehabt. Vielleicht singst du unter der Dusche oder im Auto. Du willst rausfinden, was deine Stimme wirklich kann — ohne Druck, ohne Bewertung.</p>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Was wir machen:</strong></p>
+          <ul>
+            <li>Wir hören zuerst hin — Atem, Körper, Klang.</li>
+            <li>Kleine Übungen, die du sofort spürst.</li>
+            <li>Wir suchen ein Lied, das zu dir passt.</li>
+            <li>Kein „das geht nicht" — nur „probier mal so".</li>
+          </ul>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p>Komm einfach zur Probestunde. 45 Minuten, 40 €, kein Vertrag. Am Ende weißt du, ob es passt.</p>
+          <p><a class="inline-cta-link" href="#kontakt">Probestunde vereinbaren</a></p>
+          <time class="timestamp">09:16</time>
+        </div>
+      </article>
+    </div>
+  </template>
+
+  <template id="tpl-pruefung">
+    <p class="user-said">Ich habe eine Aufnahmeprüfung.</p>
+    <div class="path-bubbles" data-label="pruefung">
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Bei dir:</strong> Hochschule, Konservatorium, Musical-Studium. Ein Datum steht. Du brauchst ein Programm, das sitzt — und jemanden, der ehrlich hinhört, bevor die Jury es tut.</p>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Was wir machen:</strong></p>
+          <ul>
+            <li>Repertoire-Auswahl, die zu deiner Stimme passt — nicht zu jemandes Idee von dir.</li>
+            <li>Technik dort, wo es noch wackelt.</li>
+            <li>Probedurchläufe unter Prüfungsbedingungen.</li>
+            <li>Klavierbegleitung im Raum, nicht aus der Konserve.</li>
+          </ul>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p>Je früher wir anfangen, desto ruhiger wird der Prüfungstag. Die Probestunde zeigt, wo du stehst.</p>
+          <p><a class="inline-cta-link" href="#kontakt">Probestunde vereinbaren</a></p>
+          <time class="timestamp">09:16</time>
+        </div>
+      </article>
+    </div>
+  </template>
+
+  <template id="tpl-wiedereinstieg">
+    <p class="user-said">Ich will wieder singen.</p>
+    <div class="path-bubbles" data-label="wiedereinstieg">
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Bei dir:</strong> Du hast früher gesungen — Chor, Schule, eigene Band. Es fehlt dir. Vielleicht hast du Angst, die Stimme sei weg. Sie ist nicht weg. Sie war nur leise.</p>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Was wir machen:</strong></p>
+          <ul>
+            <li>Wir holen zurück, was da ist — behutsam, ohne Drill.</li>
+            <li>Atem erst, Klang danach.</li>
+            <li>Stücke, bei denen du dich erinnerst, warum du angefangen hast.</li>
+            <li>Dein Tempo. Wöchentlich, zweiwöchentlich, blockweise.</li>
+          </ul>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p>Ich habe Schülerinnen jenseits der 70, die gerade erst wieder anfangen. Zu alt ist hier niemand.</p>
+          <p><a class="inline-cta-link" href="#kontakt">Probestunde vereinbaren</a></p>
+          <time class="timestamp">09:16</time>
+        </div>
+      </article>
+    </div>
+  </template>
+
+  <template id="tpl-beruf">
+    <p class="user-said">Sprechstimme für den Beruf.</p>
+    <div class="path-bubbles" data-label="beruf">
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Bei dir:</strong> Du redest beruflich viel — Unterricht, Gottesdienst, Coaching, Bühne. Abends ist die Stimme müde. Manchmal kratzt sie. Du brauchst eine Stimme, die mithält.</p>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Was wir machen:</strong></p>
+          <ul>
+            <li>Atem aus dem Körper, nicht aus den Schultern.</li>
+            <li>Resonanz statt Druck.</li>
+            <li>Übungen für den Arbeitsalltag — 5 Minuten vor dem Auftritt.</li>
+            <li>Bei Bedarf auch stimmtherapeutisch (ISA-Zertifikat, Atemcoach).</li>
+          </ul>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p>Viele kommen einmal monatlich, manche blockweise vor einer intensiven Phase. Schreib mir, was du brauchst.</p>
+          <p><a class="inline-cta-link" href="#kontakt">Probestunde vereinbaren</a></p>
+          <time class="timestamp">09:16</time>
+        </div>
+      </article>
+    </div>
+  </template>
+
+  <template id="tpl-chor">
+    <p class="user-said">Chor.</p>
+    <div class="path-bubbles" data-label="chor">
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Bei dir:</strong> Du singst im Chor oder leitest einen. Einstudieren gelingt, aber die Stimmen tragen nicht, oder einzelne wollen sich weiterentwickeln. Du suchst Stimmbildung mit Erfahrung.</p>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p><strong>Was wir machen:</strong></p>
+          <ul>
+            <li>Einzelunterricht für Chormitglieder.</li>
+            <li>Stimmbildung in Gruppen, vor Ort oder im Unterrichtsraum.</li>
+            <li>Einstudier-Hilfe, Probenarbeit, Workshops.</li>
+            <li>C-Prüfung Chorleitung, Kirchenmusik — ich komme aus diesem Feld.</li>
+          </ul>
+          <time class="timestamp">09:15</time>
+        </div>
+      </article>
+      <article class="bubble bubble-b">
+        <span class="avatar avatar-xs" aria-hidden="true">B</span>
+        <div class="bubble-body">
+          <p>Schreib mir kurz, was der Chor braucht und wann. Wir finden ein Format.</p>
+          <p><a class="inline-cta-link" href="#kontakt">Anfrage schreiben</a></p>
+          <time class="timestamp">09:16</time>
+        </div>
+      </article>
+    </div>
+  </template>
+
+  <!-- PAGE SECTIONS (real, not bubbles) -->
+  <section class="page-section" id="barbara">
+    <div class="section-inner">
+      <h2>Kurz zu Barbara</h2>
+      <p class="lead">Mezzosopranistin und Stimmbildnerin. Staatsexamen Musik (Gesang, Klavier) und Germanistik in Augsburg, Opernschule HfM Würzburg, Meisterkurse bei Fassbaender, Deutsch, Ludwig. BDG-Mitglied, ISA-Zertifikat, Atemcoach.</p>
+      <p>Sie unterrichtet seit vielen Jahren in Frankfurt-Niederrad — Anfänger, Profis, Wiedereinsteiger, Berufsredner, Chöre. Eigene Liederabendreihe „Blutrot" in der Würzburger Residenz.</p>
+    </div>
+  </section>
+
+  <section class="page-section section-prices" id="preise">
+    <div class="section-inner">
+      <h2>Preise</h2>
+      <ul class="prices">
+        <li><span class="amount">40 €</span><span class="label">Probestunde · 45 min</span></li>
+        <li><span class="amount">50 €</span><span class="label">Einzelstunde · 45 min</span></li>
+        <li><span class="amount">60 €</span><span class="label">Einzelstunde · 60 min</span></li>
+      </ul>
+      <p class="fineprint">10er-Karte: elf Stunden zum Preis von zehn, ohne Ablaufdatum. Kein Vertrag, keine Mindestlaufzeit. Online nach erster persönlicher Stunde.</p>
+    </div>
+  </section>
+
+  <section class="page-section" id="kontakt">
+    <div class="section-inner">
+      <h2>Probestunde vereinbaren</h2>
+      <p>Der schnellste Weg ist WhatsApp. Wenn du lieber schreibst oder anrufst, geht beides.</p>
+
+      <a class="btn-whatsapp" href="https://wa.me/491793713706?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde." target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+        <span>WhatsApp an Barbara</span>
+      </a>
+
+      <div class="contact-divider"><span>oder</span></div>
+
+      <form class="contact-form" action="https://formsubmit.co/barbarasailer@web.de" method="POST">
+        <input type="hidden" name="_subject" value="Neue Anfrage über v6-chat">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form-row">
+          <label>Vorname
+            <input type="text" name="vorname" required>
+          </label>
+          <label>Name
+            <input type="text" name="name" required>
+          </label>
+        </div>
+        <label>E-Mail
+          <input type="email" name="email" required>
+        </label>
+        <label>Worum geht es?
+          <select name="anliegen">
+            <option value="Probestunde">Ich möchte eine Probestunde buchen</option>
+            <option value="Aufnahmepruefung">Aufnahmeprüfung</option>
+            <option value="Wiedereinstieg">Wiedereinstieg</option>
+            <option value="Sprechstimme">Sprechstimme / Beruf</option>
+            <option value="Chor">Chor / Gruppe</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </label>
+        <label>Nachricht
+          <textarea name="nachricht" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn-send">Nachricht senden</button>
+      </form>
+
+      <div class="phone-reveal">
+        <p>Lieber anrufen?</p>
+        <button type="button" class="btn-link" id="phoneRevealBtn">Telefonnummer anzeigen</button>
+      </div>
+
+      <address class="addr">
+        Barbara Sophia Sailer<br>
+        Schwarzwaldstraße 15 · 60528 Frankfurt am Main<br>
+        Tram 12, 15, 21 aus der Innenstadt
+      </address>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© Barbara Sophia Sailer</span>
+      <nav aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+</main>
+
+<a class="sticky-cta" href="#kontakt">Jetzt Probestunde</a>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

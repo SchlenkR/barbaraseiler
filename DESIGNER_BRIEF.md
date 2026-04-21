@@ -158,3 +158,51 @@ Du darfst davon abweichen. Das sind Vorschläge, keine Vorgaben.
 - Für jeden gebauten Ordner: Pfad + 1–2 Sätze Konzept + genutzte Tech.
 - Liste aller Dateien, die du in `versions/index.html` verändert hast.
 - Am Ende: Liste noch offener Placeholders, falls du nicht alle 15 schaffst.
+
+---
+
+## 10. Phase 2 — Schüler-fokussierte Versionen (v6–v10)
+
+Neuer Fokus, **anders als Phase 1**:
+
+- **Hauptziel = Conversion**: neue Schüler gewinnen. Kein Künstler-Portrait.
+- **Barbara steht NICHT im Fokus — der Schüler wird angesprochen.** Konsequente Du-Perspektive.
+- **Originalton Barbara** aus v3 und v5 bleibt als Klangbasis, wird aber systematisch auf den Leser umformuliert: „Ich biete…" → „Bei dir…", „Meine Methode…" → „Wir suchen gemeinsam…".
+- **Verben > Substantive.** „Du singst ungezwungen" statt „Erwerb natürlicher Stimmentfaltung".
+- **Konkrete Situationen > abstrakte Claims.** Statt „Individuelle Betreuung" → „Wir suchen die Lieder, die zu dir passen".
+
+### Harte Research-Constraints (NN/g 2023, zielgruppen-begründet)
+
+Barbaras Zielgruppe ist **zielorientiert** (Aufnahmeprüfung, Casting, Wiedereinstieg, Beruf). Zielorientierte Nutzer sind laut NN/g-Studie am empfindlichsten gegen Scroll-Hijacking — sie wollen in 10–20 s wissen: kompetent? passt sie? wie Kontakt?
+
+Daraus folgt **absolut bindend**:
+
+1. **Kein Scroll-Hijacking above the fold.** Hero scrollt nativ. Kein Pin+Animation im Hero-Bereich.
+2. **Kein horizontaler Scroll-Hijack überhaupt** — die Studie zeigt, dass Nutzer dort „nicht mehr rauskommen".
+3. **Kein Scroll-Rate-Kidnapping während der Nutzer Text liest.** Lesbarkeit ist heilig.
+4. **`prefers-reduced-motion` respektieren** — gerade ältere/heterogene Zielgruppe, vestibuläre Probleme.
+5. **Permanenter Kontakt-Notausgang**: sticky CTA (Probestunde / WhatsApp) oder fixed Nav mit Buchungs-Button.
+6. **Mobile 375 px ganz ohne Scroll-Tricks.**
+7. **Performance heilig**: Lenis (~10 kB) + GSAP core + ScrollTrigger ist das Maximum. Keine WebGL-Hero-Shows, keine Three.js, keine Matter.js-Physics, kein Tone.js-Audio-Experiment.
+8. **Mikro-Animationen sind explizit erwünscht**: fade-in bei Section-Eintritt, hover-states auf CTAs, dezente reveal-on-scroll, CSS `animation-timeline: view()` (State-of-the-Art 2026).
+9. **Scrollytelling nur, wenn es funktionalen Mehrwert hat** (z.B. eine Schüler-Transformation in 3 Steps): kurz, unter dem Fold, klar abgegrenzt, **nicht auf Mobile** (oder stark vereinfacht).
+
+### Pflicht-Tech-Details (gelernt aus Phase 1)
+
+- **Script-Tag**: `<script type="module" src="./js/main.js"></script>` — sonst bundelt Vite die Datei nicht, 404 auf GH Pages.
+- **hrefs relativ**: `./`, `impressum.html`, `datenschutz.html` — nie absolutes `/barbaraseiler/…`.
+- **Kein custom gerenderter Maus-Cursor** (hängt hinterher). Mouse-Trails/Sparkles OK — Pointer bleibt nativ.
+- **Keine Scroll-Jitter-Patterns**: Hide-on-scroll Header nur mit Hysterese (akkumuliertes Delta), nicht per-Frame-Toggle.
+- **Overview `versions/index.html` NIE anfassen** — Ronald updatet zentral nach dem Spawn.
+
+### Die 5 Hauptversionen (Content-IA)
+
+| Ordner | Titel | IA-Idee |
+|---|---|---|
+| `v6/` | „Was bringt dich her?" | Pathway-basiert. 5 Schüler-Segmente — Anfänger / Aufnahmeprüfung / Wiedereinsteiger / Berufsredner / Chor. Hero stellt die Frage, jeder Pfad bekommt eigenen Block. |
+| `v7/` | „Probestunde zuerst" | Single-Offer-IA. Alles kreist um die 40-€-Probestunde als primäre Aktion. SaaS-Landing-Logik, aber warm. |
+| `v8/` | „Zweifel & Antworten" | Objection-Handling-IA. Seite adressiert typische innere Zweifel: „Ich kann nicht singen." / „Zu alt." / „Keine Zeit." / „Zu teuer." / „Was wenn…" |
+| `v9/` | „Was du mitnimmst" | Outcome-First-IA. Ergebnisse im Fokus vor Methode. „In 3 Monaten: so fühlt sich deine Stimme an." |
+| `v10/` | „Das Gespräch" | Dialog-IA. Die Seite liest sich als Gespräch Schüler ↔ Barbara. Keine klassischen Sektionen, durchgängige Konversation. |
+
+Pro Hauptversion zwei Design-Subvarianten, IA bleibt identisch, nur die Design-Sprache/das Interaktionsmodell ändert sich — der Agent-Brief beschreibt pro Ordner die spezifische Richtung.

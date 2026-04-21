@@ -300,6 +300,7 @@ Zentrale Liste aller Design-Varianten mit ihrem Konzept. Bei jeder neuen Variant
 | `v14/` | — | First-Lesson Experience: Vor der Tür, im Raum, danach |
 | `v14-room/` | v14 | Selbe IA mit Fokus auf geschütztem Raum und Sicherheit |
 | `v14-rhythm/` | v14 | Selbe IA mit Fokus auf Wiederholbarkeit und Unterrichts-Rhythmus |
+| `v14-portal/` | v14 | **Effects-Show:** horizontal pinned Chapter-Book durch 5 Räume (Tür/Raum/Einsingen/Stunde/Nach Hause), Web-Audio Ambient pro Kapitel, clip-path Morph, 3-Layer Parallax, Mobile-Fallback vertikal. GSAP ScrollTrigger + Lenis. |
 | `v15/` | — | Decision Sheet: sechs harte Fragen, drei Merkpunkte, schneller Kontakt |
 | `v15-grid/` | v15 | Selbe IA als stärker gerasterte Übersicht |
 | `v15-plain/` | v15 | Selbe IA als fast dekofreier Klartext |
@@ -311,3 +312,5 @@ Zentrale Liste aller Design-Varianten mit ihrem Konzept. Bei jeder neuen Variant
 | `v6-pathways-dark/` | v6-pathways | Gleicher Chooser, aber Dark-Mode-Flip: Deep-Teal Hintergrund, warmer Cognac-Akzent statt Jade. Höhere Kontrast-Spannung für Abend-Besuche. |
 | `v8-journey-map/` | v8-journey | Stationen werden zur kartografischen Route: handgezeichneter Pfad zwischen Stationen statt Progress-Dots, SVG-Topo-Linien. |
 | `v10-dialog-voice/` | v10-dialog | Chat-Bubbles werden Voice-Memos: Waveform-Visuals, Play-Buttons, Zeitstempel — als wären Du & Barbara in WhatsApp-Sprachnachrichten. |
+| `v10-dialog-wave/` | v10-dialog | **Effects-Show:** Voice-Memos mit echter WebAudio-Synthese pro Zeile, atmende Fraunces-Typografie (variable wght-Achse auf 6s-Sinus), Lenis+GSAP. Jede Memo eigener Pitch (174–294 Hz). |
+| `v5-resonance/` | v5-three | **Effects-Show:** ganze Seite ist eine atmende WebGL-Szene (fullscreen Quad + Fragment-Shader), 5 Akte (Atem/Ton/Raum/Klang/Begegnung), Scroll steuert Shader-Uniforms, Content via `mix-blend-mode: difference` drüber, optionaler Audio-Drohnen-Modus mit AnalyserNode → Shader. |

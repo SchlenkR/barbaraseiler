@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal: Fünf Räume bis zum ersten Ton | Gesangsunterricht in Frankfurt</title>
+  <meta name="description" content="Eine horizontale Vor-Tour durch die erste Stunde bei Barbara Sailer in Frankfurt-Niederrad. Fünf Räume, fünf Klangfarben, fünf Lichtstimmungen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-mode="desktop">
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="portal-nav" id="portalNav">
+  <a class="brand" href="#top">
+    <span class="brand-name">Barbara Sailer</span>
+    <span class="brand-sub">Portal &middot; Fünf Räume</span>
+  </a>
+  <nav class="nav-dots" aria-label="Kapitel">
+    <a href="#kap-1" data-chapter="1" class="dot is-active" aria-label="Kapitel 1 – An der Tür"><span>01</span></a>
+    <a href="#kap-2" data-chapter="2" class="dot" aria-label="Kapitel 2 – Der Raum"><span>02</span></a>
+    <a href="#kap-3" data-chapter="3" class="dot" aria-label="Kapitel 3 – Einsingen"><span>03</span></a>
+    <a href="#kap-4" data-chapter="4" class="dot" aria-label="Kapitel 4 – Die Stunde"><span>04</span></a>
+    <a href="#kap-5" data-chapter="5" class="dot" aria-label="Kapitel 5 – Nach Hause"><span>05</span></a>
+  </nav>
+  <div class="nav-tools">
+    <button class="sound-toggle" id="soundToggle" aria-pressed="false" type="button">
+      <span class="sound-icon" aria-hidden="true"></span>
+      <span class="sound-label">Ton an</span>
+    </button>
+    <a class="nav-cta" href="#kontakt">Probestunde</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Intro overlay: sets expectation, also acts as first-user-gesture capture -->
+  <section class="intro-veil" id="top">
+    <div class="intro-veil-inner">
+      <p class="intro-eyebrow">Portal</p>
+      <h1 class="intro-title"><em>Fünf Räume</em><br>bis zum ersten Ton.</h1>
+      <p class="intro-lede">Du gehst nicht durch eine Webseite. Du gehst durch ein Haus: an der Tür, durch den Raum, am Klavier vorbei, in die Stunde, und wieder zurück.</p>
+      <button class="intro-start" id="introStart" type="button">
+        <span>Eintreten</span>
+        <span class="intro-arrow" aria-hidden="true">→</span>
+      </button>
+      <p class="intro-hint">Scroll bewegt dich waagerecht durch die Räume. Ton ist aus, bis du ihn einschaltest.</p>
+    </div>
+  </section>
+
+  <!-- The portal: 5 chapter panels, pinned horizontally -->
+  <section class="portal" id="portal" aria-label="Fünf Räume">
+    <div class="panels">
+
+      <!-- Kapitel 1 — An der Tür (amber) -->
+      <article class="panel panel-1" id="kap-1" data-chapter="1" data-key="door">
+        <div class="parallax" data-depth="0.1">
+          <div class="blob blob-a" style="background: radial-gradient(circle at 30% 40%, #f5c27a 0%, transparent 60%)"></div>
+        </div>
+        <div class="parallax" data-depth="0.35">
+          <svg class="door-svg" viewBox="0 0 200 360" aria-hidden="true">
+            <defs>
+              <linearGradient id="doorG" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#8a5a2a"/>
+                <stop offset="1" stop-color="#3d2614"/>
+              </linearGradient>
+            </defs>
+            <rect x="30" y="20" width="140" height="320" rx="4" fill="url(#doorG)"/>
+            <rect x="50" y="50" width="100" height="120" rx="2" fill="none" stroke="#d9a96b" stroke-width="1.2" opacity="0.6"/>
+            <rect x="50" y="190" width="100" height="120" rx="2" fill="none" stroke="#d9a96b" stroke-width="1.2" opacity="0.6"/>
+            <circle cx="145" cy="180" r="3.5" fill="#f4d4a1"/>
+            <circle class="door-bell" cx="20" cy="100" r="6" fill="#f4d4a1" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="parallax content" data-depth="0.65">
+          <p class="chapter-num"><span>Kapitel</span> 01</p>
+          <h2 class="chapter-title enter-top">An der Tür.</h2>
+          <p class="chapter-body enter-top">Du klingelst, etwas tiefer drückst du den Daumen als sonst. Die Tür öffnet sich. <em>Niemand prüft dich von außen.</em> Du bist bloß angekommen — und das reicht für diesen Moment.</p>
+          <p class="chapter-footnote enter-top">Amber · C3 · warm</p>
+        </div>
+        <span class="clip-veil" aria-hidden="true"></span>
+      </article>
+
+      <!-- Kapitel 2 — Der Raum (golden) -->
+      <article class="panel panel-2" id="kap-2" data-chapter="2" data-key="room">
+        <div class="parallax" data-depth="0.1">
+          <div class="blob blob-b" style="background: radial-gradient(circle at 70% 50%, #e9bf5a 0%, transparent 65%)"></div>
+        </div>
+        <div class="parallax" data-depth="0.35">
+          <svg class="piano-svg" viewBox="0 0 360 220" aria-hidden="true">
+            <rect x="20" y="120" width="320" height="80" rx="4" fill="#201510"/>
+            <g fill="#f4ebd8">
+              <rect x="30" y="130" width="22" height="60"/>
+              <rect x="55" y="130" width="22" height="60"/>
+              <rect x="80" y="130" width="22" height="60"/>
+              <rect x="105" y="130" width="22" height="60"/>
+              <rect x="130" y="130" width="22" height="60"/>
+              <rect x="155" y="130" width="22" height="60"/>
+              <rect x="180" y="130" width="22" height="60"/>
+              <rect x="205" y="130" width="22" height="60"/>
+              <rect x="230" y="130" width="22" height="60"/>
+              <rect x="255" y="130" width="22" height="60"/>
+              <rect x="280" y="130" width="22" height="60"/>
+              <rect x="305" y="130" width="22" height="60"/>
+            </g>
+            <g fill="#120a06">
+              <rect x="47" y="130" width="12" height="36"/>
+              <rect x="72" y="130" width="12" height="36"/>
+              <rect x="122" y="130" width="12" height="36"/>
+              <rect x="147" y="130" width="12" height="36"/>
+              <rect x="172" y="130" width="12" height="36"/>
+              <rect x="222" y="130" width="12" height="36"/>
+              <rect x="247" y="130" width="12" height="36"/>
+              <rect x="297" y="130" width="12" height="36"/>
+              <rect x="322" y="130" width="12" height="36"/>
+            </g>
+            <line class="stand" x1="180" y1="40" x2="180" y2="120" stroke="#6b4a24" stroke-width="3"/>
+            <rect x="130" y="20" width="100" height="50" fill="#f8f1de" stroke="#6b4a24"/>
+            <line x1="135" y1="35" x2="225" y2="35" stroke="#6b4a24" stroke-width="0.6"/>
+            <line x1="135" y1="42" x2="225" y2="42" stroke="#6b4a24" stroke-width="0.6"/>
+            <line x1="135" y1="49" x2="225" y2="49" stroke="#6b4a24" stroke-width="0.6"/>
+            <line x1="135" y1="56" x2="225" y2="56" stroke="#6b4a24" stroke-width="0.6"/>
+          </svg>
+        </div>
+        <div class="parallax content" data-depth="0.65">
+          <p class="chapter-num"><span>Kapitel</span> 02</p>
+          <h2 class="chapter-title enter-left">Der Raum.</h2>
+          <p class="chapter-body enter-left">Klavier, Notenständer, ein Stuhl, viel Licht. <em>Nichts muss performt werden.</em> Der Raum ist nicht Bühne, sondern Werkstatt — und vor allem ist er in dieser Stunde deiner.</p>
+          <p class="chapter-footnote enter-left">Gold · G3 + Quinte · ruhig</p>
+        </div>
+        <span class="clip-veil" aria-hidden="true"></span>
+      </article>
+
+      <!-- Kapitel 3 — Einsingen (cream) -->
+      <article class="panel panel-3" id="kap-3" data-chapter="3" data-key="warmup">
+        <div class="parallax" data-depth="0.1">
+          <div class="blob blob-c" style="background: radial-gradient(circle at 50% 60%, #f2e9d5 0%, transparent 60%)"></div>
+        </div>
+        <div class="parallax" data-depth="0.35">
+          <svg class="breath-svg" viewBox="0 0 400 300" aria-hidden="true">
+            <g fill="none" stroke="#b29168" stroke-width="1.2" opacity="0.7">
+              <circle cx="200" cy="150" r="40"/>
+              <circle cx="200" cy="150" r="70" opacity="0.55"/>
+              <circle cx="200" cy="150" r="100" opacity="0.35"/>
+              <circle cx="200" cy="150" r="130" opacity="0.2"/>
+            </g>
+            <path class="wave" d="M 30 220 Q 100 180 170 220 T 310 220 T 450 220" fill="none" stroke="#8a6a3e" stroke-width="1.5" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="parallax content" data-depth="0.65">
+          <p class="chapter-num"><span>Kapitel</span> 03</p>
+          <h2 class="chapter-title enter-bottom">Einsingen.</h2>
+          <p class="chapter-body enter-bottom">Ein paar Atemzüge, ein paar Silben, kein Tonleiter-Drill. <em>Es darf erst mal alles klein sein.</em> Barbara hört zu, wie dein Körper gerade steht — und was die Stimme davon schon trägt.</p>
+          <p class="chapter-footnote enter-bottom">Creme · Atem · offen</p>
+        </div>
+        <span class="clip-veil" aria-hidden="true"></span>
+      </article>
+
+      <!-- Kapitel 4 — Die Stunde (blue-grey) -->
+      <article class="panel panel-4" id="kap-4" data-chapter="4" data-key="lesson">
+        <div class="parallax" data-depth="0.1">
+          <div class="blob blob-d" style="background: radial-gradient(circle at 30% 50%, #3f546b 0%, transparent 60%)"></div>
+        </div>
+        <div class="parallax" data-depth="0.35">
+          <svg class="focus-svg" viewBox="0 0 400 300" aria-hidden="true">
+            <g stroke="#cbd6e4" stroke-width="0.8" fill="none" opacity="0.55">
+              <path d="M 50 150 Q 150 80 250 150 T 450 150"/>
+              <path d="M 50 170 Q 150 100 250 170 T 450 170"/>
+              <path d="M 50 190 Q 150 120 250 190 T 450 190"/>
+              <path d="M 50 210 Q 150 140 250 210 T 450 210"/>
+              <path d="M 50 230 Q 150 160 250 230 T 450 230"/>
+            </g>
+            <circle cx="200" cy="150" r="6" fill="#e8cf8a"/>
+            <circle cx="200" cy="150" r="14" fill="none" stroke="#e8cf8a" stroke-width="0.6" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="parallax content" data-depth="0.65">
+          <p class="chapter-num"><span>Kapitel</span> 04</p>
+          <h2 class="chapter-title enter-right">Die Stunde.</h2>
+          <p class="chapter-body enter-right">Ihr arbeitet an einer Phrase, einem Vokal, einem Impuls. <em>Plötzlich sitzt etwas.</em> Kein Wunder — nur Aufmerksamkeit, Richtung und jemand, der genau hinhört, wo du gerade stehst.</p>
+          <p class="chapter-footnote enter-right">Blaugrau · Fokus · klar</p>
+        </div>
+        <span class="clip-veil" aria-hidden="true"></span>
+      </article>
+
+      <!-- Kapitel 5 — Nach Hause (dusk lavender) -->
+      <article class="panel panel-5" id="kap-5" data-chapter="5" data-key="home">
+        <div class="parallax" data-depth="0.1">
+          <div class="blob blob-e" style="background: radial-gradient(circle at 60% 40%, #b8a2c8 0%, transparent 65%)"></div>
+        </div>
+        <div class="parallax" data-depth="0.35">
+          <svg class="dusk-svg" viewBox="0 0 400 300" aria-hidden="true">
+            <g opacity="0.7">
+              <circle cx="320" cy="90" r="30" fill="#f0e3f2"/>
+              <path d="M 0 230 Q 100 200 200 225 T 400 220 L 400 300 L 0 300 Z" fill="#5c4a66"/>
+              <path d="M 0 250 Q 120 220 220 250 T 400 245 L 400 300 L 0 300 Z" fill="#3d3048" opacity="0.7"/>
+            </g>
+          </svg>
+        </div>
+        <div class="parallax content" data-depth="0.65">
+          <p class="chapter-num"><span>Kapitel</span> 05</p>
+          <h2 class="chapter-title enter-fade">Nach Hause.</h2>
+          <p class="chapter-body enter-fade">Du gehst. Irgendetwas klingt noch leise weiter. <em>Nicht die Übung, sondern die Erinnerung, dass die Stimme dir gehört.</em> Und dass es einen Ort gibt, an dem du sie ausprobieren darfst.</p>
+          <p class="chapter-footnote enter-fade">Dämmerung · Nachklang · Ruhe</p>
+        </div>
+        <span class="clip-veil" aria-hidden="true"></span>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Vertical CTA section after the portal -->
+  <section class="cta" id="kontakt">
+    <div class="cta-inner">
+      <p class="eyebrow">Probestunde</p>
+      <h2>Wenn du magst, reicht eine kurze Nachricht.</h2>
+      <p class="cta-lede">40 &euro; für 45 Minuten. Kein fertiges Stück nötig, keine Noten, keine Bühne. Nur der Raum, deine Stimme und jemand, der zuhört.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde." target="_blank" rel="noopener">WhatsApp schreiben</a>
+        <button class="btn btn-ghost" type="button" id="phoneRevealBtn">Telefonnummer anzeigen</button>
+        <span class="phone-slot" id="phoneSlot" aria-live="polite">Musterstraße 1 &middot; Frankfurt-Niederrad</span>
+      </div>
+
+      <form class="cta-form" action="https://formsubmit.co/barbarasailer@web.de" method="POST">
+        <input type="hidden" name="_subject" value="Neue Anfrage über v14-portal">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form-row">
+          <label>Vorname
+            <input type="text" name="vorname" required>
+          </label>
+          <label>Name
+            <input type="text" name="name" required>
+          </label>
+        </div>
+        <label>E-Mail
+          <input type="email" name="email" required>
+        </label>
+        <label>Welches Kapitel fühlt sich für dich am stärksten an?
+          <select name="kapitel">
+            <option value="An der Tür">01 &middot; An der Tür — ich will nur klingeln</option>
+            <option value="Der Raum">02 &middot; Der Raum — ich brauche den Rahmen</option>
+            <option value="Einsingen">03 &middot; Einsingen — ich will anfangen</option>
+            <option value="Die Stunde">04 &middot; Die Stunde — ich will arbeiten</option>
+            <option value="Nach Hause">05 &middot; Nach Hause — ich komme wieder</option>
+          </select>
+        </label>
+        <label>Nachricht
+          <textarea name="nachricht" rows="5" placeholder="Ein paar Sätze reichen."></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Nachricht senden</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">Barbara Sophia Sailer</p>
+      <p>Musterstraße 1 &middot; 60528 Frankfurt a. M.</p>
+      <p>Tram 12, 15, 21 aus der Innenstadt</p>
+    </div>
+    <div>
+      <p class="footer-label">Direkt</p>
+      <p><a href="mailto:barbarasailer@web.de">barbarasailer@web.de</a><br><a href="tel:+495551234567">+49 (0)555 &ndash; 123 456 7</a></p>
+    </div>
+    <div>
+      <p class="footer-label">Rechtliches</p>
+      <p><a href="./impressum.html">Impressum</a><br><a href="./datenschutz.html">Datenschutz</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

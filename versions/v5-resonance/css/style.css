@@ -1,0 +1,439 @@
+/* ============================================================
+   v5-resonance — "Resonance Chamber"
+   A breathing WebGL scene. Content floats above via mix-blend-mode.
+   ============================================================ */
+
+:root {
+  --text: #f5f3ee;         /* luminous cream — high-contrast against difference blend */
+  --text-soft: #e6e2d2;
+  --text-dim: #bcb6a6;
+  --ink: #0a0816;          /* near-black, rarely used (legal pages) */
+  --accent: #ffd6a8;
+  --hair: rgba(245, 243, 238, 0.28);
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #0a0816;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Lenis needs this to function cleanly */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- The canvas: fixed behind everything ---------- */
+#resonance-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* A subtle scrim so text over very bright patches doesn't blow out */
+.scrim {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(0, 0, 0, 0.18), transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.25), transparent 55%);
+}
+
+/* ---------- Top bar — always visible, tiny, elegant ---------- */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 22px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  z-index: 50;
+  mix-blend-mode: difference;
+  color: var(--text);
+}
+
+.topbar .mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  font-size: 18px;
+}
+
+.topbar .right {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.topbar a,
+.topbar button {
+  color: inherit;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.35s ease;
+}
+
+.topbar a:hover,
+.topbar button:hover { border-bottom-color: currentColor; }
+
+.topbar .audio-toggle::before {
+  content: "◎";
+  margin-right: 8px;
+  font-size: 13px;
+  vertical-align: -1px;
+}
+
+body.audio-on .topbar .audio-toggle::before {
+  content: "●";
+  color: #ffd6a8;
+}
+
+/* ---------- Scene containers ---------- */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.scene {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14vh 6vw;
+  mix-blend-mode: difference;
+  /* reveal */
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
+}
+
+.scene.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+.scene-inner {
+  max-width: 720px;
+  text-align: center;
+  color: var(--text);
+}
+
+.scene .tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  opacity: 0.75;
+}
+
+.scene h2 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(48px, 10vw, 140px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.scene h2 em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.scene p.caption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.5;
+  max-width: 42ch;
+  margin: 0 auto;
+  opacity: 0.92;
+}
+
+/* Specific scene treatments for rhythmic variety */
+#scene-atem h2   { font-size: clamp(54px, 12vw, 160px); }
+#scene-ton h2    { letter-spacing: -0.035em; }
+#scene-raum h2   { font-size: clamp(58px, 11vw, 150px); }
+#scene-klang h2  { font-weight: 400; }
+#scene-begegnung h2 { font-style: italic; }
+
+/* ---------- The CTA scene ---------- */
+.scene-cta {
+  padding-bottom: 10vh;
+}
+
+.scene-cta .scene-inner {
+  max-width: 640px;
+}
+
+.scene-cta h2 {
+  font-size: clamp(40px, 7vw, 88px);
+  margin-bottom: 28px;
+}
+
+.scene-cta .detail {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  margin-bottom: 48px;
+  opacity: 0.8;
+}
+
+.cta-row {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 54px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 18px 32px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  transition: transform 0.4s ease, letter-spacing 0.4s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  letter-spacing: 0.24em;
+}
+
+.btn.primary {
+  padding: 18px 40px;
+}
+
+.price-note {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* ---------- Contact details block ---------- */
+.contact-details {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  text-align: left;
+  max-width: 580px;
+  margin-inline: auto;
+}
+
+.contact-details dt {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+
+.contact-details dd {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.contact-details a,
+.phone-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--hair);
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease;
+}
+
+.contact-details a:hover,
+.phone-link:hover { border-bottom-color: currentColor; }
+
+.phone-reveal {
+  margin-top: 6px;
+}
+
+#phoneRevealBtn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  font-family: var(--font-display);
+  font-size: 18px;
+  cursor: pointer;
+  border-bottom: 1px dashed var(--hair);
+  padding: 0 0 2px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  padding: 40px 6vw 56px;
+  mix-blend-mode: difference;
+  color: var(--text);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 24px;
+  border-top: 1px solid var(--hair);
+  margin-top: 10vh;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease;
+}
+
+.site-footer a:hover { border-bottom-color: currentColor; }
+
+.footer-left {
+  font-family: var(--font-display);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-colophon {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  opacity: 0.55;
+  flex-basis: 100%;
+  text-align: right;
+}
+
+/* ---------- Legal pages (impressum / datenschutz) ----------
+   These are outside the difference-blend scene, so they use normal text. */
+body.legal {
+  background: #0a0816;
+  color: var(--text);
+}
+
+body.legal #resonance-canvas { display: none; }
+
+.page-legal {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 120px 32px 96px;
+}
+
+.page-legal .back-link {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  margin-bottom: 64px;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 4px;
+}
+.page-legal .back-link:hover { border-bottom-color: currentColor; color: var(--text); }
+
+.page-legal h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+}
+
+.page-legal h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  margin: 48px 0 14px;
+  color: var(--text);
+}
+
+.page-legal p {
+  color: var(--text-soft);
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.page-legal a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hair);
+}
+.page-legal a:hover { border-bottom-color: var(--accent); }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .topbar { padding: 16px 20px; font-size: 10px; letter-spacing: 0.14em; }
+  .topbar .mark { font-size: 16px; }
+  .topbar .right { gap: 14px; }
+  .topbar .hide-sm { display: none; }
+
+  .scene { padding: 12vh 6vw; }
+  .scene h2 { font-size: clamp(44px, 13vw, 88px) !important; }
+  .scene p.caption { font-size: 17px; }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 20px 40px;
+  }
+  .footer-colophon { text-align: left; }
+}
+
+/* ---------- Reduced motion: calm everything ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .scene {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .btn:hover { transform: none; letter-spacing: 0.18em; }
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Was deine Stimme gerade tut | Barbara Sophia Sailer · Frankfurt</title>
+  <meta name="description" content="Sing ein langes 'Ah' und sieh dein Spektrum live in deinem Browser. Stimmbildung in Frankfurt bei Barbara Sophia Sailer. Probestunde 40 € / 45 min.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-name">Barbara Sailer</span>
+        <span class="brand-sub">Stimmarbeit · Frankfurt-Niederrad</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#barbara-hoert">Hören</a>
+      <a href="#signale">Signale</a>
+      <a href="#probestunde">Probestunde</a>
+      <a href="#anfahrt">Anfahrt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow">Live im Browser</p>
+      <h1>Was deine Stimme<br>gerade tut.</h1>
+      <p class="hero-lede">Sing ein langes „Ah". Schau, was passiert. Jede Stimme hat ihr eigenes Spektrum — Obertöne, Schwebungen, ein kleines Polarlicht aus Energie. Hier siehst du deins, ehe du es hörst.</p>
+    </div>
+
+    <div class="stage">
+      <div class="stage-frame">
+        <canvas id="spectro" width="960" height="540" aria-label="Spektrogramm deiner Stimme"></canvas>
+        <div class="stage-overlay" id="stageOverlay">
+          <p class="overlay-hint">Statisches Beispiel. Klick unten, um dein eigenes Spektrum zu sehen.</p>
+        </div>
+      </div>
+
+      <div class="stage-controls" role="group" aria-label="Mikrofon-Steuerung">
+        <button type="button" class="btn btn-primary" id="startBtn">
+          <span class="btn-dot" aria-hidden="true"></span>
+          Stimme prüfen — öffne das Mikrofon
+        </button>
+        <button type="button" class="btn btn-ghost" id="stopBtn" hidden>Stoppen</button>
+      </div>
+
+      <div class="stage-readout" aria-live="polite">
+        <p class="readout-row">
+          <span class="readout-label">Dein Ton</span>
+          <strong class="readout-value" id="noteOut">—</strong>
+        </p>
+        <p class="readout-row">
+          <span class="readout-label">Obertöne</span>
+          <strong class="readout-value" id="overtonesOut">—</strong>
+        </p>
+        <p class="readout-row readout-row-wide">
+          <span class="readout-label">Status</span>
+          <span class="readout-status" id="statusOut">Warte auf dich.</span>
+        </p>
+      </div>
+
+      <p class="stage-privacy">
+        Ton-Daten verlassen deinen Browser nicht. Keine Aufzeichnung. Keine Übertragung. Die Analyse passiert lokal, in Echtzeit.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="barbara-hoert">
+    <div class="section-head">
+      <p class="eyebrow">Was Barbara hört, was du nicht hörst</p>
+      <h2>Das Bild da oben ist ein Spielzeug. In der Probestunde wird daraus Arbeit.</h2>
+      <p class="section-lede">Du siehst gerade grobe Frequenzbänder. Barbara hört etwas Reicheres: wie dein Atem den Ton trägt, ob du gegen dich selbst arbeitest, wo Spannung sitzt, wann sich Resonanz öffnet und wann sie dicht macht. Genau diese kleinen Signale entscheiden, ob Singen leicht oder schwer wird.</p>
+    </div>
+
+    <div class="hear-grid">
+      <article class="hear-card">
+        <p class="hear-kicker">Was du siehst</p>
+        <h3>Ein Spektrum in Bändern.</h3>
+        <p>Jedes Band ist eine Frequenz. Helle, dicke Bänder heißen: da steckt Energie. Schmale, blasse Bänder heißen: da passiert fast nichts.</p>
+      </article>
+      <article class="hear-card">
+        <p class="hear-kicker">Was Barbara hört</p>
+        <h3>Ein Mensch, der gerade etwas versucht.</h3>
+        <p>Nicht Bänder, sondern Absicht, Atem, Haltung. Wo du hörst „klingt komisch", hört sie: Übergang zu früh, Stütze kippt, Kiefer hält fest.</p>
+      </article>
+      <article class="hear-card">
+        <p class="hear-kicker">Was daraus wird</p>
+        <h3>Kleine, anschlussfähige Schritte.</h3>
+        <p>Keine Diagnoseshow. Ein, zwei konkrete Dinge, die du sofort wieder findest — in der Chorprobe, im Meeting, im Lied.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section signals" id="signale">
+    <div class="section-head">
+      <p class="eyebrow">Welche Signale wir beobachten</p>
+      <h2>Fünf kleine Hebel, die den Unterschied machen.</h2>
+      <p class="section-lede">Das Spektrum da oben zeigt zwei davon sehr direkt (Grundfrequenz und Obertöne). Die anderen drei merkst du im Körper, lange bevor du sie hörst.</p>
+    </div>
+
+    <ol class="signal-grid">
+      <li class="signal-tile">
+        <span class="signal-num">01</span>
+        <h3>Atemfluss</h3>
+        <p>Tragender Ausatem statt großes Einatmen. Lange Phrasen beginnen hier, nicht in der Lunge.</p>
+      </li>
+      <li class="signal-tile">
+        <span class="signal-num">02</span>
+        <h3>Onset</h3>
+        <p>Wie dein Ton startet. Sauber, behaucht oder gepresst — das entscheidet über den Rest der Phrase.</p>
+      </li>
+      <li class="signal-tile">
+        <span class="signal-num">03</span>
+        <h3>Stütze</h3>
+        <p>Kein Kraftakt im Bauch, sondern Organisation. Der Unterschied zwischen „ich halte" und „ich lasse tragen".</p>
+      </li>
+      <li class="signal-tile">
+        <span class="signal-num">04</span>
+        <h3>Resonanz</h3>
+        <p>Die Obertöne, die du oben als helle Streifen siehst. Barbara hört, ob dein Raum offen ist oder der Klang im Hals bleibt.</p>
+      </li>
+      <li class="signal-tile">
+        <span class="signal-num">05</span>
+        <h3>Vibrato</h3>
+        <p>Wenn die Stimme frei schwingt, entsteht es von selbst. Wenn nicht, ist das eine sehr klare Rückmeldung über Spannung.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section probe" id="probestunde">
+    <div class="probe-inner">
+      <div class="probe-copy">
+        <p class="eyebrow">Probestunde</p>
+        <h2>45 Minuten. 40 €. Ein echter Anlass reicht.</h2>
+        <p>Du brauchst kein Repertoireheft, keine Notenkenntnis, keine sichere Stimme. Nur den Anlass, der dich gerade beschäftigt — heiser nach Chorproben, eng in der Höhe, nach langer Pause unsicher, im Beruf dauernd „aus" am Abend.</p>
+        <p>In der ersten Stunde hören wir erst. Dann einigen wir uns auf ein, zwei Dinge, die hörbar etwas verändern. Am Ende weißt du, ob es mit Barbara passt.</p>
+        <ul class="probe-facts">
+          <li><span>Probestunde</span><strong>40 € · 45 min</strong></li>
+          <li><span>Einzelstunde</span><strong>50 € / 45 min · 60 € / 60 min</strong></li>
+          <li><span>10er-Karte</span><strong>11 Stunden für 10, ohne Ablauf</strong></li>
+        </ul>
+      </div>
+
+      <form class="probe-form" action="https://formsubmit.co/barbarasailer@web.de" method="POST">
+        <input type="hidden" name="_subject" value="Probestunde über v20-spectrogram">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <label>Dein Name
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+        <label>E-Mail
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>Was macht deine Stimme gerade?
+          <textarea name="nachricht" rows="4" placeholder="Zum Beispiel: „In der Höhe mache ich dicht.“ oder „Ich bin abends durch.“" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">Probestunde anfragen</button>
+        <p class="probe-alt">Lieber direkt? <a href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde." target="_blank" rel="noopener">WhatsApp</a> oder <a href="mailto:barbarasailer@web.de">barbarasailer@web.de</a></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section anfahrt" id="anfahrt">
+    <div class="section-head">
+      <p class="eyebrow">So findest du mich</p>
+      <h2>Frankfurt-Niederrad, drei Tramlinien, kurze Wege.</h2>
+    </div>
+
+    <div class="anfahrt-grid">
+      <div class="anfahrt-card">
+        <p class="anfahrt-label">Adresse</p>
+        <p>Barbara Sophia Sailer<br>Musterstraße 1<br>60528 Frankfurt am Main</p>
+      </div>
+      <div class="anfahrt-card">
+        <p class="anfahrt-label">Tram</p>
+        <p>Linien 12, 15 und 21 direkt aus der Innenstadt. Ab Haltestelle rund fünf Minuten zu Fuß.</p>
+      </div>
+      <div class="anfahrt-card">
+        <p class="anfahrt-label">Direkt</p>
+        <p>
+          <a href="mailto:barbarasailer@web.de">barbarasailer@web.de</a><br>
+          <a href="tel:+495551234567">+49 (0)555 – 123 456 7</a><br>
+          <a href="https://wa.me/495551234567" target="_blank" rel="noopener">WhatsApp</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<a class="sticky-cta" href="#probestunde">Probestunde buchen</a>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">Barbara Sophia Sailer</p>
+      <p>Musterstraße 1 · 60528 Frankfurt a. M.</p>
+    </div>
+    <div>
+      <p class="footer-label">Erreichbar</p>
+      <p><a href="mailto:barbarasailer@web.de">barbarasailer@web.de</a><br><a href="tel:+495551234567">+49 (0)555 – 123 456 7</a></p>
+    </div>
+    <div>
+      <p class="footer-label">Rechtliches</p>
+      <p><a href="./impressum.html">Impressum</a><br><a href="./datenschutz.html">Datenschutz</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbara Sailer – Libretto · Gesangsunterricht in Frankfurt</title>
+  <meta name="description" content="Gesangsunterricht und Stimmbildung in Frankfurt-Niederrad. Probestunde 40 € / 45 min. Klassik, Pop, Chanson, Musical, Sprechstimme, Chor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fraunces: variable axes wght (100-900), opsz (9-144), SOFT (0-100) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,100..900,0..100;1,9..144,100..900,0..100&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Sticky CTA — permanent access to the only thing that matters -->
+<a class="sticky-cta" href="#probestunde" aria-label="Probestunde buchen">
+  <span class="sticky-cta__label">Probestunde buchen</span>
+  <span class="sticky-cta__meta">40 € · 45 min</span>
+</a>
+
+<!-- Skip to main for a11y -->
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<main id="main">
+
+  <!-- ACT I — HERO: giant logotype fills the viewport -->
+  <section class="act act--hero" id="hero" aria-label="Intro">
+    <div class="hero__eyebrow">
+      <span>Libretto</span>
+      <span aria-hidden="true">·</span>
+      <span>Barbara Sophia Sailer</span>
+      <span aria-hidden="true">·</span>
+      <span>Frankfurt-Niederrad</span>
+    </div>
+
+    <h1 class="hero__word" aria-label="Stimme">
+      <span class="ch ch--s">S</span><span
+            class="ch ch--t">t</span><span
+            class="ch ch--i">i</span><span
+            class="ch ch--m">m</span><span
+            class="ch ch--m2">m</span><span
+            class="ch ch--e">e</span>
+    </h1>
+
+    <p class="hero__sub">
+      Du willst singen lernen.<br>
+      <em>Hier fängt es an.</em>
+    </p>
+
+    <div class="hero__cue" aria-hidden="true">
+      <span>Scroll</span>
+      <svg viewBox="0 0 12 40" width="12" height="40" fill="none" stroke="currentColor" stroke-width="1">
+        <line x1="6" y1="0" x2="6" y2="34"/>
+        <polyline points="2,30 6,38 10,30"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ACT II — WHO: Giant list of personas, text IS the layout -->
+  <section class="act act--who" id="wer" aria-labelledby="wer-title">
+    <p class="act__number">Akt II</p>
+    <h2 class="act__title" id="wer-title">Wer bei mir singt.</h2>
+
+    <ol class="personas" aria-label="Fünf Typen von Schülerinnen und Schülern">
+      <li class="persona" style="--i:0">
+        <span class="persona__index">01</span>
+        <span class="persona__word">Anfänger</span>
+        <span class="persona__aside">Du hast nie probiert. Heute ist ein guter Anfang.</span>
+      </li>
+      <li class="persona" style="--i:1">
+        <span class="persona__index">02</span>
+        <span class="persona__word">Aufnahmeprüfung</span>
+        <span class="persona__aside">Repertoire, Nerven, Timing. Wir bereiten vor.</span>
+      </li>
+      <li class="persona" style="--i:2">
+        <span class="persona__index">03</span>
+        <span class="persona__word">Wiedereinsteiger</span>
+        <span class="persona__aside">Deine Stimme ist nicht weg. Nur leiser geworden.</span>
+      </li>
+      <li class="persona" style="--i:3">
+        <span class="persona__index">04</span>
+        <span class="persona__word">Berufsredner</span>
+        <span class="persona__aside">Lehrerin, Geistlicher, Coach — Atem, der trägt.</span>
+      </li>
+      <li class="persona" style="--i:4">
+        <span class="persona__index">05</span>
+        <span class="persona__word">Chor</span>
+        <span class="persona__aside">Gruppen und Gemeinden. Stimmbildung im Satz.</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ACT III — THE "O" APERTURE: photo lives inside the letter -->
+  <section class="act act--aperture" id="aperture" aria-label="Portrait">
+    <p class="act__number">Akt III</p>
+    <p class="act__title act__title--small">Ein Raum. Ein Klavier. <em>Und Du.</em></p>
+
+    <div class="aperture">
+      <!-- SVG defines a text-shaped viewport that clips a background gradient
+           simulating a portrait photo visible ONLY inside the letter "Ö". -->
+      <svg class="aperture__svg" viewBox="0 0 900 700" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <!-- Warm "portrait" gradient stands in for a photograph inside the letter. -->
+          <radialGradient id="portraitGrad" cx="50%" cy="42%" r="70%">
+            <stop offset="0%" stop-color="#f5e3c8"/>
+            <stop offset="35%" stop-color="#d9a373"/>
+            <stop offset="70%" stop-color="#7a3a2a"/>
+            <stop offset="100%" stop-color="#2b1411"/>
+          </radialGradient>
+          <linearGradient id="hairGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a0e0c"/>
+            <stop offset="100%" stop-color="#5c2a1f"/>
+          </linearGradient>
+          <!-- Clip: the glyph Ö carved out of a full rectangle -->
+          <clipPath id="letterClip">
+            <text x="50%" y="72%" text-anchor="middle"
+                  font-family="Fraunces, serif"
+                  font-size="720"
+                  font-weight="400"
+                  font-variation-settings="'opsz' 144, 'wght' 400, 'SOFT' 30">Ö</text>
+          </clipPath>
+        </defs>
+
+        <!-- Everything below gets clipped to the Ö-shape -->
+        <g clip-path="url(#letterClip)">
+          <rect width="100%" height="100%" fill="url(#portraitGrad)"/>
+          <!-- Hair silhouette suggestion -->
+          <ellipse cx="450" cy="230" rx="260" ry="150" fill="url(#hairGrad)" opacity="0.75"/>
+          <!-- Shoulder hint -->
+          <ellipse cx="450" cy="640" rx="340" ry="90" fill="#3a1b14" opacity="0.6"/>
+        </g>
+
+        <!-- Caption fragment -->
+        <text x="50%" y="95%" text-anchor="middle"
+              font-family="Inter, sans-serif"
+              font-size="14"
+              letter-spacing="8"
+              fill="currentColor">BARBARA · MEZZOSOPRAN · STIMMBILDNERIN</text>
+      </svg>
+
+      <p class="aperture__caption">
+        <em>Das Foto lebt im Buchstaben.</em>
+        Deine Stimme auch &mdash; in der Probestunde zum ersten Mal, in einem eigenen Raum,
+        nicht auf einer Bühne.
+      </p>
+    </div>
+  </section>
+
+  <!-- ACT IV — THE PROBESTUNDE: the dominant CTA as giant type -->
+  <section class="act act--probestunde" id="probestunde" aria-labelledby="probe-title">
+    <p class="act__number">Akt IV</p>
+    <h2 class="act__title" id="probe-title">Die Probestunde.</h2>
+
+    <div class="probe">
+      <div class="probe__price" aria-hidden="true">
+        <span class="probe__amount">40&thinsp;&euro;</span>
+        <span class="probe__unit">45 min</span>
+      </div>
+
+      <p class="probe__text">
+        <span class="probe__lead">
+          Einmal hinsetzen. <em>Singen, so viel Du magst.</em>
+          Am Ende wissen wir beide, ob es passt.
+        </span>
+        <span class="probe__list">
+          Kein Vertrag.
+          <span aria-hidden="true">·</span>
+          Keine Mindestlaufzeit.
+          <span aria-hidden="true">·</span>
+          Keine Bewertung.
+        </span>
+      </p>
+
+      <div class="probe__actions">
+        <a class="btn btn--primary" href="https://formsubmit.co/barbarasailer@web.de" target="_blank" rel="noopener">
+          Probestunde anfragen
+        </a>
+        <a class="btn btn--ghost" href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde." target="_blank" rel="noopener">
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACT V — WHERE: access info as giant type -->
+  <section class="act act--where" id="ort" aria-labelledby="ort-title">
+    <p class="act__number">Akt V</p>
+    <h2 class="act__title" id="ort-title">Anreise.</h2>
+
+    <div class="where">
+      <p class="where__line where__line--city">Frankfurt-Niederrad.</p>
+      <p class="where__line where__line--tram"><span class="tram">12</span><span class="tram">15</span><span class="tram">21</span></p>
+      <p class="where__line where__line--lead">Direkt aus der Innenstadt.</p>
+
+      <dl class="where__facts">
+        <div>
+          <dt>Raum</dt>
+          <dd>Privat &middot; nicht einsehbar &middot; Klavier &middot; angenehme Akustik.</dd>
+        </div>
+        <div>
+          <dt>Auch möglich</dt>
+          <dd>Online nach erster persönlicher Stunde. In Einrichtungen, Unternehmen, Gemeinden.</dd>
+        </div>
+        <div>
+          <dt>Kontakt</dt>
+          <dd>
+            <a href="https://formsubmit.co/barbarasailer@web.de" target="_blank" rel="noopener">Formular</a>
+            <span aria-hidden="true"> / </span>
+            <a href="https://wa.me/495551234567" target="_blank" rel="noopener">WhatsApp</a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ACT VI — FINALE: one last giant word + credentials -->
+  <section class="act act--finale" id="finale" aria-label="Finale">
+    <p class="act__number">Finale</p>
+    <p class="finale__word" aria-hidden="true">Sing.</p>
+
+    <p class="finale__credentials">
+      Staatsexamen Musik &middot; Opernschule HfM Würzburg &middot;
+      Meisterkurse bei Fassbaender, Deutsch, Ludwig &middot;
+      BDG &middot; ISA-Zertifikat &middot; Atemcoach &middot;
+      Liederabend-Reihe &bdquo;Blutrot&ldquo;.
+    </p>
+
+    <a class="btn btn--primary btn--large" href="https://formsubmit.co/barbarasailer@web.de" target="_blank" rel="noopener">
+      Probestunde buchen
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">
+      <span class="footer-brand__name">Barbara Sophia Sailer</span>
+      <span class="footer-brand__role">Gesangsunterricht &middot; Stimmbildung</span>
+    </p>
+    <p class="footer-addr">
+      Musterstraße 1 &middot; 60528 Frankfurt am Main<br>
+      <a href="mailto:barbarasailer@web.de">barbarasailer@web.de</a>
+    </p>
+    <nav class="footer-nav" aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

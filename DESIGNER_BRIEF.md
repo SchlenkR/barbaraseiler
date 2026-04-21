@@ -314,3 +314,73 @@ Zentrale Liste aller Design-Varianten mit ihrem Konzept. Bei jeder neuen Variant
 | `v10-dialog-voice/` | v10-dialog | Chat-Bubbles werden Voice-Memos: Waveform-Visuals, Play-Buttons, Zeitstempel — als wären Du & Barbara in WhatsApp-Sprachnachrichten. |
 | `v10-dialog-wave/` | v10-dialog | **Effects-Show:** Voice-Memos mit echter WebAudio-Synthese pro Zeile, atmende Fraunces-Typografie (variable wght-Achse auf 6s-Sinus), Lenis+GSAP. Jede Memo eigener Pitch (174–294 Hz). |
 | `v5-resonance/` | v5-three | **Effects-Show:** ganze Seite ist eine atmende WebGL-Szene (fullscreen Quad + Fragment-Shader), 5 Akte (Atem/Ton/Raum/Klang/Begegnung), Scroll steuert Shader-Uniforms, Content via `mix-blend-mode: difference` drüber, optionaler Audio-Drohnen-Modus mit AnalyserNode → Shader. |
+| `v19-methode-horizontal/` | v4 (UX-Hierarchie) | **Effects-Show:** Vertikales Editorial mit EINER horizontal gepinnten Methode-Sektion. Vertikales Scroll → horizontale Translation durch 5 Spreads (Atem/Ton/Stütze/Vokale/Resonanz), jeder Spread mit eigenem animierten SVG-Diagramm (Atem-Morph, Pitch-Dot entlang Kontur, Ribcage/Zwerchfell-Morph, Vokal-Cross-Fade, Resonanz-Ringe). GSAP ScrollTrigger + `containerAnimation`, pin+scrub. Mobile & reduced-motion → vertikaler Stapel, statische SVGs. |
+
+---
+
+## 12. Phase 4 — Exploration Deep-Dive (v16–v25)
+
+**Mandat (Ronald, 2026-04-21):** radikal weitergehen. Visuelles/Interaktives Maximum aus dem aktuellen Stand der Web-Technik. Primärziel bleibt: Leute zu Barbaras Unterricht. Wow dient der Attraction (Discovery, Share-Worthiness, Erinnerbarkeit), nicht sich selbst.
+
+### Research-Grundlage (Stand April 2026)
+
+State-of-the-Art Moves aus aktueller Awwwards / Codrops / Lusion / Lapa-Ninja Landschaft, gefiltert auf Voice-Teacher-Tauglichkeit (muss warm + vertrauenswürdig bleiben, kein Tech-Bro-Nihilismus):
+
+- **Scroll-Drive**: CSS `animation-timeline: view()` / `scroll()` nativ (Safari 18+, Chromium 115+, FF flag), Lenis+GSAP ScrollTrigger mit Rubato-Feeling, Codrops Sticky-Grid (Mar 2026), Dual-Wave-Text (Jan 2026), Reactive Depth 3D Image Tube (Feb 2026).
+- **WebGL/Shader**: Three.js + TSL Node Materials, Codrops Dual-Scene Fluid X-Ray (Mar 2026), Ruinart Digital Fresco (Layered-Zoom ins Kunstwerk), OGL für Minimal-Bundles, Patina-Weathering-Shader, Post-FX (Bloom + Chromatic Aberration als One-Frame-Peak).
+- **Typografie**: Variable-Font-Achsen `wght + opsz + GRAD + SOFT` als Breath-Loop, Giant-Type-IS-Design (Porto Rocha / Base / Readymag 2026 Jury), SVG `textPath` + MorphSVG, `mix-blend-mode: difference` über Video, GRAD-Achse für Zero-Shift Hover.
+- **Physics**: Rapier.js WASM (2–5× schneller in 2026) für Throwable/Draggable auf Landing-Pages, Motion (ex-Framer-Motion) Spring-Gestures, Cursor-Reactive Whole-Page-Warp (Design Embraced, CUSP).
+- **Audio**: Tone.js FFT-Analyser → Shader-Uniform, Chrome-Music-Lab-Style Spectrogram als Content, Scroll-into-View Audio pro Section, on-device Pitch-Detection (WebML, kein Cloud-Leak).
+- **Konzept**: 3D Page-Flip Chapbook (The Search for Work Happiness / HTWKAR), Cross-document View Transitions für MPA (stable 2026), Split-Screen Divergent Narrative, Generative Per-Visit-Seed, Horizontal Scrollytelling für EINE Section (nicht Gesamt-Page).
+
+**Referenz-Sites (live, April 2026):** Igloo Inc, Ruinart Digital Fresco, Shader Development Studio, Obsidian Assembly, Oryzo AI (Lusion), NaughtyDuk©, Maxima Therapy, SŌM (.RAW), Artefakt.mov, Max Mara Jacket Circle (Game-as-Landing).
+
+### Die 10 Entwürfe
+
+Jeder Entwurf ist eigenständige Main-Version (v16–v25). Content wird aus einer existierenden Phase-1–3-Version gezogen (`Content-Source`). Die Design-Identität ist so dominant, dass sie als eigene Hauptnummer steht — analog v7 hat eigene IA, zieht aber Copy aus v5.
+
+| Ordner | Titel / dominante Metapher | Tech-Stack (CDN-only) | Content-Source | Barbara-Hook |
+|---|---|---|---|---|
+| `v16/` | **Libretto** — Giant-Type IS the design. Fotos nur in Buchstaben-Aperturen („O", „ö"). | CSS Variable Font (Instrument Serif Display / Fraunces), `animation-timeline: view()`, null JS. | v5 (Du-Perspektive) | Seite liest sich wie ein Libretto. Bindet ans Oper-/Liederabend-Profil, signalisiert Kultiviertheit ohne Kitsch. |
+| `v17/` | **Breath-Shader** — ganzseitiger Fragment-Shader. Hero-Portrait atmet 12 BPM; Shader-Oberfläche deformiert bei Scroll. | Three.js ESM + GLSL Fragment, optional TSL. | v3 (Barbara-Stimme) | Das Bild atmet mit dir. Nonverbale Einladung zur Stimmarbeit; prä-rational überzeugend. |
+| `v18/` | **Chapbook** — 24-seitiges 3D Page-Flip-Buch „Stimmbiografie". Scroll = Page-Turn mit Papier-Physik. | GSAP 3D CSS-Transform + `perspective`, Scroll-gescrubbt. | v3 + v5 | Intimes Büchlein, Probestunde auf der inneren Rückseite. Privates Reading-Erlebnis statt Scroll-Feed. |
+| `v19/` | **Methode Horizontal** — genau EINE Sektion („Methode") wird horizontal; oben/unten alles normal vertikal. | GSAP ScrollTrigger + `containerAnimation`, pin+scrub. | v4 (UX-Hierarchie) | „Methode" = 5 Spreads, jede Übung bewegte Vignette. Kein Gesamt-Hijack, punktueller Glanz. |
+| `v20/` | **Spectrogram** — Live-Mic FFT → Aurora-Ribbons. „Was deine Stimme gerade tut." | Tone.js AnalyserNode + Canvas 2D / WebGL. | v12 (Signal-Chooser) | Visitor singt „Ah" ins Mic, sieht eigene Overtones. Direktester Vertrauensbeweis: Barbara sieht, was ich nicht höre. |
+| `v21/` | **Stimmfach** — Rapier.js Physics-Pile aus weichen Pillen (Koloratur, Mezzo, Bariton, Sprechstimme, Kirche). | Rapier.js WASM + Canvas-Renderer. | v6 (Pathway Chooser) | Visitor wirft Fächer herum, sie settlen mit Inertia — sortieren sich am Ende zu Barbaras Schwerpunkt. |
+| `v22/` | **Split-Recital** — Split-Screen, oben Barbara singt, unten sie unterrichtet; Scroll = beide Timelines gleichzeitig. | Zwei synchronisierte `<video>`, Scroll-Position → currentTime. | v10 (Dialog) | Zwei Stimmen, eine Phrase. Mensch + Lehrerin in derselben Sekunde sichtbar. |
+| `v23/` | **Patina** — Idle-Shader, je länger Visitor bleibt, desto mehr goldene Patina übers Hero-Foto. | Fragment-Shader + `requestAnimationFrame`, time-tracked. | v9 (Outcomes) | Zeit = Wert. Nach 60 s spürbar warm/weich. Nonverbal: dies ist ein Ort zum Bleiben. |
+| `v24/` | **Tagesmotiv** — Generative Per-Visit Note-Scape im Hero, Seed aus Timezone + Stunde. | Canvas 2D + `mulberry32` PRNG. | v1 (Editorial Base) | „Tagesmotiv für Frankfurt, 14:20". Unikat pro Visit, Caption macht's explizit — Lebendigkeit + Share-Bait. |
+| `v25/` | **Opera Scenes** — Frost-Transition Navigation zwischen 4 Räumen (Empfang / Studio / Bühne / Booking). | Three.js Shared Canvas + Chromatic-Aberration Dissolve Shader. | v14 (First-Lesson Experience) | Nav-Klicks öffnen „Szenen" wie Opernvorhänge. Igloo-Inc-Vorbild, aber warm statt eisig. |
+
+### Pflicht-Elemente jedes Entwurfs
+
+- funktionierende `impressum.html` + `datenschutz.html` (Legal-Seiten laden **ohne** den Hauptshader/Physics — Legal muss schnell + barrierearm sein).
+- sticky CTA „Probestunde buchen" (40 € / 45 min) — permanent greifbar, der Wow-Effekt darf die Conversion nie verstellen.
+- Dummy-PII (Musterstraße 1 / +49 (0)555 … / `wa.me/495551234567`). Niemals echte Adresse/Telefon.
+- `prefers-reduced-motion`-Fallback für den dominanten Effekt (Shader → statisches Bild, Physics → statische Grid, Audio → off).
+- Mobile ≥ 375 px funktional — Effekt darf auf Mobile reduziert sein, darf aber nicht kaputtgehen.
+- Script-Tag `type="module"`, hrefs relativ (`./`, `impressum.html`).
+
+### Strategie: selbstständige Entwicklung
+
+**Per-Entwurf Workflow (Agent-tauglich):**
+
+1. **Scout** — Content-Source-Ordner via Read komplett einlesen. Copy + IA + CTA-Positionen extrahieren.
+2. **Spec** — Internes Micro-Brief (Hero-Move, Section-Choreo, CDN-Libs, Reduced-Motion-Fallback, Audio-Gate falls Audio).
+3. **Build** — 5 Dateien: `index.html`, `impressum.html`, `datenschutz.html`, `css/style.css`, `js/main.js`. Self-contained, CDN-only.
+4. **Verify** — `npm run build` grün. Keine 404. Gzip < 50 kB außer wo Shader/Physics zwingen.
+5. **PII-Scrub** — Grep auf `0179`, `wa.me/4917` als Canary.
+6. **Register** — neue `<a class="card">` in `versions/index.html` mit `#NN · `-Prefix + Datum.
+7. **Log** — Eintrag in §11 Design-Ideen-Log dieses Briefs.
+
+**Parallelisierung — 3 Batches:**
+
+- **Batch A (Low-JS, schnellste Wins):** v16-libretto, v24-tagesmotiv, v18-chapbook → ~30 Min via 3 parallele Agents.
+- **Batch B (Mid-JS, Shader/Physics):** v17-breath-shader, v23-patina, v21-stimmfach → ~45 Min, 3 Agents.
+- **Batch C (Audio/Video/Shared-Canvas, komplexer):** v20-spectrogram, v22-split-recital, v19-methode-horizontal, v25-opera-scenes → 4 Agents, sequenziell nach Batch B um Ressourcen-Kollisionen zu vermeiden.
+
+**Quality Gates nach jedem Batch:** `npm run build`, PII-Grep, Spot-Check Reduced-Motion, Spot-Check Mobile 375 px, Spot-Check Legal-Pages ohne Shader-Overhead.
+
+**Commit-Rhythmus:** 1 Commit pro Batch, Push nach allen 10.
+
+**Bewusster Bruch mit Phase 2/3-Constraints:** Phase 4 darf Scroll-Hijack (punktuell), horizontalen Scroll (punktuell) und WebGL-Hero nutzen. Das ist der Punkt. Conversion-Strenge der Phase 2/3 wird suspendiert, weil Phase 4 als **Attraction-Layer** dient (Discovery, Share, Memorability), während Phase 2/3 für Suchende-im-Tunnel bleibt. Beide Tracks existieren parallel, Barbara bekommt am Ende **beide Angebote** als auswählbare Varianten.

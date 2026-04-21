@@ -1,0 +1,779 @@
+/* ==========================================================================
+   v16-libretto — Giant-Type IS the design.
+   Fraunces variable font (opsz, wght, SOFT) is driven by scroll-timeline.
+   Zero JS. The page reads like a libretto: acts, not sections.
+   ========================================================================== */
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --ink:        #12100e;      /* warm near-black */
+  --paper:      #f4ede0;      /* aged libretto paper */
+  --paper-deep: #ece1cc;
+  --ember:      #a8361f;      /* rubricated accent, hand-inked */
+  --gold:       #8a6a2a;
+  --sepia:      #5a3a1d;
+  --mute:       #6f5c3f;
+
+  --serif: "Fraunces", "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+
+  /* Scroll-linked custom properties. Default (pre-animation) values kept neutral
+     so reduced-motion users get a readable static page. */
+  --axis-wght: 400;
+  --axis-opsz: 144;
+  --axis-soft: 30;
+}
+
+/* ---------- Reset / Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(138,106,42,0.06), transparent 60%),
+    radial-gradient(ellipse at 85% 90%, rgba(168,54,31,0.05), transparent 60%),
+    var(--paper);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain — a single CSS repeating-conic-gradient, cached, static */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(rgba(0,0,0,0.18) 0.6px, transparent 0.6px),
+    radial-gradient(rgba(0,0,0,0.10) 0.4px, transparent 0.4px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1.5px 1.5px;
+}
+
+a { color: inherit; }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+/* ---------- Sticky CTA ---------- */
+.sticky-cta {
+  position: fixed;
+  right: clamp(1rem, 2.5vw, 2rem);
+  bottom: clamp(1rem, 2.5vw, 2rem);
+  z-index: 50;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  border-radius: 2px;
+  font-family: var(--sans);
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.35);
+  transition: transform 180ms ease, background 180ms ease;
+}
+.sticky-cta:hover,
+.sticky-cta:focus-visible {
+  background: var(--ember);
+  transform: translateY(-2px);
+}
+.sticky-cta__label {
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+.sticky-cta__meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* ---------- Acts (sections) ---------- */
+.act {
+  position: relative;
+  z-index: 2;
+  padding: clamp(5rem, 12vh, 10rem) clamp(1.25rem, 5vw, 6rem);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.act__number {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin: 0 0 1.5rem;
+}
+
+.act__title {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "wght" 300, "SOFT" 40;
+  font-weight: 300;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  line-height: 0.98;
+  margin: 0 0 2.5rem;
+  letter-spacing: -0.02em;
+}
+.act__title em {
+  font-style: italic;
+  color: var(--ember);
+  font-variation-settings: "opsz" 144, "wght" 400, "SOFT" 60;
+}
+.act__title--small {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   ACT I — HERO
+   ========================================================================== */
+.act--hero {
+  padding-top: clamp(3rem, 8vh, 5rem);
+  padding-bottom: clamp(3rem, 8vh, 5rem);
+  min-height: 100vh;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero__eyebrow {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.9rem;
+}
+
+.hero__word {
+  /* The dominant move — a single word fills the viewport. */
+  font-family: var(--serif);
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "wght" var(--axis-wght, 400), "SOFT" var(--axis-soft, 40);
+  font-size: clamp(5rem, 26vw, 22rem);
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  margin: 0;
+  text-align: center;
+  color: var(--ink);
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+/* Per-character axis choreography — each character breathes on its own tempo */
+.hero__word .ch {
+  display: inline-block;
+  font-variation-settings: "opsz" 144, "wght" 340, "SOFT" 40;
+  animation: heroBreath 7s ease-in-out infinite;
+}
+.hero__word .ch--s { animation-delay: 0.0s; }
+.hero__word .ch--t { animation-delay: 0.4s; }
+.hero__word .ch--i { animation-delay: 0.8s; }
+.hero__word .ch--m { animation-delay: 1.2s; }
+.hero__word .ch--m2 { animation-delay: 1.6s; }
+.hero__word .ch--e { animation-delay: 2.0s; color: var(--ember); font-style: italic; }
+
+@keyframes heroBreath {
+  0%, 100% { font-variation-settings: "opsz" 144, "wght" 280, "SOFT" 20; }
+  50%      { font-variation-settings: "opsz" 144, "wght" 620, "SOFT" 80; }
+}
+
+.hero__sub {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 36, "wght" 380, "SOFT" 30;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--sepia);
+  max-width: 30ch;
+  margin: 0 auto;
+}
+.hero__sub em {
+  font-style: italic;
+  color: var(--ember);
+}
+
+.hero__cue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--mute);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: cueDrop 2.2s ease-in-out infinite;
+}
+@keyframes cueDrop {
+  0%, 100% { transform: translateY(0); opacity: 0.9; }
+  50%      { transform: translateY(6px); opacity: 0.5; }
+}
+
+/* ==========================================================================
+   ACT II — WHO (Personas as typographic list)
+   ========================================================================== */
+.act--who {
+  padding-block: clamp(6rem, 14vh, 12rem);
+}
+
+.personas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: none;
+}
+
+.persona {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  grid-template-rows: auto auto;
+  gap: 0 clamp(0.75rem, 2vw, 2rem);
+  align-items: baseline;
+  padding: clamp(1rem, 2.5vw, 2rem) 0;
+  border-top: 1px solid rgba(18,16,14,0.2);
+  transition: background 400ms ease, color 400ms ease;
+}
+.persona:last-child {
+  border-bottom: 1px solid rgba(18,16,14,0.2);
+}
+
+.persona__index {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--ember);
+  padding-top: 0.6em;
+}
+
+.persona__word {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "wght" 300, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(2.3rem, 9vw, 7.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  transition: font-variation-settings 500ms ease, color 500ms ease;
+}
+
+.persona__aside {
+  grid-column: 2;
+  grid-row: 2;
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 12, "wght" 380, "SOFT" 40;
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+  color: var(--sepia);
+  max-width: 50ch;
+  padding-top: 0.4em;
+}
+
+.persona:hover .persona__word,
+.persona:focus-within .persona__word {
+  color: var(--ember);
+  font-variation-settings: "opsz" 144, "wght" 700, "SOFT" 100;
+}
+
+/* ==========================================================================
+   ACT III — APERTURE (photo lives inside the letter Ö)
+   ========================================================================== */
+.act--aperture {
+  padding-block: clamp(6rem, 14vh, 12rem);
+  align-items: center;
+}
+
+.aperture {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.aperture__svg {
+  width: 100%;
+  height: auto;
+  max-width: min(90vw, 900px);
+  color: var(--mute);
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,0.08));
+}
+
+.aperture__caption {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 14, "wght" 380, "SOFT" 40;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+  max-width: 52ch;
+  margin: 2rem auto 0;
+  color: var(--sepia);
+}
+.aperture__caption em {
+  color: var(--ember);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   ACT IV — PROBESTUNDE
+   ========================================================================== */
+.act--probestunde {
+  padding-block: clamp(6rem, 14vh, 12rem);
+  background:
+    linear-gradient(180deg, transparent, rgba(168,54,31,0.03) 20%, transparent 80%);
+}
+
+.probe {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: end;
+  max-width: 1400px;
+}
+
+.probe__price {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.85;
+  color: var(--ember);
+}
+.probe__amount {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "wght" 700, "SOFT" 100;
+  font-weight: 700;
+  font-size: clamp(5rem, 18vw, 16rem);
+  letter-spacing: -0.05em;
+}
+.probe__unit {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-top: 0.5rem;
+}
+
+.probe__text {
+  grid-column: 2;
+  margin: 0 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.probe__lead {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 72, "wght" 360, "SOFT" 40;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  color: var(--ink);
+  display: block;
+}
+.probe__lead em {
+  font-style: italic;
+  color: var(--ember);
+}
+.probe__list {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: block;
+}
+.probe__list span { margin: 0 0.6em; color: var(--ember); }
+
+.probe__actions {
+  grid-column: 1 / -1;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.75rem;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+}
+.btn--primary {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background: var(--ember);
+  border-color: var(--ember);
+  transform: translateY(-2px);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn--large {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+}
+
+/* ==========================================================================
+   ACT V — WHERE
+   ========================================================================== */
+.act--where {
+  padding-block: clamp(6rem, 14vh, 12rem);
+}
+
+.where {
+  max-width: 1200px;
+}
+
+.where__line {
+  margin: 0;
+  font-family: var(--serif);
+  line-height: 0.95;
+}
+.where__line--city {
+  font-variation-settings: "opsz" 144, "wght" 400, "SOFT" 30;
+  font-size: clamp(2.8rem, 10vw, 8rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.where__line--tram {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+.tram {
+  display: inline-grid;
+  place-items: center;
+  width: clamp(3.5rem, 8vw, 6rem);
+  height: clamp(3.5rem, 8vw, 6rem);
+  border-radius: 999px;
+  background: var(--ember);
+  color: var(--paper);
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "wght" 600, "SOFT" 20;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.where__line--lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 36, "wght" 380, "SOFT" 60;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  color: var(--sepia);
+  margin-bottom: 2.5rem;
+}
+
+.where__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin: 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(18,16,14,0.2);
+}
+.where__facts > div { margin: 0; }
+.where__facts dt {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.75rem;
+}
+.where__facts dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 14, "wght" 400, "SOFT" 40;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.where__facts a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ember);
+  text-underline-offset: 0.25em;
+}
+
+/* ==========================================================================
+   ACT VI — FINALE
+   ========================================================================== */
+.act--finale {
+  text-align: center;
+  align-items: center;
+  padding-block: clamp(6rem, 18vh, 14rem);
+  background: linear-gradient(180deg, transparent, rgba(18,16,14,0.04));
+}
+
+.finale__word {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "wght" 700, "SOFT" 100;
+  font-size: clamp(6rem, 30vw, 26rem);
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  margin: 0 0 2rem;
+  color: var(--ember);
+  font-style: italic;
+}
+
+.finale__credentials {
+  max-width: 60ch;
+  margin: 0 auto 3rem;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 12, "wght" 400, "SOFT" 30;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--sepia);
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  z-index: 2;
+  padding: 3rem clamp(1.25rem, 5vw, 6rem);
+  border-top: 1px solid rgba(18,16,14,0.15);
+  background: var(--paper-deep);
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.footer-brand {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.footer-brand__name {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 24, "wght" 500, "SOFT" 30;
+  font-size: 1.15rem;
+}
+.footer-brand__role {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--mute);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+.footer-addr {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--sepia);
+  line-height: 1.6;
+}
+.footer-addr a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ember);
+  text-underline-offset: 0.2em;
+}
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer-nav a {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 180ms ease;
+}
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  border-bottom-color: var(--ember);
+}
+
+/* ==========================================================================
+   SCROLL-DRIVEN AXIS ANIMATION
+   CSS `animation-timeline: view()` drives the Fraunces variable-font axes
+   (wght + opsz + SOFT) as a section enters the viewport.
+   Progressive enhancement — unsupported browsers get the static default.
+   ========================================================================== */
+
+@supports (animation-timeline: view()) {
+  .act__title {
+    animation: axisBreath linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
+  }
+
+  .persona__word {
+    animation: axisEnter linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+  }
+
+  .where__line--city,
+  .probe__lead {
+    animation: axisEnter linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 50%;
+  }
+
+  .finale__word {
+    animation: axisGrow linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 70%;
+  }
+}
+
+/* Variable-axis keyframes — we ride opsz and wght together for a breathing,
+   focusing feel as text enters the viewport. Light-weight, no paint storms. */
+@keyframes axisEnter {
+  0%   { font-variation-settings: "opsz" 9,   "wght" 180, "SOFT" 0;  opacity: 0.45; transform: translateY(2rem); }
+  100% { font-variation-settings: "opsz" 144, "wght" 400, "SOFT" 60; opacity: 1;    transform: translateY(0); }
+}
+@keyframes axisBreath {
+  0%   { font-variation-settings: "opsz" 9,   "wght" 200, "SOFT" 0;  letter-spacing: 0em; }
+  100% { font-variation-settings: "opsz" 144, "wght" 380, "SOFT" 50; letter-spacing: -0.02em; }
+}
+@keyframes axisGrow {
+  0%   { font-variation-settings: "opsz" 9,   "wght" 300, "SOFT" 0;  letter-spacing: 0.1em; opacity: 0.6; }
+  60%  { font-variation-settings: "opsz" 72,  "wght" 500, "SOFT" 60; letter-spacing: -0.02em; opacity: 1; }
+  100% { font-variation-settings: "opsz" 144, "wght" 800, "SOFT" 100; letter-spacing: -0.05em; opacity: 1; }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+
+  .probe {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .probe__price { grid-column: 1; margin-bottom: 1rem; }
+  .probe__text  { grid-column: 1; }
+
+  .persona {
+    grid-template-columns: 2.5rem 1fr;
+  }
+  .persona__index { font-size: 0.7rem; }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .footer-nav { flex-direction: row; gap: 1.25rem; }
+
+  .sticky-cta__meta { display: none; }
+  .sticky-cta { padding: 0.8rem 1rem; }
+
+  .hero__word { font-size: clamp(4rem, 22vw, 9rem); }
+}
+
+@media (max-width: 420px) {
+  .act { padding-inline: 1rem; }
+  .hero__eyebrow { gap: 0.4rem; font-size: 0.65rem; }
+  .hero__word { font-size: 22vw; }
+  .tram { width: 3rem; height: 3rem; font-size: 1.2rem; }
+}
+
+/* ==========================================================================
+   REDUCED MOTION — absolutely no axis choreography, no breath loops.
+   Static fallback that is still readable and beautifully typeset.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html { scroll-behavior: auto; }
+
+  .hero__word .ch {
+    font-variation-settings: "opsz" 144, "wght" 400, "SOFT" 40;
+  }
+  .hero__word .ch--e { color: var(--ember); }
+
+  /* Ensure scroll-driven variable-axis animations are disabled too */
+  .act__title,
+  .persona__word,
+  .where__line--city,
+  .probe__lead,
+  .finale__word {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Focus-visible polish */
+:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+  border-radius: 2px;
+}

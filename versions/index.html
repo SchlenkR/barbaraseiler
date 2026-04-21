@@ -11,8 +11,9 @@
     :root {
       --bg: #0b0b0c;
       --fg: #f5f3ee;
-      --muted: #a8a497;
-      --line: #28282b;
+      --muted: #d6d2c4;
+      --dim:   #9b978a;
+      --line: #32323a;
       --v1: #b8ff5e;
       --v2: #ff7a3c;
       --v3: #ff5db6;
@@ -34,7 +35,7 @@
       justify-content: space-between;
       align-items: baseline;
       font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
@@ -81,8 +82,8 @@
     .title-row p {
       color: var(--muted);
       max-width: 44ch;
-      font-size: 14px;
-      line-height: 1.55;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     .lanes {
@@ -141,7 +142,7 @@
     .card {
       position: relative;
       padding: 20px 22px;
-      background: #16161a;
+      background: #1c1c21;
       border: 1px solid var(--line);
       border-radius: 3px;
       text-decoration: none;
@@ -155,7 +156,7 @@
       transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
     }
     .card.variant {
-      background: transparent;
+      background: #16161a;
       border-style: dashed;
       border-color: var(--line);
     }
@@ -187,14 +188,14 @@
     }
     .card-tag {
       font-family: "JetBrains Mono", monospace;
-      font-size: 9.5px;
+      font-size: 10.5px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       background: var(--accent);
       color: #0a0a0a;
       padding: 3px 8px;
       border-radius: 2px;
-      font-weight: 500;
+      font-weight: 600;
       transition: background 0.3s, color 0.3s;
       white-space: nowrap;
     }
@@ -221,28 +222,29 @@
       font-size: 1.6rem;
     }
     .card-desc {
-      color: #d4d0c3;
-      font-size: 12.5px;
-      line-height: 1.5;
+      color: #e6e2d4;
+      font-size: 13.5px;
+      line-height: 1.55;
     }
     .card-meta {
       font-family: "JetBrains Mono", monospace;
-      font-size: 9px;
-      letter-spacing: 0.12em;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
     }
     .card-by {
       font-family: "JetBrains Mono", monospace;
-      font-size: 9px;
-      letter-spacing: 0.14em;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #c9c5b8;
+      color: var(--fg);
       margin-top: 2px;
+      font-weight: 500;
     }
-    .card-by::before { content: "by "; color: var(--muted); }
+    .card-by::before { content: "by "; color: var(--dim); font-weight: 400; }
     .card:hover .card-by { color: #0a0a0a; }
-    .card:hover .card-by::before { color: #0a0a0a; opacity: 0.7; }
+    .card:hover .card-by::before { color: #0a0a0a; opacity: 0.6; }
 
     .placeholder {
       border: 1px dashed var(--line);

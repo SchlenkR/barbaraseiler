@@ -29,6 +29,16 @@
       --v13: #ffce5e;
       --v14: #a5c8ff;
       --v15: #d4ffa5;
+      --v16: #efe6d4;
+      --v17: #8eb3c7;
+      --v18: #c08d5b;
+      --v19: #5fd1c7;
+      --v20: #b47cff;
+      --v21: #ffb4a8;
+      --v22: #e04e6a;
+      --v23: #d4a84b;
+      --v24: #d9744a;
+      --v25: #4ea3a8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -164,7 +174,6 @@
     }
     .tree > li:first-child { padding-top: 0; }
     .tree > li:last-child { padding-bottom: 0; }
-    /* Vertical spine */
     .tree > li::before,
     .sub-tree > li::before {
       content: "";
@@ -184,7 +193,6 @@
       bottom: auto;
       height: 30px;
     }
-    /* Horizontal stub to the card */
     .tree > li::after,
     .sub-tree > li::after {
       content: "";
@@ -201,7 +209,6 @@
       margin-top: 10px;
       padding-left: 4px;
     }
-    /* Cards inside the tree are slightly denser */
     .tree .card, .sub-tree .card {
       min-height: auto;
       padding: 14px 18px;
@@ -365,10 +372,170 @@
 
   <div class="title-row">
     <h1>Versionen <em>&amp; Branches</em>.</h1>
-    <p>Fünfzehn self-contained Hauptstände. Design-Varianten daneben, mit Parent-Pfeil. Phase 2 (v6–v10) fokussiert Schüler-Ansprache; Phase 3 (v11–v15) senkt Einstiegshürden vor der Probestunde. Jeder Ordner ist eigenständig — kein shared code.</p>
+    <p>Fünfzehn self-contained Hauptstände. Design-Varianten daneben, mit Parent-Pfeil. Phase 2 (v6–v10) fokussiert Schüler-Ansprache; Phase 3 (v11–v15) senkt Einstiegshürden vor der Probestunde; Phase 4 (v16–v25) ist der Exploration-Layer — State-of-the-Art Web-Tech als Attraction. Jeder Ordner ist eigenständig — kein shared code.</p>
   </div>
 
   <div class="lanes">
+
+    <div class="lane" style="--accent: var(--v25);">
+      <div class="lane-num">25</div>
+      <div class="lane-body">
+        <a class="card" href="./v25-opera-scenes/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#69 · v25-opera-scenes · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Opera Scenes</h3>
+          <p class="card-desc">Vier Akte — Empfang, Studio, Bühne, Verabredung. Chromatic-Aberration-Vorhang zwischen den Szenen.</p>
+          <span class="card-meta">Parent: — · Stil: Shared-Canvas Transitions · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v24);">
+      <div class="lane-num">24</div>
+      <div class="lane-body">
+        <a class="card" href="./v24-tagesmotiv/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#68 · v24-tagesmotiv · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Tagesmotiv</h3>
+          <p class="card-desc">Pro Stunde ein neues, deterministisches Notenbild. Seed aus Zeitzone × Stunde × Wochentag. Unikat für eine Stunde.</p>
+          <span class="card-meta">Parent: — · Stil: Generative Canvas · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v23);">
+      <div class="lane-num">23</div>
+      <div class="lane-body">
+        <a class="card" href="./v23-patina/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#67 · v23-patina · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Patina</h3>
+          <p class="card-desc">Je länger du bleibst, desto wärmer das Bild. Nach 5 Minuten ist das Gold tief. Zeit = Wert, als Shader.</p>
+          <span class="card-meta">Parent: — · Stil: Idle Shader · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v22);">
+      <div class="lane-num">22</div>
+      <div class="lane-body">
+        <a class="card" href="./v22-split-recital/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#66 · v22-split-recital · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Split-Recital</h3>
+          <p class="card-desc">Oben Barbara singt, unten Barbara unterrichtet. Zwei CSS-Filme scrollen desynchron, treffen sich mittendrin.</p>
+          <span class="card-meta">Parent: — · Stil: Split-Screen Scroll · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v21);">
+      <div class="lane-num">21</div>
+      <div class="lane-body">
+        <a class="card" href="./v21-stimmfach/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#65 · v21-stimmfach · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Stimmfach-Pile</h3>
+          <p class="card-desc">Neun weiche Fach-Pillen in einer Matter.js-Sandbox. Wirf sie herum, pinne eine an — geht direkt zur Probestunde.</p>
+          <span class="card-meta">Parent: — · Stil: Matter.js Physics · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v20);">
+      <div class="lane-num">20</div>
+      <div class="lane-body">
+        <a class="card" href="./v20-spectrogram/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#64 · v20-spectrogram · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Spektrogramm</h3>
+          <p class="card-desc">Live-Mikrofon, FFT, Aurora-Ribbons. Du singst ‚Ah' — siehst deine Obertöne. Pitch-Detection on-device.</p>
+          <span class="card-meta">Parent: — · Stil: Web Audio + Canvas · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v19);">
+      <div class="lane-num">19</div>
+      <div class="lane-body">
+        <a class="card" href="./v19-methode-horizontal/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#63 · v19-methode-horizontal · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Methode Horizontal</h3>
+          <p class="card-desc">Vertikale Editorial-Seite, nur die ‚Methode' wird horizontal gepinnt — fünf animierte SVG-Spreads.</p>
+          <span class="card-meta">Parent: — · Stil: Horizontal Scrollytelling · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v18);">
+      <div class="lane-num">18</div>
+      <div class="lane-body">
+        <a class="card" href="./v18-chapbook/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#62 · v18-chapbook · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Stimmbiografie</h3>
+          <p class="card-desc">Zehn-Seiten 3D-Chapbook, Scroll = Page-Turn mit Papier-Physik. Privates Lesen statt Scroll-Feed.</p>
+          <span class="card-meta">Parent: — · Stil: 3D Page-Flip · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v17);">
+      <div class="lane-num">17</div>
+      <div class="lane-body">
+        <a class="card" href="./v17-breath-shader/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#61 · v17-breath-shader · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Atem-Shader</h3>
+          <p class="card-desc">Ganzseitiger Fragment-Shader, 12 BPM Atem, Szene morpht Morgen → Mittag → Abend beim Scroll.</p>
+          <span class="card-meta">Parent: — · Stil: Three.js / GLSL · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lane" style="--accent: var(--v16);">
+      <div class="lane-num">16</div>
+      <div class="lane-body">
+        <a class="card" href="./v16-libretto/" target="_blank" rel="noopener">
+          <div class="card-top">
+            <span class="card-tag">#60 · v16-libretto · Phase 4</span>
+            <span class="arrow">→</span>
+          </div>
+          <h3 class="card-title">Libretto</h3>
+          <p class="card-desc">Giant-Type als Bühne. Sechs Akte, Fraunces auf allen Achsen, ein Porträt ausgeschnitten im ‚Ö'. Null JavaScript.</p>
+          <span class="card-meta">Parent: — · Stil: Typography IS Design · 2026-04-21</span>
+          <span class="card-by">Claude · crazy</span>
+        </a>
+      </div>
+    </div>
 
     <div class="lane" style="--accent: var(--v15);">
       <div class="lane-num">15</div>
@@ -385,17 +552,17 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v15-grid/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#55 · v15-grid</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Info-Raster</h3>
-            <span class="card-meta">← v15 · Unnarrativ · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#55 · v15-grid</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Info-Raster</h3>
+              <span class="card-meta">← v15 · Unnarrativ · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
           <li><a class="card variant" href="./v15-plain/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#56 · v15-plain</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Klartext</h3>
-            <span class="card-meta">← v15 · Dekor-los · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#56 · v15-plain</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Klartext</h3>
+              <span class="card-meta">← v15 · Dekor-los · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -415,23 +582,23 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v14-rhythm/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#52 · v14-rhythm</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Kein Event</h3>
-            <span class="card-meta">← v14 · Takt statt Event · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#52 · v14-rhythm</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Kein Event</h3>
+              <span class="card-meta">← v14 · Takt statt Event · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
           <li><a class="card variant" href="./v14-room/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#53 · v14-room</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Der Raum</h3>
-            <span class="card-meta">← v14 · Geschützter Raum · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#53 · v14-room</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Der Raum</h3>
+              <span class="card-meta">← v14 · Geschützter Raum · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
           <li><a class="card variant" href="./v14-portal/" target="_blank" rel="noopener">
-<div class="card-top"><span class="card-tag">#58 · v14-portal</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Portal</h3>
-            <span class="card-meta">← v14 · Horizontal Chapter-Book + Sound · 2026-04-21</span>
-            <span class="card-by">Claude · crazy</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#58 · v14-portal</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Portal</h3>
+              <span class="card-meta">← v14 · Horizontal Chapter-Book + Sound · 2026-04-21</span>
+              <span class="card-by">Claude · crazy</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -451,17 +618,17 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v13-steps/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#49 · v13-steps</span><span class="arrow">→</span></div>
-            <h3 class="card-title">5 Schritte</h3>
-            <span class="card-meta">← v13 · Lineare Folge · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#49 · v13-steps</span><span class="arrow">→</span></div>
+              <h3 class="card-title">5 Schritte</h3>
+              <span class="card-meta">← v13 · Lineare Folge · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
           <li><a class="card variant" href="./v13-weekbook/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#50 · v13-weekbook</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Wochenbuch</h3>
-            <span class="card-meta">← v13 · Tagebuch-Ton · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#50 · v13-weekbook</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Wochenbuch</h3>
+              <span class="card-meta">← v13 · Tagebuch-Ton · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -481,17 +648,17 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v12-notes/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#46 · v12-notes</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Leise Notizen</h3>
-            <span class="card-meta">← v12 · Softer Ton · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#46 · v12-notes</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Leise Notizen</h3>
+              <span class="card-meta">← v12 · Softer Ton · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
           <li><a class="card variant" href="./v12-signals/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#47 · v12-signals</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Ein Signal</h3>
-            <span class="card-meta">← v12 · Minimal-Pick · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#47 · v12-signals</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Ein Signal</h3>
+              <span class="card-meta">← v12 · Minimal-Pick · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -511,17 +678,17 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v11-checklist/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#43 · v11-checklist</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Checkliste</h3>
-            <span class="card-meta">← v11 · Haken setzen · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#43 · v11-checklist</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Checkliste</h3>
+              <span class="card-meta">← v11 · Haken setzen · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
           <li><a class="card variant" href="./v11-match/" target="_blank" rel="noopener">
-            <div class="card-top"><span class="card-tag">#44 · v11-match</span><span class="arrow">→</span></div>
-            <h3 class="card-title">Du ↔ Barbara</h3>
-            <span class="card-meta">← v11 · Match-Vergleich · 2026-04-21</span>
-            <span class="card-by">GPT</span>
-          </a></li>
+              <div class="card-top"><span class="card-tag">#44 · v11-match</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Du ↔ Barbara</h3>
+              <span class="card-meta">← v11 · Match-Vergleich · 2026-04-21</span>
+              <span class="card-by">GPT</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -541,32 +708,32 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v10-dialog/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#25 · v10-dialog</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Chat Bubbles</h3>
-          <span class="card-meta">← v10 · Messenger Warm · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a>
+              <div class="card-top"><span class="card-tag">#25 · v10-dialog</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Chat Bubbles</h3>
+              <span class="card-meta">← v10 · Messenger Warm · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a>
           <ul class="sub-tree">
             <li><a class="card variant" href="./v10-dialog-voice/" target="_blank" rel="noopener">
-              <div class="card-top"><span class="card-tag">#39 · v10-dialog-voice</span><span class="arrow">→</span></div>
-              <h3 class="card-title">Voice Memos</h3>
-              <span class="card-meta">← v10-dialog · Waveform + Play · 2026-04-21</span>
+                <div class="card-top"><span class="card-tag">#39 · v10-dialog-voice</span><span class="arrow">→</span></div>
+                <h3 class="card-title">Voice Memos</h3>
+                <span class="card-meta">← v10-dialog · Waveform + Play · 2026-04-21</span>
+                <span class="card-by">Claude</span>
+              </a></li>
+            <li><a class="card variant" href="./v10-dialog-wave/" target="_blank" rel="noopener">
+                <div class="card-top"><span class="card-tag">#57 · v10-dialog-wave</span><span class="arrow">→</span></div>
+                <h3 class="card-title">Breathing Memos</h3>
+                <span class="card-meta">← v10-dialog · Audio + Breath-Typo · 2026-04-21</span>
+                <span class="card-by">Claude · crazy</span>
+              </a></li>
+          </ul>
+          </li>
+          <li><a class="card variant" href="./v10-letter/" target="_blank" rel="noopener">
+              <div class="card-top"><span class="card-tag">#26 · v10-letter</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Briefwechsel</h3>
+              <span class="card-meta">← v10 · Letter Form · 2026-04-21</span>
               <span class="card-by">Claude</span>
             </a></li>
-            <li><a class="card variant" href="./v10-dialog-wave/" target="_blank" rel="noopener">
-<div class="card-top"><span class="card-tag">#57 · v10-dialog-wave</span><span class="arrow">→</span></div>
-              <h3 class="card-title">Breathing Memos</h3>
-              <span class="card-meta">← v10-dialog · Audio + Breath-Typo · 2026-04-21</span>
-              <span class="card-by">Claude · crazy</span>
-            </a></li>
-          </ul>
-        </li>
-          <li><a class="card variant" href="./v10-letter/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#26 · v10-letter</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Briefwechsel</h3>
-          <span class="card-meta">← v10 · Letter Form · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
         </ul>
       </div>
     </div>
@@ -585,18 +752,18 @@
           <span class="card-by">Claude</span>
         </a>
         <ul class="tree">
-          <li><a class="card variant" href="./v9-outcomes/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#38 · v9-outcomes</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Bento Outcomes</h3>
-          <span class="card-meta">← v9 · 6-Tile Grid · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
           <li><a class="card variant" href="./v9-audio/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#37 · v9-audio</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Voice Memo</h3>
-          <span class="card-meta">← v9 · Podcast UI · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#37 · v9-audio</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Voice Memo</h3>
+              <span class="card-meta">← v9 · Podcast UI · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
+          <li><a class="card variant" href="./v9-outcomes/" target="_blank" rel="noopener">
+              <div class="card-top"><span class="card-tag">#38 · v9-outcomes</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Bento Outcomes</h3>
+              <span class="card-meta">← v9 · 6-Tile Grid · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -616,26 +783,26 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v8-faq/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#34 · v8-faq</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Zen Accordion</h3>
-          <span class="card-meta">← v8 · FAQ / details · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
-          <li><a class="card variant" href="./v8-journey/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#35 · v8-journey</span><span class="arrow">→</span></div>
-          <h3 class="card-title">6 Stationen</h3>
-          <span class="card-meta">← v8 · Progress Dots · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a>
-          <ul class="sub-tree">
-            <li><a class="card variant" href="./v8-journey-map/" target="_blank" rel="noopener">
-              <div class="card-top"><span class="card-tag">#41 · v8-journey-map</span><span class="arrow">→</span></div>
-              <h3 class="card-title">Topo-Karte</h3>
-              <span class="card-meta">← v8-journey · SVG-Route · 2026-04-21</span>
+              <div class="card-top"><span class="card-tag">#34 · v8-faq</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Zen Accordion</h3>
+              <span class="card-meta">← v8 · FAQ / details · 2026-04-21</span>
               <span class="card-by">Claude</span>
             </a></li>
+          <li><a class="card variant" href="./v8-journey/" target="_blank" rel="noopener">
+              <div class="card-top"><span class="card-tag">#35 · v8-journey</span><span class="arrow">→</span></div>
+              <h3 class="card-title">6 Stationen</h3>
+              <span class="card-meta">← v8 · Progress Dots · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a>
+          <ul class="sub-tree">
+            <li><a class="card variant" href="./v8-journey-map/" target="_blank" rel="noopener">
+                <div class="card-top"><span class="card-tag">#41 · v8-journey-map</span><span class="arrow">→</span></div>
+                <h3 class="card-title">Topo-Karte</h3>
+                <span class="card-meta">← v8-journey · SVG-Route · 2026-04-21</span>
+                <span class="card-by">Claude</span>
+              </a></li>
           </ul>
-        </li>
+          </li>
         </ul>
       </div>
     </div>
@@ -655,17 +822,17 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v7-offer/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#31 · v7-offer</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Stripe Dark</h3>
-          <span class="card-meta">← v7 · Product Dark · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#31 · v7-offer</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Stripe Dark</h3>
+              <span class="card-meta">← v7 · Product Dark · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
           <li><a class="card variant" href="./v7-split/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#32 · v7-split</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Sticky Split</h3>
-          <span class="card-meta">← v7 · 50/50 Form · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#32 · v7-split</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Sticky Split</h3>
+              <span class="card-meta">← v7 · 50/50 Form · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -684,27 +851,27 @@
           <span class="card-by">Claude</span>
         </a>
         <ul class="tree">
-          <li><a class="card variant" href="./v6-pathways/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#29 · v6-pathways</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Shop-by-need</h3>
-          <span class="card-meta">← v6 · Apple-Style Chooser · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a>
-          <ul class="sub-tree">
-            <li><a class="card variant" href="./v6-pathways-dark/" target="_blank" rel="noopener">
-              <div class="card-top"><span class="card-tag">#40 · v6-pathways-dark</span><span class="arrow">→</span></div>
-              <h3 class="card-title">Petrol / Cognac</h3>
-              <span class="card-meta">← v6-pathways · Dark-Flip · 2026-04-21</span>
+          <li><a class="card variant" href="./v6-chat/" target="_blank" rel="noopener">
+              <div class="card-top"><span class="card-tag">#28 · v6-chat</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Messenger</h3>
+              <span class="card-meta">← v6 · Conversation · 2026-04-21</span>
               <span class="card-by">Claude</span>
             </a></li>
+          <li><a class="card variant" href="./v6-pathways/" target="_blank" rel="noopener">
+              <div class="card-top"><span class="card-tag">#29 · v6-pathways</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Shop-by-need</h3>
+              <span class="card-meta">← v6 · Apple-Style Chooser · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a>
+          <ul class="sub-tree">
+            <li><a class="card variant" href="./v6-pathways-dark/" target="_blank" rel="noopener">
+                <div class="card-top"><span class="card-tag">#40 · v6-pathways-dark</span><span class="arrow">→</span></div>
+                <h3 class="card-title">Petrol / Cognac</h3>
+                <span class="card-meta">← v6-pathways · Dark-Flip · 2026-04-21</span>
+                <span class="card-by">Claude</span>
+              </a></li>
           </ul>
-        </li>
-          <li><a class="card variant" href="./v6-chat/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#28 · v6-chat</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Messenger</h3>
-          <span class="card-meta">← v6 · Conversation · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+          </li>
         </ul>
       </div>
     </div>
@@ -724,38 +891,38 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v5-y2k/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#08 · v5-y2k</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Y2K Chrome</h3>
-          <span class="card-meta">← v5 · Aero / Holo · 2026-04-21</span>
-          <span class="card-by">GPT-5.4</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#08 · v5-y2k</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Y2K Chrome</h3>
+              <span class="card-meta">← v5 · Aero / Holo · 2026-04-21</span>
+              <span class="card-by">GPT-5.4</span>
+            </a></li>
           <li><a class="card variant" href="./v5-didone/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#21 · v5-didone</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Didone Salon</h3>
-          <span class="card-meta">← v5 · Luxury Editorial · 2026-04-21</span>
-          <span class="card-by">GPT-5.4</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#21 · v5-didone</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Didone Salon</h3>
+              <span class="card-meta">← v5 · Luxury Editorial · 2026-04-21</span>
+              <span class="card-by">GPT-5.4</span>
+            </a></li>
           <li><a class="card variant" href="./v5-lenis/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#22 · v5-lenis</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Stage Scroll</h3>
-          <span class="card-meta">← v5 · Lenis + GSAP · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#22 · v5-lenis</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Stage Scroll</h3>
+              <span class="card-meta">← v5 · Lenis + GSAP · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
           <li><a class="card variant" href="./v5-three/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#23 · v5-three</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Voice Ribbons</h3>
-          <span class="card-meta">← v5 · Three.js / WebGL · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a>
+              <div class="card-top"><span class="card-tag">#23 · v5-three</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Voice Ribbons</h3>
+              <span class="card-meta">← v5 · Three.js / WebGL · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a>
           <ul class="sub-tree">
             <li><a class="card variant" href="./v5-resonance/" target="_blank" rel="noopener">
-<div class="card-top"><span class="card-tag">#59 · v5-resonance</span><span class="arrow">→</span></div>
-              <h3 class="card-title">Resonance Chamber</h3>
-              <span class="card-meta">← v5-three · Shader-Szene + Audio · 2026-04-21</span>
-              <span class="card-by">Claude · crazy</span>
-            </a></li>
+                <div class="card-top"><span class="card-tag">#59 · v5-resonance</span><span class="arrow">→</span></div>
+                <h3 class="card-title">Resonance Chamber</h3>
+                <span class="card-meta">← v5-three · Shader-Szene + Audio · 2026-04-21</span>
+                <span class="card-by">Claude · crazy</span>
+              </a></li>
           </ul>
-        </li>
+          </li>
         </ul>
       </div>
     </div>
@@ -775,23 +942,23 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v4-glass/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#18 · v4-glass</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Aurora Glass</h3>
-          <span class="card-meta">← v4 · visionOS-Style · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#18 · v4-glass</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Aurora Glass</h3>
+              <span class="card-meta">← v4 · visionOS-Style · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
           <li><a class="card variant" href="./v4-linear/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#19 · v4-linear</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Product Dark</h3>
-          <span class="card-meta">← v4 · Linear.app · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#19 · v4-linear</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Product Dark</h3>
+              <span class="card-meta">← v4 · Linear.app · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
           <li><a class="card variant" href="./v4-terminal/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#20 · v4-terminal</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Phosphor</h3>
-          <span class="card-meta">← v4 · CRT / BBS · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#20 · v4-terminal</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Phosphor</h3>
+              <span class="card-meta">← v4 · CRT / BBS · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -811,29 +978,29 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v3-kinetic/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#05 · v3-kinetic</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Kinetic Typo</h3>
-          <span class="card-meta">← v3 · GSAP · 2026-04-21</span>
-          <span class="card-by">GPT-5.4</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#05 · v3-kinetic</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Kinetic Typo</h3>
+              <span class="card-meta">← v3 · GSAP · 2026-04-21</span>
+              <span class="card-by">GPT-5.4</span>
+            </a></li>
           <li><a class="card variant" href="./v3-collage/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#15 · v3-collage</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Scrapbook</h3>
-          <span class="card-meta">← v3 · Paper / Polaroids · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#15 · v3-collage</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Scrapbook</h3>
+              <span class="card-meta">← v3 · Paper / Polaroids · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
           <li><a class="card variant" href="./v3-neobrutal/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#16 · v3-neobrutal</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Neo-Brutal</h3>
-          <span class="card-meta">← v3 · Flat / Hard Shadow · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#16 · v3-neobrutal</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Neo-Brutal</h3>
+              <span class="card-meta">← v3 · Flat / Hard Shadow · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
           <li><a class="card variant" href="./v3-riso/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#17 · v3-riso</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Risograph</h3>
-          <span class="card-meta">← v3 · Duotone Print · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#17 · v3-riso</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Risograph</h3>
+              <span class="card-meta">← v3 · Duotone Print · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -853,23 +1020,23 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v2-bento/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#12 · v2-bento</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Bento</h3>
-          <span class="card-meta">← v2 · Apple-Style Grid · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#12 · v2-bento</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Bento</h3>
+              <span class="card-meta">← v2 · Apple-Style Grid · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
           <li><a class="card variant" href="./v2-mag/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#13 · v2-mag</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Magazin Nº 04</h3>
-          <span class="card-meta">← v2 · Editorial / Drop Caps · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#13 · v2-mag</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Magazin Nº 04</h3>
+              <span class="card-meta">← v2 · Editorial / Drop Caps · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
           <li><a class="card variant" href="./v2-wiki/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#14 · v2-wiki</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Enzyklopädie</h3>
-          <span class="card-meta">← v2 · Wiki-Dense · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#14 · v2-wiki</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Enzyklopädie</h3>
+              <span class="card-meta">← v2 · Wiki-Dense · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
         </ul>
       </div>
     </div>
@@ -889,29 +1056,29 @@
         </a>
         <ul class="tree">
           <li><a class="card variant" href="./v1-brutal/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#02 · v1-brutal</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Swiss Brutal</h3>
-          <span class="card-meta">← v1 · Acid / Mono · 2026-04-21</span>
-          <span class="card-by">GPT-5.4</span>
-        </a></li>
-          <li><a class="card variant" href="./v1-noir/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#10 · v1-noir</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Cinematic Noir</h3>
-          <span class="card-meta">← v1 · B/W / Didone · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#02 · v1-brutal</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Swiss Brutal</h3>
+              <span class="card-meta">← v1 · Acid / Mono · 2026-04-21</span>
+              <span class="card-by">GPT-5.4</span>
+            </a></li>
           <li><a class="card variant" href="./v1-clay/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#09 · v1-clay</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Clay</h3>
-          <span class="card-meta">← v1 · Claymorphism · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#09 · v1-clay</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Clay</h3>
+              <span class="card-meta">← v1 · Claymorphism · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
+          <li><a class="card variant" href="./v1-noir/" target="_blank" rel="noopener">
+              <div class="card-top"><span class="card-tag">#10 · v1-noir</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Cinematic Noir</h3>
+              <span class="card-meta">← v1 · B/W / Didone · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
           <li><a class="card variant" href="./v1-swiss/" target="_blank" rel="noopener">
-          <div class="card-top"><span class="card-tag">#11 · v1-swiss</span><span class="arrow">→</span></div>
-          <h3 class="card-title">Swiss Intl.</h3>
-          <span class="card-meta">← v1 · Classic Grid · 2026-04-21</span>
-          <span class="card-by">Claude</span>
-        </a></li>
+              <div class="card-top"><span class="card-tag">#11 · v1-swiss</span><span class="arrow">→</span></div>
+              <h3 class="card-title">Swiss Intl.</h3>
+              <span class="card-meta">← v1 · Classic Grid · 2026-04-21</span>
+              <span class="card-by">Claude</span>
+            </a></li>
         </ul>
       </div>
     </div>

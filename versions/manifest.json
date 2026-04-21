@@ -1,0 +1,116 @@
+{
+  "intro": "Fünfzehn self-contained Hauptstände. Design-Varianten daneben, mit Parent-Pfeil. Phase 2 (v6–v10) fokussiert Schüler-Ansprache; Phase 3 (v11–v15) senkt Einstiegshürden vor der Probestunde; Phase 4 (v16–v25) ist der Exploration-Layer — State-of-the-Art Web-Tech als Attraction. Jeder Ordner ist eigenständig — kein shared code.",
+  "lanes": {
+    "v1": { "color": "#b8ff5e" },
+    "v2": { "color": "#ff7a3c" },
+    "v3": { "color": "#ff5db6" },
+    "v4": { "color": "#ffd83c" },
+    "v5": { "color": "#5ec8ff" },
+    "v6": { "color": "#e9b66a" },
+    "v7": { "color": "#4ad3a0" },
+    "v8": { "color": "#c8647a" },
+    "v9": { "color": "#ff6b5b" },
+    "v10": { "color": "#b89cff", "featured": true },
+    "v11": { "color": "#7de3c4" },
+    "v12": { "color": "#ff9aa2" },
+    "v13": { "color": "#ffce5e" },
+    "v14": { "color": "#a5c8ff" },
+    "v15": { "color": "#d4ffa5" },
+    "v16": { "color": "#efe6d4" },
+    "v17": { "color": "#8eb3c7" },
+    "v18": { "color": "#c08d5b" },
+    "v19": { "color": "#5fd1c7" },
+    "v20": { "color": "#b47cff" },
+    "v21": { "color": "#ffb4a8" },
+    "v22": { "color": "#e04e6a" },
+    "v23": { "color": "#d4a84b" },
+    "v24": { "color": "#d9744a" },
+    "v25": { "color": "#4ea3a8" }
+  },
+  "versions": {
+    "v1":         { "title": "Initial",           "desc": "Erster Static-Rebuild der Bestandsseite.",                                                                    "style": "Editorial Light",      "phaseTag": "Root",    "by": "GPT-5.4" },
+    "v1-brutal":  { "title": "Swiss Brutal",      "parent": "v1",  "style": "Acid / Mono",                  "by": "GPT-5.4" },
+    "v1-noir":    { "title": "Cinematic Noir",    "parent": "v1",  "style": "B/W / Didone",                 "by": "Claude" },
+    "v1-clay":    { "title": "Clay",              "parent": "v1",  "style": "Claymorphism",                 "by": "Claude" },
+    "v1-swiss":   { "title": "Swiss Intl.",       "parent": "v1",  "style": "Classic Grid",                 "by": "Claude" },
+
+    "v2":         { "title": "9 Sektionen",       "desc": "Neue Informationsarchitektur: Content in neun zweckspezifische Sektionen.",                                   "style": "Editorial",            "by": "GPT-5.4" },
+    "v2-bento":   { "title": "Bento",             "parent": "v2",  "style": "Apple-Style Grid",             "by": "Claude" },
+    "v2-mag":     { "title": "Magazin Nº 04",     "parent": "v2",  "style": "Editorial / Drop Caps",        "by": "Claude" },
+    "v2-wiki":    { "title": "Enzyklopädie",      "parent": "v2",  "style": "Wiki-Dense",                   "by": "Claude" },
+
+    "v3":         { "title": "Barbara-Stimme",    "desc": "Copy im Originalton Barbaras neu geschrieben.",                                                               "style": "Editorial",            "by": "GPT-5.4" },
+    "v3-kinetic": { "title": "Kinetic Typo",      "parent": "v3",  "style": "GSAP",                         "by": "GPT-5.4" },
+    "v3-collage": { "title": "Scrapbook",         "parent": "v3",  "style": "Paper / Polaroids",            "by": "Claude" },
+    "v3-neobrutal":{"title": "Neo-Brutal",        "parent": "v3",  "style": "Flat / Hard Shadow",           "by": "Claude" },
+    "v3-riso":    { "title": "Risograph",         "parent": "v3",  "style": "Duotone Print",                "by": "Claude" },
+
+    "v4":         { "title": "UX-Hierarchie",     "desc": "Layer-Cake-Pattern, typografische Hierarchie, Progressive Disclosure.",                                       "style": "Editorial",            "by": "GPT-5.4" },
+    "v4-glass":   { "title": "Aurora Glass",      "parent": "v4",  "style": "visionOS-Style",               "by": "Claude" },
+    "v4-linear":  { "title": "Product Dark",      "parent": "v4",  "style": "Linear.app",                   "by": "Claude" },
+    "v4-terminal":{ "title": "Phosphor",          "parent": "v4",  "style": "CRT / BBS",                    "by": "Claude" },
+
+    "v5":         { "title": "Du-Perspektive",    "desc": "Hero, Leitsatz und Über-mich-Struktur konsequent auf den Leser ausgerichtet. Aktueller Hauptstand.",           "style": "Editorial Warm",       "by": "GPT-5.4" },
+    "v5-y2k":     { "title": "Y2K Chrome",        "parent": "v5",  "style": "Aero / Holo",                  "by": "GPT-5.4" },
+    "v5-didone":  { "title": "Didone Salon",      "parent": "v5",  "style": "Luxury Editorial",             "by": "GPT-5.4" },
+    "v5-lenis":   { "title": "Stage Scroll",      "parent": "v5",  "style": "Lenis + GSAP",                 "by": "Claude" },
+    "v5-three":   { "title": "Voice Ribbons",     "parent": "v5",  "style": "Three.js / WebGL",             "by": "Claude" },
+    "v5-resonance":{"title": "Resonance Chamber", "parent": "v5-three", "style": "Shader-Szene + Audio",    "by": "Claude · crazy" },
+
+    "v6":         { "title": "Pathway Chooser",   "desc": "Fünf Schüler-Typen wählen ihren Lernpfad direkt auf der Startseite. Cream/Cognac-Editorial.",                  "style": "Editorial Cream",      "phaseTag": "Phase 2", "by": "Claude" },
+    "v6-pathways":{ "title": "Shop-by-need",      "parent": "v6",  "style": "Apple-Style Chooser",          "by": "Claude" },
+    "v6-pathways-dark":{"title": "Petrol / Cognac","parent": "v6-pathways","style": "Dark-Flip",            "by": "Claude" },
+    "v6-chat":    { "title": "Messenger",         "parent": "v6",  "style": "Conversation",                 "by": "Claude" },
+
+    "v7":         { "title": "Probestunden-Angebot","desc": "40€-Coin-Badge, SaaS-Konversionsmechanik, warme Palette. Klares Commitment oben, Vertrauen unten.",         "style": "SaaS Warm",            "phaseTag": "Phase 2", "by": "Claude" },
+    "v7-offer":   { "title": "Stripe Dark",       "parent": "v7",  "style": "Product Dark",                 "by": "Claude" },
+    "v7-split":   { "title": "Sticky Split",      "parent": "v7",  "style": "50/50 Form",                   "by": "Claude" },
+
+    "v8":         { "title": "Weg zum Abitur",    "desc": "Literarisch, ruhig, vertrauensvoll. Schritt für Schritt zum Ziel — Sepia-Editorial ohne Druck.",              "style": "Editorial Sepia",      "phaseTag": "Phase 2", "by": "Claude" },
+    "v8-faq":     { "title": "Zen Accordion",     "parent": "v8",  "style": "FAQ / details",                "by": "Claude" },
+    "v8-journey": { "title": "6 Stationen",       "parent": "v8",  "style": "Progress Dots",                "by": "Claude" },
+    "v8-journey-map":{"title": "Topo-Karte",      "parent": "v8-journey","style": "SVG-Route",              "by": "Claude" },
+
+    "v9":         { "title": "Outcomes First",    "desc": "Was du nach einem Jahr wirklich kannst. Display-Typografie, konkrete Ergebnisse statt Methodenprosa.",        "style": "Display Cream",        "phaseTag": "Phase 2", "by": "Claude" },
+    "v9-outcomes":{ "title": "Bento Outcomes",    "parent": "v9",  "style": "6-Tile Grid",                  "by": "Claude" },
+    "v9-audio":   { "title": "Voice Memo",        "parent": "v9",  "style": "Podcast UI",                   "by": "Claude" },
+
+    "v10":        { "title": "Dialog",            "desc": "Du und Barbara im Zwiegespräch — zweistimmige Typografie, Inter für dich, Fraunces-Italic für sie.",          "style": "Literary Dialog",      "phaseTag": "Phase 2", "by": "Claude" },
+    "v10-dialog": { "title": "Chat Bubbles",      "parent": "v10", "style": "Messenger Warm",               "by": "Claude" },
+    "v10-dialog-voice":{"title": "Voice Memos",   "parent": "v10-dialog","style": "Waveform + Play",        "by": "Claude" },
+    "v10-dialog-wave":{"title": "Breathing Memos","parent": "v10-dialog","style": "Audio + Breath-Typo",    "by": "Claude · crazy" },
+    "v10-letter": { "title": "Briefwechsel",      "parent": "v10", "style": "Letter Form",                  "by": "Claude" },
+
+    "v11":        { "title": "Passungscheck",     "desc": "Kannst du mit Barbara arbeiten? Sechs Ja/Nein-Fragen zur ehrlichen Selbstprüfung — vor der Probestunde.",     "style": "Self-Audit",           "phaseTag": "Phase 3", "by": "GPT" },
+    "v11-checklist":{"title": "Checkliste",       "parent": "v11", "style": "Haken setzen",                 "by": "GPT" },
+    "v11-match":  { "title": "Du ↔ Barbara",      "parent": "v11", "style": "Match-Vergleich",              "by": "GPT" },
+
+    "v12":        { "title": "Stimm-Signale",     "desc": "Sechs Alltags-Symptome statt Methodenprosa. Du erkennst dich in einem wieder — und weißt: das ist der richtige Startpunkt.", "style": "Symptom-First", "phaseTag": "Phase 3", "by": "GPT" },
+    "v12-notes":  { "title": "Leise Notizen",     "parent": "v12", "style": "Softer Ton",                   "by": "GPT" },
+    "v12-signals":{ "title": "Ein Signal",        "parent": "v12", "style": "Minimal-Pick",                 "by": "GPT" },
+
+    "v13":        { "title": "Erster Monat",      "desc": "Ein realistischer Vier-Wochen-Ablauf — was passiert, was du übst, was sich verändert. Keine Versprechen, nur eine Linie.", "style": "Timeline", "phaseTag": "Phase 3", "by": "GPT" },
+    "v13-steps":  { "title": "5 Schritte",        "parent": "v13", "style": "Lineare Folge",                "by": "GPT" },
+    "v13-weekbook":{"title": "Wochenbuch",        "parent": "v13", "style": "Tagebuch-Ton",                 "by": "GPT" },
+
+    "v14":        { "title": "Erste Stunde",      "desc": "Tür, Raum, Einsingen, Danach. Eine ehrliche sensorische Vor-Tour für alle, die vor der ersten Stunde nervös sind.", "style": "Sensory Walkthrough", "phaseTag": "Phase 3", "by": "GPT" },
+    "v14-rhythm": { "title": "Kein Event",        "parent": "v14", "style": "Takt statt Event",             "by": "GPT" },
+    "v14-room":   { "title": "Der Raum",          "parent": "v14", "style": "Geschützter Raum",             "by": "GPT" },
+    "v14-portal": { "title": "Portal",            "parent": "v14", "style": "Horizontal Chapter-Book + Sound","by": "Claude · crazy" },
+
+    "v15":        { "title": "Schnell-Entscheidung","desc": "Sechs Ja/Nein-Karten — für Menschen, die nicht noch mehr lesen wollen. Entscheiden oder weitergehen.",      "style": "Decision Grid",        "phaseTag": "Phase 3", "by": "GPT" },
+    "v15-grid":   { "title": "Info-Raster",       "parent": "v15", "style": "Unnarrativ",                   "by": "GPT" },
+    "v15-plain":  { "title": "Klartext",          "parent": "v15", "style": "Dekor-los",                    "by": "GPT" },
+
+    "v16-libretto":{"title": "Libretto",          "desc": "Giant-Type als Bühne. Sechs Akte, Fraunces auf allen Achsen, ein Porträt ausgeschnitten im ‚Ö'. Null JavaScript.", "style": "Typography IS Design", "phaseTag": "Phase 4", "by": "Claude · crazy" },
+    "v17-breath-shader":{"title": "Atem-Shader", "desc": "Ganzseitiger Fragment-Shader, 12 BPM Atem, Szene morpht Morgen → Mittag → Abend beim Scroll.",                  "style": "Three.js / GLSL",      "phaseTag": "Phase 4", "by": "Claude · crazy" },
+    "v18-chapbook":{"title": "Stimmbiografie",    "desc": "Zehn-Seiten 3D-Chapbook, Scroll = Page-Turn mit Papier-Physik. Privates Lesen statt Scroll-Feed.",            "style": "3D Page-Flip",         "phaseTag": "Phase 4", "by": "Claude · crazy" },
+    "v19-methode-horizontal":{"title": "Methode Horizontal","desc": "Vertikale Editorial-Seite, nur die ‚Methode' wird horizontal gepinnt — fünf animierte SVG-Spreads.","style": "Horizontal Scrollytelling", "phaseTag": "Phase 4", "by": "Claude · crazy" },
+    "v20-spectrogram":{"title": "Spektrogramm",   "desc": "Live-Mikrofon, FFT, Aurora-Ribbons. Du singst ‚Ah' — siehst deine Obertöne. Pitch-Detection on-device.",       "style": "Web Audio + Canvas",   "phaseTag": "Phase 4", "by": "Claude · crazy" },
+    "v21-stimmfach":{"title": "Stimmfach-Pile",   "desc": "Neun weiche Fach-Pillen in einer Matter.js-Sandbox. Wirf sie herum, pinne eine an — geht direkt zur Probestunde.","style": "Matter.js Physics",  "phaseTag": "Phase 4", "by": "Claude · crazy" },
+    "v22-split-recital":{"title": "Split-Recital","desc": "Oben Barbara singt, unten Barbara unterrichtet. Zwei CSS-Filme scrollen desynchron, treffen sich mittendrin.","style": "Split-Screen Scroll",   "phaseTag": "Phase 4", "by": "Claude · crazy" },
+    "v23-patina": { "title": "Patina",            "desc": "Je länger du bleibst, desto wärmer das Bild. Nach 5 Minuten ist das Gold tief. Zeit = Wert, als Shader.",    "style": "Idle Shader",          "phaseTag": "Phase 4", "by": "Claude · crazy" },
+    "v24-tagesmotiv":{"title": "Tagesmotiv",      "desc": "Pro Stunde ein neues, deterministisches Notenbild. Seed aus Zeitzone × Stunde × Wochentag. Unikat für eine Stunde.","style": "Generative Canvas",   "phaseTag": "Phase 4", "by": "Claude · crazy" },
+    "v25-opera-scenes":{"title": "Opera Scenes",  "desc": "Vier Akte — Empfang, Studio, Bühne, Verabredung. Chromatic-Aberration-Vorhang zwischen den Szenen.",         "style": "Shared-Canvas Transitions", "phaseTag": "Phase 4", "by": "Claude · crazy" }
+  }
+}

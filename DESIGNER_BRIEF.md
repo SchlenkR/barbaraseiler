@@ -314,7 +314,23 @@ Zentrale Liste aller Design-Varianten mit ihrem Konzept. Bei jeder neuen Variant
 | `v10-dialog-voice/` | v10-dialog | Chat-Bubbles werden Voice-Memos: Waveform-Visuals, Play-Buttons, Zeitstempel — als wären Du & Barbara in WhatsApp-Sprachnachrichten. |
 | `v10-dialog-wave/` | v10-dialog | **Effects-Show:** Voice-Memos mit echter WebAudio-Synthese pro Zeile, atmende Fraunces-Typografie (variable wght-Achse auf 6s-Sinus), Lenis+GSAP. Jede Memo eigener Pitch (174–294 Hz). |
 | `v5-resonance/` | v5-three | **Effects-Show:** ganze Seite ist eine atmende WebGL-Szene (fullscreen Quad + Fragment-Shader), 5 Akte (Atem/Ton/Raum/Klang/Begegnung), Scroll steuert Shader-Uniforms, Content via `mix-blend-mode: difference` drüber, optionaler Audio-Drohnen-Modus mit AnalyserNode → Shader. |
-| `v19-methode-horizontal/` | v4 (UX-Hierarchie) | **Effects-Show:** Vertikales Editorial mit EINER horizontal gepinnten Methode-Sektion. Vertikales Scroll → horizontale Translation durch 5 Spreads (Atem/Ton/Stütze/Vokale/Resonanz), jeder Spread mit eigenem animierten SVG-Diagramm (Atem-Morph, Pitch-Dot entlang Kontur, Ribcage/Zwerchfell-Morph, Vokal-Cross-Fade, Resonanz-Ringe). GSAP ScrollTrigger + `containerAnimation`, pin+scrub. Mobile & reduced-motion → vertikaler Stapel, statische SVGs. |
+
+### Phase 4 (v16–v25) — Attraction-Layer (Exploration)
+
+Jeder Entwurf ist eigenständige Main-Version (kein Parent). Content aus einer Phase-1–3-Source gezogen. Primärziel bleibt Probestunden-Konversion; der Wow-Effekt dient Discovery/Share-Worthiness, nicht sich selbst. Alle `Claude · crazy`.
+
+| Ordner | Content-Source | Idee |
+|---|---|---|
+| `v16-libretto/` | v5 (Du-Perspektive) | **Giant-Type IS the design.** Fraunces auf allen Achsen (opsz, wght, SOFT), Foto ausgeschnitten im „Ö", sechs Akte als Spreads. Null JavaScript — pure Typografie + SVG clipPath. Liest sich wie ein Libretto. |
+| `v17-breath-shader/` | v3 (Barbara-Stimme) | **Ganzseitiger Fragment-Shader.** 12-BPM-Atemrhythmus deformiert die Oberfläche, Szene morpht Morgen → Mittag → Abend mit Scroll. Three.js ESM, fullscreen Quad. Nonverbale Einladung zur Stimmarbeit. |
+| `v18-chapbook/` | v3 + v5 | **3D Page-Flip-Chapbook.** Zehn Seiten „Stimmbiografie", Scroll = Page-Turn mit Papier-Physik (`perspective` + rotateY), GSAP-scrubbed. Privates Reading-Erlebnis statt Scroll-Feed. |
+| `v19-methode-horizontal/` | v4 (UX-Hierarchie) | **Horizontal Scrollytelling EINER Section.** Vertikales Editorial, nur „Methode" wird horizontal gepinnt — 5 animierte SVG-Spreads (Atem/Ton/Stütze/Vokale/Resonanz). GSAP ScrollTrigger + `containerAnimation`. Punktueller Glanz, kein Gesamt-Hijack. |
+| `v20-spectrogram/` | v12 (Signal-Chooser) | **Live-Mic FFT → Aurora-Ribbons.** Visitor singt „Ah", sieht eigene Obertöne. On-device Pitch-Detection via Autokorrelation (kein Cloud-Leak). Direktester Vertrauensbeweis: Barbara sieht, was du nicht hörst. |
+| `v21-stimmfach/` | v6 (Pathway Chooser) | **Matter.js Physics-Pile.** Neun weiche Stimmfach-Pillen (Koloratur, Mezzo, Bariton, Sprechstimme, Kirche, …) in Sandbox — wirf sie herum, pinne eine an, direkt zur Probestunde. Spielerische Selbstverortung. |
+| `v22-split-recital/` | v10 (Dialog) | **Split-Screen Divergent Narrative.** Oben Barbara singt, unten unterrichtet — zwei CSS-Filme scrollen desynchron, treffen sich mittendrin. Mensch + Lehrerin in derselben Sekunde sichtbar. |
+| `v23-patina/` | v9 (Outcomes) | **Idle-Shader, Zeit = Wert.** Je länger Visitor bleibt, desto wärmer und goldener das Hero-Foto. Nach 5 Minuten ist das Gold tief. Nonverbales Signal: ein Ort zum Bleiben. |
+| `v24-tagesmotiv/` | v1 (Editorial Base) | **Generative Per-Visit Canvas.** Pro Stunde ein neues, deterministisches Notenbild via mulberry32 + djb2-Seed aus Timezone × Stunde × Wochentag. Unikat pro Visit, Caption macht's explizit — Share-Bait. |
+| `v25-opera-scenes/` | v14 (First-Lesson Experience) | **Shared-Canvas Scene-Transitions.** Vier Akte (Empfang / Studio / Bühne / Verabredung), Chromatic-Aberration-Dissolve zwischen Szenen. Nav-Klicks öffnen wie Opernvorhänge. Igloo-Inc-Vorbild, warm statt eisig. |
 
 ---
 

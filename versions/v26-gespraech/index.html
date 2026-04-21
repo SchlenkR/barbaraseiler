@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Das Gespräch — Barbara Sophia Sailer · Gesangsunterricht Frankfurt</title>
+  <meta name="description" content="Ein kurzes Gespräch über deinen Weg zur Stimme. Gesangsunterricht bei Barbara Sophia Sailer in Frankfurt-Niederrad. Probestunde 40 € / 45 min.">
+  <meta name="theme-color" content="#f3e9d7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#chat">Zum Gespräch springen</a>
+
+<header class="mast">
+  <a class="mast-brand" href="#top">
+    <span class="mast-name">Barbara Sophia Sailer</span>
+    <span class="mast-sub">Gesangsunterricht · Frankfurt</span>
+  </a>
+  <a class="mast-cta" href="#ende">Probestunde buchen</a>
+</header>
+
+<main class="page" id="top">
+
+  <section class="intro">
+    <p class="eyebrow">Ein Gespräch, fünf Fragen</p>
+    <h1 class="title">Sag mir kurz,<br><em>was dich herführt.</em></h1>
+    <p class="lede">Kein Formular, keine KI. Nur ein paar ruhige Fragen, damit ich verstehe, wo du gerade stehst — und welcher Weg sich für dich richtig anfühlt.</p>
+    <p class="hint">Drück auf eine Antwort oder schreib selbst. Dauert etwa zwei Minuten.</p>
+  </section>
+
+  <article class="chat" id="chat" aria-live="polite" aria-label="Gespräch mit Barbara">
+    <!-- Nachrichten werden per JS eingefügt -->
+  </article>
+
+  <section class="nudge" id="ende" hidden>
+    <!-- Wird am Ende per JS befüllt -->
+  </section>
+
+  <footer class="foot">
+    <div class="foot-inner">
+      <div class="foot-col">
+        <p class="foot-head">Barbara Sophia Sailer</p>
+        <p class="foot-line">Mezzosopranistin &amp; Stimmbildnerin<br>Musterstraße 1 · 60528 Frankfurt-Niederrad<br>Tram 12, 15, 21</p>
+      </div>
+      <div class="foot-col">
+        <p class="foot-head">Ausbildung</p>
+        <ul class="foot-list">
+          <li>Staatsexamen Musik (Gesang &amp; Klavier), Augsburg</li>
+          <li>Opernschule HfM Würzburg</li>
+          <li>Meisterkurse: Fassbaender, Deutsch, Ludwig</li>
+          <li>BDG-Mitglied · ISA-Zertifikat · Atemcoach</li>
+        </ul>
+      </div>
+      <div class="foot-col foot-col-legal">
+        <nav aria-label="Rechtliches">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </nav>
+        <p class="foot-sig">© Barbara Sophia Sailer</p>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- Popover: Begriffserklärung -->
+<div id="pop-probestunde" popover class="pop">
+  <h3>Probestunde</h3>
+  <p>45 Minuten, 40&nbsp;€. Du kommst einmal, wir hören zu, probieren ein paar Übungen und ein Stück. Du entscheidest danach, ob du weitermachst.</p>
+  <button type="button" popovertarget="pop-probestunde" popovertargetaction="hide" class="pop-close">Verstanden</button>
+</div>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

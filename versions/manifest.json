@@ -1,5 +1,5 @@
 {
-  "intro": "Fünfzehn self-contained Hauptstände. Design-Varianten daneben, mit Parent-Pfeil. Phase 2 (v6–v10) fokussiert Schüler-Ansprache; Phase 3 (v11–v15) senkt Einstiegshürden vor der Probestunde; Phase 4 (v16–v25) ist der Exploration-Layer — State-of-the-Art Web-Tech als Attraction. Jeder Ordner ist eigenständig — kein shared code.",
+  "intro": "Fünfzehn self-contained Hauptstände. Design-Varianten daneben, mit Parent-Pfeil. Phase 2 (v6–v10) fokussiert Schüler-Ansprache; Phase 3 (v11–v15) senkt Einstiegshürden vor der Probestunde; Phase 4 (v16–v25) ist der Exploration-Layer — State-of-the-Art Web-Tech als Attraction; Phase 5 (v26–v35) verheiratet Wow mit Conversion — jeder Entwurf fordert Interaktion, die in Booking mündet. Jeder Ordner ist eigenständig — kein shared code.",
   "lanes": {
     "v1": { "color": "#b8ff5e" },
     "v2": { "color": "#ff7a3c" },
@@ -25,7 +25,17 @@
     "v22": { "color": "#e04e6a" },
     "v23": { "color": "#d4a84b" },
     "v24": { "color": "#d9744a" },
-    "v25": { "color": "#4ea3a8" }
+    "v25": { "color": "#4ea3a8" },
+    "v26": { "color": "#ffa07a" },
+    "v27": { "color": "#98d8c8" },
+    "v28": { "color": "#e6a8ff" },
+    "v29": { "color": "#ffb347" },
+    "v30": { "color": "#77dd77" },
+    "v31": { "color": "#ff5db6" },
+    "v32": { "color": "#cd853f" },
+    "v33": { "color": "#b0c4de" },
+    "v34": { "color": "#f4a460" },
+    "v35": { "color": "#c9c9c9" }
   },
   "versions": {
     "v1":         { "title": "Initial",           "desc": "Erster Static-Rebuild der Bestandsseite.",                                                                    "style": "Editorial Light",      "phaseTag": "Root",    "by": "GPT-5.4" },
@@ -111,6 +121,17 @@
     "v22-split-recital":{"title": "Split-Recital","desc": "Oben Barbara singt, unten Barbara unterrichtet. Zwei CSS-Filme scrollen desynchron, treffen sich mittendrin.","style": "Split-Screen Scroll",   "phaseTag": "Phase 4", "by": "Claude · crazy" },
     "v23-patina": { "title": "Patina",            "desc": "Je länger du bleibst, desto wärmer das Bild. Nach 5 Minuten ist das Gold tief. Zeit = Wert, als Shader.",    "style": "Idle Shader",          "phaseTag": "Phase 4", "by": "Claude · crazy" },
     "v24-tagesmotiv":{"title": "Tagesmotiv",      "desc": "Pro Stunde ein neues, deterministisches Notenbild. Seed aus Zeitzone × Stunde × Wochentag. Unikat für eine Stunde.","style": "Generative Canvas",   "phaseTag": "Phase 4", "by": "Claude · crazy" },
-    "v25-opera-scenes":{"title": "Opera Scenes",  "desc": "Vier Akte — Empfang, Studio, Bühne, Verabredung. Chromatic-Aberration-Vorhang zwischen den Szenen.",         "style": "Shared-Canvas Transitions", "phaseTag": "Phase 4", "by": "Claude · crazy" }
+    "v25-opera-scenes":{"title": "Opera Scenes",  "desc": "Vier Akte — Empfang, Studio, Bühne, Verabredung. Chromatic-Aberration-Vorhang zwischen den Szenen.",         "style": "Shared-Canvas Transitions", "phaseTag": "Phase 4", "by": "Claude · crazy" },
+
+    "v26-gespraech":{"title": "Gespräch",        "desc": "Scripted-LLM-Advisor: 5 Fragen, Intent-Matching, Typewriter, Popover-Klärungen. Endet mit personalisiertem Probestunden-Link.",                       "style": "Conversational UI",    "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v27-timeline-physics":{"title": "Jahresleiste","desc": "Zwölf Monats-Token fallen in eine Matter.js-Zeitleiste und settlen zu deinem ersten Jahr mit Barbara — mit Meilenstein-Noten.",                   "style": "Physics Timeline",     "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v28-mirror": {"title": "Spiegel",            "desc": "Explizites Kamera-Opt-in, client-side Grayscale-Filter + Pitch-Bars. Barbara ist der Spiegel — nichts geht raus.",                                    "style": "Camera + Canvas",      "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v29-ambient":{"title": "Ambient",            "desc": "Hall-Reverb-Audio-Bed nach Consent, Variable-Font atmet mit der Amplitude. Stille am Ende = CTA-Moment.",                                             "style": "Web Audio + VF",       "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v30-feedback":{"title": "Feedback",          "desc": "Zwei Slider (Alltag/Bühne) steuern ein Canvas-Partikelfeld, das zur Pathway-Empfehlung morpht.",                                                     "style": "Slider + Particles",   "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v31-oper-chooser":{"title": "Oper",          "desc": "Buzzfeed-Style-Quiz: 5 Fragen, 7 Opern-Charaktere. Generierte Share-Karte per Canvas.",                                                              "style": "Quiz + Canvas Share",  "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v32-rooms": {"title": "Räume",               "desc": "Isometrisches SVG-Studio. Klickzonen auf Klavier/Stuhl/Spiegel öffnen Content — mit View Transitions API.",                                           "style": "Isometric + VT-API",   "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v33-kalender-ghost":{"title": "Kalender",    "desc": "Rolling Social Proof: anonymisierte Schüler-Meilensteine im Wochenraster. Zeigt Leben, ohne Testimonial-Kitsch.",                                    "style": "Rolling Proof",        "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v34-brief-an-dich":{"title": "Brief an dich","desc": "Formular → personalisierter Brief von Barbara, typewriter-animiert, mit deinem Namen. Print-to-PDF.",                                                "style": "Personalized Letter",  "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v35-zine":  {"title": "Zine",                "desc": "Contrarian-Reset: Reclam-Style Zero-JS-Editorial. Marginalien, Baseline-Grid, CSS `animation-timeline: view()`. Substanz statt Effekte.",            "style": "Editorial Zero-JS",    "phaseTag": "Phase 5", "by": "Claude · wow+convert" }
   }
 }

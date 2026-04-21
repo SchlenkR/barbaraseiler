@@ -400,3 +400,51 @@ Jeder Entwurf ist eigenständige Main-Version (v16–v25). Content wird aus eine
 **Commit-Rhythmus:** 1 Commit pro Batch, Push nach allen 10.
 
 **Bewusster Bruch mit Phase 2/3-Constraints:** Phase 4 darf Scroll-Hijack (punktuell), horizontalen Scroll (punktuell) und WebGL-Hero nutzen. Das ist der Punkt. Conversion-Strenge der Phase 2/3 wird suspendiert, weil Phase 4 als **Attraction-Layer** dient (Discovery, Share, Memorability), während Phase 2/3 für Suchende-im-Tunnel bleibt. Beide Tracks existieren parallel, Barbara bekommt am Ende **beide Angebote** als auswählbare Varianten.
+
+---
+
+## 13. Phase 5 — Ehe aus Wow + Conversion (v26–v35)
+
+**Mandat (Ronald, 2026-04-21, später Abend):** „mach jetzt alles mögliche, weiter iterieren, neue Entwürfe, noch mehr crazy, Research, Struktur, Wording, design – bis ich abbrechen sage, spätestens 23:50." Phase 5 verheiratet die Phase-4-Attraction-Techniken mit Phase-2/3-Konversionsdisziplin: jeder Entwurf hat EINEN Wow-Move UND EINEN spezifischen Conversion-Hebel (Selbst-Check, Qualifizierung, Social Proof, persönliche Ansprache, Asset zum Mitnehmen).
+
+### Konzeptkerne
+
+| Ordner | Wow-Move (Phase-4-DNA) | Conversion-Hebel | Content-Source | Barbara-Hook |
+|---|---|---|---|---|
+| `v26-gespraech/` | Scripted-LLM-Feel Chat-Advisor: Intent-Matching gegen kuratierte Knowledge-Base, Typewriter-Ausgabe, Popover API für inline-Klärungen. Fühlt sich wie on-device LLM an, ist deterministisch. | Lead-Qualifizierung: 5 Fragen → personalisierte Pathway-Empfehlung + vorausgefüllter Probestunden-Link. | v6 (Pathway) + v10 (Dialog) | Barbara „spricht zurück". Visitor fühlt sich gehört, bevor er klickt. |
+| `v27-timeline-physics/` | Matter.js Timeline — 12 Monats-Token fallen in eine physikalische Zeitleiste, settlen zum Jahr. | Commitment visualisieren als machbar/spielerisch — jeder Monat mit Meilenstein-Note. | v13 (Erster Monat) | „Ein Jahr mit Barbara" ist greifbar, nicht abstrakt. |
+| `v28-mirror/` | getUserMedia + Canvas-Grayscale-Filter mit abstrakten Audio-Bars (Pitch → Balken-Höhe). Alles client-side, explizites Opt-in, kein Upload. | Deep-Trust: Barbara = Spiegel. Wer sich traut, sich zu sehen, ist bereit zu buchen. | v3 (Barbara-Stimme) + v14 (First Lesson) | Spiegel-Metapher: Probestunde ist der Moment, wo du dich siehst/hörst. |
+| `v29-ambient/` | Scroll-getakteter Ambient-Audio-Bed (Hall-Reverb, leise Klavierresonanz) **nach** Consent-Gesture. Variable-Font-Achsen (wght/opsz) gekoppelt an Audio-Envelope — Wörter atmen mit dem Ton. | Emotionaler Peak vor CTA: „Die Stille danach ist der Unterricht." | v5 (Du-Perspektive) | Scroll = Atemphrase. Räumlich spürbar, nicht erklärt. Codrops 2026-Technik (Amplitude → Type). |
+| `v30-feedback/` | Dual-Slider-UI („Wie oft singst du?" / „Wie nervös machst du Bühne?") — Canvas-Partikelfeld morpht zu Pathway-Empfehlung. | Selbst-Audit → Pathway → Booking. Tactile & visuell. | v11 (Passungscheck) + v6 (Pathway) | Du schiebst die Parameter, Barbara zeigt den Weg. |
+| `v31-oper-chooser/` | Buzzfeed-Style-Quiz (5 Fragen) → einer von 7 Opern-Charakteren (Mimì, Carmen, Papageno, …). Share-Karte generiert via Canvas. | Viralität als Akquise + niedrige Commitment-Schwelle (Quiz ≪ Probestunde). | v5-y2k (Y2K Chrome) + v9 | „Welche Oper bist du?" — Spielerisch, aber mit echter stimmlicher Zuordnung. |
+| `v32-rooms/` | Isometrisches SVG-Zimmer von Barbaras Studio. Klickzonen auf Klavier/Stuhl/Spiegel/Fenster. **View Transitions API** zwischen Raum-Overview und Detail-Ansichten (zero framework, warme Hand-offs). | Raum-Familiarität senkt Booking-Angst („ich weiß, wo ich hingehe"). | v14 (First Lesson) | Puppenhaus-UX: bevor du kommst, bist du schon einmal da gewesen. |
+| `v33-kalender-ghost/` | Rolling-Proof-Kalender mit anonymisierten Schüler-Meilensteinen („Letzten Mittwoch: Aufnahmeprüfungs-Zusage"). JSON-Feed, kein echter Name. | Social Proof ohne Testimonial-Kitsch. Zeigt: hier passiert Erfolg, hier ist aktuell Leben. | v7 (Offer) + v9 (Outcomes) | „Bei Barbara läuft was" — ohne peinliche 5-Sterne-Theater. |
+| `v34-brief-an-dich/` | User → Formular (Name, Ziel, eine Sorge) → typewriter-animierter Brief von Barbara, addressiert an Visitor. Print-to-PDF. | Take-away-Asset: persönlicher Brief mit eigenem Namen = Kühlschrank-Magnet-Effekt. | v10-letter (Briefwechsel) + v5 | Barbara schreibt dir zurück, bevor du buchst. Warmer Pre-Contact. |
+| `v35-zine/` | **Contrarian-Reset:** Editorial Zine/Reclam-Style, grosse Marginalien, Baseline-Grid, Pull-Quotes, keine Animation außer CSS `animation-timeline: view()` für Mask-Reveals. Zero JS. | Ultra-schnelle Ladezeit + Anti-Tech-Bro-Signal: Barbara ist Literatur, nicht Gadget. | v3 (Barbara-Stimme) + v8 (Weg zum Abitur) | Reaktion auf WebGL-Overload; zeigt: Barbara braucht keine Effekte, sie hat Substanz. |
+
+### Pflicht-Elemente (identisch zu Phase 4)
+
+- funktionierende `impressum.html` + `datenschutz.html`, Legal ohne schwere Runtime
+- sticky CTA „Probestunde buchen" (40 € / 45 min)
+- Dummy-PII (Musterstraße 1 / +49 (0)555 … / `wa.me/495551234567`)
+- `prefers-reduced-motion`-Fallback
+- Mobile ≥ 375 px
+- `type="module"` für alle Scripts, relative `href`
+
+### Zusätzliche Phase-5-Pflicht
+
+- **Mess-Punkt**: jeder Entwurf exponiert einen klaren „Probestunde-ähnlichen" CTA innerhalb des Wow-Moves — nicht erst am Ende der Seite. Booking kann mitten im Flow angeboten werden (z. B. am Ende des Chat-Baums, am Ende des Quiz, nach dem Brief).
+- **Graceful Degradation**: falls WebGL/Audio/Camera nicht verfügbar, fällt die Seite auf ein editoriales Phase-2/3-Pendant zurück — niemals „white screen".
+
+### Parallelisierungs-Strategie
+
+- **Batch 5A (Chat/Interaktion):** v26-gespraech, v30-feedback, v31-oper-chooser → 3 Agents
+- **Batch 5B (Audio/Physics):** v27-timeline-physics, v28-mirror, v29-crescendo → 3 Agents
+- **Batch 5C (Content-heavy):** v32-rooms, v33-kalender-ghost, v34-brief-an-dich, v35-zum-lesen → 4 Agents
+
+Commit pro Batch, nicht warten auf Runde-Ende.
+
+### Phase 5 vs. Phase 4 — Differenzierung
+
+- Phase 4 = „schau mal, was geht" (Attraction, Erinnerbarkeit).
+- Phase 5 = „mach was mit dir" (Interaktion → Entscheidung). Jeder Entwurf fragt den Visitor zu etwas (Frage beantworten, Slider schieben, Kamera-Opt-in, Formular ausfüllen, Audio wählen) und führt diese Interaktion direkt in einen Conversion-Moment über.

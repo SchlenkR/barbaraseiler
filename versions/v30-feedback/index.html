@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback | Barbara Sophia Sailer – Gesangsunterricht Frankfurt</title>
+  <meta name="description" content="Selbst-Audit für deinen Einstieg: zwei Schieber, ein Partikelfeld, dein Weg. Gesangsunterricht in Frankfurt-Niederrad. Probestunde 40 € / 45 min.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-name">Barbara Sailer</span>
+      <span class="brand-sub">Gesangsunterricht · Frankfurt</span>
+    </a>
+    <a class="nav-cta" href="#probestunde">Probestunde</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="stage" id="top">
+    <canvas id="particles" aria-hidden="true"></canvas>
+
+    <div class="stage-inner">
+      <p class="eyebrow">Selbst-Audit · zwei Regler</p>
+      <h1 class="stage-title">Wo steht deine Stimme gerade?</h1>
+      <p class="stage-lede">Keine Quizshow, kein Test. Schieb die zwei Regler, bis die Sätze ungefähr stimmen. Das Feld hinter dir reagiert mit, und unten wird klarer, welcher Weg zu dir passt.</p>
+
+      <form class="controls" id="controls" aria-label="Stimm-Audit">
+
+        <div class="slider-block">
+          <div class="slider-head">
+            <label class="slider-label" for="s1">Wie oft singst du im Alltag?</label>
+            <output class="slider-value" id="s1-out">35</output>
+          </div>
+          <input type="range" id="s1" name="s1" min="0" max="100" value="35" step="1" aria-describedby="s1-phrase">
+          <div class="slider-foot">
+            <span class="slider-end slider-end-left">0 · Still-Sängerin</span>
+            <span class="slider-phrase" id="s1-phrase">Unter der Dusche, im Auto manchmal</span>
+            <span class="slider-end slider-end-right">100 · Jeden Tag im Auto</span>
+          </div>
+        </div>
+
+        <div class="slider-block">
+          <div class="slider-head">
+            <label class="slider-label" for="s2">Wie nervös macht dich die Bühne?</label>
+            <output class="slider-value" id="s2-out">60</output>
+          </div>
+          <input type="range" id="s2" name="s2" min="0" max="100" value="60" step="1" aria-describedby="s2-phrase">
+          <div class="slider-foot">
+            <span class="slider-end slider-end-left">0 · Ruhig wie Wasser</span>
+            <span class="slider-phrase" id="s2-phrase">Das Herz klopft vernehmlich</span>
+            <span class="slider-end slider-end-right">100 · Knie geben nach</span>
+          </div>
+        </div>
+
+      </form>
+
+      <div class="caption" id="caption" aria-live="polite">
+        <p class="caption-kicker">Dein Weg deutet auf</p>
+        <h2 class="caption-title" id="captionTitle">Vorsichtig Wiedereinsteigen</h2>
+        <p class="caption-line" id="captionLine">Still anfangen. Kein Publikum, nur ein Raum.</p>
+        <div class="caption-actions">
+          <a class="btn btn-primary" id="pathCta" href="#probestunde">Probestunde buchen · 40 €</a>
+          <a class="btn btn-whats" id="pathWhats" href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde.%20Mein%20Weg%3A%20Vorsichtig%20Wiedereinsteigen." target="_blank" rel="noopener">Per WhatsApp melden</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about" id="ueber">
+    <div class="about-inner">
+      <p class="eyebrow">Kurz zu Barbara</p>
+      <h2>Viel Ausbildung. Im Unterricht trotzdem kein Theater.</h2>
+      <p>Mezzosopranistin und Stimmbildnerin in Frankfurt. <strong>Staatsexamen Musik</strong> (Gesang und Klavier) und Germanistik in Augsburg, danach die Opernschule der Hochschule für Musik Würzburg. Meisterkurse bei Brigitte Fassbaender, Helmut Deutsch, Christa Ludwig. BDG-Mitglied, ISA-Zertifikat, Atemcoach. Eigene Liederabendreihe „Blutrot&#8220; in der Würzburger Residenz.</p>
+      <p>Im Unterricht zählt das hier weniger. Hier zählt, dass deine Stimme tragfähig wird. Ruhig, konkret, ohne Prüfungsgefühl.</p>
+    </div>
+  </section>
+
+  <section class="pathways" id="pathways">
+    <div class="pathways-head">
+      <p class="eyebrow">Vier Wege</p>
+      <h2>Jede Kombi hat ihren eigenen Einstieg.</h2>
+      <p>Die Regler oben führen dich automatisch zu einem der vier. Falls du trotzdem durchblicken willst:</p>
+    </div>
+
+    <div class="path-grid">
+      <article class="path-card" data-quadrant="einsteiger">
+        <span class="path-dot"></span>
+        <h3>Einsteiger*in</h3>
+        <p class="path-axis">Wenig Alltagsgesang · ruhig vor Publikum</p>
+        <p>Nichts zu verlieren, alles zu entdecken. Der Raum, ein Klavier, deine Stimme — und der erste Ton, den du vorher nicht hattest.</p>
+      </article>
+
+      <article class="path-card" data-quadrant="freie-stimme">
+        <span class="path-dot"></span>
+        <h3>Freie Stimme</h3>
+        <p class="path-axis">Viel Alltagsgesang · ruhig vor Publikum</p>
+        <p>Du singst bereits. Barbara gibt dir die Technik dazu. Atem, Resonanz, Stütze — ohne dir deine Art zu klingen abzugewöhnen.</p>
+      </article>
+
+      <article class="path-card" data-quadrant="wiedereinstieg">
+        <span class="path-dot"></span>
+        <h3>Vorsichtig Wiedereinsteigen</h3>
+        <p class="path-axis">Wenig Alltagsgesang · nervös vor Publikum</p>
+        <p>Still anfangen. Kein Publikum, nur ein Raum. Zuerst wieder hören lernen, was da ist. Dann langsam wieder singen.</p>
+      </article>
+
+      <article class="path-card" data-quadrant="auftritt">
+        <span class="path-dot"></span>
+        <h3>Auftritts-Coaching</h3>
+        <p class="path-axis">Viel Alltagsgesang · nervös vor Publikum</p>
+        <p>Die Stimme sitzt. Wir arbeiten am Rest. Die ersten 30 Sekunden im Raum. Der Atem vor dem Einsatz. Das Weiter-Singen, wenn das Herz klopft.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="practical">
+    <div class="practical-inner">
+      <div class="practical-block">
+        <p class="eyebrow">Probestunde</p>
+        <p class="big">40 € · 45 Minuten</p>
+        <p>Keine Vorbereitung nötig. Du musst nichts vorsingen. Wir hören, reden kurz, probieren. Am Ende wissen wir beide, ob es trägt.</p>
+      </div>
+      <div class="practical-block">
+        <p class="eyebrow">Danach</p>
+        <p class="big">50 € / 45 min · 60 € / 60 min</p>
+        <p>10er-Karte: elf Stunden zum Preis von zehn, ohne Ablauf. Kein Vertrag, keine Mindestlaufzeit.</p>
+      </div>
+      <div class="practical-block">
+        <p class="eyebrow">Ort</p>
+        <p class="big">Niederrad</p>
+        <p>Musterstraße 1 · 60528 Frankfurt. Tram 12, 15 und 21 direkt aus der Innenstadt. Parkmöglichkeiten im Umkreis.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="probestunde">
+    <div class="contact-inner">
+      <p class="eyebrow">Probestunde buchen</p>
+      <h2>Schreib mir kurz, was dich herbringt.</h2>
+      <p>WhatsApp ist am schnellsten. Wer lieber formuliert, nimmt das Formular. Wer lieber spricht, kriegt die Nummer.</p>
+
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde." target="_blank" rel="noopener">WhatsApp schreiben</a>
+        <button type="button" class="btn btn-ghost" id="phoneRevealBtn" aria-live="polite">Telefonnummer anzeigen</button>
+      </div>
+
+      <form class="form" action="https://formsubmit.co/barbarasailer@web.de" method="POST">
+        <input type="hidden" name="_subject" value="Neue Anfrage über v30-feedback">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="pfad" id="pfad" value="Vorsichtig Wiedereinsteigen">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form-row">
+          <label>Vorname
+            <input type="text" name="vorname" required autocomplete="given-name">
+          </label>
+          <label>Name
+            <input type="text" name="name" required autocomplete="family-name">
+          </label>
+        </div>
+        <label>E-Mail
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+        <label>Nachricht
+          <textarea name="nachricht" rows="4" placeholder="Ein, zwei Sätze reichen."></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Nachricht senden</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand">Barbara Sophia Sailer</p>
+      <p>Musterstraße 1 · 60528 Frankfurt a. M.</p>
+    </div>
+    <div>
+      <p class="footer-label">Direkt</p>
+      <p><a href="mailto:barbarasailer@web.de">barbarasailer@web.de</a><br><a href="tel:+495551234567">+49 (0)555 123 456 7</a></p>
+    </div>
+    <div>
+      <p class="footer-label">Rechtliches</p>
+      <p><a href="./impressum.html">Impressum</a><br><a href="./datenschutz.html">Datenschutz</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

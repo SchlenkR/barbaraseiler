@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welche Oper bist du? · Barbara Sophia Sailer</title>
+  <meta name="description" content="Ein Quiz in fünf Fragen. Finde heraus, welche Opernfigur zu deiner Stimme passt — und bekomme eine Probestunde, die dazu passt. Von Barbara Sophia Sailer, Gesangslehrerin in Frankfurt.">
+  <meta name="theme-color" content="#f6eede">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="index.html">
+      <span class="wordmark-mark" aria-hidden="true">B·S</span>
+      <span class="wordmark-text">Barbara Sophia Sailer</span>
+    </a>
+    <nav class="topnav" aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="stage">
+
+  <!-- INTRO -->
+  <section class="screen screen-intro is-active" id="screen-intro" aria-labelledby="introHead">
+    <div class="intro-inner">
+      <p class="overline">Nº 31 · Gazette der Stimmen</p>
+      <h1 id="introHead" class="display">Welche <em>Oper</em> bist du?</h1>
+      <p class="lede">Fünf Fragen. Eine Figur. Sieben mögliche Antworten zwischen <em>Mimì</em>, <em>Carmen</em>, <em>Papageno</em>, <em>Königin der Nacht</em> und drei weiteren — plus eine Probestunde, die genau zu deiner Stimme passt.</p>
+      <div class="intro-meta">
+        <span>~ 90 Sekunden</span>
+        <span>·</span>
+        <span>mit Teilkarte</span>
+        <span>·</span>
+        <span>Probestunde 40&nbsp;€</span>
+      </div>
+      <button type="button" class="btn btn-primary" id="startBtn">Quiz starten</button>
+      <p class="intro-note">Kuratiert von Barbara Sophia Sailer, Mezzosopranistin und Stimmbildnerin in Frankfurt-Niederrad.</p>
+    </div>
+    <div class="intro-decor" aria-hidden="true">
+      <span class="decor decor-1">Libretto</span>
+      <span class="decor decor-2">Nº 31</span>
+      <span class="decor decor-3">Probebühne</span>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="screen screen-quiz" id="screen-quiz" aria-labelledby="quizHead" hidden>
+    <div class="quiz-head">
+      <p class="overline" id="quizHead">Quiz · <span id="progressLabel">Frage 1 / 5</span></p>
+      <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+    </div>
+    <div class="quiz-card" id="quizCard" role="region" aria-live="polite">
+      <!-- Question + choices rendered here -->
+    </div>
+    <div class="quiz-foot">
+      <button type="button" class="btn-ghost" id="backBtn" disabled>Zurück</button>
+      <p class="quiz-hint" aria-hidden="true">Tipp: Tasten 1–4 oder Pfeile, Enter bestätigt.</p>
+      <button type="button" class="btn btn-primary" id="nextBtn" disabled>Weiter</button>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen screen-result" id="screen-result" aria-labelledby="resultHead" hidden>
+    <article class="result-card" id="resultCard">
+      <!-- Result rendered here -->
+    </article>
+
+    <aside class="result-aside">
+      <h3 class="aside-title">Probestunde, zugeschnitten.</h3>
+      <p class="aside-sub" id="asideSub">Ein erster Ton, wie er zu deiner Figur passt.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" id="bookCta" href="#kontakt">Probestunde buchen</a>
+        <a class="btn btn-whatsapp" id="waCta" href="https://wa.me/495551234567" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <button type="button" class="btn-ghost" id="restartBtn">Noch mal spielen</button>
+    </aside>
+
+    <section class="contact-block" id="kontakt">
+      <h3>Direkt anfragen</h3>
+      <p>Der schnellste Weg ist WhatsApp. Wer lieber schreibt, nutzt das Formular — die Antwort kommt von Barbara persönlich.</p>
+      <form class="contact-form" action="https://formsubmit.co/barbarasailer@web.de" method="POST">
+        <input type="hidden" name="_subject" value="Probestunde aus Quiz 'Welche Oper bist du?'">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="figur" id="hiddenFigur" value="">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <label>Vorname<input type="text" name="vorname" required></label>
+        <label>E-Mail<input type="email" name="email" required></label>
+        <label>Nachricht<textarea name="nachricht" rows="4" placeholder="Kurz worum es dir geht — oder einfach nur: Probestunde."></textarea></label>
+        <button type="submit" class="btn btn-primary btn-send">Nachricht senden</button>
+      </form>
+    </section>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>Barbara Sophia Sailer · Musterstraße 1 · 60528 Frankfurt a.M.</p>
+    <nav aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Hidden canvas for share-card generation -->
+<canvas id="shareCanvas" width="1200" height="630" aria-hidden="true"></canvas>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

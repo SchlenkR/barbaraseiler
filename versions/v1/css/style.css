@@ -1,0 +1,411 @@
+/* Barbara Sophia Sailer – v2 (fullscreen hero + scroll-fade) */
+
+:root {
+  --color-text: #1a1a1a;
+  --color-muted: #555;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f5f2ee;
+  --color-accent: #111;
+  --color-footer-bg: #1a1a1a;
+  --color-footer-text: #d9d9d9;
+  --container: 1180px;
+  --container-narrow: 760px;
+  --radius: 4px;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-head: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --slide-cycle: 32s;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+a:hover { border-bottom-color: currentColor; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin: 0 0 0.6em;
+}
+h1 { font-size: 2.6rem; line-height: 1.15; }
+h2 { font-size: 2rem; line-height: 1.2; }
+h3 { font-size: 1.4rem; line-height: 1.3; font-weight: 400; }
+p { margin: 0 0 1em; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   HERO (fullscreen, fixed, fades out on scroll)
+   ============================================================ */
+.hero {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+  will-change: opacity;
+}
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: cross-fade var(--slide-cycle) infinite;
+}
+
+.slide-1 { background-image: url('../assets/images/slideshow/barbara1.jpg'); animation-delay: 0s; }
+.slide-2 { background-image: url('../assets/images/slideshow/barbara2.jpg'); animation-delay: -24s; }
+.slide-3 { background-image: url('../assets/images/slideshow/barbara3.jpg'); animation-delay: -16s; }
+.slide-4 { background-image: url('../assets/images/slideshow/barbara4.jpg'); animation-delay: -8s; }
+
+@keyframes cross-fade {
+  0%   { opacity: 0; }
+  6%   { opacity: 1; }
+  25%  { opacity: 1; }
+  31%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 24px;
+}
+.hero-content h1 {
+  color: #fff;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 200;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25em;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+.hero-sub {
+  color: #fff;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  margin: 0;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 14px;
+  border-bottom: none;
+  overflow: visible;
+}
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  width: 22px;
+  height: 22px;
+  border-right: 2px solid rgba(255,255,255,0.7);
+  border-bottom: 2px solid rgba(255,255,255,0.7);
+  transform: translateX(-50%) translateY(22px) rotate(45deg);
+}
+.scroll-cue span {
+  display: block;
+  width: 4px;
+  height: 8px;
+  background: #fff;
+  border-radius: 2px;
+  margin: 6px auto 0;
+  animation: scroll-bounce 1.6s ease-in-out infinite;
+}
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%      { transform: translateY(14px); opacity: 0.2; }
+}
+
+/* ============================================================
+   SITE HEADER (sticky, appears after hero)
+   ============================================================ */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #eee;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.site-header.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  gap: 24px;
+}
+.logo { flex-shrink: 0; border: none; }
+.logo img { height: 44px; width: auto; }
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+.main-nav a {
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  border: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+.main-nav a:hover { border-bottom-color: var(--color-accent); }
+
+/* ============================================================
+   CONTENT (sits on top of hero, starts below viewport)
+   ============================================================ */
+.content {
+  position: relative;
+  z-index: 10;
+  margin-top: 100vh;
+  background: var(--color-bg);
+}
+
+.section {
+  padding: 96px 0;
+}
+.section-alt { background: var(--color-bg-alt); }
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: 0.03em;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.card {
+  position: relative;
+  min-height: 520px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.85) 100%);
+  z-index: -1;
+}
+.card-body { padding: 32px 28px; width: 100%; }
+.card-body h3 { color: #fff; font-size: 1.8rem; font-weight: 300; margin-bottom: 16px; }
+.card-body p { font-size: 0.95rem; line-height: 1.55; margin-bottom: 12px; }
+.card-body strong { font-weight: 600; }
+.course-locations {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+}
+.course-locations li {
+  padding: 4px 0;
+  border-top: 1px solid rgba(255,255,255,0.25);
+}
+.course-locations li:first-child { border-top: none; }
+
+/* Two-column */
+.two-col {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 56px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+.two-col-text h3 { margin-top: 0; }
+.two-col-image img {
+  border-radius: var(--radius);
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+
+/* Qualifications */
+.qualifications h3 { margin-bottom: 24px; font-size: 1.6rem; }
+.qualifications ul {
+  columns: 2;
+  column-gap: 48px;
+  padding-left: 20px;
+  margin: 0;
+}
+.qualifications li {
+  margin-bottom: 10px;
+  break-inside: avoid;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 56px;
+  align-items: start;
+}
+.contact-info p { font-size: 1.05rem; }
+
+.contact-form label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.contact-form input,
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px 14px;
+  border: 1px solid #d9d4cd;
+  border-radius: var(--radius);
+  background: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+  transition: border-color 0.2s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus { outline: none; border-color: var(--color-accent); }
+.contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact-form button {
+  margin-top: 8px;
+  padding: 14px 28px;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.contact-form button:hover { opacity: 0.85; }
+
+/* Footer */
+.site-footer {
+  background: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  padding: 60px 0 40px;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr auto;
+  gap: 40px;
+  align-items: start;
+}
+.footer-brand img { max-width: 260px; width: 100%; }
+.footer-contact { font-size: 0.95rem; }
+.footer-contact p { margin-bottom: 10px; }
+.footer-contact a { color: var(--color-footer-text); border: none; }
+.footer-contact a:hover { border-bottom: 1px solid var(--color-footer-text); }
+.footer-nav { display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; }
+.footer-nav a {
+  color: var(--color-footer-text);
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.footer-nav a:hover { border-bottom: 1px solid var(--color-footer-text); }
+
+/* Responsive */
+@media (max-width: 860px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.6rem; }
+  .section { padding: 64px 0; }
+  .section-title { font-size: 1.8rem; margin-bottom: 40px; }
+  .cards { grid-template-columns: 1fr; }
+  .card { min-height: 460px; }
+  .two-col { grid-template-columns: 1fr; gap: 32px; }
+  .qualifications ul { columns: 1; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-inner { grid-template-columns: 1fr; text-align: left; }
+  .main-nav ul { gap: 16px; }
+  .main-nav a { font-size: 0.8rem; }
+  .logo img { height: 36px; }
+  .header-inner { min-height: 60px; }
+  .contact-form .form-row { grid-template-columns: 1fr; }
+  .scroll-cue { bottom: 24px; }
+}

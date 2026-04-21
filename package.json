@@ -1,0 +1,14 @@
+{
+  "name": "barbaraseiler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Self-contained versions of the Barbara Sophia Sailer site, served by Vite.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

@@ -252,17 +252,24 @@ body.shader-ready .static-bg { opacity: 0; }
   .scroll-hint .line { animation: none; transform: scaleY(0.7); }
 }
 
-/* Sections float above canvas with opaque-ish paper panels so the text is readable
- * regardless of what the shader is doing behind them. */
+/* Sections float above canvas as frosted glass — shader keeps breathing behind. */
 .section {
   position: relative;
   z-index: 2;
   padding: 5rem clamp(1.25rem, 5vw, 4rem);
-  background: var(--paper);
+  background: rgba(246, 239, 226, 0.78);
+  backdrop-filter: blur(18px) saturate(1.08);
+  -webkit-backdrop-filter: blur(18px) saturate(1.08);
 }
-.section-tint { background: var(--paper-dim); }
+.section-tint { background: rgba(236, 226, 207, 0.78); }
 .section-offer {
-  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-dim) 100%);
+  background: linear-gradient(180deg, rgba(246, 239, 226, 0.78) 0%, rgba(236, 226, 207, 0.78) 100%);
+}
+/* Safari/Firefox without backdrop-filter: keep readable with a touch more opacity. */
+@supports not (backdrop-filter: blur(1px)) {
+  .section       { background: rgba(246, 239, 226, 0.94); }
+  .section-tint  { background: rgba(236, 226, 207, 0.94); }
+  .section-offer { background: linear-gradient(180deg, rgba(246, 239, 226, 0.94) 0%, rgba(236, 226, 207, 0.94) 100%); }
 }
 
 .container {

@@ -53,11 +53,15 @@ versions/v<N>-<label>/
 
 ## 3. Naming-Konvention
 
-`v<N>-<label>` wobei `<N>` = Parent-Version (1–5), `<label>` = kurzer Design-Descriptor (kebab-case, max 12 Zeichen).
+Aktueller Stand:
 
-Beispiele: `v2-bento`, `v4-terminal`, `v5-didone`.
+- **Hauptversionen** heißen `v<N>`.
+- **Unterversionen** hängen per Minus an der Hauptversion: `v<N>-<label>`.
+- **Tiefere Unterversionen** bleiben ebenfalls minus-getrennt: `v<N>-<label>-<twist>`.
 
-**Parent = welche der 5 Ursprungsversionen ist der Content-Ausgangspunkt**, NICHT zwingend die Design-Basis — du darfst den Content aus v5 nehmen und trotzdem mit Parent v2 taggen, wenn deine Struktur v2-näher ist. Im Zweifel: Parent = Version, die deinem Strukturgedanken am nächsten kommt.
+Beispiele: `v10-dialog`, `v10-dialog-voice`, `v11-checklist`, `v13-weekbook`.
+
+**Parent = die Hauptversion, deren IA-Strang du fortschreibst.** Der Parent beschreibt also inzwischen nicht mehr nur die Phase-1-Ursprünge, sondern die jeweilige strukturelle Familie.
 
 **Bereits vergeben — NICHT dupliziere diese Dialekte:**
 - `v1-brutal` → Swiss Brutalism, Acid Green + Hot Pink, IBM Plex Mono
@@ -207,6 +211,25 @@ Daraus folgt **absolut bindend**:
 
 Pro Hauptversion zwei Design-Subvarianten, IA bleibt identisch, nur die Design-Sprache/das Interaktionsmodell ändert sich — der Agent-Brief beschreibt pro Ordner die spezifische Richtung.
 
+### Phase 3 (v11–v15) — Conversion-Vertiefung
+
+Ausgangspunkt für Phase 3 war die Lücke zwischen den bestehenden Schüler-IAs und dem, was goal-oriented Nutzer laut NN/g besonders schnell brauchen:
+
+1. **starke Information Scent above the fold**: sofort klar machen, worum es auf genau dieser Seite geht;
+2. **eine dominante Nutzerfrage pro Version** statt Mischformen;
+3. **scanbare Layer-Cake-Hierarchie** mit klaren Zwischenüberschriften;
+4. **schneller Kontakt-Exit** auf jeder Seite.
+
+Darum wurden fünf neue Haupt-IAs definiert:
+
+| Ordner | Titel | IA-Idee |
+|---|---|---|
+| `v11/` | „Bist du hier richtig?” | Fit-/Passungscheck. Die Seite hilft in wenigen Blöcken zu entscheiden, ob diese Art Unterricht zur aktuellen Lage passt. |
+| `v12/` | „Was macht deine Stimme gerade?” | Symptom-/Signal-IA. Start nicht über Genre oder Vita, sondern über konkrete Stimm-Signale aus Alltag, Chor, Beruf. |
+| `v13/` | „So könnte dein erster Monat aussehen.” | Zeitachsen-IA. Macht den Unterrichtsbeginn als realistischen Ablauf und nicht als vages Versprechen sichtbar. |
+| `v14/` | „So fühlt sich deine erste Stunde an.” | Experience-IA. Nimmt die Angst vor der ersten Stunde, indem der Raum und der Ablauf konkretisiert werden. |
+| `v15/` | „Kannst du das heute entscheiden?” | Decision-Sheet-IA. Maximal verdichtete Antworten für zielorientierte Nutzer, die schnell zu einer Anfrage kommen wollen. |
+
 ---
 
 ## 11 — Design-Ideen-Log (lebendig)
@@ -260,6 +283,26 @@ Zentrale Liste aller Design-Varianten mit ihrem Konzept. Bei jeder neuen Variant
 | `v10/` | — | Dialog, Du=Inter vs Barbara=Fraunces-Italic |
 | `v10-dialog/` | v10 | Chat-Bubbles Messenger, warm (nicht iMessage-blau) |
 | `v10-letter/` | v10 | Briefwechsel-Form, Cormorant+Fraunces+Caveat |
+
+### Phase 3 (v11–v15) — Conversion-Vertiefung
+
+| Ordner | Parent | Idee |
+|---|---|---|
+| `v11/` | — | Passungscheck: fit-first, schnelle Selbstprüfung, ruhig-editorial |
+| `v11-checklist/` | v11 | Selbe IA als grün getönte Checkliste, noch stärker scanbar |
+| `v11-match/` | v11 | Selbe IA als Match-Logik: „Du suchst” vs. „Barbara arbeitet so” |
+| `v12/` | — | Signal-Chooser: konkrete Stimm-Signale statt Genre-Einstieg |
+| `v12-signals/` | v12 | Direktes Signal-Testing, komprimierter und entscheidungsnäher |
+| `v12-notes/` | v12 | Selbe IA als weichere Beobachtungs-/Notiz-Version |
+| `v13/` | — | Erster Monat: Zeitachse vom ersten Kontakt bis zur Routine |
+| `v13-steps/` | v13 | Selbe IA als klare Schrittfolge, stärker prozessorientiert |
+| `v13-weekbook/` | v13 | Selbe IA als Wochenbuch, persönlicher und reflexiver |
+| `v14/` | — | First-Lesson Experience: Vor der Tür, im Raum, danach |
+| `v14-room/` | v14 | Selbe IA mit Fokus auf geschütztem Raum und Sicherheit |
+| `v14-rhythm/` | v14 | Selbe IA mit Fokus auf Wiederholbarkeit und Unterrichts-Rhythmus |
+| `v15/` | — | Decision Sheet: sechs harte Fragen, drei Merkpunkte, schneller Kontakt |
+| `v15-grid/` | v15 | Selbe IA als stärker gerasterte Übersicht |
+| `v15-plain/` | v15 | Selbe IA als fast dekofreier Klartext |
 
 ### Sub-Sub-Varianten (Tiefe 2)
 

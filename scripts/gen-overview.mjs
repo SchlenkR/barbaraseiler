@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Generates versions/index.html from manifest.json + filesystem + git log.
 // Convention: any folder in versions/ matching /^v\d+/ with an index.html becomes a card.
-// Numbering: chronological by earliest git commit per folder; ties broken alphabetically.
+// Numbering: explicit "num" field per manifest.versions entry (stable across rebuilds).
+// Date display: still derived from first git commit (purely cosmetic, no sort impact).
 
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { execSync } from 'node:child_process';
@@ -53,28 +54,28 @@ function build() {
   const folders = scanFolders();
   const today = new Date().toISOString();
 
-  const records = folders.map((name) => ({
-    name,
-    dateIso: firstCommitDate(name) || today
-  }));
-
-  const chronological = [...records].sort((a, b) => {
-    if (a.dateIso !== b.dateIso) return a.dateIso < b.dateIso ? -1 : 1;
-    return a.name < b.name ? -1 : 1;
-  });
-
   const numberOf = {};
   const dateOf = {};
-  chronological.forEach((r, i) => {
-    numberOf[r.name] = '#' + pad2(i + 1);
-    dateOf[r.name] = r.dateIso.slice(0, 10);
-  });
-
-  for (const { name } of records) {
-    if (!manifest.versions[name]) {
+  const seenNums = new Set();
+  for (const name of folders) {
+    const entry = manifest.versions[name];
+    if (!entry) {
       console.warn(`[gen-overview] folder "${name}" missing from manifest.versions — skipping`);
+      continue;
     }
+    if (typeof entry.num !== 'number') {
+      console.warn(`[gen-overview] manifest entry "${name}" missing "num" field`);
+      continue;
+    }
+    if (seenNums.has(entry.num)) {
+      console.warn(`[gen-overview] duplicate num ${entry.num} on "${name}"`);
+    }
+    seenNums.add(entry.num);
+    numberOf[name] = '#' + pad2(entry.num);
+    const iso = firstCommitDate(name) || today;
+    dateOf[name] = iso.slice(0, 10);
   }
+
   for (const name of Object.keys(manifest.versions)) {
     if (!folders.includes(name)) {
       console.warn(`[gen-overview] manifest entry "${name}" has no matching folder`);
@@ -563,7 +564,7 @@ ${lanesHtml}
 `;
 
   writeFileSync(OUT, html);
-  console.log(`[gen-overview] wrote ${OUT} — ${records.length} versions, ${laneEntries.length} lanes`);
+  console.log(`[gen-overview] wrote ${OUT} — ${folders.length} versions, ${laneEntries.length} lanes`);
 }
 
 build();

@@ -22,6 +22,11 @@ Du bist Designer*in mit einem Faible für neue Web-Tech (Smooth-Scroll, View Tra
 - `impressum.html`
 - `datenschutz.html`
 
+**Pflicht-Eintrag in `versions/manifest.json`:**
+- `"num": N` — fortlaufende Nummer (nächste freie, aktuell ≥ 84). Stabil, wird nicht aus git log errechnet.
+- `"title"`, `"desc"` (oder `"parent"` für Sub-Variants), `"style"`, `"phaseTag"`, `"by"`.
+- Beispiel: `"v40-foo": { "num": 84, "title": "Foo", "desc": "…", "style": "…", "phaseTag": "Phase 5", "by": "Claude · wow+convert" }`.
+
 ---
 
 ## 2. Tech-Setup (WICHTIG)

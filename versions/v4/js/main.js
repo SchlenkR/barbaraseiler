@@ -34,7 +34,7 @@
   if (phoneBtn && phoneContainer) {
     phoneBtn.addEventListener('click', () => {
       // Fragmented so the full number never appears literally in source
-      const parts = ['+49', ' (0)', '179', ' – ', '371', ' 370', ' 6'];
+      const parts = ['+49', ' (0)', '555', ' – ', '123', ' 456', ' 7'];
       const number = parts.join('');
 
       const canvas = document.createElement('canvas');

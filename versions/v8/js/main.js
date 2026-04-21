@@ -30,8 +30,8 @@ const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const btn = document.getElementById("phoneBtn");
   if (!btn) return;
   btn.addEventListener("click", () => {
-    const parts = ["+49", "179", "371", "370", "6"];
-    const tel = "+49" + "1793713706";
+    const parts = ["+49", "555", "123", "456", "7"];
+    const tel = "+49" + "5551234567";
     const pretty = parts.join(" ");
     const a = document.createElement("a");
     a.href = "tel:" + tel;

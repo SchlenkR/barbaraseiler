@@ -43,8 +43,8 @@
   const telBtn = document.querySelector('[data-tel-reveal]');
   if (telBtn) {
     telBtn.addEventListener('click', () => {
-      const raw = '+491793713706';
-      const display = '+49 (0)179 – 371 370 6';
+      const raw = '+495551234567';
+      const display = '+49 (0)555 – 123 456 7';
       telBtn.outerHTML = `<a href="tel:${raw}" class="info-item-link">${display}</a>`;
     });
   }

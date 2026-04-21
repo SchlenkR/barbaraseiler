@@ -7,8 +7,8 @@
   if (!el) return;
 
   // Phone number split and reassembled at runtime.
-  var parts = ['+49', ' (0)179', ' — 371', ' 370', ' 6'];
-  var plain = '+491793713706';
+  var parts = ['+49', ' (0)555', ' — 371', ' 370', ' 6'];
+  var plain = '+495551234567';
   var revealed = false;
 
   function reveal(e) {

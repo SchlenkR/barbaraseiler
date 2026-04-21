@@ -67,7 +67,7 @@ backBtn.addEventListener('click', close);
 const phoneBtn = document.getElementById('phoneBtn');
 if (phoneBtn) {
   phoneBtn.addEventListener('click', () => {
-    const number = '+49 179 371 370 6';
-    phoneBtn.outerHTML = `<a href="tel:+491793713706" class="btn-link">${number}</a>`;
+    const number = '+49 555 123 456 7';
+    phoneBtn.outerHTML = `<a href="tel:+495551234567" class="btn-link">${number}</a>`;
   });
 }

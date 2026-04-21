@@ -42,13 +42,13 @@
   if (btn) {
     btn.addEventListener('click', () => {
       // Reconstruct number at click time
-      const parts = ['+49', '(0)179', '371', '370', '6'];
+      const parts = ['+49', '(0)555', '371', '370', '6'];
       const number = parts.join(' ');
       const wrap = document.getElementById('phoneReveal');
       if (!wrap) return;
       btn.remove();
       const a = document.createElement('a');
-      a.href = 'tel:+491793713706';
+      a.href = 'tel:+495551234567';
       a.className = 'phone-number';
       a.textContent = number;
       wrap.appendChild(a);

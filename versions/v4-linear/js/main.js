@@ -18,10 +18,10 @@
   const phoneBtn = document.getElementById('phoneRevealBtn');
   if (phoneBtn) {
     phoneBtn.addEventListener('click', () => {
-      // Assemble: +49 (0)179 - 371 370 6
-      const parts = ['+49', '(0)179', '371', '370', '6'];
+      // Assemble: +49 (0)555 - 123 456 7
+      const parts = ['+49', '(0)555', '371', '370', '6'];
       const num = parts.join(' ').replace('+49 (0)', '+49 ');
-      const tel = '+491793713706';
+      const tel = '+495551234567';
 
       const wrap = document.getElementById('phoneReveal');
       wrap.innerHTML = `<a class="phone-number" href="tel:${tel}">${num}</a>`;

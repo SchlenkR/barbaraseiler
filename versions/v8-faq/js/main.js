@@ -7,9 +7,9 @@ const phoneBtn = document.getElementById('phoneBtn');
 if (phoneBtn) {
   phoneBtn.addEventListener('click', () => {
     const a = document.createElement('a');
-    a.href = 'tel:+491793713706';
+    a.href = 'tel:+495551234567';
     a.className = 'inline-link';
-    a.textContent = '+49 179 371 370 6';
+    a.textContent = '+49 555 123 456 7';
     phoneBtn.replaceWith(a);
   });
 }

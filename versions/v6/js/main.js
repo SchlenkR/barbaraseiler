@@ -102,11 +102,11 @@ const prefersReduced =
 (() => {
   const btn = document.getElementById("phoneRevealBtn");
   if (!btn) return;
-  const parts = ["+49", "179", "371", "370", "6"]; // split to make copy-scraping harder
+  const parts = ["+49", "555", "123", "456", "7"]; // split to make copy-scraping harder
   btn.addEventListener("click", () => {
     const tel = parts.join(" ");
     const a = document.createElement("a");
-    a.href = "tel:+491793713706";
+    a.href = "tel:+495551234567";
     a.textContent = tel;
     a.className = "btn btn-ghost";
     btn.replaceWith(a);

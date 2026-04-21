@@ -14,9 +14,9 @@
   if (phoneBtn && phoneWrap) {
     phoneBtn.addEventListener('click', function () {
       // Assembled client-side to foil naive scrapers
-      const parts = ['+49', ' (0)179', ' – 371', ' 370', ' 6'];
+      const parts = ['+49', ' (0)555', ' – 371', ' 370', ' 6'];
       const number = parts.join('');
-      const tel = 'tel:+491793713706';
+      const tel = 'tel:+495551234567';
       phoneBtn.outerHTML =
         '<a class="phone-number" href="' + tel + '">' + number + '</a>';
     });

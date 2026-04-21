@@ -120,17 +120,17 @@
 
   // ----------------------------------------------------------------
   // Phone number reveal — encoded to dodge naïve scrapers
-  // Actual number: +49 (0)179 – 371 370 6
+  // Actual number: +49 (0)555 – 123 456 7
   // ----------------------------------------------------------------
   const phoneBtn = document.getElementById('phoneRevealBtn');
   const phoneInline = document.getElementById('phoneInline');
 
   // parts assembled at runtime
   function getPhoneDisplay() {
-    return ['+49', '(0)', '179', '371', '370', '6'].join(' ');
+    return ['+49', '(0)', '555', '123', '456', '7'].join(' ');
   }
   function getPhoneTel() {
-    return '+49' + '179' + '3713706';
+    return '+49' + '555' + '1234567';
   }
 
   function revealPhone() {

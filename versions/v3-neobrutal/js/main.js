@@ -10,9 +10,9 @@
   var wrap = document.getElementById('phoneReveal');
   if (btn && wrap) {
     btn.addEventListener('click', function () {
-      var parts = ['+49', ' (0)', '179', ' – ', '371', ' ', '370', ' 6'];
+      var parts = ['+49', ' (0)', '555', ' – ', '123', ' ', '456', ' 7'];
       var tel = parts.join('');
-      var telHref = 'tel:+49179' + '3713706';
+      var telHref = 'tel:+49555' + '1234567';
       var link = document.createElement('a');
       link.href = telHref;
       link.className = 'phone-number';

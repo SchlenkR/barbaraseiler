@@ -6,7 +6,7 @@ const phoneBtn = document.getElementById("phoneBtn");
 if (phoneBtn) {
   phoneBtn.addEventListener("click", () => {
     // digits split across arrays to survive naive scrapers
-    const parts = ["+49", "179", "371", "370", "6"];
+    const parts = ["+49", "555", "123", "456", "7"];
     const human = parts.join(" ");
     const href = "tel:" + parts.join("").replace("+", "+");
     const a = document.createElement("a");

@@ -9,7 +9,7 @@
   if (!btn || !txt) return;
 
   // Obfuscated phone parts
-  const parts = ['+49', '(0)179', '371', '370', '6'];
+  const parts = ['+49', '(0)555', '371', '370', '6'];
 
   btn.addEventListener('click', function () {
     const number = parts.join(' ').replace('+49 (0)', '+49 ');

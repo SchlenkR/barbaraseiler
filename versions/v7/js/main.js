@@ -5,11 +5,11 @@
 const phoneBtn = document.getElementById('phoneRevealBtn');
 if (phoneBtn) {
   phoneBtn.addEventListener('click', () => {
-    const local = '179 371 370 6';
+    const local = '555 123 456 7';
     const full = '+49 ' + local;
     const sub = document.getElementById('phoneSub');
     if (sub) {
-      sub.innerHTML = `<a href="tel:+491793713706" style="color:var(--cognac);font-weight:600;text-decoration:none;">${full}</a>`;
+      sub.innerHTML = `<a href="tel:+495551234567" style="color:var(--cognac);font-weight:600;text-decoration:none;">${full}</a>`;
     }
   });
 }

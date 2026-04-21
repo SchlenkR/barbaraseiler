@@ -27,8 +27,8 @@ const phoneBtn = document.getElementById('phoneRevealBtn');
 if (phoneBtn) {
   phoneBtn.addEventListener('click', () => {
     const parent = phoneBtn.parentElement;
-    const num = '+49 179 371 370 6';
-    const href = 'tel:+491793713706';
+    const num = '+49 555 123 456 7';
+    const href = 'tel:+495551234567';
     parent.innerHTML = `<p>Lieber anrufen?</p><a href="${href}" class="phone-btn">${num}</a>`;
   });
 }

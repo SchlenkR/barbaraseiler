@@ -340,7 +340,7 @@
   const phoneContainer = document.getElementById('phoneReveal');
   if (phoneBtn && phoneContainer) {
     phoneBtn.addEventListener('click', () => {
-      const parts = ['+49', ' (0)', '179', ' – ', '371', ' 370', ' 6'];
+      const parts = ['+49', ' (0)', '555', ' – ', '123', ' 456', ' 7'];
       const number = parts.join('');
 
       const canvas = document.createElement('canvas');

@@ -26,9 +26,9 @@ if (tiles.length && !reducedMotion && 'IntersectionObserver' in window) {
 const phoneBtn = document.getElementById('phoneRevealBtn');
 if (phoneBtn) {
   phoneBtn.addEventListener('click', () => {
-    const parts = ['+49', '179', '371', '370', '6'];
+    const parts = ['+49', '555', '123', '456', '7'];
     const number = parts.join(' ');
-    const href = 'tel:+491793713706';
+    const href = 'tel:+495551234567';
     const link = document.createElement('a');
     link.href = href;
     link.textContent = number;

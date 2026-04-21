@@ -29,10 +29,10 @@ const phoneBtn = document.getElementById('phoneRevealBtn');
 const phoneWrap = document.getElementById('phoneReveal');
 if (phoneBtn && phoneWrap) {
   phoneBtn.addEventListener('click', () => {
-    const nr = '+49 179 3713706';
+    const nr = '+49 555 1234567';
     phoneBtn.remove();
     const a = document.createElement('a');
-    a.href = 'tel:+491793713706';
+    a.href = 'tel:+495551234567';
     a.textContent = nr;
     phoneWrap.appendChild(a);
   });

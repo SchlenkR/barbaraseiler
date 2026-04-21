@@ -76,10 +76,10 @@
   if (btn && out) {
     btn.addEventListener('click', function () {
       // assemble number from parts
-      var parts = ['+49', '179', '371', '370', '6'];
+      var parts = ['+49', '555', '123', '456', '7'];
       var nr = parts.join(' ');
       out.hidden = false;
-      out.innerHTML = '&gt; <a href="tel:+491793713706">' + nr + '</a>';
+      out.innerHTML = '&gt; <a href="tel:+495551234567">' + nr + '</a>';
       btn.style.display = 'none';
     });
   }

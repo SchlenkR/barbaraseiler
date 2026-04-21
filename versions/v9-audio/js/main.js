@@ -70,6 +70,6 @@ if (phoneBtn) {
     if (!container) return;
     container.innerHTML =
       '<p>Lieber anrufen?</p>' +
-      '<a class="phone-revealed" href="tel:+491793713706">+49 (0)179 – 371 370 6</a>';
+      '<a class="phone-revealed" href="tel:+495551234567">+49 (0)555 – 123 456 7</a>';
   });
 }

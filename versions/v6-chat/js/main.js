@@ -133,9 +133,9 @@ const phoneBtn = document.getElementById('phoneRevealBtn');
 if (phoneBtn) {
   phoneBtn.addEventListener('click', () => {
     // Obfuscated reconstruction
-    const parts = ['+49', ' (0)179', ' – 371', ' 370', ' 6'];
+    const parts = ['+49', ' (0)555', ' – 371', ' 370', ' 6'];
     const num = parts.join('');
-    const tel = 'tel:+491793713706';
+    const tel = 'tel:+495551234567';
     const a = document.createElement('a');
     a.href = tel;
     a.className = 'phone-number';

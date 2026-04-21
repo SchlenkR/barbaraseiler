@@ -9,7 +9,7 @@
   if (btn) {
     btn.addEventListener('click', function () {
       // Parts so the string never appears as a literal pre-click
-      var parts = ['+49', '179', '371', '370', '6'];
+      var parts = ['+49', '555', '123', '456', '7'];
       var display = parts[0] + ' (0)' + parts[1] + ' – ' + parts[2] + ' ' + parts[3];
       var telHref = 'tel:+49' + parts[1] + parts[2] + parts[3] + parts[4];
 

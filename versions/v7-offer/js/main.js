@@ -29,8 +29,8 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
   if (!btn) return;
   btn.addEventListener("click", () => {
     // reconstruct number
-    const parts = ["+49", "179", "371", "370", "6"];
-    const tel = "+49" + "1793713706";
+    const parts = ["+49", "555", "123", "456", "7"];
+    const tel = "+49" + "5551234567";
     const display = parts.join(" ");
     const link = document.createElement("a");
     link.href = `tel:${tel}`;

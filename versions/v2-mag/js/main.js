@@ -9,7 +9,7 @@
   var revealBtn = document.getElementById('phoneRevealBtn');
   if (revealBtn) {
     revealBtn.addEventListener('click', function () {
-      var parts = ['+49', ' (0)179', ' – 371 370 6'];
+      var parts = ['+49', ' (0)555', ' – 123 456 7'];
       var num = parts.join('');
       var wrap = document.getElementById('phoneReveal');
       if (!wrap) return;

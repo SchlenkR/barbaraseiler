@@ -110,8 +110,8 @@ const phoneLabel = document.getElementById("phoneLabel");
 
 if (phoneBtn && phoneLabel) {
   phoneBtn.addEventListener("click", () => {
-    // Reassemble number client-side: +49 179 371 370 6
-    const parts = ["+49", "179", "371", "370", "6"];
+    // Reassemble number client-side: +49 555 123 456 7
+    const parts = ["+49", "555", "123", "456", "7"];
     const display = parts.join(" ");
     const href = "tel:+49" + parts.slice(1).join("");
     phoneLabel.innerHTML = "";

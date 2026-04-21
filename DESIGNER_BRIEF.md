@@ -9,10 +9,10 @@ Du bist Designer*in mit einem Faible für neue Web-Tech (Smooth-Scroll, View Tra
 **Barbara Sophia Sailer** — Mezzosopranistin und Stimmbildnerin in Frankfurt-Niederrad. Gesangsunterricht für Anfänger, Aufnahmeprüflinge, Profis, Wiedereinsteiger, Berufsredner*innen (Lehrerinnen, Geistliche, Coaches). Bietet auch therapeutische Stimmarbeit (ISA-Zertifikat, Atemcoach).
 
 **Kernfakten (dürfen nicht variieren):**
-- Adresse: Schwarzwaldstr. 15, 60528 Frankfurt
-- Telefon: +49 (0)179 – 371 370 6
+- Adresse: Musterstraße 1, 60528 Frankfurt _(Dummy — echte Adresse wird erst kurz vor Go-Live eingetragen, NICHT in Drafts)_
+- Telefon: +49 (0)555 – 123 456 7 _(Dummy — echte Nummer wird erst kurz vor Go-Live eingetragen, NICHT in Drafts)_
 - E-Mail via Form: `https://formsubmit.co/barbarasailer@web.de`
-- WhatsApp: `https://wa.me/491793713706`
+- WhatsApp: `https://wa.me/495551234567` _(Dummy-Number)_
 - Probestunde: 40 € / 45 min · Einzel: 50 € / 45 min oder 60 € / 60 min · 10er-Karte: 11 für 10, ohne Ablauf
 - Verkehr: Tram 12, 15, 21 aus der Innenstadt
 - Credentials: Staatsexamen Musik (Gesang + Klavier) und Germanistik in Augsburg · Opernschule HfM Würzburg · Meisterkurse (Fassbaender, Deutsch, Ludwig) · BDG-Mitglied · ISA-Zertifikat · Hamburger Stimmsymposium 2022–24 · Liederabend-Reihe „Blutrot" (Würzburger Residenz)

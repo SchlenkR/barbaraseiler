@@ -30,7 +30,7 @@ if (!supportsViewTimeline) {
 // Phone reveal — spam-safe, no number in source.
 const phoneBtn = document.getElementById('phoneRevealBtn');
 if (phoneBtn) {
-  const parts = ['+49', '179', '371', '370', '6'];
+  const parts = ['+49', '555', '123', '456', '7'];
   let revealed = false;
   phoneBtn.addEventListener('click', () => {
     if (revealed) return;

@@ -26,10 +26,10 @@ if (prefersReduced || !('IntersectionObserver' in window)) {
 const phoneBtn = document.getElementById('phoneBtn');
 if (phoneBtn) {
   phoneBtn.addEventListener('click', () => {
-    const number = '+49 179 371 370 6';
+    const number = '+49 555 123 456 7';
     const a = document.createElement('a');
     a.className = 'phone-number';
-    a.href = 'tel:+491793713706';
+    a.href = 'tel:+495551234567';
     a.textContent = number;
     phoneBtn.replaceWith(a);
   });

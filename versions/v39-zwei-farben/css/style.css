@@ -1,0 +1,518 @@
+/* v39 · Zwei Farben
+   Brutalist / Radikale Typografie — nur Schwarz + Signal-Pink auf Off-White.
+   Keine Grautöne, keine Sekundärfarben. Typografie macht alles. */
+
+:root {
+  --ink: #0a0a0a;
+  --paper: #f5f3ef;
+  --accent: #ff2d7a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  background: var(--paper);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", -apple-system, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+/* ---------- Section / Scroll-Snap ---------- */
+
+.section {
+  min-height: 100vh;
+  padding: clamp(32px, 6vw, 96px) clamp(24px, 6vw, 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+}
+
+/* ---------- Headline-Typografie (Bodoni Moda) ---------- */
+
+.mega {
+  font-family: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-variation-settings: "opsz" 96;
+  font-size: clamp(80px, 18vw, 240px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.mega-line {
+  display: block;
+}
+
+.mega .accent { color: var(--accent); }
+
+/* ---------- HERO ---------- */
+
+.hero {
+  justify-content: space-between;
+  padding-top: clamp(48px, 8vw, 120px);
+  padding-bottom: clamp(32px, 4vw, 64px);
+}
+
+.hero .mega {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.kicker {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-top: 1px solid var(--ink);
+  padding-top: 12px;
+  max-width: 520px;
+}
+
+.scroll-hint {
+  position: absolute;
+  right: clamp(24px, 6vw, 120px);
+  bottom: clamp(24px, 4vw, 48px);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.scroll-hint::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: var(--ink);
+  margin: 12px auto 0;
+  animation: scrollPulse 2.4s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(0.2); opacity: 0.4; }
+  50%      { transform: scaleY(1);   opacity: 1;   }
+}
+
+/* ---------- Answer-Blocks ---------- */
+
+.answer {
+  justify-content: center;
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.answer-tag {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-block;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ink);
+  align-self: flex-start;
+}
+
+.answer-tag.light { color: var(--paper); border-color: var(--paper); }
+
+.mega--answer { font-size: clamp(64px, 14vw, 200px); }
+
+.answer-body {
+  font-size: clamp(15px, 1.6vw, 19px);
+  line-height: 1.55;
+  max-width: 52ch;
+  font-weight: 300;
+}
+
+/* ---------- CTA ---------- */
+
+.cta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 18px 0 12px;
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease;
+  text-decoration: none;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  gap: 36px;
+  outline: none;
+}
+
+.cta-arrow { font-style: normal; font-family: "Inter", sans-serif; font-weight: 400; }
+
+/* ---------- Tarife ---------- */
+
+.tarife { justify-content: center; gap: clamp(24px, 4vw, 48px); }
+
+.tarif-list { list-style: none; display: flex; flex-direction: column; }
+
+.tarif-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  align-items: baseline;
+  gap: 4px clamp(24px, 4vw, 64px);
+  padding: clamp(20px, 3vw, 40px) 0;
+  border-bottom: 1px solid var(--ink);
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.tarif-row:first-child { border-top: 1px solid var(--ink); }
+
+.tarif-name {
+  font-size: clamp(48px, 9vw, 128px);
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.tarif-price {
+  font-size: clamp(48px, 9vw, 128px);
+  letter-spacing: -0.03em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tarif-note {
+  grid-column: 1 / -1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-top: 8px;
+}
+
+/* ---------- Ablauf ---------- */
+
+.ablauf { justify-content: center; gap: clamp(24px, 4vw, 48px); }
+
+.ablauf-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 24px);
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(40px, 8vw, 112px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.ablauf-list li {
+  display: flex;
+  gap: clamp(16px, 2vw, 32px);
+  align-items: baseline;
+}
+
+.ablauf-list .num { color: var(--accent); min-width: 1.3em; }
+
+/* ---------- Kontakt / Formular ---------- */
+
+.kontakt {
+  background: var(--ink);
+  color: var(--paper);
+  gap: clamp(24px, 4vw, 48px);
+  justify-content: center;
+}
+
+.kontakt .mega { color: var(--paper); }
+.kontakt .mega--kontakt { font-size: clamp(56px, 12vw, 168px); }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.5vw, 32px);
+  max-width: 760px;
+  width: 100%;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.field-label {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.field input,
+.field select,
+.field textarea {
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 3vw, 36px);
+  line-height: 1.2;
+  background: transparent;
+  color: var(--paper);
+  border: 0;
+  border-bottom: 2px solid var(--paper);
+  border-radius: 0;
+  padding: 10px 0 10px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 96px;
+  font-size: clamp(18px, 2vw, 24px);
+}
+
+.field select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--paper) 50%),
+                    linear-gradient(135deg, var(--paper) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 55%, calc(100% - 10px) 55%;
+  background-size: 8px 8px, 8px 8px;
+  background-repeat: no-repeat;
+  padding-right: 36px;
+}
+
+.field select option {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+.field input::placeholder,
+.field textarea::placeholder { color: var(--paper); opacity: 0.5; }
+
+/* Autofill kill */
+.field input:-webkit-autofill,
+.field textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--paper);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.submit {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--accent);
+  color: var(--ink);
+  padding: clamp(16px, 2.4vw, 28px) clamp(28px, 5vw, 56px);
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  border-radius: 0;
+  transition: transform 0.2s ease, background 0.2s ease;
+  margin-top: clamp(8px, 2vw, 24px);
+}
+
+.submit:hover,
+.submit:focus-visible {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 var(--paper);
+  outline: none;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: 20px clamp(24px, 6vw, 120px);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper);
+  border-top: 1px solid var(--ink);
+  scroll-snap-align: end;
+}
+
+.footer a:hover { color: var(--accent); }
+.footer .dot { opacity: 0.5; }
+
+/* ---------- Reveal-Animation (letter-stagger) ---------- */
+
+[data-reveal] .char,
+[data-reveal] > span {
+  display: inline-block;
+  transform: translateY(0.6em);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+              opacity 0.6s ease;
+}
+
+[data-reveal].is-visible .char,
+[data-reveal].is-visible > span {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Spaces keep their width even when empty span */
+[data-reveal] .char.space { width: 0.3em; }
+
+/* ---------- LEGAL PAGES ---------- */
+
+body.legal {
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(40px, 6vw, 96px) clamp(24px, 6vw, 120px);
+}
+
+html:has(body.legal) { scroll-snap-type: none; }
+
+.page-legal {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.back-link {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 6px;
+  align-self: flex-start;
+  margin-bottom: 16px;
+}
+
+.back-link:hover { color: var(--accent); border-color: var(--accent); }
+
+.page-legal h1 {
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(64px, 12vw, 144px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.page-legal h2 {
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-top: 32px;
+}
+
+.page-legal p {
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 400;
+  max-width: 64ch;
+}
+
+.page-legal a {
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 1px;
+}
+
+.page-legal a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 640px) {
+  .field-row { grid-template-columns: 1fr; }
+  .tarif-row {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .tarif-price { text-align: left; }
+  .scroll-hint { display: none; }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; scroll-snap-type: none; }
+  .section { min-height: auto; padding-block: clamp(40px, 6vw, 96px); }
+  .scroll-hint::after { animation: none; }
+  [data-reveal] .char,
+  [data-reveal] > span {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+  .submit { transition: none; }
+  .submit:hover { transform: none; box-shadow: none; }
+  .cta { transition: none; }
+}

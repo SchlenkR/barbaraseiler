@@ -35,7 +35,11 @@
     "v32": { "color": "#cd853f" },
     "v33": { "color": "#b0c4de" },
     "v34": { "color": "#f4a460" },
-    "v35": { "color": "#c9c9c9" }
+    "v35": { "color": "#c9c9c9" },
+    "v36": { "color": "#9ab8a0" },
+    "v37": { "color": "#e8c58b" },
+    "v38": { "color": "#e36a9e" },
+    "v39": { "color": "#1a1a1a" }
   },
   "versions": {
     "v1":         { "title": "Initial",           "desc": "Erster Static-Rebuild der Bestandsseite.",                                                                    "style": "Editorial Light",      "phaseTag": "Root",    "by": "GPT-5.4" },
@@ -132,6 +136,10 @@
     "v32-rooms": {"title": "Räume",               "desc": "Isometrisches SVG-Studio. Klickzonen auf Klavier/Stuhl/Spiegel öffnen Content — mit View Transitions API.",                                           "style": "Isometric + VT-API",   "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
     "v33-kalender-ghost":{"title": "Kalender",    "desc": "Rolling Social Proof: anonymisierte Schüler-Meilensteine im Wochenraster. Zeigt Leben, ohne Testimonial-Kitsch.",                                    "style": "Rolling Proof",        "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
     "v34-brief-an-dich":{"title": "Brief an dich","desc": "Formular → personalisierter Brief von Barbara, typewriter-animiert, mit deinem Namen. Print-to-PDF.",                                                "style": "Personalized Letter",  "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
-    "v35-zine":  {"title": "Zine",                "desc": "Contrarian-Reset: Reclam-Style Zero-JS-Editorial. Marginalien, Baseline-Grid, CSS `animation-timeline: view()`. Substanz statt Effekte.",            "style": "Editorial Zero-JS",    "phaseTag": "Phase 5", "by": "Claude · wow+convert" }
+    "v35-zine":  {"title": "Zine",                "desc": "Contrarian-Reset: Reclam-Style Zero-JS-Editorial. Marginalien, Baseline-Grid, CSS `animation-timeline: view()`. Substanz statt Effekte.",            "style": "Editorial Zero-JS",    "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v36-atemraum":{"title": "Atemraum",          "desc": "60-Sekunden-Atemübung als Content-Gate. Wer mitatmet, liest weiter. Wer nicht will, scrollt direkt weiter. Ruhigste Form der Qualifizierung.",      "style": "Breath-Gate",          "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v37-jetzt-in-niederrad":{"title": "Jetzt in Niederrad", "desc": "Hyperlokaler Content-Layer: Live-Uhrzeit, S-Bahn-Laufweg, ‚heute noch 2 Slots frei‘. Local-SEO trifft Dringlichkeits-Ästhetik.",      "style": "Hyperlocal",           "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v38-portraet-marquee":{"title": "Porträt-Marquee",   "desc": "Endlos scrollender Testimonial-Marquee mit Porträts und einzeiligen Zitaten. Hover pausiert, Klick öffnet Vollzitat + CTA.",                 "style": "Infinite Marquee",    "phaseTag": "Phase 5", "by": "Claude · wow+convert" },
+    "v39-zwei-farben":{"title": "Zwei Farben",        "desc": "Brutalistisch-minimal: nur Schwarz und ein Signal-Pink. Typografie macht alles. Mutigster Konvertierungsdruck durch radikale Reduktion.",                 "style": "Brutalist",            "phaseTag": "Phase 5", "by": "Claude · wow+convert" }
   }
 }

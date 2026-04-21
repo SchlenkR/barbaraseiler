@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbara Sophia Sailer · Atemraum — Gesangsunterricht Frankfurt</title>
+  <meta name="description" content="Gesangsunterricht bei Barbara Sailer in Frankfurt. Eine Minute Atem, bevor du liest. Probestunde 40 € / 45 min.">
+
+  <meta name="theme-color" content="#f5efe4">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ====== Eingangs-Screen (Gate) ====== -->
+<section id="gate" class="gate" aria-labelledby="gate-title" role="region">
+  <div class="gate-inner">
+    <p class="gate-eyebrow">Atemraum</p>
+    <h1 id="gate-title" class="gate-title">
+      Bevor du liest:<br><em>eine Minute Atem.</em>
+    </h1>
+    <p class="gate-lede">
+      Eine kurze Atem&uuml;bung, wie wir sie in der Stunde auch machen.
+      Danach zeig ich dir alles.
+    </p>
+    <div class="gate-actions">
+      <button type="button" id="gate-yes" class="gate-primary">
+        <em>Ja, eine Minute atmen</em>
+      </button>
+      <button type="button" id="gate-no" class="gate-ghost">
+        Später &mdash; ich will erst lesen
+      </button>
+    </div>
+    <p class="gate-foot">
+      Ich weiß nicht, ob du gerade sitzt oder liegst. Aber du atmest &mdash; also fangen wir da an.
+    </p>
+  </div>
+</section>
+
+<!-- ====== Skip-Banner (nur nach Pfad B sichtbar) ====== -->
+<aside id="skip-banner" class="skip-banner" role="region" aria-label="Atemminute nachholen" hidden>
+  <div class="skip-inner">
+    <p>
+      Du hast die Atemminute &uuml;bersprungen. Das ist ok.
+      <button type="button" id="skip-resume" class="link-button">Jetzt nachholen &rarr;</button>
+    </p>
+    <button type="button" id="skip-close" class="skip-close" aria-label="Banner schlie&szlig;en">&times;</button>
+  </div>
+</aside>
+
+<!-- ====== Welcome-Banner (nach vollständiger Minute) ====== -->
+<aside id="welcome-banner" class="welcome-banner" role="status" aria-live="polite" hidden>
+  <p>Willkommen.</p>
+</aside>
+
+<!-- ====== Return-Banner (bei wiederkehrenden Besuchern) ====== -->
+<aside id="return-banner" class="return-banner" role="region" aria-label="Willkommen zurück" hidden>
+  <div class="skip-inner">
+    <p>Willkommen zur&uuml;ck. <button type="button" id="return-breathe" class="link-button">Noch einmal atmen?</button></p>
+    <button type="button" id="return-close" class="skip-close" aria-label="Banner schlie&szlig;en">&times;</button>
+  </div>
+</aside>
+
+<!-- ====== Atem-Dialog (Fullscreen-CSS, role=dialog) ====== -->
+<div id="breath" class="breath" role="dialog" aria-modal="true" aria-labelledby="breath-title" hidden>
+  <button type="button" id="breath-cancel" class="breath-cancel" aria-label="Atem-Modus abbrechen">Abbrechen</button>
+
+  <button type="button" id="breath-sound" class="breath-sound" aria-pressed="false" aria-label="Ton an oder aus">
+    <span class="breath-sound-label">Ton: aus</span>
+  </button>
+
+  <h2 id="breath-title" class="visually-hidden">Atem&uuml;bung</h2>
+
+  <div class="breath-stage">
+    <div class="breath-circle" id="breath-circle" aria-hidden="true"></div>
+    <p class="breath-phase" id="breath-phase" aria-live="polite">Bereit</p>
+  </div>
+
+  <p class="breath-countdown" id="breath-countdown" aria-live="off">60</p>
+
+  <p class="breath-escape">Escape beendet jederzeit.</p>
+</div>
+
+<!-- ====== Content (unter dem Gate) ====== -->
+<main id="content" class="content" hidden>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Gesangsunterricht &middot; Frankfurt</p>
+    <h1 class="hero-claim">Stimme beginnt<br><em>beim Atem.</em></h1>
+  </section>
+
+  <section class="prose">
+    <p>
+      Dass du geatmet hast, bevor du diese Seite gelesen hast &mdash;
+      das ist schon Unterricht.
+    </p>
+    <p>
+      Das meiste, was ich tue, ist: Menschen helfen, ihren eigenen Atem wieder zu bemerken.
+      Wer das kann, singt anders.
+    </p>
+  </section>
+
+  <hr class="hairline">
+
+  <section class="principles">
+    <p class="section-eyebrow">So arbeiten wir</p>
+
+    <article class="principle">
+      <h2><em>Atem vor Ton.</em></h2>
+      <p>
+        Bevor wir einen einzigen Ton berühren, schauen wir, wie du atmest.
+        Nicht, wie man atmen sollte. Sondern, wie du es gerade tust.
+        Der Rest folgt daraus &mdash; leichter, als du denkst.
+      </p>
+    </article>
+
+    <article class="principle">
+      <h2><em>Langsamkeit vor Technik.</em></h2>
+      <p>
+        Technik ist ein Werkzeug, kein Versprechen. Ich arbeite langsam, weil
+        Stimmen langsam wachsen. Was schnell geht, hält selten. Was du hier lernst,
+        trägt dich auch dann, wenn der Tag laut ist.
+      </p>
+    </article>
+
+    <article class="principle">
+      <h2><em>Was schon da ist,<br>vor dem, was fehlt.</em></h2>
+      <p>
+        Ich fange bei dem an, was du mitbringst. Nicht bei einem Ideal.
+        Deine Stimme ist keine Baustelle. Sie ist ein Material,
+        und sie hat schon Charakter, bevor wir anfangen.
+      </p>
+    </article>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- Probestunde-Block im Atem-Frame -->
+  <section class="probestunde" id="probestunde">
+    <p class="section-eyebrow">Probestunde</p>
+    <h2 class="probe-title">
+      Wenn du m&ouml;chtest,<br><em>komm vorbei.</em>
+    </h2>
+    <p class="probe-lede">
+      45&nbsp;Minuten, 40&nbsp;&euro;. Die ersten f&uuml;nf Minuten atmen wir wieder zusammen.
+    </p>
+    <p class="probe-twist">
+      Die Probestunde f&uuml;hlt sich so an, wie diese Minute gerade.
+      Nur f&uuml;nfundvierzig davon.
+    </p>
+  </section>
+
+  <!-- Conversion-Tunnel -->
+  <section class="cta-tunnel">
+    <div class="cta-grid">
+      <a class="cta cta-whatsapp"
+         href="https://wa.me/495551234567?text=Hallo%20Barbara%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Probestunde."
+         target="_blank" rel="noopener">
+        <span class="cta-label"><em>WhatsApp</em></span>
+        <span class="cta-sub">Der kürzeste Weg zu mir</span>
+      </a>
+
+      <button type="button" class="cta cta-phone" id="phone-reveal" aria-expanded="false">
+        <span class="cta-label"><em>Telefon</em></span>
+        <span class="cta-sub" id="phone-sub">Nummer zeigen</span>
+      </button>
+
+      <a class="cta cta-form" href="#kontakt">
+        <span class="cta-label"><em>Formular</em></span>
+        <span class="cta-sub">Für in Ruhe schreiben</span>
+      </a>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- Preisstruktur -->
+  <section class="prices-section">
+    <p class="section-eyebrow">Preise</p>
+    <ul class="prices">
+      <li>
+        <span class="price-amount">40&nbsp;&euro;</span>
+        <span class="price-meta">Probestunde &middot; 45&nbsp;min &middot; einmalig</span>
+      </li>
+      <li>
+        <span class="price-amount">50&nbsp;&euro;</span>
+        <span class="price-meta">Einzelstunde &middot; 45&nbsp;min</span>
+      </li>
+      <li>
+        <span class="price-amount">60&nbsp;&euro;</span>
+        <span class="price-meta">Einzelstunde &middot; 60&nbsp;min</span>
+      </li>
+      <li>
+        <span class="price-amount">11&nbsp;für&nbsp;10</span>
+        <span class="price-meta">10er-Karte &middot; ohne Ablauf</span>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- Kontaktformular -->
+  <section class="form-section" id="kontakt">
+    <p class="section-eyebrow">In Ruhe schreiben</p>
+    <form id="contact-form" class="contact-form" action="https://formsubmit.co/barbara@example.de" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Neue Anfrage über v36-atemraum">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form-row">
+        <label>Vorname
+          <input type="text" name="vorname" required autocomplete="given-name">
+        </label>
+        <label>Name
+          <input type="text" name="name" required autocomplete="family-name">
+        </label>
+      </div>
+      <label>E-Mail
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+      <label>Worum geht es dir?
+        <textarea name="nachricht" rows="4" required placeholder="Ein, zwei S&auml;tze gen&uuml;gen."></textarea>
+      </label>
+
+      <p class="form-error" id="form-error" role="alert" hidden>Bitte f&uuml;ll die markierten Felder aus.</p>
+
+      <button type="submit" class="submit-button"><em>Nachricht senden</em></button>
+    </form>
+  </section>
+
+  <footer class="site-footer">
+    <p class="footer-name">Barbara Sophia Sailer</p>
+    <p class="footer-meta">Gesangsunterricht &middot; Stimmbildung &middot; Frankfurt am Main</p>
+    <p class="footer-place">Unterrichtsraum &middot; Musterstra&szlig;e&nbsp;1, 60311 Frankfurt am Main</p>
+    <nav aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </footer>
+
+</main>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

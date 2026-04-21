@@ -331,6 +331,23 @@ Jeder Entwurf ist eigenständige Main-Version. Phase-4-Wow-Technik wird mit Phas
 | `v33-kalender-ghost/` | v7 + v9 | **Rolling Social Proof.** Wochenraster 6-8 Wochen, anonymisierte Meilensteine (Initial-basiert, poetisch), Ghost-Fade auf ältere Wochen, Auto-Rolling-Cursor. Ehrlicher Disclaimer „Beispiele, keine echten Namen". |
 | `v34-brief-an-dich/` | v10-letter + v5 | **Personalisierter Brief.** Formular → typewriter-animierter Brief auf Briefpapier, Signatur in Fraunces-Italic groß, Print-to-PDF. Take-away-Asset, Kühlschrank-Effekt. |
 | `v35-zine/` | v3 + v8 | **Contrarian Zero-JS Zine.** Reclam-Style Editorial, 6 ausformulierte „Notizen", Marginalien via `<aside>`, CSS `animation-timeline: view()` für Scroll-Reveals. Substanz statt Effekte. |
+| `v36-atemraum/` | v5 + v17 | **Breath-Gate.** 60s Atemübung als Content-Gate vor Seite. Gate-Screen → Path A Breathing-Dialog (5 Zyklen × 12s) → Content; Path B persistentes „Jetzt nachholen" Banner. `localStorage`-Flag für Return-Besucher. Pink-Noise optional via Web Audio. |
+| `v37-jetzt-in-niederrad/` | v5 + v7 | **Hyperlocal Urgency.** Live-Uhr im sticky Header via `Intl.DateTimeFormat`, SVG-S-Bahn-Route, Verfügbarkeits-Widget („Diese Woche noch 2 Slots frei") mit atmendem Rahmen, Standort-Prosa. Local-SEO trifft Dringlichkeits-Ästhetik. |
+| `v38-portraet-marquee/` | v1 + v3 | **Infinite Testimonial Marquee.** 2-3 Reihen endlos scrollender Porträt-Karten, jede mit SVG-Avatar aus Initialen-Hash, Pause-on-Hover via `:has()`, Klick öffnet `<dialog>` mit Vollzitat + CTA. |
+| `v39-zwei-farben/` | v11 + v5-didone | **Brutalist Radical Reduction.** Nur zwei Farben (Schwarz + Signal-Pink), riesige Didone/Fraunces-Typografie (clamp 80–240px), Scroll-Snap-Sections mit drei „Antworten"-Blöcken, Inputs nur mit Unterstrichen. |
+
+### Phase 5 Ausblick (v40–v45) — Aktiver Stimm-Layer
+
+Nach Abschluss der contemplativen/strukturellen Varianten kommt die Eskalationsstufe: der User singt mit.
+
+| Ordner | Content-Source | Idee |
+|---|---|---|
+| `v40-stimme-zeigen/` | v28-mirror + v20-spectrogram | **Pitch-Responsive WebGL-Szene.** Mikrofon-Opt-in (client-side-only) → Autokorrelations-Pitch-Detection → generative Visualisierung als teilbare Share-Card + Mini-Ermutigung („du triffst A4 sauber"). Stärkster Conversion-Trigger. |
+| `v41-magnet-typo/` | v39-zwei-farben | **Cursor-Gravity Typography.** Brutalistisch, aber mit Mastromarino-Physik: Hero-Wort „Resonanz" dehnt sich zur Maus, Testimonials schweben in Magnetfeldern. Stimme als physische Resonanz. |
+| `v42-spektrogramm/` | v27-timeline-physics + v5-three | **Audio-Scroll-Cinema.** Barbaras 60s-Arienaufnahme ist der Scroll-Track; Spektrogramm-Rendering synchron mit Chapter-Text („Atem · Ansatz · Klangfarbe"). Diegetisches Audio-Storytelling. |
+| `v43-stimm-orakel/` | v31-oper-chooser | **Tarot-Draw-Flow.** 22 Karten (Der Atem, Die Blockade, Die Bühne, Das Kind, Die Brücke…), Fan-Physik + Flip, 3 gezogene Karten → personalisiertes Probestunden-Angebot. Ritualisiert-haptisch. |
+| `v44-ton-treffen/` | v36-atemraum + v30-feedback | **Tone-Matching-Game.** 60s Challenge, 5 Zieltöne, Canvas-2D-Pitch-Line, Streak + Share-Score. „Du bist besser als 72% — willst du die letzten 28% mit Barbara schließen?" |
+| `v45-duett/` | v29-ambient | **Playback-Duett.** Barbara singt vorgespeichert, User singt zweite Stimme ins Mic, Seite zeigt beide Wellen überlagert und mixt zurück + Download. Aktives Co-Performing. |
 
 ### Phase 4 (v16–v25) — Attraction-Layer (Exploration)
 

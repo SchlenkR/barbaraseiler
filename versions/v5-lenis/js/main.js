@@ -78,18 +78,43 @@
 
   // --------------------------------------------------------
   // 3. Nav hide-on-scroll-down
+  //    Hysteresis + accumulated delta so Lenis subpixel scrolls
+  //    don't flip the class every frame and fight the transition.
   // --------------------------------------------------------
   const nav = document.getElementById('nav');
   if (nav) {
+    const SHOW_THRESHOLD = 8;   // px of upward travel before show
+    const HIDE_THRESHOLD = 14;  // px of downward travel before hide
+    const TOP_GUARD = 120;
     let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (y > 120 && y > lastY) nav.classList.add('is-hidden');
-      else nav.classList.remove('is-hidden');
+    let accUp = 0;
+    let accDown = 0;
+    let hidden = false;
+
+    const handle = (y) => {
+      if (y < TOP_GUARD) {
+        if (hidden) { nav.classList.remove('is-hidden'); hidden = false; }
+        accUp = accDown = 0;
+        lastY = y;
+        return;
+      }
+      const dy = y - lastY;
+      if (dy > 0) { accDown += dy; accUp = 0; }
+      else if (dy < 0) { accUp += -dy; accDown = 0; }
+
+      if (!hidden && accDown > HIDE_THRESHOLD) {
+        nav.classList.add('is-hidden'); hidden = true; accDown = 0;
+      } else if (hidden && accUp > SHOW_THRESHOLD) {
+        nav.classList.remove('is-hidden'); hidden = false; accUp = 0;
+      }
       lastY = y;
     };
-    if (lenis) lenis.on('scroll', onScroll);
-    else window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (lenis) {
+      lenis.on('scroll', (e) => handle(e.scroll));
+    } else {
+      window.addEventListener('scroll', () => handle(window.scrollY), { passive: true });
+    }
   }
 
   // --------------------------------------------------------

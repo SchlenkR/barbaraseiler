@@ -232,6 +232,17 @@
       text-transform: uppercase;
       color: var(--muted);
     }
+    .card-by {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 8.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.55;
+      margin-top: 2px;
+    }
+    .card-by::before { content: "by "; opacity: 0.6; }
+    .card:hover .card-by { color: #0a0a0a; opacity: 0.7; }
 
     .placeholder {
       border: 1px dashed var(--line);
@@ -296,26 +307,31 @@
           <h3 class="card-title">Du-Perspektive</h3>
           <p class="card-desc">Hero, Leitsatz und Über-mich-Struktur konsequent auf den Leser ausgerichtet. Aktueller Hauptstand.</p>
           <span class="card-meta">Parent: — · Stil: Editorial Warm</span>
+          <span class="card-by">GPT-5.4</span>
         </a>
         <a class="card variant" href="./v5-y2k/">
           <div class="card-top"><span class="card-tag">v5-y2k</span><span class="arrow">→</span></div>
           <h3 class="card-title">Y2K Chrome</h3>
           <span class="card-meta">← v5 · Aero / Holo</span>
+          <span class="card-by">GPT-5.4</span>
         </a>
         <a class="card variant" href="./v5-didone/">
           <div class="card-top"><span class="card-tag">v5-didone</span><span class="arrow">→</span></div>
           <h3 class="card-title">Didone Salon</h3>
           <span class="card-meta">← v5 · Luxury Editorial</span>
+          <span class="card-by">GPT-5.4</span>
         </a>
         <a class="card variant" href="./v5-lenis/">
           <div class="card-top"><span class="card-tag">v5-lenis</span><span class="arrow">→</span></div>
           <h3 class="card-title">Stage Scroll</h3>
           <span class="card-meta">← v5 · Lenis + GSAP</span>
+          <span class="card-by">Claude</span>
         </a>
         <a class="card variant" href="./v5-three/">
           <div class="card-top"><span class="card-tag">v5-three</span><span class="arrow">→</span></div>
           <h3 class="card-title">Voice Ribbons</h3>
           <span class="card-meta">← v5 · Three.js / WebGL</span>
+          <span class="card-by">Claude</span>
         </a>
       </div>
     </div>
@@ -331,21 +347,25 @@
           <h3 class="card-title">UX-Hierarchie</h3>
           <p class="card-desc">Layer-Cake-Pattern, typografische Hierarchie, Progressive Disclosure.</p>
           <span class="card-meta">Parent: — · Stil: Editorial</span>
+          <span class="card-by">GPT-5.4</span>
         </a>
         <a class="card variant" href="./v4-glass/">
           <div class="card-top"><span class="card-tag">v4-glass</span><span class="arrow">→</span></div>
           <h3 class="card-title">Aurora Glass</h3>
           <span class="card-meta">← v4 · visionOS-Style</span>
+          <span class="card-by">Claude</span>
         </a>
         <a class="card variant" href="./v4-linear/">
           <div class="card-top"><span class="card-tag">v4-linear</span><span class="arrow">→</span></div>
           <h3 class="card-title">Product Dark</h3>
           <span class="card-meta">← v4 · Linear.app</span>
+          <span class="card-by">Claude</span>
         </a>
         <a class="card variant" href="./v4-terminal/">
           <div class="card-top"><span class="card-tag">v4-terminal</span><span class="arrow">→</span></div>
           <h3 class="card-title">Phosphor</h3>
           <span class="card-meta">← v4 · CRT / BBS</span>
+          <span class="card-by">Claude</span>
         </a>
       </div>
     </div>
@@ -361,26 +381,31 @@
           <h3 class="card-title">Barbara-Stimme</h3>
           <p class="card-desc">Copy im Originalton Barbaras neu geschrieben.</p>
           <span class="card-meta">Parent: — · Stil: Editorial</span>
+          <span class="card-by">GPT-5.4</span>
         </a>
         <a class="card variant" href="./v3-kinetic/">
           <div class="card-top"><span class="card-tag">v3-kinetic</span><span class="arrow">→</span></div>
           <h3 class="card-title">Kinetic Typo</h3>
           <span class="card-meta">← v3 · GSAP</span>
+          <span class="card-by">GPT-5.4</span>
         </a>
         <a class="card variant" href="./v3-collage/">
           <div class="card-top"><span class="card-tag">v3-collage</span><span class="arrow">→</span></div>
           <h3 class="card-title">Scrapbook</h3>
           <span class="card-meta">← v3 · Paper / Polaroids</span>
+          <span class="card-by">Claude</span>
         </a>
         <a class="card variant" href="./v3-neobrutal/">
           <div class="card-top"><span class="card-tag">v3-neobrutal</span><span class="arrow">→</span></div>
           <h3 class="card-title">Neo-Brutal</h3>
           <span class="card-meta">← v3 · Flat / Hard Shadow</span>
+          <span class="card-by">Claude</span>
         </a>
         <a class="card variant" href="./v3-riso/">
           <div class="card-top"><span class="card-tag">v3-riso</span><span class="arrow">→</span></div>
           <h3 class="card-title">Risograph</h3>
           <span class="card-meta">← v3 · Duotone Print</span>
+          <span class="card-by">Claude</span>
         </a>
       </div>
     </div>
@@ -396,21 +421,25 @@
           <h3 class="card-title">9 Sektionen</h3>
           <p class="card-desc">Neue Informationsarchitektur: Content in neun zweckspezifische Sektionen.</p>
           <span class="card-meta">Parent: — · Stil: Editorial</span>
+          <span class="card-by">GPT-5.4</span>
         </a>
         <a class="card variant" href="./v2-bento/">
           <div class="card-top"><span class="card-tag">v2-bento</span><span class="arrow">→</span></div>
           <h3 class="card-title">Bento</h3>
           <span class="card-meta">← v2 · Apple-Style Grid</span>
+          <span class="card-by">Claude</span>
         </a>
         <a class="card variant" href="./v2-mag/">
           <div class="card-top"><span class="card-tag">v2-mag</span><span class="arrow">→</span></div>
           <h3 class="card-title">Magazin Nº 04</h3>
           <span class="card-meta">← v2 · Editorial / Drop Caps</span>
+          <span class="card-by">Claude</span>
         </a>
         <a class="card variant" href="./v2-wiki/">
           <div class="card-top"><span class="card-tag">v2-wiki</span><span class="arrow">→</span></div>
           <h3 class="card-title">Enzyklopädie</h3>
           <span class="card-meta">← v2 · Wiki-Dense</span>
+          <span class="card-by">Claude</span>
         </a>
       </div>
     </div>
@@ -426,26 +455,31 @@
           <h3 class="card-title">Initial</h3>
           <p class="card-desc">Erster Static-Rebuild der Bestandsseite.</p>
           <span class="card-meta">Parent: — · Stil: Editorial Light</span>
+          <span class="card-by">GPT-5.4</span>
         </a>
         <a class="card variant" href="./v1-brutal/">
           <div class="card-top"><span class="card-tag">v1-brutal</span><span class="arrow">→</span></div>
           <h3 class="card-title">Swiss Brutal</h3>
           <span class="card-meta">← v1 · Acid / Mono</span>
+          <span class="card-by">GPT-5.4</span>
         </a>
         <a class="card variant" href="./v1-noir/">
           <div class="card-top"><span class="card-tag">v1-noir</span><span class="arrow">→</span></div>
           <h3 class="card-title">Cinematic Noir</h3>
           <span class="card-meta">← v1 · B/W / Didone</span>
+          <span class="card-by">Claude</span>
         </a>
         <a class="card variant" href="./v1-clay/">
           <div class="card-top"><span class="card-tag">v1-clay</span><span class="arrow">→</span></div>
           <h3 class="card-title">Clay</h3>
           <span class="card-meta">← v1 · Claymorphism</span>
+          <span class="card-by">Claude</span>
         </a>
         <a class="card variant" href="./v1-swiss/">
           <div class="card-top"><span class="card-tag">v1-swiss</span><span class="arrow">→</span></div>
           <h3 class="card-title">Swiss Intl.</h3>
           <span class="card-meta">← v1 · Classic Grid</span>
+          <span class="card-by">Claude</span>
         </a>
       </div>
     </div>

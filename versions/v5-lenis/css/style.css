@@ -89,10 +89,11 @@ img, svg { display: block; max-width: 100%; height: auto; }
   justify-content: space-between;
   align-items: center;
   padding: 0 36px;
-  mix-blend-mode: normal;
-  transition: transform 0.6s var(--e-out), opacity 0.4s;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  transition: transform 0.45s var(--e-out), opacity 0.4s;
 }
-.nav.is-hidden { transform: translateY(-120%); }
+.nav.is-hidden { transform: translate3d(0, -120%, 0); }
 
 .nav-mark {
   display: inline-flex;

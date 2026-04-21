@@ -61,16 +61,38 @@
     }
   }
 
-  // --- Header hide-on-scroll-down, show on up ---
+  // --- Header hide-on-scroll-down, show on up (hysteresis) ---
   const header = document.querySelector('.site-header');
   if (header) {
+    const SHOW_THRESHOLD = 8;
+    const HIDE_THRESHOLD = 14;
+    const TOP_GUARD = 80;
     let lastY = window.scrollY;
+    let accUp = 0;
+    let accDown = 0;
+    let hidden = false;
+
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
-      if (y > 80 && y > lastY) {
+      if (y < TOP_GUARD) {
+        if (hidden) {
+          header.style.transform = 'translateX(-50%) translateY(0)';
+          hidden = false;
+        }
+        accUp = accDown = 0;
+        lastY = y;
+        return;
+      }
+      const dy = y - lastY;
+      if (dy > 0) { accDown += dy; accUp = 0; }
+      else if (dy < 0) { accUp += -dy; accDown = 0; }
+
+      if (!hidden && accDown > HIDE_THRESHOLD) {
         header.style.transform = 'translateX(-50%) translateY(-120%)';
-      } else {
+        hidden = true; accDown = 0;
+      } else if (hidden && accUp > SHOW_THRESHOLD) {
         header.style.transform = 'translateX(-50%) translateY(0)';
+        hidden = false; accUp = 0;
       }
       lastY = y;
     }, { passive: true });
